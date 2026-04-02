@@ -29,5 +29,10 @@ rust-i18n = "3"
 serde = { version = "1.0", features = ["derive"] }
 serde_yaml = "0.9"
 chrono = "0.4"
+clap = { version = "4", features = ["derive"] }
+
+[[bin]]
+name = "faker"
+path = "src/bin/faker.rs"
 
 [dev-dependencies]

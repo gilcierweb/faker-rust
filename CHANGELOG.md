@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
-## [0.2.0] - 2026-04-02
+## [0.1.0] - 2026-04-02
 
 ### Added - Complete Ruby Faker Gem Parity! 🎉
 - **40 new Default modules**: adjective, alphanumeric, chile_rut, cosmere, crypto_coin, dc_comics, drone, driving_licence, electrical_components, esport, html, id_number, industry_segments, internet_http, invoice, lorem_flickr, marketing, measurement, mountain, national_health_service, nato_phonetic_alphabet, omniauth, placeholdit, programming_language, restaurant, slack_emoji, source, south_africa, string, stripe, subscription, superhero, team, tea, theater, types, verb, vulnerability_identifier, world_cup, x

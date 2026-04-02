@@ -1,25 +1,32 @@
-# 🦀 Faker-Rust 🚀
+# Faker-Rust [![Crates.io][crates-badge]][crates] [![Documentation][docs-badge]][docs] [![License: MIT][license-badge]][license]
 
-[![Crates.io](https://img.shields.io/crates/v/faker-rust.svg)](https://crates.io/crates/faker-rust)
-[![Documentation](https://docs.rs/faker-rust/badge.svg)](https://docs.rs/faker-rust)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+<div align="center">
+  <p>Generate realistic fake data for testing, demos, and populating your database during development.</p>
+  <p><em>Inspired by the legendary <a href="https://github.com/faker-ruby/faker">Ruby Faker gem</a></em></p>
+</div>
 
-**Faker-Rust** is a high-performance, locale-aware, and reproducible fake data generator for Rust. Strongly inspired by the legendary [Ruby Faker gem](https://github.com/faker-ruby/faker), it brings massive-scale data generation to the Rust ecosystem with a focus on speed and reliability.
+[crates-badge]: https://img.shields.io/crates/v/faker-rust.svg
+[crates]: https://crates.io/crates/faker-rust
+[docs-badge]: https://docs.rs/faker-rust/badge.svg
+[docs]: https://docs.rs/faker-rust
+[license-badge]: https://img.shields.io/badge/License-MIT-yellow.svg
+[license]: https://opensource.org/licenses/MIT
 
----
+## Quick links
 
-## ✨ Features
+- 📖 **[Read the documentation][docs]**
+- 📢 **[See what's changed in recent versions](./CHANGELOG.md)**
 
-- **🚀 Performance-First**: Built in Rust for blazing-fast data generation.
-- **🌍 Locale-Aware**: Multi-language support out of the box (English, with extensible architecture for more).
-- **🎲 Reproducible**: Seedable RNG for deterministic data generation—perfect for testing.
-- **📦 Massive Library**: Over 100+ modules implemented, achieving **complete parity** with Ruby Faker gem.
-- **🛠️ Extensible**: Easily add your own custom providers and locales.
-- **🧪 Well Tested**: **549+** unit tests ensuring reliability.
+## Features
 
----
+- 🚀 **High Performance**: Built in Rust for blazing-fast data generation
+- 🌍 **Locale-Aware**: Multi-language support with fallback mechanism
+- 🎲 **Reproducible**: Seedable RNG for deterministic data generation
+- 📦 **Complete Parity**: 100% API compatibility with Ruby Faker gem
+- 🧪 **Well Tested**: 549+ unit tests ensuring reliability
+- 🏢 **100+ Modules**: Internet, Person, Location, Finance, and much more
 
-## 🚀 Quick Start
+## Getting Started
 
 Add this to your `Cargo.toml`:
 
@@ -28,158 +35,209 @@ Add this to your `Cargo.toml`:
 faker-rust = "0.1.0"
 ```
 
-### Usage Example
+Then run `cargo build`.
+
+## Usage
 
 ```rust
-use faker_rust::Faker;
+use faker_rust::name;
+use faker_rust::internet;
+use faker_rust::address;
 
 fn main() {
-    // Basic Usage - Name generation
-    println!("Name: {}", faker_rust::name::name());
+    // Person
+    println!("{}", name::name());           //=> "Christophe Bartell"
     
-    // Internet data
-    println!("Email: {}", faker_rust::internet::email(None, None, None));
-    println!("Domain: {}", faker_rust::internet::domain_name());
+    // Internet
+    println!("{}", internet::password());   //=> "Vg5mSvY1UeRg7"
+    println!("{}", internet::email(None, None, None)); //=> "eliza@mann.test"
     
     // Address
-    println!("City: {}", faker_rust::address::city());
-    println!("Street: {}", faker_rust::address::street_address());
+    println!("{}", address::full_address()); //=> "5479 William Way, East Sonnyhaven, LA 63637"
     
     // Seeded Randomness for Reproducibility
     faker_rust::Faker::set_seed(12345);
-    println!("Seeded Name: {}", faker_rust::name::name());
-    
-    // Entertainment - Movies
-    println!("Star Wars Character: {}", faker_rust::movies::star_wars::character());
-    println!("Harry Potter House: {}", faker_rust::movies::harry_potter::house());
-    
-    // Gaming
-    println!("Pokemon: {}", faker_rust::games::pokemon::name());
-    println!("Zelda Character: {}", faker_rust::games::zelda::character());
+    println!("Seeded: {}", name::name());    // Always returns same value
 }
 ```
 
----
+## 🖥️ Command Line Interface (CLI)
 
-## � Examples
+Faker-Rust now includes a powerful CLI tool for generating fake data directly from the command line:
 
-The crate includes several example files demonstrating different features:
-
-### Available Examples
+### Installation
 
 ```bash
-# Basic Usage - Names, Addresses, Internet
-cargo run --example basic_usage
-
-# Entertainment - Movies, TV Shows, Games, Music
-cargo run --example entertainment_fixed
-
-# Japanese Media - Anime and Manga
-cargo run --example japanese_media
-
-# Sports & Blockchain
-cargo run --example sports_blockchain
-
-# Books & Creatures
-cargo run --example books_creatures
-
-# Advanced Features - Seeded Generation
-cargo run --example advanced_features
+cargo install faker-rust
 ```
 
-### Example: Japanese Media
+Or run directly with:
+```bash
+# Run the CLI binary
+cargo run --bin faker -- name
+
+# Run from installed binary
+faker name
+```
+
+### Quick CLI Examples
+
+```bash
+# Generate a random name
+faker name
+
+# Or using cargo run
+cargo run --bin faker -- name
+
+# Generate an email
+faker email
+
+# Generate multiple values
+faker -c 5 name
+
+# Generate deterministic output (repeatable)
+faker --seed 12345 name
+
+# List all available generators
+faker list
+```
+
+### CLI Demo Example
+
+Run the interactive CLI demo example:
+
+```bash
+cargo run --example cli_demo
+```
+
+### CLI Commands
+
+| Command | Description | Example |
+|---------|-------------|---------|
+| `name` | Generate names | `faker name --first` |
+| `email` | Generate emails | `faker email` |
+| `address` | Generate addresses | `faker address --full` |
+| `company` | Generate company names | `faker company` |
+| `phone` | Generate phone numbers | `faker phone --cell` |
+| `internet` | Generate internet data | `faker internet --username` |
+| `games` | Generate game data | `faker games --pokemon` |
+| `movies` | Generate movie data | `faker movies --star-wars` |
+| `tv` | Generate TV show data | `faker tv --simpsons` |
+
+For complete CLI documentation, see [CLI.md](./docs/CLI.md).
+
+## Generators
+
+### Default Generators
+
+| Category | Generators |
+|----------|------------|
+| **Person** | `name`, `first_name`, `last_name`, `job`, `gender`, `blood` |
+| **Internet** | `email`, `password`, `domain`, `url`, `ip`, `user_agent` |
+| **Address** | `city`, `street_address`, `zip_code`, `state`, `country` |
+| **Finance** | `bank`, `credit_card`, `crypto`, `currency`, `iban`, `bic` |
+| **Company** | `company_name`, `bs`, `catch_phrase`, `industry` |
+| **Date & Time** | `date`, `time`, `datetime`, `timezone` |
+| **Number** | `digit`, `number`, `decimal`, `hexadecimal` |
+| **String** | `alphanumeric`, `alpha`, `numeric`, `hex`, `uuid` |
+| **Lorem** | `word`, `sentence`, `paragraph`, `question` |
+| **Color** | `hex_color`, `rgb_color`, `safe_color` |
+| **Code** | `isbn`, `ean`, `barcode`, `sku` |
+| **Hacker** | `abbreviation`, `adjective`, `noun`, `verb`, `ingverb` |
+| **App** | `name`, `version`, `author` |
+| **Crypto** | `md5`, `sha1`, `sha256` |
+| **Device** | `model`, `platform`, `serial` |
+
+### Entertainment Generators
+
+| Category | Generators |
+|----------|------------|
+| **Movies** | `star_wars`, `harry_potter`, `lord_of_the_rings`, `avatar`, `hackers`, `hitchhikers_guide_to_the_galaxy` |
+| **TV Shows** | `game_of_thrones`, `breaking_bad`, `simpsons`, `rick_and_morty`, `aqua_teen_hunger_force`, `archer`, `how_i_met_your_mother`, `suits`, `supernatural`, `the_expanse`, `the_it_crowd`, `the_thick_of_it`, and 30+ more |
+| **Gaming** | `pokemon`, `zelda`, `mario`, `minecraft`, `dnd`, `wow`, `lol`, `esport`, `dc_comics`, `superhero`, `cosmere` |
+| **Books** | `book`, `culture_series`, `dune`, `lovecraft`, `kingkiller_chronicle` |
+| **Music** | `rock_band`, `opera`, `grateful_dead`, `prince`, `pearl_jam`, `bossa_nova` |
+
+### Specialty Generators
+
+| Category | Generators |
+|----------|------------|
+| **Anime** | `naruto`, `dragon_ball`, `one_piece`, `sword_art_online`, `studio_ghibli` |
+| **Sports** | `football`, `basketball`, `baseball`, `volleyball`, `world_cup` |
+| **Blockchain** | `bitcoin`, `ethereum`, `tezos` |
+| **Travel** | `airport`, `train_station` |
+| **Fantasy** | `tolkien_race`, `creature`, `location`, `weapon`, `spell` |
+| **Locations** | `community`, `neighborhood`, `building_type`, `place` |
+| **Quotes** | `famous_last_words`, `motivational`, `philosophical`, `shakespeare`, `movie` |
+| **Religion** | `name`, `figure`, `text`, `practice`, `holiday` |
+
+### Regional & Tech Generators
+
+| Category | Generators |
+|----------|------------|
+| **Regional** | `chile_rut`, `driving_licence`, `id_number`, `south_africa`, `national_health_service` |
+| **Tech** | `drone`, `electrical_components`, `html`, `programming_language`, `internet_http` |
+| **Security** | `vulnerability_identifier`, `omniauth` |
+| **Misc** | `slack_emoji`, `lorem_flickr`, `placeholdit`, `x` (Twitter), `source` |
+
+## Notes
+
+* While Faker generates data at random, returned values are not guaranteed to be unique by default.
+* Values can be deterministic if you use the seeded RNG feature.
+* This is the `main` branch and may contain unreleased changes. See [CHANGELOG](./CHANGELOG.md) for all versions.
+
+## Deterministic Random
+
+Faker supports seeding of its pseudo-random number generator to provide deterministic output:
+
 ```rust
-use faker::japanese_media;
+use faker_rust::Faker;
+use faker_rust::name;
 
 fn main() {
-    // One Piece
-    println!("Character: {}", japanese_media::one_piece::character());
-    println!("Devil Fruit: {}", japanese_media::one_piece::devil_fruit());
+    Faker::set_seed(42);
+    println!("{}", name::name());  //=> "Aurelia Wilkinson"
     
-    // Naruto
-    println!("Ninja: {}", japanese_media::naruto::character());
-    println!("Village: {}", japanese_media::naruto::village());
-    
-    // Dragon Ball
-    println!("Saiyan: {}", japanese_media::dragon_ball::character());
-    println!("Transformation: {}", japanese_media::dragon_ball::transformation());
+    Faker::set_seed(42);
+    println!("{}", name::name());  //=> "Aurelia Wilkinson" (same value)
 }
 ```
 
-### Example: Sports & Blockchain
-```rust
-use faker::{sports, blockchain};
+## Localization
 
-fn main() {
-    // Sports
-    println!("Team: {}", sports::football::team());
-    println!("Player: {}", sports::basketball::player());
-    println!("World Cup Winner: {}", sports::world_cup::winner());
-    
-    // Blockchain
-    println!("Bitcoin: {}", blockchain::bitcoin::address());
-    println!("Ethereum: {}", blockchain::ethereum::address());
-    println!("Tezos: {}", blockchain::tezos::account());
-}
+Faker supports locale-aware data generation:
+
+```rust
+// Set locale for data generation
+faker_rust::locale::set_locale("en");
+
+// The library will use locale-specific data where available,
+// falling back to English defaults for missing translations
 ```
 
----
+## Table of Contents
 
-## 🗺️ Available Modules
+- [Faker-Rust](#faker-rust)
+  - [Quick links](#quick-links)
+  - [Features](#features)
+  - [Getting Started](#getting-started)
+  - [Usage](#usage)
+  - [Generators](#generators)
+  - [Notes](#notes)
+  - [Deterministic Random](#deterministic-random)
+  - [Localization](#localization)
+  - [Contributing](#contributing)
+  - [Inspiration](#inspiration)
+  - [License](#license)
 
-| Category | Modules |
-| :--- | :--- |
-| **👤 Identity** | Name, Address, Phone, Job, Blood, Gender, University, ID Number |
-| **💻 Technology** | Internet, Computer, App, Code, Crypto, Device, Hacker, HTML, Programming Language, Internet HTTP, String, Alphanumeric, Types |
-| **🏢 Business** | Company, Bank, Business, Coin, Commerce, Finance, Currency, Industry Segments, Invoice, Marketing, Stripe, Subscription |
-| **🍔 Lifestyle** | Food, Beer, Coffee, Dessert, Hobby, Home, House, Restaurant, Tea, Measurement |
-| **🎬 Media** | Movies (Star Wars, Harry Potter, Lord of the Rings, Avatar, Hackers, Hitchhiker's Guide, etc.), Music, Books, Theater |
-| **📺 TV Shows** | Game of Thrones, Breaking Bad, Simpsons, Rick and Morty, Aqua Teen, Archer, HIMYM, Michael Scott, RuPaul, Suits, Supernatural, The Expanse, The IT Crowd, The Thick of It, etc. (45+ total) |
-| **🎮 Gaming** | Pokemon, Zelda, Mario, Minecraft, DnD, WoW, LoL, Esport, DC Comics, Superhero, Cosmere, 20+ more |
-| **🎵 Music** | RockBand, Opera, GratefulDead, Prince, PearlJam, BossaNova |
-| **📚 Books** | HarryPotter, Dune, Lovecraft, CultureSeries |
-| **⚽ Sports** | Football, Basketball, Baseball, Volleyball, WorldCup |
-| **🌸 Anime** | Naruto, DragonBall, SwordArtOnline, StudioGhibli |
-| **🔗 Blockchain** | Bitcoin, Ethereum |
-| **✈️ Travel** | Airport, TrainStation |
-| **🗺️ Fantasy** | Tolkien races, Creatures, Locations, Weapons, Spells |
-| **📍 Locations** | Communities, Neighborhoods, Building Types, Places, Locales |
-| **💬 Quotes** | Famous last words, Motivational, Philosophical, Shakespeare, Movies |
-| **🙏 Religion** | Names, Figures, Texts, Practices, Holidays |
-| **🎨 Misc** | Color, Construction, Science, Space, Time, Animal, Lorem Flickr, Placeholdit, Slack Emoji, Source, X (Twitter) |
-| **🔧 Tech Specs** | Drone, Electrical Components, Mountain, National Health Service, NATO Phonetic, OmniAuth, Vulnerability Identifier |
-| **🌍 Regional** | Chile RUT, Driving Licence, ID Number, South Africa |
+## Contributing
 
----
+Contributions are welcome! Feel free to open issues and pull requests.
 
-## 🗺️ Implementation Status
+## Inspiration
 
-**✅ COMPLETE!** Full parity with Ruby Faker gem achieved!
+Faker-Rust is inspired by the legendary [Ruby Faker gem](https://github.com/faker-ruby/faker) and aims to bring the same ease of use and comprehensive coverage to the Rust ecosystem.
 
-- [x] **Phase 1-4**: Core Defaults (100+ modules) ✅
-- [x] **Phase 5**: Creature Kingdom & General Concepts ✅
-- [x] **Phase 6**: Movies & TV Shows (45+ modules) ✅
-- [x] **Phase 7**: The Gaming Universe ✅
-- [x] **Phase 8**: Sports, Anime, Blockchain, Travel ✅
-- [x] **Phase 9**: Fantasy, Locations, Quotes, Religion ✅
-- [x] **Phase 10**: Final Polish - Complete API Parity Achieved! 🎉
+## License
 
----
-
-## 📊 Statistics
-
-- **549+ Tests Passing**
-- **100+ Generator Modules**
-- **20+ Categories**
-- **Complete API Documentation**
-- **100% Ruby Faker Gem Parity**
-
----
-
-## 🤝 Contributing
-
-Contributions are welcome! If you'd like to help us reach full parity with Ruby Faker, feel free to open a PR.
-
-## 📄 License
-
-This project is licensed under the MIT License.
+This code is free to use under the terms of the MIT license.
