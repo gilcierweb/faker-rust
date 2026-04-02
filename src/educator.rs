@@ -21,21 +21,21 @@ pub fn university() -> String {
 pub fn secondary_school() -> String {
     fetch_locale("educator.secondary_school", "en")
         .map(|v| sample_with_resolve(&v, Some("educator")))
-        .unwrap_else(|| "Bluemeadow High".to_string())
+        .unwrap_or_else(|| "Bluemeadow High".to_string())
 }
 
 /// Generate a primary school name
 pub fn primary_school() -> String {
     fetch_locale("educator.primary_school", "en")
         .map(|v| sample_with_resolve(&v, Some("educator")))
-        .unwrap_else(|| "Bluemeadow Elementary School".to_string())
+        .unwrap_or_else(|| "Bluemeadow Elementary School".to_string())
 }
 
 /// Generate a campus name
 pub fn campus() -> String {
     fetch_locale("educator.campus", "en")
         .map(|v| sample_with_resolve(&v, Some("educator")))
-        .unwrap_else(|| "Bluemeadow Campus".to_string())
+        .unwrap_or_else(|| "Bluemeadow Campus".to_string())
 }
 
 /// Generate a random subject
@@ -49,14 +49,14 @@ pub fn subject() -> String {
 pub fn degree() -> String {
     fetch_locale("educator.degree", "en")
         .map(|v| sample_with_resolve(&v, Some("educator")))
-        .unwrap_else(|| "Bachelor of Science".to_string())
+        .unwrap_or_else(|| "Bachelor of Science".to_string())
 }
 
 /// Generate a course name
 pub fn course_name() -> String {
     fetch_locale("educator.course_name", "en")
         .map(|v| sample_with_resolve(&v, Some("educator")))
-        .unwrap_else(|| "Science 101".to_string())
+        .unwrap_or_else(|| "Science 101".to_string())
 }
 
 /// Generate a university type (College, TAFE, etc.)

@@ -17,5 +17,19 @@ fn main() {
         faker::commerce::product_name()
     );
 
+    // New modules
+    println!("\n--- New Modules ---");
+    println!("Book title: {}", faker::books::book::title());
+    println!("Book author: {}", faker::books::book::author());
+    println!("Movie: {}", faker::movies::movie::title());
+    println!("Music band: {}", faker::music::music::band());
+    println!("Music album: {}", faker::music::music::album());
+    println!("Music genre: {}", faker::music::music::genre());
+    println!("Game: {}", faker::games::game::title());
+    println!("Device: {}", faker::device::model_name());
+    println!("Vehicle: {}", faker::vehicle::manufacturer());
+    println!("Color: {}", faker::color::name());
+    println!("Boolean: {}", faker::boolean::boolean());
+
     println!("\nAll tests passed!");
 }
