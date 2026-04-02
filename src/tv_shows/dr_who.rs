@@ -35,7 +35,9 @@ pub fn catch_phrase() -> String {
 pub fn quote() -> String {
     fetch_locale("dr_who.quotes", "en")
         .map(|v| sample(&v))
-        .unwrap_or_else(|| "We're all stories, in the end. Just make it a good one, eh?".to_string())
+        .unwrap_or_else(|| {
+            "We're all stories, in the end. Just make it a good one, eh?".to_string()
+        })
 }
 
 /// Generate a random Doctor Who villain

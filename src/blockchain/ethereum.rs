@@ -15,12 +15,12 @@ fn generate_ethereum_address() -> String {
     let mut address = String::from("0x");
     const HEX: &[u8] = b"0123456789abcdef";
     let config = crate::config::FakerConfig::current();
-    
+
     for _ in 0..40 {
         let idx = config.rand_range(0, (HEX.len() - 1) as u32) as usize;
         address.push(HEX[idx] as char);
     }
-    
+
     address
 }
 

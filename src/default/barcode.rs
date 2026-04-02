@@ -8,7 +8,7 @@ pub fn ean_8() -> String {
     let pattern = fetch_locale("barcode.ean_8", "en")
         .map(|v| sample(&v))
         .unwrap_or_else(|| "#######".to_string());
-    
+
     let base = bothify(&pattern);
     let check_digit = calculate_ean_check_digit(&base);
     format!("{}{}", base, check_digit)
@@ -19,7 +19,7 @@ pub fn ean_13() -> String {
     let pattern = fetch_locale("barcode.ean_13", "en")
         .map(|v| sample(&v))
         .unwrap_or_else(|| "############".to_string());
-    
+
     let base = bothify(&pattern);
     let check_digit = calculate_ean_check_digit(&base);
     format!("{}{}", base, check_digit)
@@ -30,7 +30,7 @@ pub fn upc_a() -> String {
     let pattern = fetch_locale("barcode.upc_a", "en")
         .map(|v| sample(&v))
         .unwrap_or_else(|| "###########".to_string());
-    
+
     let base = bothify(&pattern);
     let check_digit = calculate_ean_check_digit(&base);
     format!("{}{}", base, check_digit)
@@ -54,7 +54,7 @@ pub fn isbn() -> String {
 fn calculate_ean_check_digit(s: &str) -> u32 {
     let mut sum = 0;
     let len = s.len();
-    
+
     for (i, c) in s.chars().enumerate() {
         if let Some(digit) = c.to_digit(10) {
             // Weights depend on position from RIGHT (starting at 1)
@@ -64,7 +64,7 @@ fn calculate_ean_check_digit(s: &str) -> u32 {
             sum += digit * weight;
         }
     }
-    
+
     (10 - (sum % 10)) % 10
 }
 

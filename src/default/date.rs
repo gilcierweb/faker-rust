@@ -1,7 +1,6 @@
 //! Date and time generator - generates random dates and times
 
 use chrono::{Duration, NaiveDate, Utc};
-use crate::base::sample;
 
 /// Generate a random date in the past
 pub fn backward(days: Option<i64>, _from: Option<&str>, _to: Option<&str>) -> String {

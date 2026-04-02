@@ -14,22 +14,22 @@ fn generate_bitcoin_address() -> String {
     // Generate a mock Bitcoin address
     let prefix = sample(&["1", "3", "bc1"]);
     let mut address = prefix.to_string();
-    
+
     // Add random alphanumeric characters
     const CHARS: &[u8] = b"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
     let config = crate::config::FakerConfig::current();
-    
+
     let length = if address.starts_with("bc1") {
         39 // bc1 addresses are longer
     } else {
         33
     };
-    
+
     for _ in 0..length {
         let idx = config.rand_range(0, (CHARS.len() - 1) as u32) as usize;
         address.push(CHARS[idx] as char);
     }
-    
+
     address
 }
 

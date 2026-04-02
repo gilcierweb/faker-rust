@@ -2,7 +2,16 @@
 name = "faker-rust"
 version = "0.1.0"
 edition = "2024"
-authors = ["Faker Rust Team"]
+authors = ["Faker Rust Team <team@faker-rust.dev>"]
+description = "A high-performance, locale-aware fake data generator for Rust"
+license = "MIT"
+repository = "https://github.com/faker-rust/faker-rust"
+homepage = "https://github.com/faker-rust/faker-rust"
+documentation = "https://docs.rs/faker-rust"
+readme = "README.md"
+keywords = ["faker", "fake", "data", "generator", "testing"]
+categories = ["development-tools::testing", "text-processing"]
+rust-version = "1.70"
 
 [lib]
 name = "faker"
@@ -20,3 +29,5 @@ rust-i18n = "3"
 serde = { version = "1.0", features = ["derive"] }
 serde_yaml = "0.9"
 chrono = "0.4"
+
+[dev-dependencies]

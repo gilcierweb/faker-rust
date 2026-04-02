@@ -357,11 +357,7 @@ fn extract_strings_from_seq(seq: &[Value], _context_category: Option<&str>) -> O
             _ => None,
         })
         .collect();
-    if arr.is_empty() {
-        None
-    } else {
-        Some(arr)
-    }
+    if arr.is_empty() { None } else { Some(arr) }
 }
 
 fn extract_nested_array_raw(data: &Value, key: &str) -> Option<Vec<String>> {
@@ -405,11 +401,7 @@ fn extract_strings_raw(seq: &[Value]) -> Option<Vec<String>> {
             _ => None,
         })
         .collect();
-    if arr.is_empty() {
-        None
-    } else {
-        Some(arr)
-    }
+    if arr.is_empty() { None } else { Some(arr) }
 }
 
 fn resolve_placeholder(s: &str, context_category: Option<&str>) -> String {
@@ -932,11 +924,7 @@ fn extract_array_from_value(data: &Value, key: &str) -> Option<Vec<String>> {
                     _ => None,
                 })
                 .collect();
-            if arr.is_empty() {
-                None
-            } else {
-                Some(arr)
-            }
+            if arr.is_empty() { None } else { Some(arr) }
         }
         _ => None,
     }
@@ -1030,11 +1018,7 @@ fn extract_array(data: &Value, key: &str) -> Option<Vec<String>> {
                     _ => None,
                 })
                 .collect();
-            if arr.is_empty() {
-                None
-            } else {
-                Some(arr)
-            }
+            if arr.is_empty() { None } else { Some(arr) }
         }
         _ => None,
     }

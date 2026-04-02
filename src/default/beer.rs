@@ -39,7 +39,13 @@ pub fn yeast() -> String {
 }
 
 // Fallback data
-const FALLBACK_NAMES: &[&str] = &["Guinness", "Heineken", "Budweiser", "Corona", "Stella Artois"];
+const FALLBACK_NAMES: &[&str] = &[
+    "Guinness",
+    "Heineken",
+    "Budweiser",
+    "Corona",
+    "Stella Artois",
+];
 const FALLBACK_STYLES: &[&str] = &["Lager", "IPA", "Pilsner", "Stout", "Porter"];
 const FALLBACK_HOPS: &[&str] = &["Cascade", "Centennial", "Chinook", "Citra", "Columbus"];
 const FALLBACK_MALTS: &[&str] = &["Pale", "Caramel", "Chocolate", "Roasted Barley", "Munich"];

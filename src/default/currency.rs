@@ -25,7 +25,13 @@ pub fn symbol() -> String {
 }
 
 // Fallback data
-const FALLBACK_NAMES: &[&str] = &["US Dollar", "Euro", "Japanese Yen", "British Pound", "Bitcoin"];
+const FALLBACK_NAMES: &[&str] = &[
+    "US Dollar",
+    "Euro",
+    "Japanese Yen",
+    "British Pound",
+    "Bitcoin",
+];
 const FALLBACK_CODES: &[&str] = &["USD", "EUR", "JPY", "GBP", "BTC"];
 const FALLBACK_SYMBOLS: &[&str] = &["$", "€", "¥", "£", "₿"];
 

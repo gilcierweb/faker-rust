@@ -12,7 +12,14 @@ pub fn flip() -> String {
 
 /// Generate a random coin name
 pub fn name() -> String {
-    let coins = ["Penny", "Nickel", "Dime", "Quarter", "Half Dollar", "Dollar"];
+    let coins = [
+        "Penny",
+        "Nickel",
+        "Dime",
+        "Quarter",
+        "Half Dollar",
+        "Dollar",
+    ];
     sample(&coins).to_string()
 }
 

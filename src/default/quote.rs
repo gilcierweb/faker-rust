@@ -21,7 +21,9 @@ pub fn matz() -> String {
 pub fn robin() -> String {
     fetch_locale("quote.robin", "en")
         .map(|v| sample(&v))
-        .unwrap_or_else(|| "No matter what people tell you, words and ideas can change the world.".to_string())
+        .unwrap_or_else(|| {
+            "No matter what people tell you, words and ideas can change the world.".to_string()
+        })
 }
 
 /// Generate a quote by Jack Handey

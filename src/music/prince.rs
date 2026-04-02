@@ -53,11 +53,7 @@ const FALLBACK_ALBUMS: &[&str] = &[
     "Diamonds and Pearls",
 ];
 
-const FALLBACK_BANDS: &[&str] = &[
-    "The Revolution",
-    "The New Power Generation",
-    "3rdeyegirl",
-];
+const FALLBACK_BANDS: &[&str] = &["The Revolution", "The New Power Generation", "3rdeyegirl"];
 
 #[cfg(test)]
 mod tests {

@@ -19,8 +19,12 @@ pub fn mime_type() -> String {
 
 /// Generate a random file name
 pub fn file_name(name: Option<&str>, extension: Option<&str>) -> String {
-    let name = name.map(|s| s.to_string()).unwrap_or_else(|| crate::lorem::word());
-    let extension = extension.map(|s| s.to_string()).unwrap_or_else(|| self::extension());
+    let name = name
+        .map(|s| s.to_string())
+        .unwrap_or_else(|| crate::lorem::word());
+    let extension = extension
+        .map(|s| s.to_string())
+        .unwrap_or_else(|| self::extension());
     format!("{}.{}", name, extension)
 }
 

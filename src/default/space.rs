@@ -32,10 +32,20 @@ pub fn constellation() -> String {
 }
 
 // Fallback data
-const FALLBACK_PLANETS: &[&str] = &["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"];
-const FALLBACK_MOONS: &[&str] = &["Moon", "Phobos", "Deimos", "Io", "Europa", "Ganymede", "Callisto"];
+const FALLBACK_PLANETS: &[&str] = &[
+    "Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune",
+];
+const FALLBACK_MOONS: &[&str] = &[
+    "Moon", "Phobos", "Deimos", "Io", "Europa", "Ganymede", "Callisto",
+];
 const FALLBACK_GALAXIES: &[&str] = &["Andromeda", "Milky Way", "Triangulum", "Sombrero", "Cigar"];
-const FALLBACK_CONSTELLATIONS: &[&str] = &["Orion", "Ursa Major", "Ursa Minor", "Canis Major", "Cassiopeia"];
+const FALLBACK_CONSTELLATIONS: &[&str] = &[
+    "Orion",
+    "Ursa Major",
+    "Ursa Minor",
+    "Canis Major",
+    "Cassiopeia",
+];
 
 #[cfg(test)]
 mod tests {

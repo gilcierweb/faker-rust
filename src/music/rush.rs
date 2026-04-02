@@ -54,12 +54,7 @@ const FALLBACK_ALBUMS: &[&str] = &[
     "Rush",
 ];
 
-const FALLBACK_MEMBERS: &[&str] = &[
-    "Geddy Lee",
-    "Alex Lifeson",
-    "Neil Peart",
-    "John Rutsey",
-];
+const FALLBACK_MEMBERS: &[&str] = &["Geddy Lee", "Alex Lifeson", "Neil Peart", "John Rutsey"];
 
 #[cfg(test)]
 mod tests {

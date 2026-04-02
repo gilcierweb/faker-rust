@@ -1,14 +1,12 @@
 //! Faker configuration - locale and random number generator settings
 
-use rand::rngs::StdRng;
-// Removed unused Rng
 use rand::SeedableRng;
+use rand::rngs::StdRng;
 use std::cell::RefCell;
 use std::rc::Rc;
 
-/// Thread-local configuration for Faker
 thread_local! {
-    static FAKER_CONFIG: Rc<RefCell<FakerConfig>> = Rc::new(RefCell::new(FakerConfig::default()));
+    static _FAKER_CONFIG: Rc<RefCell<FakerConfig>> = Rc::new(RefCell::new(FakerConfig::default()));
 }
 
 /// Faker configuration
@@ -32,24 +30,24 @@ impl Default for FakerConfig {
 impl FakerConfig {
     /// Get the current Faker configuration
     pub fn current() -> Self {
-        FAKER_CONFIG.with(|config| config.borrow().clone())
+        _FAKER_CONFIG.with(|config| config.borrow().clone())
     }
 
     /// Set the locale
     pub fn set_locale(locale: &str) {
-        FAKER_CONFIG.with(|config| {
+        _FAKER_CONFIG.with(|config| {
             config.borrow_mut().locale = locale.to_string();
         });
     }
 
     /// Get the current locale
     pub fn locale() -> String {
-        FAKER_CONFIG.with(|config| config.borrow().locale.clone())
+        _FAKER_CONFIG.with(|config| config.borrow().locale.clone())
     }
 
     /// Set the random seed for deterministic output
     pub fn set_seed(seed: u64) {
-        FAKER_CONFIG.with(|config| {
+        _FAKER_CONFIG.with(|config| {
             config.borrow_mut().rng = Rc::new(RefCell::new(StdRng::seed_from_u64(seed)));
         });
     }

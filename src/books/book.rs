@@ -40,13 +40,7 @@ const FALLBACK_TITLES: &[&str] = &[
     "The Hobbit",
 ];
 
-const FALLBACK_GENRES: &[&str] = &[
-    "Classic",
-    "Fantasy",
-    "Science Fiction",
-    "Horror",
-    "Mystery",
-];
+const FALLBACK_GENRES: &[&str] = &["Classic", "Fantasy", "Science Fiction", "Horror", "Mystery"];
 
 const FALLBACK_PUBLISHERS: &[&str] = &[
     "Penguin Books",

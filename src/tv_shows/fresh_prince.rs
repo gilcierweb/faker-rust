@@ -21,7 +21,9 @@ pub fn actor() -> String {
 pub fn quote() -> String {
     fetch_locale("the_fresh_prince_of_bel_air.quotes", "en")
         .map(|v| sample(&v))
-        .unwrap_or_else(|| "Now this is a story all about how my life got flipped-turned upside down.".to_string())
+        .unwrap_or_else(|| {
+            "Now this is a story all about how my life got flipped-turned upside down.".to_string()
+        })
 }
 
 #[cfg(test)]

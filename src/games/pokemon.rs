@@ -24,13 +24,8 @@ pub fn move_name() -> String {
         .unwrap_or_else(|| sample(&["Tackle", "Thunderbolt", "Hyper Beam"]).to_string())
 }
 
-const FALLBACK_POKEMON_NAMES: &[&str] = &[
-    "Pikachu",
-    "Bulbasaur",
-    "Charmander",
-    "Squirtle",
-    "Mewtwo",
-];
+const FALLBACK_POKEMON_NAMES: &[&str] =
+    &["Pikachu", "Bulbasaur", "Charmander", "Squirtle", "Mewtwo"];
 
 #[cfg(test)]
 mod tests {

@@ -9,11 +9,11 @@ pub fn between(from: DateTime<Utc>, to: DateTime<Utc>) -> DateTime<Utc> {
     let config = FakerConfig::current();
     let from_ts = from.timestamp();
     let to_ts = to.timestamp();
-    
+
     if from_ts >= to_ts {
         return from;
     }
-    
+
     let ts = config.rand_range_i64(from_ts, to_ts);
     DateTime::from_timestamp(ts, 0).unwrap_or(from)
 }

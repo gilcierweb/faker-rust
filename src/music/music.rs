@@ -40,24 +40,11 @@ const FALLBACK_ARTISTS: &[&str] = &[
     "AC/DC",
 ];
 
-const FALLBACK_ALBUMS: &[&str] = &[
-    "Abbey Road",
-    "The Dark Side of the Moon",
-    "Nevermind",
-];
+const FALLBACK_ALBUMS: &[&str] = &["Abbey Road", "The Dark Side of the Moon", "Nevermind"];
 
-const FALLBACK_GENRES: &[&str] = &[
-    "Rock",
-    "Pop",
-    "Jazz",
-    "Classical",
-];
+const FALLBACK_GENRES: &[&str] = &["Rock", "Pop", "Jazz", "Classical"];
 
-const FALLBACK_INSTRUMENTS: &[&str] = &[
-    "Guitar",
-    "Piano",
-    "Drums",
-];
+const FALLBACK_INSTRUMENTS: &[&str] = &["Guitar", "Piano", "Drums"];
 
 #[cfg(test)]
 mod tests {

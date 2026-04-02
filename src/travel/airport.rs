@@ -35,12 +35,12 @@ fn generate_iata_code() -> String {
     let config = crate::config::FakerConfig::current();
     const LETTERS: &[u8] = b"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     let mut code = String::new();
-    
+
     for _ in 0..3 {
         let idx = config.rand_range(0, (LETTERS.len() - 1) as u32) as usize;
         code.push(LETTERS[idx] as char);
     }
-    
+
     code
 }
 
@@ -48,12 +48,12 @@ fn generate_icao_code() -> String {
     let config = crate::config::FakerConfig::current();
     const LETTERS: &[u8] = b"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     let mut code = String::new();
-    
+
     for _ in 0..4 {
         let idx = config.rand_range(0, (LETTERS.len() - 1) as u32) as usize;
         code.push(LETTERS[idx] as char);
     }
-    
+
     code
 }
 

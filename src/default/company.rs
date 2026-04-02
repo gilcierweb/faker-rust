@@ -204,9 +204,21 @@ const FALLBACK_NAME_SUFFIXES: &[&str] = &[
 ];
 
 const FALLBACK_BS_WORDS: &[&[&str]] = &[
-    &["implement", "utilize", "integrate", "streamline", "optimize"],
+    &[
+        "implement",
+        "utilize",
+        "integrate",
+        "streamline",
+        "optimize",
+    ],
     &["synergistic", "strategic", "vibrant", "robust", "scalable"],
-    &["solutions", "systems", "networks", "platforms", "infrastructures"],
+    &[
+        "solutions",
+        "systems",
+        "networks",
+        "platforms",
+        "infrastructures",
+    ],
 ];
 
 const FALLBACK_COMPANY_SUFFIXES: &[&str] = &[
@@ -300,7 +312,6 @@ const FALLBACK_BUZZWORDS: &[&str] = &[
     "Ergonomic",
     "Executive",
 ];
-
 
 #[cfg(test)]
 mod tests {
