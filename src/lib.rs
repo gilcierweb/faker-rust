@@ -144,6 +144,7 @@ pub mod creature;
 pub mod games;
 pub mod movies;
 pub mod music;
+pub mod tv_shows;
 
 // Re-export commonly used types
 pub use config::FakerConfig;
