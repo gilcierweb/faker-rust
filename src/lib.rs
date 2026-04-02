@@ -133,8 +133,6 @@ pub mod humor;
 pub mod nation;
 #[path = "default/quote.rs"]
 pub mod quote;
-#[path = "default/religion.rs"]
-pub mod religion;
 #[path = "default/supernatural.rs"]
 pub mod supernatural;
 
@@ -159,14 +157,56 @@ pub mod kpop;
 #[path = "default/markdown.rs"]
 pub mod markdown;
 
+// New modules added for Ruby Faker parity
+#[path = "default/adjective.rs"]
+pub mod adjective;
+#[path = "default/alphanumeric.rs"]
+pub mod alphanumeric;
+#[path = "default/cosmere.rs"]
+pub mod cosmere;
+#[path = "default/dc_comics.rs"]
+pub mod dc_comics;
+#[path = "default/drone.rs"]
+pub mod drone;
+#[path = "default/esport.rs"]
+pub mod esport;
+#[path = "default/html.rs"]
+pub mod html;
+#[path = "default/marketing.rs"]
+pub mod marketing;
+#[path = "default/mountain.rs"]
+pub mod mountain;
+#[path = "default/programming_language.rs"]
+pub mod programming_language;
+#[path = "default/restaurant.rs"]
+pub mod restaurant;
+#[path = "default/string.rs"]
+pub mod string;
+#[path = "default/stripe.rs"]
+pub mod stripe;
+#[path = "default/subscription.rs"]
+pub mod subscription;
+#[path = "default/superhero.rs"]
+pub mod superhero;
+#[path = "default/team.rs"]
+pub mod team;
+#[path = "default/tea.rs"]
+pub mod tea;
+#[path = "default/verb.rs"]
+pub mod verb;
+
 // Other category modules (like Ruby Faker's books, games, movies, music folders)
 pub mod blockchain;
 pub mod books;
 pub mod creature;
+pub mod fantasy;
 pub mod games;
 pub mod japanese_media;
+pub mod locations;
 pub mod movies;
 pub mod music;
+pub mod quotes;
+pub mod religion;
 pub mod sports;
 pub mod travel;
 pub mod tv_shows;
