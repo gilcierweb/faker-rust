@@ -1,7 +1,7 @@
 //! Internet generator - generates internet-related fake data
 
 use crate::base::sample;
-use crate::base::ALPHANUMERIC;
+// Removed unused ALPHANUMERIC
 use crate::base::DIGITS;
 use crate::base::L_LETTERS;
 use crate::base::U_LETTERS;
@@ -285,11 +285,12 @@ pub fn device_token() -> string::String {
 
 /// Generate a random UUID
 pub fn uuid() -> string::String {
-    use rand::Rng;
     let config = FakerConfig::current();
-    let mut rng = config.rng.borrow_mut();
+    let rng = config.rng.borrow_mut();
     let mut bytes = [0u8; 16];
-    rng.fill(&mut bytes);
+    use rand::RngCore;
+    let mut rng = rng;
+    rng.fill_bytes(&mut bytes);
 
     bytes[6] = (bytes[6] & 0x0f) | 0x40;
     bytes[8] = (bytes[8] & 0x3f) | 0x80;
@@ -463,10 +464,6 @@ fn sanitize_username(name: &str) -> string::String {
 mod string {
     pub type String = std::string::String;
 }
-
-const DOMAIN_SUFFIXES: &[&str] = &[
-    "com", "net", "org", "io", "co", "biz", "info", "me", "us", "uk", "ca", "de", "fr", "jp",
-];
 
 const SAFE_DOMAIN_SUFFIXES: &[&str] = &["test", "example", "localhost"];
 

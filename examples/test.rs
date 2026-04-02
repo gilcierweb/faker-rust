@@ -30,6 +30,19 @@ fn main() {
     println!("Vehicle: {}", faker::vehicle::manufacturer());
     println!("Color: {}", faker::color::name());
     println!("Boolean: {}", faker::boolean::boolean());
+    println!("App name: {}", faker::app::name());
+    println!("Crypto coin: {}", faker::crypto::coin());
+    println!("File extension: {}", faker::file::extension());
+    println!("Food dish: {}", faker::food::dish());
+    println!("Science element: {}", faker::science::element());
+    println!("Space planet: {}", faker::space::planet());
+    println!("Avatar character: {}", faker::avatar::character());
+    println!("Beer name: {}", faker::beer::name());
+    println!("Coffee blend: {}", faker::coffee::blend_name());
+    println!("Chuck Norris fact: {}", faker::chuck_norris::fact());
+    println!("Code ISBN: {}", faker::code::isbn());
+    println!("Currency name: {}", faker::currency::name());
+    println!("Time (now): {}", faker::time::backward(1));
 
     println!("\nAll tests passed!");
 }

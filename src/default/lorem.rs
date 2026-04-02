@@ -12,7 +12,7 @@ pub fn word() -> String {
 
 /// Generate multiple random words
 pub fn words(num: usize) -> String {
-    let config = crate::config::FakerConfig::current();
+    let _config = crate::config::FakerConfig::current();
     let words: Vec<String> = (0..num).map(|_| word()).collect();
     words.join(" ")
 }

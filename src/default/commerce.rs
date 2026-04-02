@@ -1,6 +1,6 @@
 //! Commerce generator - generates random commerce-related data
 
-use crate::base::{bothify, sample};
+use crate::base::sample;
 use crate::locale::fetch_locale;
 
 /// Generate a random department name

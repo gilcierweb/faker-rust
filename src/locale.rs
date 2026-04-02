@@ -88,6 +88,7 @@ fn load_locale_data() -> HashMap<String, Value> {
 }
 
 /// Sample from locale data and resolve any placeholders in the result
+/// Sample from locale data and resolve any placeholders in the result
 pub fn sample_with_resolve(v: &[String], context_category: Option<&str>) -> String {
     if v.is_empty() {
         return String::new();

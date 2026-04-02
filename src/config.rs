@@ -1,7 +1,7 @@
 //! Faker configuration - locale and random number generator settings
 
 use rand::rngs::StdRng;
-use rand::Rng;
+// Removed unused Rng
 use rand::SeedableRng;
 use std::cell::RefCell;
 use std::rc::Rc;
@@ -72,6 +72,17 @@ impl FakerConfig {
             return min;
         }
         // Use exclusive range to avoid off-by-one error
+        let range = min..max;
+        use rand::Rng;
+        let mut rng = self.rng.borrow_mut();
+        rng.gen_range(range)
+    }
+
+    /// Generate a random i64 between min and max
+    pub fn rand_range_i64(&self, min: i64, max: i64) -> i64 {
+        if max <= min {
+            return min;
+        }
         let range = min..max;
         use rand::Rng;
         let mut rng = self.rng.borrow_mut();

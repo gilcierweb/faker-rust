@@ -58,18 +58,18 @@ pub fn catch_phrase() -> String {
             } else {
                 format!(
                     "{} {} {}",
-                    sample(&FALLBACK_BUZZWORDS),
-                    sample(&FALLBACK_BUZZWORDS),
-                    sample(&FALLBACK_BUZZWORDS)
+                    sample(FALLBACK_BUZZWORDS),
+                    sample(FALLBACK_BUZZWORDS),
+                    sample(FALLBACK_BUZZWORDS)
                 )
             }
         })
         .unwrap_or_else(|| {
             format!(
                 "{} {} {}",
-                sample(&FALLBACK_BUZZWORDS),
-                sample(&FALLBACK_BUZZWORDS),
-                sample(&FALLBACK_BUZZWORDS)
+                sample(FALLBACK_BUZZWORDS),
+                sample(FALLBACK_BUZZWORDS),
+                sample(FALLBACK_BUZZWORDS)
             )
         })
 }
@@ -84,40 +84,35 @@ pub fn buzzword() -> String {
                 .collect();
             sample(&all)
         })
-        .unwrap_or_else(|| sample(&FALLBACK_BUZZWORDS).to_string())
+        .unwrap_or_else(|| sample(FALLBACK_BUZZWORDS).to_string())
 }
 
 /// Generate company BS (three random words)
 pub fn bs() -> String {
-    let config = FakerConfig::current();
-
     fetch_locale("company.bs", "en")
         .map(|v| {
-            let all: Vec<String> = v
+            let parts: Vec<String> = v
                 .iter()
                 .flat_map(|s| s.split(',').map(|p| p.trim().to_string()))
                 .collect();
-            if all.len() >= 3 {
-                let i1 = config.rand_range(0, all.len() as u32) as usize;
-                let i2 = config.rand_range(0, all.len() as u32) as usize;
-                let i3 = config.rand_range(0, all.len() as u32) as usize;
-                format!("{} {} {}", all[i1], all[i2], all[i3])
+            if parts.len() >= 3 {
+                let config = FakerConfig::current();
+                let i1 = config.rand_range(0, parts.len() as u32) as usize;
+                let i2 = config.rand_range(0, parts.len() as u32) as usize;
+                let i3 = config.rand_range(0, parts.len() as u32) as usize;
+                format!("{} {} {}", parts[i1], parts[i2], parts[i3])
             } else {
-                format!(
-                    "{} {} {}",
-                    sample(&FALLBACK_BS_WORDS),
-                    sample(&FALLBACK_BS_WORDS),
-                    sample(&FALLBACK_BS_WORDS)
-                )
+                let p1 = sample(FALLBACK_BS_WORDS[0]);
+                let p2 = sample(FALLBACK_BS_WORDS[1]);
+                let p3 = sample(FALLBACK_BS_WORDS[2]);
+                format!("{} {} {}", p1, p2, p3)
             }
         })
         .unwrap_or_else(|| {
-            format!(
-                "{} {} {}",
-                sample(&FALLBACK_BS_WORDS),
-                sample(&FALLBACK_BS_WORDS),
-                sample(&FALLBACK_BS_WORDS)
-            )
+            let p1 = sample(FALLBACK_BS_WORDS[0]);
+            let p2 = sample(FALLBACK_BS_WORDS[1]);
+            let p3 = sample(FALLBACK_BS_WORDS[2]);
+            format!("{} {} {}", p1, p2, p3)
         })
 }
 
@@ -208,6 +203,12 @@ const FALLBACK_NAME_SUFFIXES: &[&str] = &[
     "Works",
 ];
 
+const FALLBACK_BS_WORDS: &[&[&str]] = &[
+    &["implement", "utilize", "integrate", "streamline", "optimize"],
+    &["synergistic", "strategic", "vibrant", "robust", "scalable"],
+    &["solutions", "systems", "networks", "platforms", "infrastructures"],
+];
+
 const FALLBACK_COMPANY_SUFFIXES: &[&str] = &[
     "Inc.",
     "LLC",
@@ -217,27 +218,6 @@ const FALLBACK_COMPANY_SUFFIXES: &[&str] = &[
     "Group",
     "Holdings",
     "Enterprises",
-];
-
-const FALLBACK_INDUSTRIES: &[&str] = &[
-    "Technology",
-    "Healthcare",
-    "Finance",
-    "Retail",
-    "Manufacturing",
-    "Education",
-    "Consulting",
-    "Media",
-    "Transportation",
-    "Energy",
-    "Real Estate",
-    "Telecommunications",
-    "Hospitality",
-    "Insurance",
-    "Legal",
-    "Marketing",
-    "Non-Profit",
-    "Construction",
 ];
 
 const FALLBACK_COMPANY_TYPES: &[&str] = &[
@@ -321,348 +301,14 @@ const FALLBACK_BUZZWORDS: &[&str] = &[
     "Executive",
 ];
 
-const FALLBACK_BS_WORDS: &[&str] = &[
-    "24/7",
-    "analytical",
-    "asynchronous",
-    "bandwidth-efficient",
-    "bi-directional",
-    "bottom-line",
-    "brainstorming",
-    "breaking",
-    "centralized",
-    "chief",
-    "clicks-and-mortar",
-    "coaxial",
-    "cognitive",
-    "cohesive",
-    "collaborative",
-    "composite",
-    "context-sensitive",
-    "methodologies",
-    "markets",
-    "mindshare",
-    "models",
-    "networks",
-    "niches",
-    "paradigms",
-    "partnerships",
-    "platforms",
-    "portals",
-    "relationships",
-    "ROI",
-    "schemas",
-    "scale",
-    "streamline",
-    "architect",
-    "synthesize",
-    "brand",
-    "engaged",
-    "virtual",
-    "holistic",
-    "granular",
-    "scalable",
-    "mission-critical",
-    "customized",
-    "cross-platform",
-    "holistic",
-    "robust",
-    "strategic",
-    "seamless",
-    "interactive",
-    "real-time",
-    "efficient",
-    "dynamic",
-    "scalable",
-    "reliable",
-    "secure",
-    "integrated",
-    "innovative",
-    "user-centric",
-    "data-driven",
-];
 
-const NAME_SUFFIXES: &[&str] = &[
-    "Solutions",
-    "Systems",
-    "Technologies",
-    "Dynamics",
-    "Industries",
-    "Group",
-    "Corporation",
-    "Enterprises",
-    "Partners",
-    "Services",
-    "Labs",
-    "Works",
-];
+#[cfg(test)]
+mod tests {
+    use super::*;
 
-const COMPANY_SUFFIXES: &[&str] = &[
-    "Inc.",
-    "LLC",
-    "Corp.",
-    "Co.",
-    "Ltd.",
-    "Group",
-    "Holdings",
-    "Enterprises",
-];
-
-const INDUSTRIES: &[&str] = &[
-    "Technology",
-    "Healthcare",
-    "Finance",
-    "Retail",
-    "Manufacturing",
-    "Education",
-    "Consulting",
-    "Media",
-    "Transportation",
-    "Energy",
-    "Real Estate",
-    "Telecommunications",
-    "Hospitality",
-    "Insurance",
-    "Legal",
-    "Marketing",
-    "Non-Profit",
-    "Construction",
-];
-
-const COMPANY_TYPES: &[&str] = &[
-    "Partnership",
-    "Corporation",
-    "LLC",
-    "Sole Proprietorship",
-    "Non-Profit",
-    "Cooperative",
-    "S-Corp",
-    "C-Corp",
-];
-
-const PROFESSIONS: &[&str] = &[
-    "accountant",
-    "actor",
-    "actuary",
-    "administrator",
-    "adviser",
-    "analyst",
-    "architect",
-    "artist",
-    "attorney",
-    "auditor",
-    "broker",
-    "builder",
-    "carpenter",
-    "chemist",
-    "consultant",
-    "contractor",
-    "cook",
-    "counselor",
-    "dentist",
-    "designer",
-    "developer",
-    "director",
-    "economist",
-    "editor",
-    "engineer",
-    "executive",
-    "farmer",
-    "filmmaker",
-    "financial planner",
-    "fisher",
-    "journalist",
-    "judge",
-    "laborer",
-    "lawyer",
-    "lecturer",
-    "librarian",
-    "manager",
-    "mechanic",
-    "musician",
-    "nurse",
-    "optician",
-    "painter",
-    "pharmacist",
-    "photographer",
-    "physician",
-    "physicist",
-    "pilot",
-    "plumber",
-    "podiatrist",
-    "politician",
-    "professor",
-    "programmer",
-    "psychologist",
-    "real estate agent",
-    "realtor",
-    "receptionist",
-    "researcher",
-    "salesperson",
-    "scientist",
-    "secretary",
-    "surgeon",
-    "teacher",
-    "technician",
-    "therapist",
-    "veterinarian",
-    "writer",
-];
-
-const DEPARTMENTS: &[&str] = &[
-    "Information Technology",
-    "Human Resources",
-    "Marketing",
-    "Sales",
-    "Finance",
-    "Operations",
-    "Legal",
-    "Customer Service",
-    "Research and Development",
-    "Product Management",
-    "Engineering",
-    "Design",
-    "Quality Assurance",
-    "Business Development",
-    "Supply Chain",
-    "Procurement",
-    "Logistics",
-];
-
-const BUZZWORDS: &[&[&str]] = &[
-    &[
-        "Adaptive",
-        "Advanced",
-        "Ameliorated",
-        "Automated",
-        "Balanced",
-        "Business-focused",
-        "Centralized",
-        "Cloned",
-        "Compatible",
-        "Configurable",
-        "Cross-platform",
-        "Customer-focused",
-        "Decentralized",
-        "De-engineered",
-        "Devolved",
-        "Distributed",
-        "Enhanced",
-        "Enterprise-wide",
-        "Ergonomic",
-        "Executive",
-    ],
-    &[
-        "24/7",
-        "24/365",
-        "analytical",
-        "asynchronous",
-        "bandwidth-efficient",
-        "bi-directional",
-        "bifurcated",
-        "bottom-line",
-        "brainstorming",
-        "breaking",
-        "broad-spectrum",
-        "centralized",
-        "chief",
-        "clicks-and-mortar",
-        "coaxial",
-        "cognitive",
-        "cohesive",
-        "collaborative",
-        "composite",
-        "context-sensitive",
-    ],
-    &[
-        "methodologies",
-        "markets",
-        "mindshare",
-        "methodologies",
-        "models",
-        "networks",
-        "niches",
-        "paradigms",
-        "partnerships",
-        "platforms",
-        "portals",
-        "relationships",
-        "ROI",
-        "schemas",
-        "schemas",
-        "solutions",
-        "synergies",
-        "systems",
-        "technologies",
-        "users",
-    ],
-];
-
-const BS_WORDS: &[&[&str]] = &[
-    &[
-        "empower",
-        "recontextualize",
-        "whiteboard",
-        "visualize",
-        "innovate",
-        "disrupt",
-        "leverage",
-        "optimize",
-        "transform",
-        "scale",
-        "streamline",
-        "architect",
-        "synthesize",
-        "brand",
-        "engaged",
-        "virtual",
-        "holistic",
-        "granular",
-        "scalable",
-        "mission-critical",
-    ],
-    &[
-        "customized",
-        "cross-platform",
-        "holistic",
-        "robust",
-        "strategic",
-        "seamless",
-        "interactive",
-        "real-time",
-        "efficient",
-        "dynamic",
-        "scalable",
-        "reliable",
-        "secure",
-        "integrated",
-        "innovative",
-        "user-centric",
-        "data-driven",
-        "agile",
-        "cloud-based",
-        "cutting-edge",
-    ],
-    &[
-        "functionalities",
-        " infrastructures",
-        "paradigms",
-        "convergence",
-        "methodologies",
-        "applications",
-        "e-markets",
-        "niches",
-        "technologies",
-        "channels",
-        "schemas",
-        "platforms",
-        "solutions",
-        "portals",
-        "relationships",
-        "deliverables",
-        "processes",
-        "data",
-        "innovations",
-        "initiatives",
-    ],
-];
+    #[test]
+    fn test_name() {
+        let n = name();
+        assert!(!n.is_empty());
+    }
+}
