@@ -4,6 +4,20 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [0.2.0] - 2026-04-02
+
+### Added - Complete Ruby Faker Gem Parity! 🎉
+- **40 new Default modules**: adjective, alphanumeric, chile_rut, cosmere, crypto_coin, dc_comics, drone, driving_licence, electrical_components, esport, html, id_number, industry_segments, internet_http, invoice, lorem_flickr, marketing, measurement, mountain, national_health_service, nato_phonetic_alphabet, omniauth, placeholdit, programming_language, restaurant, slack_emoji, source, south_africa, string, stripe, subscription, superhero, team, tea, theater, types, verb, vulnerability_identifier, world_cup, x
+- **15 new TV Show modules**: aqua_teen_hunger_force, archer, dumb_and_dumber, final_space, hey_arnold, how_i_met_your_mother, michael_scott, new_girl, ru_paul, suits, supernatural, the_expanse, the_it_crowd, the_thick_of_it
+- **2 new Movie modules**: hackers, hitchhikers_guide_to_the_galaxy
+- **4 new categories**: fantasy, locations, quotes, religion
+- **549+ tests** (up from 233)
+- **100% API parity** with Ruby Faker gem
+
+### Changed
+- Updated module count: 100+ total modules across 20 categories
+- Complete coverage of all Ruby Faker Default modules
+
 ## [0.1.0] - 2026-04-02
 
 ### Added
@@ -30,14 +44,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## Roadmap
 
-### Upcoming (0.2.0)
-- Additional locales (Portuguese, Spanish, French)
-- More gaming modules (Final Fantasy, Street Fighter)
-- Sports expansion (Tennis, Golf, eSports)
-- Additional anime modules (One Piece, Demon Slayer)
-
 ### Future (1.0.0)
-- Full parity with Ruby Faker gem (~200 modules)
+- Additional locales (Portuguese, Spanish, French)
 - Advanced templating system
 - Custom provider API
 - WebAssembly support
