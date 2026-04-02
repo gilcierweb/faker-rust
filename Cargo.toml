@@ -1,0 +1,19 @@
+[package]
+name = "faker-rust"
+version = "0.1.0"
+edition = "2024"
+authors = ["Faker Rust Team"]
+
+[lib]
+name = "faker"
+path = "src/lib.rs"
+
+# Optional: If you want a sample executable or a simple CLI
+# [[bin]]
+# name = "faker_cli"
+# path = "src/main.rs"
+
+[dependencies]
+rand = "0.8"
+once_cell = "1.19"
+rust-i18n = "3"
