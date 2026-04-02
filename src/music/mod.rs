@@ -1,3 +1,4 @@
+pub mod bossa_nova;
 pub mod grateful_dead;
 pub mod hiphop;
 pub mod music;

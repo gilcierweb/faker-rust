@@ -139,11 +139,15 @@ pub mod religion;
 pub mod supernatural;
 
 // Other category modules (like Ruby Faker's books, games, movies, music folders)
+pub mod blockchain;
 pub mod books;
 pub mod creature;
 pub mod games;
+pub mod japanese_media;
 pub mod movies;
 pub mod music;
+pub mod sports;
+pub mod travel;
 pub mod tv_shows;
 
 // Re-export commonly used types
