@@ -1,46 +1,44 @@
 //! Name generator - generates random names
 
 use crate::base::sample;
+use crate::config::FakerConfig;
+use crate::locale::fetch_locale_with_context;
 
 /// Generate a random full name
-///
-/// # Example
-///
-/// ```rust
-/// let name = faker::Name::name();
-/// println!("{}", name); // e.g., "John Smith"
-/// ```
 pub fn name() -> String {
     format!("{} {}", first_name(), last_name())
 }
 
 /// Generate a random first name
 pub fn first_name() -> String {
-    sample(&FIRST_NAMES).to_string()
+    fetch_locale_with_context("name.first_name", "en", Some("name"))
+        .map(|v| sample(&v))
+        .unwrap_or_else(|| sample(&FALLBACK_FIRST_NAMES).to_string())
 }
 
 /// Generate a random last name
 pub fn last_name() -> String {
-    sample(&LAST_NAMES).to_string()
+    fetch_locale_with_context("name.last_name", "en", Some("name"))
+        .map(|v| sample(&v))
+        .unwrap_or_else(|| sample(&FALLBACK_LAST_NAMES).to_string())
 }
 
 /// Generate a random name prefix (Mr., Mrs., Ms., Dr., etc.)
 pub fn prefix() -> String {
-    sample(&PREFIXES).to_string()
+    fetch_locale_with_context("name.prefix", "en", Some("name"))
+        .map(|v| sample(&v))
+        .unwrap_or_else(|| sample(&FALLBACK_PREFIXES).to_string())
 }
 
 /// Generate a random name suffix (Jr., Sr., I, II, III, IV, etc.)
 pub fn suffix() -> String {
-    sample(&SUFFIXES).to_string()
+    fetch_locale_with_context("name.suffix", "en", Some("name"))
+        .map(|v| sample(&v))
+        .unwrap_or_else(|| sample(&FALLBACK_SUFFIXES).to_string())
 }
 
 /// Generate random initials
-///
-/// # Arguments
-///
-/// * `num` - Number of initials to generate (default: 3)
 pub fn initials(num: usize) -> String {
-    use crate::config::FakerConfig;
     let config = FakerConfig::current();
     (0..num)
         .map(|_| config.rand_char(&crate::base::U_LETTERS))
@@ -54,24 +52,28 @@ pub fn name_with_middle() -> String {
 
 /// Generate a random male first name
 pub fn male_first_name() -> String {
-    sample(&MALE_FIRST_NAMES).to_string()
+    fetch_locale_with_context("name.male_first_name", "en", Some("name"))
+        .map(|v| sample(&v))
+        .unwrap_or_else(|| sample(&FALLBACK_MALE_FIRST_NAMES).to_string())
 }
 
 /// Generate a random female first name
 pub fn female_first_name() -> String {
-    sample(&FEMALE_FIRST_NAMES).to_string()
+    fetch_locale_with_context("name.female_first_name", "en", Some("name"))
+        .map(|v| sample(&v))
+        .unwrap_or_else(|| sample(&FALLBACK_FEMALE_FIRST_NAMES).to_string())
 }
 
 /// Generate a random gender-neutral first name
 pub fn neutral_first_name() -> String {
-    sample(&NEUTRAL_FIRST_NAMES).to_string()
+    fetch_locale_with_context("name.neutral_first_name", "en", Some("name"))
+        .map(|v| sample(&v))
+        .unwrap_or_else(|| sample(&FALLBACK_NEUTRAL_FIRST_NAMES).to_string())
 }
 
-// ============================================================================
-// Data - English (en) locale
-// ============================================================================
-
-const FIRST_NAMES: &[&str] = &[
+// Static fallback data - used when locale files are not available
+// Note: Locale loading infrastructure is in place but needs refinement
+const FALLBACK_FIRST_NAMES: &[&str] = &[
     "James",
     "Mary",
     "Robert",
@@ -104,97 +106,9 @@ const FIRST_NAMES: &[&str] = &[
     "Sandra",
     "Donald",
     "Ashley",
-    "Steven",
-    "Kimberly",
-    "Paul",
-    "Emily",
-    "Andrew",
-    "Donna",
-    "Joshua",
-    "Michelle",
-    "Kenneth",
-    "Dorothy",
-    "Kevin",
-    "Carol",
-    "Brian",
-    "Amanda",
-    "George",
-    "Melissa",
-    "Timothy",
-    "Deborah",
-    "Ronald",
-    "Stephanie",
-    "Edward",
-    "Rebecca",
-    "Jason",
-    "Sharon",
-    "Jeffrey",
-    "Laura",
-    "Ryan",
-    "Cynthia",
-    "Jacob",
-    "Kathleen",
-    "Gary",
-    "Amy",
-    "Nicholas",
-    "Angela",
-    "Eric",
-    "Shirley",
-    "Jonathan",
-    "Anna",
-    "Stephen",
-    "Brenda",
-    "Larry",
-    "Pamela",
-    "Justin",
-    "Emma",
-    "Scott",
-    "Nicole",
-    "Brandon",
-    "Helen",
-    "Benjamin",
-    "Samantha",
-    "Samuel",
-    "Katherine",
-    "Raymond",
-    "Christine",
-    "Gregory",
-    "Debra",
-    "Frank",
-    "Rachel",
-    "Alexander",
-    "Carolyn",
-    "Patrick",
-    "Janet",
-    "Jack",
-    "Catherine",
-    "Dennis",
-    "Maria",
-    "Jerry",
-    "Heather",
-    "Tyler",
-    "Diane",
-    "Aaron",
-    "Ruth",
-    "Jose",
-    "Julie",
-    "Adam",
-    "Olivia",
-    "Nathan",
-    "Joyce",
-    "Henry",
-    "Virginia",
-    "Zachary",
-    "Virginia",
-    "Douglas",
-    "Kelly",
-    "Peter",
-    "Lauren",
-    "Kyle",
-    "Christina",
 ];
 
-const MALE_FIRST_NAMES: &[&str] = &[
+const FALLBACK_MALE_FIRST_NAMES: &[&str] = &[
     "James",
     "John",
     "Robert",
@@ -219,49 +133,9 @@ const MALE_FIRST_NAMES: &[&str] = &[
     "Kevin",
     "Brian",
     "George",
-    "Timothy",
-    "Ronald",
-    "Edward",
-    "Jason",
-    "Jeffrey",
-    "Ryan",
-    "Jacob",
-    "Nicholas",
-    "Gary",
-    "Nicholas",
-    "Eric",
-    "Jonathan",
-    "Stephen",
-    "Larry",
-    "Justin",
-    "Scott",
-    "Brandon",
-    "Benjamin",
-    "Samuel",
-    "Raymond",
-    "Gregory",
-    "Frank",
-    "Alexander",
-    "Patrick",
-    "Jack",
-    "Dennis",
-    "Jerry",
-    "Tyler",
-    "Aaron",
-    "Jose",
-    "Adam",
-    "Nathan",
-    "Henry",
-    "Zachary",
-    "Douglas",
-    "Peter",
-    "Kyle",
-    "Noah",
-    "Ethan",
-    "Jeremy",
 ];
 
-const FEMALE_FIRST_NAMES: &[&str] = &[
+const FALLBACK_FEMALE_FIRST_NAMES: &[&str] = &[
     "Mary",
     "Patricia",
     "Jennifer",
@@ -278,63 +152,13 @@ const FEMALE_FIRST_NAMES: &[&str] = &[
     "Margaret",
     "Sandra",
     "Ashley",
-    "Kimberly",
-    "Emily",
-    "Donna",
-    "Michelle",
-    "Dorothy",
-    "Carol",
-    "Amanda",
-    "Melissa",
-    "Deborah",
-    "Stephanie",
-    "Rebecca",
-    "Sharon",
-    "Laura",
-    "Cynthia",
-    "Kathleen",
-    "Amy",
-    "Angela",
-    "Shirley",
-    "Anna",
-    "Brenda",
-    "Pamela",
-    "Emma",
-    "Nicole",
-    "Helen",
-    "Samantha",
-    "Katherine",
-    "Christine",
-    "Debra",
-    "Rachel",
-    "Carolyn",
-    "Janet",
-    "Catherine",
-    "Maria",
-    "Heather",
-    "Diane",
-    "Julie",
-    "Olivia",
-    "Joyce",
-    "Virginia",
-    "Victoria",
-    "Kelly",
-    "Lauren",
-    "Christina",
-    "Joan",
-    "Evelyn",
-    "Judith",
-    "Megan",
-    "Andrea",
 ];
 
-const NEUTRAL_FIRST_NAMES: &[&str] = &[
-    "Alex", "Jordan", "Taylor", "Morgan", "Casey", "Riley", "Jamie", "Avery", "Quinn", "Skyler",
-    "Dakota", "Reese", "Finley", "Rowan", "Sage", "Phoenix", "River", "Drew", "Cameron", "Hayden",
-    "Parker", "Emerson", "Logan", "Sawyer", "Sydney",
+const FALLBACK_NEUTRAL_FIRST_NAMES: &[&str] = &[
+    "Alex", "Jordan", "Taylor", "Morgan", "Casey", "Riley", "Jamie", "Avery",
 ];
 
-const LAST_NAMES: &[&str] = &[
+const FALLBACK_LAST_NAMES: &[&str] = &[
     "Smith",
     "Johnson",
     "Williams",
@@ -359,84 +183,8 @@ const LAST_NAMES: &[&str] = &[
     "Perez",
     "Thompson",
     "White",
-    "Harris",
-    "Sanchez",
-    "Clark",
-    "Ramirez",
-    "Lewis",
-    "Robinson",
-    "Walker",
-    "Young",
-    "Allen",
-    "King",
-    "Wright",
-    "Scott",
-    "Torres",
-    "Nguyen",
-    "Hill",
-    "Flores",
-    "Green",
-    "Adams",
-    "Nelson",
-    "Baker",
-    "Hall",
-    "Rivera",
-    "Campbell",
-    "Mitchell",
-    "Carter",
-    "Roberts",
-    "Gomez",
-    "Phillips",
-    "Evans",
-    "Turner",
-    "Diaz",
-    "Parker",
-    "Cruz",
-    "Edwards",
-    "Collins",
-    "Reyes",
-    "Stewart",
-    "Morris",
-    "Morales",
-    "Murphy",
-    "Cook",
-    "Rogers",
-    "Gutierrez",
-    "Ortiz",
-    "Morgan",
-    "Cooper",
-    "Peterson",
-    "Bailey",
-    "Reed",
-    "Kelly",
-    "Howard",
-    "Ramos",
-    "Kim",
-    "Cox",
-    "Ward",
-    "Richardson",
-    "Watson",
-    "Brooks",
-    "Chavez",
-    "Wood",
-    "James",
-    "Bennett",
-    "Gray",
-    "Mendoza",
-    "Ruiz",
-    "Hughes",
-    "Price",
-    "Alvarez",
-    "Castillo",
-    "Sanders",
-    "Patel",
-    "Myers",
-    "Long",
-    "Ross",
-    "Foster",
-    "Jimenez",
 ];
 
-const PREFIXES: &[&str] = &["Mr.", "Mrs.", "Ms.", "Miss", "Dr.", "Prof."];
+const FALLBACK_PREFIXES: &[&str] = &["Mr.", "Mrs.", "Ms.", "Miss", "Dr.", "Prof."];
 
-const SUFFIXES: &[&str] = &["Jr.", "Sr.", "I", "II", "III", "IV", "V"];
+const FALLBACK_SUFFIXES: &[&str] = &["Jr.", "Sr.", "I", "II", "III", "IV", "V"];

@@ -1,0 +1,5 @@
+fn main() {
+    println!("Name: {}", faker::name::name());
+    println!("Email: {}", faker::internet::email(None, None, None));
+    println!("City: {}", faker::address::city());
+}

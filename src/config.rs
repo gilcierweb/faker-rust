@@ -55,21 +55,21 @@ impl FakerConfig {
     }
 
     /// Generate a random number using the configured RNG
-    pub fn rand<T: rand::distributions::uniform::SampleUniform>(
-        &self,
-        range: std::ops::Range<T>,
-    ) -> T {
-        self.rng.borrow_mut().gen_range(range)
-    }
-
-    /// Generate a random number between 0 and max (exclusive)
     pub fn rand_u32(&self, max: u32) -> u32 {
+        use rand::Rng;
         self.rng.borrow_mut().gen_range(0..max)
     }
 
     /// Generate a random number between min and max (inclusive)
     pub fn rand_range(&self, min: u32, max: u32) -> u32 {
-        self.rng.borrow_mut().gen_range(min..=max)
+        if max <= min {
+            return min;
+        }
+        // Use exclusive range to avoid off-by-one error
+        let range = min..max;
+        use rand::Rng;
+        let mut rng = self.rng.borrow_mut();
+        rng.gen_range(range)
     }
 
     /// Generate a random f64 between 0.0 and 1.0
@@ -89,6 +89,9 @@ impl FakerConfig {
 
     /// Generate a random char
     pub fn rand_char(&self, chars: &[char]) -> char {
+        if chars.is_empty() {
+            return 'a'; // fallback
+        }
         let idx = self.rand_range(0, chars.len() as u32) as usize;
         chars[idx]
     }
@@ -96,7 +99,10 @@ impl FakerConfig {
     /// Sample a random element from a slice
     pub fn sample<T: Clone>(&self, items: &[T]) -> T {
         if items.is_empty() {
-            panic!("Cannot sample from empty slice");
+            return items
+                .first()
+                .cloned()
+                .unwrap_or_else(|| panic!("Cannot sample from empty slice"));
         }
         let idx = self.rand_range(0, items.len() as u32) as usize;
         items[idx].clone()

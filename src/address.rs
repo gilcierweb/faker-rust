@@ -1,27 +1,40 @@
 //! Address generator - generates random addresses
 
 use crate::base::{bothify, sample};
+use crate::locale::fetch_locale_with_context;
 
 /// Generate a random city name
 pub fn city() -> String {
-    sample(&CITIES).to_string()
+    fetch_locale_with_context("address.city", "en", Some("address"))
+        .map(|v| sample(&v))
+        .unwrap_or_else(|| sample(&FALLBACK_CITIES).to_string())
 }
 
 /// Generate a random street name
 pub fn street_name() -> String {
-    format!("{} {}", sample(&STREET_PREFIXES), sample(&STREET_SUFFIXES))
+    let prefix = fetch_locale_with_context("address.street_prefix", "en", Some("address"))
+        .map(|v| sample(&v))
+        .unwrap_or_else(|| sample(&FALLBACK_STREET_PREFIXES).to_string());
+    let suffix = fetch_locale_with_context("address.street_suffix", "en", Some("address"))
+        .map(|v| sample(&v))
+        .unwrap_or_else(|| sample(&FALLBACK_STREET_SUFFIXES).to_string());
+    format!("{} {}", prefix, suffix)
 }
 
 /// Generate a random street address
 pub fn street_address() -> String {
-    format!("{} {}", sample(&STREET_NUMBERS), street_name())
+    let num = fetch_locale_with_context("address.street_number", "en", Some("address"))
+        .map(|v| sample(&v))
+        .unwrap_or_else(|| sample(&FALLBACK_STREET_NUMBERS).to_string());
+    format!("{} {}", num, street_name())
 }
 
-/// Generate a random secondary address (apt, suite, etc.)
+/// Generate a random secondary address
 pub fn secondary_address() -> String {
-    let config = crate::config::FakerConfig::current();
-    let pattern = sample(&["Apt. ###", "Suite ###", "Floor #", "Unit #", "###"]);
-    crate::base::numerify(pattern)
+    let pattern = fetch_locale_with_context("address.secondary_address", "en", Some("address"))
+        .map(|v| sample(&v))
+        .unwrap_or_else(|| "Apt. ###".to_string());
+    bothify(&pattern)
 }
 
 /// Generate a random zip code
@@ -36,35 +49,44 @@ pub fn zip_code_with_extension() -> String {
 
 /// Generate a random country name
 pub fn country() -> String {
-    sample(&COUNTRIES).to_string()
+    fetch_locale_with_context("address.country", "en", Some("address"))
+        .map(|v| sample(&v))
+        .unwrap_or_else(|| sample(&FALLBACK_COUNTRIES).to_string())
 }
 
-/// Generate a random country code (ISO 3166-1 alpha-2)
+/// Generate a random country code
 pub fn country_code() -> String {
-    sample(&COUNTRY_CODES).to_string()
+    sample(&FALLBACK_COUNTRY_CODES).to_string()
 }
 
 /// Generate a random full address
 pub fn full_address() -> String {
     let pattern = crate::config::FakerConfig::current().rand_range(0, 4);
-    
+
     match pattern {
         0 => format!("{}, {}", street_address(), city_state_zip()),
         1 => format!("{}\n{}", street_address(), city_state_zip()),
         2 => format!("{}, {}", secondary_address(), city_state_zip()),
-        _ => format!("{}\n{}, {}", street_address(), secondary_address(), city_state_zip()),
+        _ => format!(
+            "{}\n{}, {}",
+            street_address(),
+            secondary_address(),
+            city_state_zip()
+        ),
     }
 }
-}
 
-/// Generate city, state, and zip combined
 fn city_state_zip() -> String {
-    format!("{}, {} {}", city(), sample(&US_STATES), zip_code())
+    let city_val = city();
+    let state = fetch_locale_with_context("address.state", "en", Some("address"))
+        .map(|v| sample(&v))
+        .unwrap_or_else(|| "CA".to_string());
+    format!("{}, {} {}", city_val, state, zip_code())
 }
 
 /// Generate a random time zone
 pub fn time_zone() -> String {
-    sample(&TIME_ZONES).to_string()
+    sample(&FALLBACK_TIME_ZONES).to_string()
 }
 
 /// Generate a random latitude
@@ -81,9 +103,8 @@ pub fn longitude() -> String {
     format!("{:.6}", lon / 1_000_000.0)
 }
 
-// Data
-
-const CITIES: &[&str] = &[
+// Fallback data
+const FALLBACK_CITIES: &[&str] = &[
     "New York",
     "Los Angeles",
     "Chicago",
@@ -96,47 +117,9 @@ const CITIES: &[&str] = &[
     "San Jose",
     "Austin",
     "Jacksonville",
-    "Fort Worth",
-    "Columbus",
-    "Charlotte",
-    "San Francisco",
-    "Indianapolis",
-    "Seattle",
-    "Denver",
-    "Washington",
-    "Boston",
-    "El Paso",
-    "Nashville",
-    "Detroit",
-    "Oklahoma City",
-    "Portland",
-    "Las Vegas",
-    "Memphis",
-    "Louisville",
-    "Baltimore",
-    "Milwaukee",
-    "Albuquerque",
-    "Tucson",
-    "Fresno",
-    "Sacramento",
-    "Kansas City",
-    "Mesa",
-    "Atlanta",
-    "Miami",
-    "Raleigh",
-    "Omaha",
-    "Colorado Springs",
-    "Long Beach",
-    "Virginia Beach",
-    "Oakland",
-    "Minneapolis",
-    "Tulsa",
-    "Tampa",
-    "Arlington",
-    "New Orleans",
 ];
 
-const STREET_PREFIXES: &[&str] = &[
+const FALLBACK_STREET_PREFIXES: &[&str] = &[
     "Main",
     "Oak",
     "Pine",
@@ -149,21 +132,9 @@ const STREET_PREFIXES: &[&str] = &[
     "Park",
     "Forest",
     "River",
-    "Spring",
-    "Valley",
-    "Green",
-    "Woodland",
-    "Highland",
-    "Sunset",
-    "Lakeview",
-    "Riverside",
-    "Forest",
-    "Meadow",
-    "Mountain",
-    "Church",
 ];
 
-const STREET_SUFFIXES: &[&str] = &[
+const FALLBACK_STREET_SUFFIXES: &[&str] = &[
     "Street",
     "Avenue",
     "Road",
@@ -172,133 +143,36 @@ const STREET_SUFFIXES: &[&str] = &[
     "Lane",
     "Way",
     "Court",
-    "Place",
-    "Circle",
-    "Terrace",
-    "Highway",
-    "Parkway",
-    "Trail",
-    "Loop",
-    "Square",
 ];
 
-const STREET_NUMBERS: &[&str] = &[
-    "1", "2", "3", "4", "5", "10", "11", "12", "13", "14", "15", "20", "21", "22", "23", "24",
-    "25", "30", "31", "32", "33", "34", "35", "40", "41", "42", "43", "44", "45", "50", "51", "52",
-    "53", "54", "55", "100", "101", "102", "110", "111", "112", "120", "121", "122", "130", "131",
-    "200", "201", "210", "211", "220", "221", "230", "231", "232", "240", "241", "300", "301",
-    "310", "311", "320", "321", "330", "331", "332", "340", "341", "400", "401", "410", "411",
-    "420", "421", "430", "431", "432", "440", "441", "500", "501", "510", "520", "530", "540",
-    "550", "600", "700", "800", "900",
+const FALLBACK_STREET_NUMBERS: &[&str] = &[
+    "1", "2", "3", "4", "5", "10", "11", "12", "13", "14", "15", "20", "21", "22", "30", "40",
+    "50", "100", "200", "300", "400", "500",
 ];
 
-const US_STATES: &[&str] = &[
-    "AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS",
-    "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY",
-    "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV",
-    "WI", "WY",
-];
-
-const COUNTRIES: &[&str] = &[
-    "Afghanistan",
-    "Albania",
-    "Algeria",
-    "Argentina",
-    "Australia",
-    "Austria",
-    "Bangladesh",
-    "Belgium",
-    "Brazil",
-    "Canada",
-    "Chile",
-    "China",
-    "Colombia",
-    "Croatia",
-    "Czech Republic",
-    "Denmark",
-    "Egypt",
-    "Finland",
-    "France",
-    "Germany",
-    "Greece",
-    "Hong Kong",
-    "Hungary",
-    "India",
-    "Indonesia",
-    "Iran",
-    "Ireland",
-    "Israel",
-    "Italy",
-    "Japan",
-    "Kenya",
-    "Malaysia",
-    "Mexico",
-    "Morocco",
-    "Netherlands",
-    "New Zealand",
-    "Nigeria",
-    "Norway",
-    "Pakistan",
-    "Peru",
-    "Philippines",
-    "Poland",
-    "Portugal",
-    "Romania",
-    "Russia",
-    "Saudi Arabia",
-    "Singapore",
-    "South Africa",
-    "South Korea",
-    "Spain",
-    "Sweden",
-    "Switzerland",
-    "Taiwan",
-    "Thailand",
-    "Turkey",
-    "Ukraine",
-    "United Arab Emirates",
-    "United Kingdom",
+const FALLBACK_COUNTRIES: &[&str] = &[
     "United States",
-    "Venezuela",
-    "Vietnam",
+    "United Kingdom",
+    "Canada",
+    "Australia",
+    "Germany",
+    "France",
+    "Japan",
+    "China",
+    "India",
+    "Brazil",
 ];
 
-const COUNTRY_CODES: &[&str] = &[
-    "US", "CA", "GB", "DE", "FR", "JP", "CN", "IN", "BR", "AU", "ES", "IT", "KR", "MX", "NL", "SE",
-    "CH", "BE", "AT", "NO", "DK", "FI", "IE", "NZ", "SG", "PT", "PL", "AR", "CL", "CO", "CZ", "HU",
-    "RO", "RU", "TH", "TR", "ZA", "ID", "MY", "PH",
-];
+const FALLBACK_COUNTRY_CODES: &[&str] =
+    &["US", "CA", "GB", "DE", "FR", "JP", "CN", "IN", "BR", "AU"];
 
-const TIME_ZONES: &[&str] = &[
+const FALLBACK_TIME_ZONES: &[&str] = &[
     "America/New_York",
     "America/Chicago",
     "America/Denver",
     "America/Los_Angeles",
-    "America/Phoenix",
-    "America/Anchorage",
-    "Pacific/Honolulu",
-    "America/Sao_Paulo",
     "Europe/London",
     "Europe/Paris",
-    "Europe/Berlin",
-    "Europe/Rome",
-    "Europe/Madrid",
-    "Europe/Amsterdam",
-    "Europe/Stockholm",
-    "Europe/Vienna",
-    "Europe/Brussels",
     "Asia/Tokyo",
     "Asia/Shanghai",
-    "Asia/Hong_Kong",
-    "Asia/Singapore",
-    "Asia/Seoul",
-    "Asia/Bangkok",
-    "Asia/Dubai",
-    "Asia/Mumbai",
-    "Asia/Jakarta",
-    "Australia/Sydney",
-    "Australia/Melbourne",
-    "Pacific/Auckland",
-    "Africa/Cairo",
-    "Africa/Johannesburg",
 ];
