@@ -61,7 +61,71 @@ fn main() {
 
 ---
 
-## 📂 Available Modules
+## � Examples
+
+The crate includes several example files demonstrating different features:
+
+### Available Examples
+
+```bash
+# Basic Usage - Names, Addresses, Internet
+cargo run --example basic_usage
+
+# Entertainment - Movies, TV Shows, Games, Music
+cargo run --example entertainment_fixed
+
+# Japanese Media - Anime and Manga
+cargo run --example japanese_media
+
+# Sports & Blockchain
+cargo run --example sports_blockchain
+
+# Books & Creatures
+cargo run --example books_creatures
+
+# Advanced Features - Seeded Generation
+cargo run --example advanced_features
+```
+
+### Example: Japanese Media
+```rust
+use faker::japanese_media;
+
+fn main() {
+    // One Piece
+    println!("Character: {}", japanese_media::one_piece::character());
+    println!("Devil Fruit: {}", japanese_media::one_piece::devil_fruit());
+    
+    // Naruto
+    println!("Ninja: {}", japanese_media::naruto::character());
+    println!("Village: {}", japanese_media::naruto::village());
+    
+    // Dragon Ball
+    println!("Saiyan: {}", japanese_media::dragon_ball::character());
+    println!("Transformation: {}", japanese_media::dragon_ball::transformation());
+}
+```
+
+### Example: Sports & Blockchain
+```rust
+use faker::{sports, blockchain};
+
+fn main() {
+    // Sports
+    println!("Team: {}", sports::football::team());
+    println!("Player: {}", sports::basketball::player());
+    println!("World Cup Winner: {}", sports::world_cup::winner());
+    
+    // Blockchain
+    println!("Bitcoin: {}", blockchain::bitcoin::address());
+    println!("Ethereum: {}", blockchain::ethereum::address());
+    println!("Tezos: {}", blockchain::tezos::account());
+}
+```
+
+---
+
+## � Available Modules
 
 | Category | Modules |
 | :--- | :--- |
@@ -78,7 +142,7 @@ fn main() {
 | **🌸 Anime** | Naruto, DragonBall, SwordArtOnline, StudioGhibli |
 | **� Blockchain** | Bitcoin, Ethereum |
 | **✈️ Travel** | Airport, TrainStation |
-| **�🛠️ Misc** | Color, Construction, Science, Space, Time, Animal |
+| **��️ Misc** | Color, Construction, Science, Space, Time, Animal |
 
 ---
 
@@ -97,9 +161,9 @@ We are actively porting the entire Ruby Faker library. Current progress:
 
 ## 📊 Statistics
 
-- **233+ Tests Passing**
-- **80+ Generator Modules**
-- **15+ Categories**
+- **351+ Tests Passing**
+- **100+ Generator Modules**
+- **18+ Categories**
 - **Complete API Documentation**
 
 ---
