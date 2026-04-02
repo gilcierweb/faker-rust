@@ -2,7 +2,7 @@
 
 use crate::base::sample;
 use crate::config::FakerConfig;
-use crate::locale::fetch_locale_with_context;
+use crate::locale::{fetch_locale_with_context, sample_with_resolve};
 
 /// Generate a random full name
 pub fn name() -> String {
@@ -12,14 +12,14 @@ pub fn name() -> String {
 /// Generate a random first name
 pub fn first_name() -> String {
     fetch_locale_with_context("name.first_name", "en", Some("name"))
-        .map(|v| sample(&v))
+        .map(|v| sample_with_resolve(&v, Some("name")))
         .unwrap_or_else(|| sample(&FALLBACK_FIRST_NAMES).to_string())
 }
 
 /// Generate a random last name
 pub fn last_name() -> String {
     fetch_locale_with_context("name.last_name", "en", Some("name"))
-        .map(|v| sample(&v))
+        .map(|v| sample_with_resolve(&v, Some("name")))
         .unwrap_or_else(|| sample(&FALLBACK_LAST_NAMES).to_string())
 }
 

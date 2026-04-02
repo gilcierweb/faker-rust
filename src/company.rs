@@ -2,12 +2,12 @@
 
 use crate::base::sample;
 use crate::config::FakerConfig;
-use crate::locale::fetch_locale;
+use crate::locale::{fetch_locale, sample_with_resolve};
 
 /// Generate a random company name
 pub fn name() -> String {
     let prefix = fetch_locale("company.name", "en")
-        .map(|v| sample(&v))
+        .map(|v| sample_with_resolve(&v, Some("company")))
         .unwrap_or_else(|| {
             format!(
                 "{} {}",
@@ -20,7 +20,7 @@ pub fn name() -> String {
         prefix
     } else {
         let suffix = fetch_locale("company.suffix", "en")
-            .map(|v| sample(&v))
+            .map(|v| sample_with_resolve(&v, Some("company")))
             .unwrap_or_else(|| "Inc".to_string());
         format!("{} {}", prefix, suffix)
     }
@@ -29,7 +29,7 @@ pub fn name() -> String {
 /// Generate a random company suffix (Inc, LLC, etc.)
 pub fn suffix() -> String {
     fetch_locale("company.suffix", "en")
-        .map(|v| sample(&v))
+        .map(|v| sample_with_resolve(&v, Some("company")))
         .unwrap_or_else(|| "Inc".to_string())
 }
 

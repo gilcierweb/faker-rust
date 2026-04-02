@@ -1,22 +1,22 @@
 //! Address generator - generates random addresses
 
 use crate::base::{bothify, sample};
-use crate::locale::fetch_locale_with_context;
+use crate::locale::{fetch_locale_with_context, sample_with_resolve};
 
 /// Generate a random city name
 pub fn city() -> String {
     fetch_locale_with_context("address.city", "en", Some("address"))
-        .map(|v| sample(&v))
+        .map(|v| sample_with_resolve(&v, Some("address")))
         .unwrap_or_else(|| sample(&FALLBACK_CITIES).to_string())
 }
 
 /// Generate a random street name
 pub fn street_name() -> String {
     let prefix = fetch_locale_with_context("address.street_prefix", "en", Some("address"))
-        .map(|v| sample(&v))
+        .map(|v| sample_with_resolve(&v, Some("address")))
         .unwrap_or_else(|| sample(&FALLBACK_STREET_PREFIXES).to_string());
     let suffix = fetch_locale_with_context("address.street_suffix", "en", Some("address"))
-        .map(|v| sample(&v))
+        .map(|v| sample_with_resolve(&v, Some("address")))
         .unwrap_or_else(|| sample(&FALLBACK_STREET_SUFFIXES).to_string());
     format!("{} {}", prefix, suffix)
 }
@@ -24,7 +24,7 @@ pub fn street_name() -> String {
 /// Generate a random street address
 pub fn street_address() -> String {
     let num = fetch_locale_with_context("address.street_number", "en", Some("address"))
-        .map(|v| sample(&v))
+        .map(|v| sample_with_resolve(&v, Some("address")))
         .unwrap_or_else(|| sample(&FALLBACK_STREET_NUMBERS).to_string());
     format!("{} {}", num, street_name())
 }

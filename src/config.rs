@@ -60,6 +60,12 @@ impl FakerConfig {
         self.rng.borrow_mut().gen_range(0..max)
     }
 
+    /// Generate a random usize
+    pub fn rand_usize(&self, max: usize) -> usize {
+        use rand::Rng;
+        self.rng.borrow_mut().gen_range(0..max)
+    }
+
     /// Generate a random number between min and max (inclusive)
     pub fn rand_range(&self, min: u32, max: u32) -> u32 {
         if max <= min {
