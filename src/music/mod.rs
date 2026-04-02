@@ -1,1 +1,11 @@
+pub mod grateful_dead;
+pub mod hiphop;
 pub mod music;
+pub mod opera;
+pub mod pearl_jam;
+pub mod phish;
+pub mod prince;
+pub mod rock_band;
+pub mod rush;
+pub mod smashing_pumpkins;
+pub mod umphreys_mcgee;
