@@ -29,6 +29,16 @@ pub const LETTERS: [char; 52] = {
 /// Digits
 pub const DIGITS: [char; 10] = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 
+/// Hex digits uppercase
+pub const HEX_UPPER: [char; 16] = [
+    '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F',
+];
+
+/// Hex digits lowercase
+pub const HEX_LOWER: [char; 16] = [
+    '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f',
+];
+
 /// Alphanumeric characters
 pub const ALPHANUMERIC: [char; 62] = {
     let mut chars = [' '; 62];

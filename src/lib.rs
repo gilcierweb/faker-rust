@@ -24,9 +24,23 @@ pub mod error;
 pub mod locale;
 
 pub mod address;
+pub mod bank;
+pub mod book;
+pub mod commerce;
 pub mod company;
+pub mod date;
+pub mod educator;
+pub mod gender;
+pub mod hobby;
 pub mod internet;
+pub mod job;
+pub mod lorem;
+pub mod military;
 pub mod name;
+pub mod number;
+pub mod phone_number;
+pub mod relationship;
+pub mod university;
 
 // Re-export commonly used types
 pub use config::FakerConfig;
