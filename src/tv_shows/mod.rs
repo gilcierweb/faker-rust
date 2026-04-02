@@ -1,8 +1,16 @@
 //! TV Show generators - provides data from various television series and anime
 
+pub mod big_bang_theory;
+pub mod bojack_horseman;
+pub mod breaking_bad;
+pub mod brooklyn_nine_nine;
 pub mod buffy;
+pub mod community;
 pub mod dr_who;
+pub mod family_guy;
 pub mod fresh_prince;
+pub mod futurama;
+pub mod friends;
 pub mod game_of_thrones;
 pub mod himym;
 pub mod lebowski;
@@ -10,9 +18,15 @@ pub mod one_piece;
 pub mod parks_and_rec;
 pub mod rick_and_morty;
 pub mod rupaul;
+pub mod seinfeld;
 pub mod silicon_valley;
 pub mod simpsons;
+pub mod south_park;
+pub mod spongebob;
 pub mod stargate;
+pub mod star_trek;
 pub mod stranger_things;
+pub mod the_fresh_prince;
+pub mod the_office;
 pub mod twin_peaks;
 pub mod venture_bros;

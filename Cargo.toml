@@ -11,7 +11,7 @@ documentation = "https://docs.rs/faker-rust"
 readme = "README.md"
 keywords = ["faker", "fake", "data", "generator", "testing"]
 categories = ["development-tools::testing", "text-processing"]
-rust-version = "1.70"
+rust-version = "1.85"
 
 [lib]
 name = "faker"

@@ -138,6 +138,27 @@ pub mod religion;
 #[path = "default/supernatural.rs"]
 pub mod supernatural;
 
+#[path = "default/dessert.rs"]
+pub mod dessert;
+#[path = "default/finance.rs"]
+pub mod finance;
+#[path = "default/funny_name.rs"]
+pub mod funny_name;
+#[path = "default/greek_philosophers.rs"]
+pub mod greek_philosophers;
+#[path = "default/hacker.rs"]
+pub mod hacker;
+#[path = "default/hipster.rs"]
+pub mod hipster;
+#[path = "default/house.rs"]
+pub mod house;
+#[path = "default/json.rs"]
+pub mod json;
+#[path = "default/kpop.rs"]
+pub mod kpop;
+#[path = "default/markdown.rs"]
+pub mod markdown;
+
 // Other category modules (like Ruby Faker's books, games, movies, music folders)
 pub mod blockchain;
 pub mod books;
