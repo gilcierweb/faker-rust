@@ -1,7 +1,7 @@
 # Faker-Rust [![Crates.io][crates-badge]][crates] [![Documentation][docs-badge]][docs] [![License: MIT][license-badge]][license]
 
 <div align="center">
-  <img src="assets/images/logo.png" width="400"/>
+  <img src="./assets/images/logo.png" width="400"/>
   <p>Generate realistic fake data for testing, demos, and populating your database during development.</p>
   <p><em>Inspired by the legendary <a href="https://github.com/faker-ruby/faker">Ruby Faker gem</a></em></p>
 </div>
