@@ -14,7 +14,7 @@ pub fn title() -> String {
 pub fn author() -> String {
     fetch_locale_with_context("book.author", "en", Some("book"))
         .map(|v| sample_with_resolve(&v, Some("book")))
-        .unwrap_or_else(|| crate::name::name())
+        .unwrap_or_else(crate::name::name)
 }
 
 /// Generate a random book genre

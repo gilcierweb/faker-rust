@@ -18,6 +18,21 @@
 - 📖 **[Read the documentation][docs]**
 - 📢 **[See what's changed in recent versions](./CHANGELOG.md)**
 
+## Table of Contents
+
+- [Faker-Rust](#faker-rust)
+  - [Quick links](#quick-links)
+  - [Features](#features)
+  - [Getting Started](#getting-started)
+  - [Usage](#usage)
+  - [Generators](#generators)
+  - [Notes](#notes)
+  - [Deterministic Random](#deterministic-random)
+  - [Localization](#localization)
+  - [Contributing](#contributing)
+  - [Inspiration](#inspiration)
+  - [License](#license)
+
 ## Features
 
 - 🚀 **High Performance**: Built in Rust for blazing-fast data generation
@@ -225,21 +240,6 @@ faker_rust::locale::set_locale("en");
 // The library will use locale-specific data where available,
 // falling back to English defaults for missing translations
 ```
-
-## Table of Contents
-
-- [Faker-Rust](#faker-rust)
-  - [Quick links](#quick-links)
-  - [Features](#features)
-  - [Getting Started](#getting-started)
-  - [Usage](#usage)
-  - [Generators](#generators)
-  - [Notes](#notes)
-  - [Deterministic Random](#deterministic-random)
-  - [Localization](#localization)
-  - [Contributing](#contributing)
-  - [Inspiration](#inspiration)
-  - [License](#license)
 
 ## Contributing
 

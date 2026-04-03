@@ -1,7 +1,5 @@
 //! String generator
 
-use crate::base::sample;
-use crate::locale::fetch_locale;
 
 /// Generate a random string
 pub fn random(length: usize) -> String {

@@ -1,4 +1,5 @@
 //! Company generator - generates company names
+#![allow(dead_code)]
 
 use crate::base::sample;
 use crate::config::FakerConfig;
@@ -151,21 +152,21 @@ pub fn logo() -> String {
 pub fn company_type() -> String {
     fetch_locale("company.type", "en")
         .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(&FALLBACK_COMPANY_TYPES).to_string())
+        .unwrap_or_else(|| sample(FALLBACK_COMPANY_TYPES).to_string())
 }
 
 /// Generate a company profession
 pub fn profession() -> String {
     fetch_locale("company.profession", "en")
         .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(&FALLBACK_PROFESSIONS).to_string())
+        .unwrap_or_else(|| sample(FALLBACK_PROFESSIONS).to_string())
 }
 
 /// Generate a company department
 pub fn department() -> String {
     fetch_locale("company.department", "en")
         .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(&FALLBACK_DEPARTMENTS).to_string())
+        .unwrap_or_else(|| sample(FALLBACK_DEPARTMENTS).to_string())
 }
 
 const FALLBACK_NAME_PREFIXES: &[&str] = &[

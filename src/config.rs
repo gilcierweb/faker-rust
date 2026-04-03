@@ -124,6 +124,7 @@ impl FakerConfig {
     }
 
     /// Shuffle a vector in place
+    #[allow(clippy::ptr_arg)]
     pub fn shuffle<T>(&self, vec: &mut Vec<T>) {
         use rand::seq::SliceRandom;
         vec.shuffle(&mut *self.rng.borrow_mut());

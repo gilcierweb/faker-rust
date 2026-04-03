@@ -7,17 +7,17 @@ use crate::locale::{fetch_locale_with_context, sample_with_resolve};
 pub fn city() -> String {
     fetch_locale_with_context("address.city", "en", Some("address"))
         .map(|v| sample_with_resolve(&v, Some("address")))
-        .unwrap_or_else(|| sample(&FALLBACK_CITIES).to_string())
+        .unwrap_or_else(|| sample(FALLBACK_CITIES).to_string())
 }
 
 /// Generate a random street name
 pub fn street_name() -> String {
     let prefix = fetch_locale_with_context("address.street_prefix", "en", Some("address"))
         .map(|v| sample_with_resolve(&v, Some("address")))
-        .unwrap_or_else(|| sample(&FALLBACK_STREET_PREFIXES).to_string());
+        .unwrap_or_else(|| sample(FALLBACK_STREET_PREFIXES).to_string());
     let suffix = fetch_locale_with_context("address.street_suffix", "en", Some("address"))
         .map(|v| sample_with_resolve(&v, Some("address")))
-        .unwrap_or_else(|| sample(&FALLBACK_STREET_SUFFIXES).to_string());
+        .unwrap_or_else(|| sample(FALLBACK_STREET_SUFFIXES).to_string());
     format!("{} {}", prefix, suffix)
 }
 
@@ -25,7 +25,7 @@ pub fn street_name() -> String {
 pub fn street_address() -> String {
     let num = fetch_locale_with_context("address.street_number", "en", Some("address"))
         .map(|v| sample_with_resolve(&v, Some("address")))
-        .unwrap_or_else(|| sample(&FALLBACK_STREET_NUMBERS).to_string());
+        .unwrap_or_else(|| sample(FALLBACK_STREET_NUMBERS).to_string());
     format!("{} {}", num, street_name())
 }
 
@@ -51,12 +51,12 @@ pub fn zip_code_with_extension() -> String {
 pub fn country() -> String {
     fetch_locale_with_context("address.country", "en", Some("address"))
         .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(&FALLBACK_COUNTRIES).to_string())
+        .unwrap_or_else(|| sample(FALLBACK_COUNTRIES).to_string())
 }
 
 /// Generate a random country code
 pub fn country_code() -> String {
-    sample(&FALLBACK_COUNTRY_CODES).to_string()
+    sample(FALLBACK_COUNTRY_CODES).to_string()
 }
 
 /// Generate a random full address
@@ -86,7 +86,7 @@ fn city_state_zip() -> String {
 
 /// Generate a random time zone
 pub fn time_zone() -> String {
-    sample(&FALLBACK_TIME_ZONES).to_string()
+    sample(FALLBACK_TIME_ZONES).to_string()
 }
 
 /// Generate a random latitude

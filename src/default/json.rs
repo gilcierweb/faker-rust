@@ -5,9 +5,7 @@ use crate::config::FakerConfig;
 /// Generate a random JSON object as string
 pub fn object() -> String {
     let config = FakerConfig::current();
-    let keys = vec![
-        "name", "email", "age", "city", "country", "company", "job",
-    ];
+    let keys = ["name", "email", "age", "city", "country", "company", "job"];
     
     let num_fields = config.rand_range(2, 5) as usize;
     let mut fields = Vec::new();
@@ -28,7 +26,7 @@ fn generate_value(config: &FakerConfig) -> String {
     match type_choice {
         0 => {
             // String
-            let strings = vec!["test", "example", "sample", "data"];
+            let strings = ["test", "example", "sample", "data"];
             format!("\"{}\"", strings[config.rand_range(0, strings.len() as u32) as usize])
         }
         1 => {

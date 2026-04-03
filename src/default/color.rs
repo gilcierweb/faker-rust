@@ -30,9 +30,9 @@ pub fn rgb() -> [u8; 3] {
 pub fn hsl() -> [u32; 3] {
     let config = crate::config::FakerConfig::current();
     [
-        config.rand_range(0, 360) as u32,
-        config.rand_range(0, 100) as u32,
-        config.rand_range(0, 100) as u32,
+        config.rand_range(0, 360),
+        config.rand_range(0, 100),
+        config.rand_range(0, 100),
     ]
 }
 
@@ -40,9 +40,9 @@ pub fn hsl() -> [u32; 3] {
 pub fn hsla() -> (u32, u32, u32, f32) {
     let config = crate::config::FakerConfig::current();
     (
-        config.rand_range(0, 360) as u32,
-        config.rand_range(0, 100) as u32,
-        config.rand_range(0, 100) as u32,
+        config.rand_range(0, 360),
+        config.rand_range(0, 100),
+        config.rand_range(0, 100),
         config.rand_range(0, 100) as f32 / 100.0,
     )
 }

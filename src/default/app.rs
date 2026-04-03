@@ -21,7 +21,7 @@ pub fn version() -> String {
 pub fn author() -> String {
     fetch_locale_with_context("app.author", "en", Some("app"))
         .map(|v| sample_with_resolve(&v, Some("app")))
-        .unwrap_or_else(|| crate::name::name())
+        .unwrap_or_else(crate::name::name)
 }
 
 // Fallback data

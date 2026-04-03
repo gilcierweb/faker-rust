@@ -1,5 +1,8 @@
 //! Locale data loader - loads and provides access to locale YAML files
-
+#![allow(dead_code)]
+#![allow(unused_variables)]
+#![allow(clippy::collapsible_match)]
+#![allow(clippy::manual_strip)]
 use once_cell::sync::Lazy;
 use serde_yaml::Value;
 use std::collections::HashMap;
@@ -43,7 +46,7 @@ fn load_locale_data() -> HashMap<String, Value> {
         for entry in entries.flatten() {
             let path = entry.path();
 
-            if path.is_file() && path.extension().map_or(false, |ext| ext == "yml") {
+            if path.is_file() && path.extension().is_some_and(|ext| ext == "yml") {
                 if let Some(filename) = path.file_stem() {
                     let locale_name = filename.to_string_lossy().to_string();
                     if let Ok(contents) = fs::read_to_string(&path) {
@@ -64,7 +67,7 @@ fn load_locale_data() -> HashMap<String, Value> {
                     for sub_entry in sub_entries.flatten() {
                         let sub_path = sub_entry.path();
                         if sub_path.is_file()
-                            && sub_path.extension().map_or(false, |ext| ext == "yml")
+                            && sub_path.extension().is_some_and(|ext| ext == "yml")
                         {
                             let file_stem = sub_path
                                 .file_stem()
@@ -110,7 +113,7 @@ fn fetch_locale_no_resolve(
     context_category: Option<&str>,
 ) -> Option<Vec<String>> {
     let locales_to_try: Vec<String> = if locale.contains('_') || locale.contains('-') {
-        let short = locale.split(|c| c == '-' || c == '_').next().unwrap();
+        let short = locale.split(['-', '_']).next().unwrap();
         vec![locale.to_string(), short.to_string()]
     } else {
         vec![locale.to_string()]
@@ -144,7 +147,7 @@ pub fn fetch_locale_with_context(
     context_category: Option<&str>,
 ) -> Option<Vec<String>> {
     let locales_to_try: Vec<String> = if locale.contains('_') || locale.contains('-') {
-        let short = locale.split(|c| c == '-' || c == '_').next().unwrap();
+        let short = locale.split(['-', '_']).next().unwrap();
         vec![locale.to_string(), short.to_string()]
     } else {
         vec![locale.to_string()]
@@ -254,13 +257,13 @@ fn try_extract(
     locale_data: &Value,
     locale: &str,
     key: &str,
-    context_category: Option<&str>,
+    _context_category: Option<&str>,
 ) -> Option<Vec<String>> {
     if let Value::Mapping(top) = locale_data {
         // Case 1: en.faker.name.first_name (file starts with locale name)
-        if let Some(inner) = top.get(&Value::String(locale.to_string())) {
+        if let Some(inner) = top.get(Value::String(locale.to_string())) {
             if let Value::Mapping(inner_map) = inner {
-                if let Some(faker) = inner_map.get(&Value::String("faker".to_string())) {
+                if let Some(faker) = inner_map.get(Value::String("faker".to_string())) {
                     let clean_key = clean_key_for_extraction(key);
                     return extract_nested_array_raw(faker, &clean_key);
                 }
@@ -268,21 +271,21 @@ fn try_extract(
         }
 
         // Case 2: { "faker": {...} } (subdirectory files like en_name.yml)
-        if let Some(faker) = top.get(&Value::String("faker".to_string())) {
+        if let Some(faker) = top.get(Value::String("faker".to_string())) {
             let clean_key = clean_key_for_extraction(key);
             return extract_nested_array_raw(faker, &clean_key);
         }
 
         // Case 3: en.faker.name.first_name -> try without faker prefix
-        if let Some(inner) = top.get(&Value::String(locale.to_string())) {
+        if let Some(inner) = top.get(Value::String(locale.to_string())) {
             if let Value::Mapping(inner_map) = inner {
                 let parts: Vec<&str> = key.split('.').collect();
                 if parts.len() >= 2 {
                     let category = parts[0].to_lowercase();
-                    if let Some(cat_data) = inner_map.get(&Value::String(category.clone())) {
+                    if let Some(cat_data) = inner_map.get(Value::String(category.clone())) {
                         if let Value::Mapping(cat_map) = cat_data {
                             let field = if parts.len() > 1 { parts[1] } else { "" };
-                            if let Some(field_data) = cat_map.get(&Value::String(field.to_string()))
+                            if let Some(field_data) = cat_map.get(Value::String(field.to_string()))
                             {
                                 if let Value::Sequence(seq) = field_data {
                                     return extract_strings_raw(seq);
@@ -324,9 +327,9 @@ fn extract_nested_array(
         match current {
             Value::Mapping(map) => {
                 // Try exact match first, then case-insensitive
-                if let Some(next) = map.get(&Value::String(part_str.clone())) {
+                if let Some(next) = map.get(Value::String(part_str.clone())) {
                     current = next;
-                } else if let Some(next) = map.get(&Value::String(part_lower)) {
+                } else if let Some(next) = map.get(Value::String(part_lower)) {
                     current = next;
                 } else {
                     return None;
@@ -369,9 +372,9 @@ fn extract_nested_array_raw(data: &Value, key: &str) -> Option<Vec<String>> {
         let part_lower = part_str.to_lowercase();
         match current {
             Value::Mapping(map) => {
-                if let Some(next) = map.get(&Value::String(part_str.clone())) {
+                if let Some(next) = map.get(Value::String(part_str.clone())) {
                     current = next;
-                } else if let Some(next) = map.get(&Value::String(part_lower)) {
+                } else if let Some(next) = map.get(Value::String(part_lower)) {
                     current = next;
                 } else {
                     return None;
@@ -567,14 +570,14 @@ fn resolve_simple(s: &str, context_category: Option<&str>) -> String {
 fn extract_direct_value(data: &Value, field: &str) -> Option<String> {
     if let Value::Mapping(top) = data {
         // Try en.faker.category.field
-        if let Some(en) = top.get(&Value::String("en".to_string())) {
+        if let Some(en) = top.get(Value::String("en".to_string())) {
             if let Value::Mapping(en_map) = en {
-                if let Some(faker) = en_map.get(&Value::String("faker".to_string())) {
+                if let Some(faker) = en_map.get(Value::String("faker".to_string())) {
                     if let Value::Mapping(faker_m) = faker {
                         for (_, cat_val) in faker_m.iter() {
                             if let Value::Mapping(cat_m) = cat_val {
                                 if let Some(field_val) =
-                                    cat_m.get(&Value::String(field.to_string()))
+                                    cat_m.get(Value::String(field.to_string()))
                                 {
                                     if let Value::Sequence(seq) = field_val {
                                         if let Some(first) = seq.first() {
@@ -592,11 +595,11 @@ fn extract_direct_value(data: &Value, field: &str) -> Option<String> {
         }
 
         // Try direct faker.category.field
-        if let Some(faker) = top.get(&Value::String("faker".to_string())) {
+        if let Some(faker) = top.get(Value::String("faker".to_string())) {
             if let Value::Mapping(faker_m) = faker {
                 for (_, cat_val) in faker_m.iter() {
                     if let Value::Mapping(cat_m) = cat_val {
-                        if let Some(field_val) = cat_m.get(&Value::String(field.to_string())) {
+                        if let Some(field_val) = cat_m.get(Value::String(field.to_string())) {
                             if let Value::Sequence(seq) = field_val {
                                 if let Some(first) = seq.first() {
                                     if let Value::String(s) = first {
@@ -694,7 +697,7 @@ fn resolve_single_placeholder(
             if let Some(v) = values.first() {
                 if depth < max_depth - 1 && v.contains("#{") {
                     return resolve_placeholder_recursive(
-                        &v,
+                        v,
                         context_category,
                         depth + 1,
                         max_depth,
@@ -768,16 +771,16 @@ fn resolve_single_placeholder(
 fn extract_nested_value_simple(data: &Value, field: &str) -> Option<String> {
     if let Value::Mapping(top) = data {
         // Check for locale prefix (en)
-        if let Some(en) = top.get(&Value::String("en".to_string())) {
+        if let Some(en) = top.get(Value::String("en".to_string())) {
             if let Value::Mapping(en_map) = en {
                 // Check for faker
-                if let Some(faker) = en_map.get(&Value::String("faker".to_string())) {
+                if let Some(faker) = en_map.get(Value::String("faker".to_string())) {
                     if let Value::Mapping(faker_m) = faker {
                         // Try each category
                         for (_, cat_val) in faker_m.iter() {
                             if let Value::Mapping(cat_m) = cat_val {
                                 if let Some(field_val) =
-                                    cat_m.get(&Value::String(field.to_string()))
+                                    cat_m.get(Value::String(field.to_string()))
                                 {
                                     if let Value::Sequence(seq) = field_val {
                                         if let Some(first) = seq.first() {
@@ -795,11 +798,11 @@ fn extract_nested_value_simple(data: &Value, field: &str) -> Option<String> {
         }
 
         // Try direct faker key
-        if let Some(faker) = top.get(&Value::String("faker".to_string())) {
+        if let Some(faker) = top.get(Value::String("faker".to_string())) {
             if let Value::Mapping(faker_m) = faker {
                 for (_, cat_val) in faker_m.iter() {
                     if let Value::Mapping(cat_m) = cat_val {
-                        if let Some(field_val) = cat_m.get(&Value::String(field.to_string())) {
+                        if let Some(field_val) = cat_m.get(Value::String(field.to_string())) {
                             if let Value::Sequence(seq) = field_val {
                                 if let Some(first) = seq.first() {
                                     if let Value::String(s) = first {
@@ -828,9 +831,9 @@ fn extract_nested_value(
         let part_lower = part.to_lowercase();
         match current {
             Value::Mapping(map) => {
-                if let Some(next) = map.get(&Value::String(part_lower.clone())) {
+                if let Some(next) = map.get(Value::String(part_lower.clone())) {
                     current = next;
-                } else if let Some(next) = map.get(&Value::String(part.to_string())) {
+                } else if let Some(next) = map.get(Value::String(part.to_string())) {
                     current = next;
                 } else {
                     return None;
@@ -879,7 +882,7 @@ fn extract_array_from_value(data: &Value, key: &str) -> Option<Vec<String>> {
     let faker_map = match data {
         Value::Mapping(m) => {
             // Look for "faker" key
-            if let Some(faker) = m.get(&Value::String("faker".to_string())) {
+            if let Some(faker) = m.get(Value::String("faker".to_string())) {
                 faker
             } else {
                 // No "faker" key, use the data as-is
@@ -903,7 +906,7 @@ fn extract_array_from_value(data: &Value, key: &str) -> Option<Vec<String>> {
             let part_str = part.to_string();
             current = match current {
                 Value::Mapping(map) => {
-                    if let Some(v) = map.get(&Value::String(part_str.clone())) {
+                    if let Some(v) = map.get(Value::String(part_str.clone())) {
                         v
                     } else {
                         // Try without "internet" prefix
@@ -936,7 +939,7 @@ fn extract_array_simple(data: &Value, key: &str) -> Option<Vec<String>> {
     let last_key = parts.last().unwrap_or(&key);
 
     let faker_map = match data {
-        Value::Mapping(m) => m.get(&Value::String("faker".to_string()))?,
+        Value::Mapping(m) => m.get(Value::String("faker".to_string()))?,
         _ => return None,
     };
 
@@ -944,9 +947,9 @@ fn extract_array_simple(data: &Value, key: &str) -> Option<Vec<String>> {
         Value::Mapping(faker_m) => {
             // Try each category in order until we find the key
             for category in ["internet", "name", "address", "company"] {
-                if let Some(cat) = faker_m.get(&Value::String(category.to_string())) {
+                if let Some(cat) = faker_m.get(Value::String(category.to_string())) {
                     if let Value::Mapping(cat_m) = cat {
-                        if let Some(result) = cat_m.get(&Value::String(last_key.to_string())) {
+                        if let Some(result) = cat_m.get(Value::String(last_key.to_string())) {
                             if let Value::Sequence(seq) = result {
                                 return Some(
                                     seq.iter()
@@ -987,12 +990,12 @@ fn extract_array(data: &Value, key: &str) -> Option<Vec<String>> {
     let faker_map = match data {
         Value::Mapping(m) => {
             // Try to get faker first, if not, try the first part of the path
-            if let Some(faker) = m.get(&Value::String("faker".to_string())) {
+            if let Some(faker) = m.get(Value::String("faker".to_string())) {
                 faker
-            } else if let Some(first) = m.get(&Value::String(parts[start_idx].to_string())) {
+            } else if let Some(first) = m.get(Value::String(parts[start_idx].to_string())) {
                 first
             } else {
-                m.get(&Value::String(parts[0].to_string()))?
+                m.get(Value::String(parts[0].to_string()))?
             }
         }
         _ => return None,
@@ -1004,7 +1007,7 @@ fn extract_array(data: &Value, key: &str) -> Option<Vec<String>> {
     for part in parts.iter().skip(start_idx) {
         let part_str = part.to_string();
         current = match current {
-            Value::Mapping(map) => map.get(&Value::String(part_str))?,
+            Value::Mapping(map) => map.get(Value::String(part_str))?,
             _ => return None,
         };
     }

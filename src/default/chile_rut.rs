@@ -5,7 +5,7 @@ use crate::config::FakerConfig;
 /// Generate a random Chilean RUT number
 pub fn rut() -> String {
     let config = FakerConfig::current();
-    let number = config.rand_range(1000000, 25000000) as u32;
+    let number = config.rand_range(1000000, 25000000);
     let dv = calculate_dv(number);
     format!("{}-{}", number, dv)
 }

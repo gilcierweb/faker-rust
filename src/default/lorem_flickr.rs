@@ -25,7 +25,7 @@ pub fn grayscale() -> String {
 /// Generate a Lorem Flickr URL with specific dimensions
 pub fn sized(width: u32, height: u32) -> String {
     let config = FakerConfig::current();
-    let keywords = vec!["abstract", "animals", "business", "cats", "city", "food"];
+    let keywords = ["abstract", "animals", "business", "cats", "city", "food"];
     let keyword = keywords[(config.rand_range(0, keywords.len() as u32)) as usize];
     
     format!("https://loremflickr.com/{}/{}/{}", width, height, keyword)

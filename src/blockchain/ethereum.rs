@@ -1,4 +1,5 @@
 //! Ethereum blockchain generator
+#![allow(dead_code)]
 
 use crate::base::sample;
 use crate::locale::fetch_locale;
@@ -7,7 +8,7 @@ use crate::locale::fetch_locale;
 pub fn address() -> String {
     fetch_locale("ethereum.addresses", "en")
         .map(|v| sample(&v))
-        .unwrap_or_else(|| generate_ethereum_address())
+        .unwrap_or_else(generate_ethereum_address)
 }
 
 fn generate_ethereum_address() -> String {

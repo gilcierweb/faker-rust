@@ -40,13 +40,11 @@ pub fn ingverb() -> String {
 
 /// Generate a random hacker phrase
 pub fn phrase() -> String {
-    let parts = vec![
-        adjective(),
+    let parts = [adjective(),
         abbreviation(),
         noun(),
         verb(),
-        ingverb(),
-    ];
+        ingverb()];
     parts.join(" ")
 }
 

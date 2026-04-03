@@ -7,7 +7,7 @@ use crate::locale::fetch_locale;
 pub fn stock_ticker() -> String {
     fetch_locale("finance.stock_tickers", "en")
         .map(|v| sample(&v))
-        .unwrap_or_else(|| generate_ticker())
+        .unwrap_or_else(generate_ticker)
 }
 
 fn generate_ticker() -> String {

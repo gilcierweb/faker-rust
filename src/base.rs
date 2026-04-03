@@ -70,9 +70,9 @@ pub fn numerify(template: &str) -> String {
             let prev_is_hash = result.ends_with('#');
             if !prev_is_hash {
                 // Check if the previous char in template was # (we're in a sequence)
-                let is_first_in_sequence = result.is_empty() || result.chars().last() != Some('#');
+                let is_first_in_sequence = result.is_empty() || !result.ends_with('#');
 
-                if is_first_in_sequence && !chars.peek().is_none() {
+                if is_first_in_sequence && chars.peek().is_some() {
                     // Use 1-9 for first digit in sequence to avoid leading zero
                     result.push(config.rand_char(&['1', '2', '3', '4', '5', '6', '7', '8', '9']));
                 } else {

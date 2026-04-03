@@ -1,4 +1,5 @@
 //! Bitcoin blockchain generator
+#![allow(dead_code)]
 
 use crate::base::sample;
 use crate::locale::fetch_locale;
@@ -7,7 +8,7 @@ use crate::locale::fetch_locale;
 pub fn address() -> String {
     fetch_locale("bitcoin.addresses", "en")
         .map(|v| sample(&v))
-        .unwrap_or_else(|| generate_bitcoin_address())
+        .unwrap_or_else(generate_bitcoin_address)
 }
 
 fn generate_bitcoin_address() -> String {

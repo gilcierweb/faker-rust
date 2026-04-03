@@ -68,8 +68,8 @@ pub fn material() -> String {
 /// Generate a random price
 pub fn price(range_start: Option<f64>, range_end: Option<f64>) -> String {
     let config = crate::config::FakerConfig::current();
-    let start = range_start.unwrap_or(0.0) as f64 * 100.0;
-    let end = range_end.unwrap_or(100.0) as f64 * 100.0;
+    let start = range_start.unwrap_or(0.0) * 100.0;
+    let end = range_end.unwrap_or(100.0) * 100.0;
     let price = config.rand_f64() * (end - start) + start;
     format!("{:.2}", price / 100.0)
 }

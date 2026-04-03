@@ -6,14 +6,12 @@ use crate::locale::fetch_locale;
 
 /// Generate a random phone number
 pub fn phone_number() -> String {
-    let formats = vec![
-        "(###) ###-####",
+    let formats = ["(###) ###-####",
         "###-###-####",
         "(###) ###-####",
         "###.###.####",
         "(###) ###-####",
-        "##########",
-    ];
+        "##########"];
     let config = FakerConfig::current();
     let format = formats[config.rand_usize(formats.len())];
     bothify(format)
@@ -36,13 +34,11 @@ pub fn area_code() -> String {
 
 /// Generate a random cell phone number
 pub fn cell_phone() -> String {
-    let formats = vec![
-        "(###) ###-####",
+    let formats = ["(###) ###-####",
         "###-###-####",
         "(###) ###-####",
         "##########",
-        "+1 (###) ###-####",
-    ];
+        "+1 (###) ###-####"];
     let config = FakerConfig::current();
     let format = formats[config.rand_usize(formats.len())];
     bothify(format)

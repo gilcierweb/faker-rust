@@ -27,7 +27,7 @@ pub fn git_commit_message() -> String {
         "Merge pull request",
         "Update dependencies",
     ];
-    format!("{}", sample(&messages))
+    sample(&messages).to_string()
 }
 
 /// Generate a random version number

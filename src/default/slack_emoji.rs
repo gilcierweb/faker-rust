@@ -12,7 +12,7 @@ pub fn emoji() -> String {
         ":white_check_mark:", ":warning:", ":x:", ":question:", ":exclamation:",
         ":wave:", ":+1:", ":-1:", ":clap:", ":pray:",
     ];
-    format!("{}", sample(&emojis))
+    sample(&emojis).to_string()
 }
 
 /// Generate a random custom Slack emoji name
@@ -22,7 +22,7 @@ pub fn custom_emoji() -> String {
         ":table-flip:", ":success-kid:", ":dancing-banana:", ":nyancat:",
         ":doom:", ":facepalm:", ":mind-blown:", ":mic-drop:",
     ];
-    format!("{}", sample(&names))
+    sample(&names).to_string()
 }
 
 /// Generate a random people emoji
@@ -31,7 +31,7 @@ pub fn people() -> String {
         ":grinning:", ":smiley:", ":big_smile:", ":laughing:", ":sweat_smile:",
         ":joy:", ":rofl:", ":relaxed:", ":blush:", ":innocent:",
     ];
-    format!("{}", sample(&emojis))
+    sample(&emojis).to_string()
 }
 
 #[cfg(test)]

@@ -1,7 +1,6 @@
 //! Driving licence generator
 
 use crate::base::sample;
-use crate::locale::fetch_locale;
 use crate::config::FakerConfig;
 
 /// Generate a random UK driving licence number
@@ -12,7 +11,7 @@ pub fn uk() -> String {
     let month = config.rand_range(1, 13);
     let day = config.rand_range(1, 29);
     let initials = sample(&["AB", "CD", "EF", "GH", "IJ"]);
-    let numbers = format!("{:02}{:02}{:02}", 
+    let _numbers = format!("{:02}{:02}{:02}", 
         config.rand_range(0, 100),
         config.rand_range(0, 100),
         config.rand_range(0, 100)

@@ -5,7 +5,7 @@ use crate::config::FakerConfig;
 /// Generate a random Spanish DNI (Documento Nacional de Identidad)
 pub fn spanish() -> String {
     let config = FakerConfig::current();
-    let number = config.rand_range(10000000, 99999999) as u32;
+    let number = config.rand_range(10000000, 99999999);
     let letters = ['T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E'];
     let letter = letters[(number % 23) as usize];
     format!("{}{}", number, letter)
@@ -28,7 +28,7 @@ pub fn valid() -> String {
 /// Generate a random invalid ID number
 pub fn invalid() -> String {
     let config = FakerConfig::current();
-    let number = config.rand_range(10000000, 99999999) as u32;
+    let number = config.rand_range(10000000, 99999999);
     let wrong_letter = config.rand_char(&['I', 'O', 'U', 'Ñ']);
     format!("{}{}", number, wrong_letter)
 }

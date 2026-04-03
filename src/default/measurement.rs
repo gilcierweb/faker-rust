@@ -1,7 +1,6 @@
 //! Measurement generator
 
 use crate::base::sample;
-use crate::locale::fetch_locale;
 use crate::config::FakerConfig;
 
 /// Generate a random length measurement

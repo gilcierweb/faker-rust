@@ -49,7 +49,7 @@ pub fn birthday(min_age: Option<i32>, max_age: Option<i32>) -> String {
     let year = today.format("%Y").to_string().parse::<i32>().unwrap() - age as i32;
     let day_of_year = config.rand_range(1, days_in_year as u32) as i64;
 
-    let base_date = NaiveDate::from_ymd_opt(year, 1, 1).unwrap_or_else(|| today);
+    let base_date = NaiveDate::from_ymd_opt(year, 1, 1).unwrap_or(today);
     let target = base_date + Duration::try_days(day_of_year - 1).unwrap();
 
     target.format("%Y-%m-%d").to_string()

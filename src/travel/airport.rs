@@ -14,14 +14,14 @@ pub fn name() -> String {
 pub fn iata_code() -> String {
     fetch_locale("airport.iata_codes", "en")
         .map(|v| sample(&v))
-        .unwrap_or_else(|| generate_iata_code())
+        .unwrap_or_else(generate_iata_code)
 }
 
 /// Generate a random ICAO airport code (4 letters)
 pub fn icao_code() -> String {
     fetch_locale("airport.icao_codes", "en")
         .map(|v| sample(&v))
-        .unwrap_or_else(|| generate_icao_code())
+        .unwrap_or_else(generate_icao_code)
 }
 
 /// Generate a random city with airport

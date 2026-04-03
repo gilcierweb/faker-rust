@@ -1,4 +1,5 @@
 //! Internet generator - generates internet-related fake data
+#![allow(dead_code)]
 
 use crate::base::sample;
 // Removed unused ALPHANUMERIC
@@ -127,11 +128,11 @@ pub fn domain_suffix(safe: bool) -> String {
     if safe {
         fetch_locale("internet.safe_domain_suffix", "en")
             .map(|v| sample(&v))
-            .unwrap_or_else(|| sample(&FALLBACK_SAFE_DOMAIN_SUFFIXES).to_string())
+            .unwrap_or_else(|| sample(FALLBACK_SAFE_DOMAIN_SUFFIXES).to_string())
     } else {
         fetch_locale("internet.domain_suffix", "en")
             .map(|v| sample(&v))
-            .unwrap_or_else(|| sample(&FALLBACK_DOMAIN_SUFFIXES).to_string())
+            .unwrap_or_else(|| sample(FALLBACK_DOMAIN_SUFFIXES).to_string())
     }
 }
 
@@ -256,8 +257,7 @@ pub fn slug(words: Option<&str>, glue: Option<&str>) -> string::String {
 
     if let Some(w) = words {
         let g = glue.unwrap_or("-");
-        w.replace(',', "")
-            .replace('.', "")
+        w.replace([',', '.'], "")
             .split_whitespace()
             .collect::<Vec<_>>()
             .join(g)
@@ -383,7 +383,7 @@ pub fn bot_user_agent(vendor: Option<&str>) -> string::String {
             if vendors.contains(&v) {
                 v
             } else {
-                return sample(&FALLBACK_BOT_AGENTS).to_string();
+                return sample(FALLBACK_BOT_AGENTS).to_string();
             }
         }
         None => {
@@ -401,7 +401,7 @@ pub fn bot_user_agent(vendor: Option<&str>) -> string::String {
 
     result
         .map(|agents| sample(&agents))
-        .unwrap_or_else(|| sample(&FALLBACK_BOT_AGENTS).to_string())
+        .unwrap_or_else(|| sample(FALLBACK_BOT_AGENTS).to_string())
 }
 
 /// Generate a random base64 string
