@@ -192,6 +192,6 @@ mod tests {
     #[test]
     fn test_rand_in_range() {
         let result = rand_in_range(1, 10);
-        assert!(result >= 1 && result <= 10);
+        assert!((1..=10).contains(&result));
     }
 }
