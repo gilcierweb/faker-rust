@@ -543,7 +543,7 @@ To make sure that your crate is the one
 documented here, change the line in your `Cargo.toml` to:
 
 ```toml
-faker-rust = { git = "https://github.com/faker-rust/faker-rust.git", branch = "main" }
+faker-rust = { git = "https://github.com/gilcierweb/faker-rust.git", branch = "main" }
 ```
 
 The generators have the `@faker.version` tag on top of their implementation.

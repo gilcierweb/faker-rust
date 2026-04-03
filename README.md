@@ -253,23 +253,21 @@ Faker-Rust is inspired by the legendary [Ruby Faker gem](https://github.com/fake
 
 This code is free to use under the terms of the MIT license.
 
-[MIT License](https://github.com/faker-rust/faker-rust/blob/main/LICENSE)
+[MIT License](https://github.com/gilcierweb/faker-rust/blob/main/LICENSE)
 
 ## Links
-https://github.com/faker-rust/faker-rust
+https://github.com/gilcierweb/faker-rust
 
-https://github.com/faker-rust/faker-rust/issues
+https://github.com/gilcierweb/faker-rust/issues
 
-https://github.com/faker-rust/faker-rust/discussions
+https://github.com/gilcierweb/faker-rust/discussions
 
-https://github.com/faker-rust/faker-rust/pulls
+https://github.com/gilcierweb/faker-rust/pulls
 
-https://github.com/faker-rust/faker-rust/wiki
+https://github.com/gilcierweb/faker-rust/wiki
 
-https://github.com/faker-rust/faker-rust/blob/main/SECURITY.md
+https://github.com/gilcierweb/faker-rust/blob/main/SECURITY.md
 
-https://github.com/faker-rust/faker-rust/blob/main/CONTRIBUTING.md
-
-https://github.com/faker-rust/faker-rust/blob/main/CODE_OF_CONDUCT.md
+https://github.com/gilcierweb/faker-rust/blob/main/CONTRIBUTING.md
 
 https://gilcierweb.com.br
