@@ -43,21 +43,29 @@ Then run `cargo build`.
 use faker_rust::name;
 use faker_rust::internet;
 use faker_rust::address;
+use faker_rust::lorem;
+use faker_rust::programming_language;
 
 fn main() {
     // Person
-    println!("{}", name::name());           //=> "Christophe Bartell"
+    println!("{}", name::name());                      //=> "Christophe Bartell"
     
     // Internet
-    println!("{}", internet::password());   //=> "Vg5mSvY1UeRg7"
+    println!("{}", internet::password());            //=> "Vg5mSvY1UeRg7"
     println!("{}", internet::email(None, None, None)); //=> "eliza@mann.test"
     
     // Address
-    println!("{}", address::full_address()); //=> "5479 William Way, East Sonnyhaven, LA 63637"
+    println!("{}", address::full_address());         //=> "5479 William Way, East Sonnyhaven, LA 63637"
+    
+    // Lorem
+    println!("{}", lorem::paragraph());                //=> "Recusandae minima consequatur. Expedita sequi blanditiis. Ut fuga et."
+    
+    // Programming Language
+    println!("{}", programming_language::name());      //=> "Rust"
     
     // Seeded Randomness for Reproducibility
     faker_rust::Faker::set_seed(12345);
-    println!("Seeded: {}", name::name());    // Always returns same value
+    println!("Seeded: {}", name::name());             // Always returns same value
 }
 ```
 
