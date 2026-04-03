@@ -136,6 +136,8 @@ For complete CLI documentation, see [CLI.md](./docs/CLI.md).
 
 ## Generators
 
+To see the full list, check out the [GENERATORS](./GENERATORS.md) document.
+
 ### Default Generators
 
 | Category | Generators |
