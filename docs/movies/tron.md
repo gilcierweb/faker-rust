@@ -1,4 +1,4 @@
-# faker::movies::Tron
+# faker_rust::movies::Tron
 
 ```rust
 Tron::character() //=> "bit"

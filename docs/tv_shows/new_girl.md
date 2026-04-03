@@ -1,4 +1,4 @@
-# faker::tv_shows::NewGirl
+# faker_rust::tv_shows::NewGirl
 
 ```rust
 NewGirl::character() //=> "Jessica Day"

@@ -1,4 +1,4 @@
-# faker::default::measurement
+# faker_rust::default::measurement
 
 ```rust
 measurement::height() //=> "6 inches"

@@ -1,4 +1,4 @@
-# faker::books::culture_series
+# faker_rust::books::culture_series
 
 // Books::CultureSeries
 

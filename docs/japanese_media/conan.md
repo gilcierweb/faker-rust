@@ -1,4 +1,4 @@
-# faker::japanese_media::Conan
+# faker_rust::japanese_media::Conan
 
 ```rust
 Conan::character() //=> "Conan Edogawa"

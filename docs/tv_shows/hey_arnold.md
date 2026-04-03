@@ -1,4 +1,4 @@
-# faker::tv_shows::HeyArnold
+# faker_rust::tv_shows::HeyArnold
 
 Available since version 1.8.0.
 

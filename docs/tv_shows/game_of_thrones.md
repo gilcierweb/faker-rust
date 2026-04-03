@@ -1,4 +1,4 @@
-# faker::tv_shows::GameOfThrones
+# faker_rust::tv_shows::GameOfThrones
 
 Available since version 1.6.6.
 

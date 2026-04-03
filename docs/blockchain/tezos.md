@@ -1,4 +1,4 @@
-# faker::blockchain::Tezos
+# faker_rust::blockchain::Tezos
 
 ```rust
 Tezos::account() //=> "tz1eUsgK6aj752Fbxwk5sAoEFvSDnPjZ4qvk"

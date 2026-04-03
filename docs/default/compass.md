@@ -1,4 +1,4 @@
-# faker::default::compass
+# faker_rust::default::compass
 
 available since version 1.8.0.
 

@@ -1,4 +1,4 @@
-# faker::default::string
+# faker_rust::default::string
 
 random utf-8 string with optional nested length selectors.  very useful for testing.  guaranteed to find bugs in your code.  want robust code?  test with these.  includes every utf-8 codepoint.
 

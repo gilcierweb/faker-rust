@@ -1,4 +1,4 @@
-# faker::tv_shows::DrWho
+# faker_rust::tv_shows::DrWho
 
 ```rust
 DrWho::character    //=> "Captain Jack Harkness"

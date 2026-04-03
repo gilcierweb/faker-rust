@@ -1,7 +1,7 @@
 //! Sports & Events Example
 //! Demonstrates sports, world cup, and event-related generators
 
-use faker::{
+use faker_rust::{
     sports, world_cup, esport,
 };
 

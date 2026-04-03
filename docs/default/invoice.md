@@ -1,4 +1,4 @@
-# faker::default::invoice
+# faker_rust::default::invoice
 
 module for creating valid invoice references.
 https://en::wikipedia::org/wiki/creditor_reference

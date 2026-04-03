@@ -1,4 +1,4 @@
-# faker::default::gender
+# faker_rust::default::gender
 
 available since version 1.9.0.
 

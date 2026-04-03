@@ -1,4 +1,4 @@
-# faker::default::verbs
+# faker_rust::default::verbs
 
 ```rust
 verb::base() //=> "hurt"

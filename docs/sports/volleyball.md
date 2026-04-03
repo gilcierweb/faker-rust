@@ -1,4 +1,4 @@
-# faker::sports::Volleyball
+# faker_rust::sports::Volleyball
 
 ```rust
 Volleyball::team() //=> "Leo Shoes Modena"

@@ -1,4 +1,4 @@
-# faker::tv_shows::Supernatural
+# faker_rust::tv_shows::Supernatural
 
 ```rust
 Supernatural::character() //=> "Sam Winchester"

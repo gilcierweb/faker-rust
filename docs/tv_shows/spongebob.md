@@ -1,4 +1,4 @@
-# faker::tv_shows::Spongebob
+# faker_rust::tv_shows::Spongebob
 
 ```rust
 Spongebob::character() //=> "Patrick"

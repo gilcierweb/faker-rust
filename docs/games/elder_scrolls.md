@@ -1,4 +1,4 @@
-# faker::games::ElderScrolls
+# faker_rust::games::ElderScrolls
 
 ```rust
 ElderScrolls::race() //=> Argonian

@@ -1,4 +1,4 @@
-# faker::tv_shows::RickAndMorty
+# faker_rust::tv_shows::RickAndMorty
 
 Available since version 1.8.0.
 

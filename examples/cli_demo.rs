@@ -1,5 +1,5 @@
 //! CLI Demo Example
-//! Demonstrates how to use faker as a command line tool
+//! Demonstrates how to use faker_rust as a command line tool
 //!
 //! Run with: cargo run --bin faker -- [COMMAND]
 //!

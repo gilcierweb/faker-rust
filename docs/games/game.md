@@ -1,4 +1,4 @@
-# faker::games::game
+# faker_rust::games::game
 
 // Game
 

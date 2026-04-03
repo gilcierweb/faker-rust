@@ -1,4 +1,4 @@
-# faker::games::Super Mario
+# faker_rust::games::Super Mario
 
 ```rust
 // Random Super Mario character

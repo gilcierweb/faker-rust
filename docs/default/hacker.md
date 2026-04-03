@@ -1,4 +1,4 @@
-# faker::default::hacker
+# faker_rust::default::hacker
 
 are you having trouble writing tech-savvy dialogue for your latest screenplay?
 worry not! hollywood-grade technical talk is ready to fill out any form where you need to look smart.

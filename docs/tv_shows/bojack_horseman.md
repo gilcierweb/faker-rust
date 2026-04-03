@@ -1,4 +1,4 @@
-# faker::tv_shows::BojackHorseman
+# faker_rust::tv_shows::BojackHorseman
 
 ```rust
 BojackHorseman::character() //=> "BoJack Horseman""

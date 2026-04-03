@@ -1,4 +1,4 @@
-# faker::creature::Bird
+# faker_rust::creature::Bird
 
 ```rust
 // Random common family name of a bird

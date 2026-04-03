@@ -1,4 +1,4 @@
-# faker::games::WorldOfWarcraft
+# faker_rust::games::WorldOfWarcraft
 
 ```rust
 // Generate a random character from World of Warcraft

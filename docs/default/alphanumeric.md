@@ -1,4 +1,4 @@
-# faker::default::alphanumeric
+# faker_rust::default::alphanumeric
 
 ```rust
 alphanumeric::alpha() //=> "zlvubkrwga"

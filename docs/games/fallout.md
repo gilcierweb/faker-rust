@@ -1,4 +1,4 @@
-# faker::games::Fallout
+# faker_rust::games::Fallout
 
 ```rust
 Fallout::character() //=> "Dogmeat"

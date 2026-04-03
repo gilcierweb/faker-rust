@@ -1,4 +1,4 @@
-# faker::default::house
+# faker_rust::default::house
 
 ```rust
 house::furniture() //=> "chair"

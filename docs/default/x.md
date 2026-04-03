@@ -1,4 +1,4 @@
-# faker::default::x
+# faker_rust::default::x
 
 generates approximate x (previously twitter) user and tweet objects, based on x's api v2 responses.
 

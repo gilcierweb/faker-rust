@@ -1,4 +1,4 @@
-# faker::default::crypto_coin
+# faker_rust::default::crypto_coin
 
 ```rust
 cryptocoin::coin_name() //=> "bitcoin"

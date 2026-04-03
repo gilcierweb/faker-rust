@@ -1,4 +1,4 @@
-# faker::default::tea
+# faker_rust::default::tea
 
 available since version next.
 

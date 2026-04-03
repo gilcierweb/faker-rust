@@ -1,4 +1,4 @@
-# faker::tv_shows::Suits
+# faker_rust::tv_shows::Suits
 
 ```rust
 Suits::character() //=> "Harvey Specter"

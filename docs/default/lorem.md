@@ -1,4 +1,4 @@
-# faker::default::lorem
+# faker_rust::default::lorem
 
 ```rust
 lorem::word() //=> "repellendus"

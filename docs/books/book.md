@@ -1,4 +1,4 @@
-# faker::books::book
+# faker_rust::books::book
 
 // Book
 

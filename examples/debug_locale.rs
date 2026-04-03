@@ -1,4 +1,4 @@
-use faker::locale;
+use faker_rust::locale;
 
 fn main() {
     println!("=== Testing context-specific lookups ===\n");

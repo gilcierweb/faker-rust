@@ -1,9 +1,9 @@
-# faker::quotes::shakespeare
+# faker_rust::quotes::shakespeare
 
 Generate Shakespeare quotes.
 
 ```rust
-use faker::quotes::shakespeare;
+use faker_rust::quotes::shakespeare;
 
 shakespeare::hamlet_quote() //=> "To be, or not to be: that is the question."
 

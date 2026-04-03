@@ -1,9 +1,9 @@
-# faker::default::address
+# faker_rust::default::address
 
 generate address data.
 
 ```rust
-use faker::address;
+use faker_rust::address;
 
 address::city() //=> "imogeneborough"
 

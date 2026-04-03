@@ -1,4 +1,4 @@
-# faker::tv_shows::HowIMetYourMother
+# faker_rust::tv_shows::HowIMetYourMother
 
 Available since version 1.8.0.
 

@@ -1,7 +1,7 @@
 //! Entertainment Example
 //! Demonstrates Movies, TV Shows, Games, and Music generators
 
-use faker::{
+use faker_rust::{
     games, movies, music, tv_shows,
 };
 

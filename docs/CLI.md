@@ -1,4 +1,4 @@
-# faker::CLI
+# faker_rust::CLI
 
 // Faker CLI Documentation
 

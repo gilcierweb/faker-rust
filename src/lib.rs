@@ -5,12 +5,12 @@
 //! # Quick Start
 //!
 //! ```rust
-//! use faker;
+//! use faker_rust;
 //!
 //! // Generate random data
-//! let name = faker::name::name();
-//! let email = faker::internet::email(None, None, None);
-//! let city = faker::address::city();
+//! let name = faker_rust::name::name();
+//! let email = faker_rust::internet::email(None, None, None);
+//! let city = faker_rust::address::city();
 //! ```
 
 #[macro_use]

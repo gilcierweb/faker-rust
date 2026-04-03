@@ -1,4 +1,4 @@
-# faker::games::SonicTheHedgehog
+# faker_rust::games::SonicTheHedgehog
 
 ```rust
 // Any character from the games

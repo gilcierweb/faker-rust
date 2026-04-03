@@ -1,4 +1,4 @@
-# faker::japanese_media::KamenRider
+# faker_rust::japanese_media::KamenRider
 
 ```rust
 KamenRider::kamen_rider() //=> "Kamen Rider Revice"

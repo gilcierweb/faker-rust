@@ -1,4 +1,4 @@
-# faker::README
+# faker_rust::README
 
 // Faker-Rust Documentation
 
@@ -58,7 +58,7 @@ Located in `docs/games/`:
 All generators follow the same pattern:
 
 ```rust
-use faker::{module};
+use faker_rust::{module};
 
 module::function() //=> "generated data"
 ```

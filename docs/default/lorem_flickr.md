@@ -1,4 +1,4 @@
-# faker::default::lorem_flickr
+# faker_rust::default::lorem_flickr
 
 available since version 1.9.0.
 

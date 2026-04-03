@@ -1,4 +1,4 @@
-# faker::default::color
+# faker_rust::default::color
 
 ```rust
 color::hex_color() //=> "#31a785"

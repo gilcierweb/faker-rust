@@ -1,4 +1,4 @@
-# faker::games::Touhou
+# faker_rust::games::Touhou
 
 ```rust
 // Random Touhou game

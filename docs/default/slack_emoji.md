@@ -1,4 +1,4 @@
-# faker::default::slack_emoji
+# faker_rust::default::slack_emoji
 
 available since version 1.5.0.
 

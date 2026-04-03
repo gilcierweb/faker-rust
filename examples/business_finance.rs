@@ -1,7 +1,7 @@
 //! Business & Finance Example
 //! Demonstrates business, finance, banking, and crypto generators
 
-use faker::{
+use faker_rust::{
     bank, blockchain, business, commerce, company, currency, finance,
     invoice, industry_segments, stripe, subscription,
 };
@@ -44,7 +44,7 @@ fn main() {
     println!("🛒 COMMERCE:");
     println!("  Department:         {}", commerce::department());
     println!("  Product Name:       {}", commerce::product_name());
-    println!("  Price:              {}", commerce::price());
+    println!("  Price:              {}", commerce::price(None, None));
     println!("  Promotion Code:     {}", commerce::promotion_code());
     println!();
 

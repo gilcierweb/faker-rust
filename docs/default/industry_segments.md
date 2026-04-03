@@ -1,4 +1,4 @@
-# faker::default::industry_segments
+# faker_rust::default::industry_segments
 
 ```rust
 industrysegments::industry() //=> "basic materials"

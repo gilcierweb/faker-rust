@@ -1,5 +1,5 @@
-use faker::address;
-use faker::name;
+use faker_rust::address;
+use faker_rust::name;
 
 fn main() {
     println!("Testing address::city() placeholder resolution");

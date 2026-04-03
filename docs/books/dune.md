@@ -1,4 +1,4 @@
-# faker::books::dune
+# faker_rust::books::dune
 
 // Books::Dune
 

@@ -1,4 +1,4 @@
-# faker::default::electrical_components
+# faker_rust::default::electrical_components
 
 available since version 1.9.0.
 

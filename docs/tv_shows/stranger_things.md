@@ -1,4 +1,4 @@
-# faker::tv_shows::StrangerThings
+# faker_rust::tv_shows::StrangerThings
 
 Available since version 1.9.0.
 

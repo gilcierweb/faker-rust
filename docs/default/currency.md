@@ -1,4 +1,4 @@
-# faker::default::currency
+# faker_rust::default::currency
 
 ```rust
 currency::name() //=> "swedish krona"

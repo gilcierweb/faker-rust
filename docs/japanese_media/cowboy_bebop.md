@@ -1,9 +1,9 @@
-# faker::japanese_media::cowboy_bebop
+# faker_rust::japanese_media::cowboy_bebop
 
 Generate Cowboy Bebop data.
 
 ```rust
-use faker::japanese_media::cowboy_bebop;
+use faker_rust::japanese_media::cowboy_bebop;
 
 cowboy_bebop::character() //=> "Spike Spiegel"
 cowboy_bebop::episode() //=> "Honky Tonk Women"

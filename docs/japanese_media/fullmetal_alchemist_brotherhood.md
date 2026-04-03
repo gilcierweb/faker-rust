@@ -1,4 +1,4 @@
-# faker::japanese_media::FullmetalAchemistBrotherhood
+# faker_rust::japanese_media::FullmetalAchemistBrotherhood
 
 ```rust
 FullmetalAchemistBrotherhood::character() //=> "Edward Elric"

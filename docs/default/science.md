@@ -1,4 +1,4 @@
-# faker::default::science
+# faker_rust::default::science
 
 ```rust
 science::science() //=> "space science"

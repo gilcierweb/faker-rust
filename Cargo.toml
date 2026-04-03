@@ -13,10 +13,6 @@ keywords = ["faker", "fake", "data", "generator", "testing"]
 categories = ["development-tools::testing", "text-processing"]
 rust-version = "1.85"
 
-[lib]
-name = "faker"
-path = "src/lib.rs"
-
 [package.metadata.i18n]
 available-locales = ["en"]
 default-locale = "en"

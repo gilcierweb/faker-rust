@@ -1,4 +1,4 @@
-# faker::music::Opera
+# faker_rust::music::Opera
 
 ```rust
 Opera::verdi() //=> "Il Trovatore"

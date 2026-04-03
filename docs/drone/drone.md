@@ -1,9 +1,9 @@
-# faker::drone
+# faker_rust::drone
 
 Generate drone data.
 
 ```rust
-use faker::drone;
+use faker_rust::drone;
 
 // Aircraft Properties
 drone::name()                   //=> "DJI Mavic Air 2"

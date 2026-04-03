@@ -1,7 +1,7 @@
 //! Advanced Features Example
 //! Demonstrates seeded generation and other advanced features
 
-use faker::{
+use faker_rust::{
     address, company, internet, name, Faker,
 };
 

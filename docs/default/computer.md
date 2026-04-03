@@ -1,4 +1,4 @@
-# faker::default::computer
+# faker_rust::default::computer
 
 available since version 2.12.0.
 

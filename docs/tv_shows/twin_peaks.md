@@ -1,4 +1,4 @@
-# faker::tv_shows::TwinPeaks
+# faker_rust::tv_shows::TwinPeaks
 
 Available since version 1.7.0.
 

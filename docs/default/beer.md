@@ -1,4 +1,4 @@
-# faker::default::beer
+# faker_rust::default::beer
 
 available since version 1.6.2.
 

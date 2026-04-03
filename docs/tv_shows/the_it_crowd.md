@@ -1,4 +1,4 @@
-# faker::tv_shows::TheITCrowd
+# faker_rust::tv_shows::TheITCrowd
 
 ```rust
 TheITCrowd::actor() //=> "Chris O'Dowd"

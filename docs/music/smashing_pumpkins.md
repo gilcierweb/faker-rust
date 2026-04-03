@@ -1,4 +1,4 @@
-# faker::music::SmashingPumpkins
+# faker_rust::music::SmashingPumpkins
 
 ```rust
 SmashingPumpkins::musician() //=> "D'arcy Wretsky"

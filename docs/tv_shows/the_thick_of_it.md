@@ -1,4 +1,4 @@
-# faker::tv_shows::TheThickOfIt
+# faker_rust::tv_shows::TheThickOfIt
 
 ```rust
 TheThickOfIt::character() //=> "Nicola Murray"

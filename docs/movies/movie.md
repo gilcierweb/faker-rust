@@ -1,4 +1,4 @@
-# faker::movies::movie
+# faker_rust::movies::movie
 
 // Movie
 

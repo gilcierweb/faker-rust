@@ -1,4 +1,4 @@
-# faker::default::food
+# faker_rust::default::food
 
 available since version 1.7.0.
 

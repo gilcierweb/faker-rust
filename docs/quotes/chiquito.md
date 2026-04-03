@@ -1,9 +1,9 @@
-# faker::quotes::chiquito
+# faker_rust::quotes::chiquito
 
 Generate quotes from Chiquito de la Calzada.
 
 ```rust
-use faker::quotes::chiquito;
+use faker_rust::quotes::chiquito;
 
 chiquito::expression() //=> "¡Ereh un torpedo!"
 

@@ -1,4 +1,4 @@
-# faker::music::Phish
+# faker_rust::music::Phish
 
 ```rust
 Phish::album() //=> "Fuego"

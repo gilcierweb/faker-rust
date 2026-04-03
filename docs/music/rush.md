@@ -1,4 +1,4 @@
-# faker::music::Rush
+# faker_rust::music::Rush
 
 ```rust
 Rush::player() //=> "Neil Peart"

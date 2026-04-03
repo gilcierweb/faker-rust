@@ -1,4 +1,4 @@
-# faker::japanese_media::StudioGhibli
+# faker_rust::japanese_media::StudioGhibli
 
 ```rust
 StudioGhibli::character() //=> "Howl Jenkins Pendragon"

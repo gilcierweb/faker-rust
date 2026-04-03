@@ -1,4 +1,4 @@
-# faker::tv_shows::BigBangTheory
+# faker_rust::tv_shows::BigBangTheory
 
 ```rust
 BigBangTheory::character() //=> "Sheldon Cooper"

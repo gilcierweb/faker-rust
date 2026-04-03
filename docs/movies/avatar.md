@@ -1,4 +1,4 @@
-# faker::movies::Avatar
+# faker_rust::movies::Avatar
 
 ```rust
 Avatar::character() //=> "Miles Quaritch"

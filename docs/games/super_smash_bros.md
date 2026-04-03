@@ -1,4 +1,4 @@
-# faker::games::SuperSmashBros
+# faker_rust::games::SuperSmashBros
 
 Data up to date as of October 2018, preceding any final announcements on *Super Smash Bros. Ultimate*.
 

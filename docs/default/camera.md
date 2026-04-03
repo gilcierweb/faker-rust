@@ -1,4 +1,4 @@
-# faker::default::camera
+# faker_rust::default::camera
 
 ```rust
 camera::brand() //=> "canon"

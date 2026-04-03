@@ -1,4 +1,4 @@
-# faker::default::business
+# faker_rust::default::business
 
 ```rust
 business::credit_card_number() //=> "1228-1221-1221-1431"

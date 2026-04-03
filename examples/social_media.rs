@@ -1,7 +1,7 @@
 //! Social Media & Web Example
 //! Demonstrates X (Twitter), Slack Emoji, Lorem, and other web-related generators
 
-use faker::{
+use faker_rust::{
     x, slack_emoji, lorem, lorem_flickr, placeholdit, omniauth,
     internet_http, marketing,
 };

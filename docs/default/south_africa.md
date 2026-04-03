@@ -1,4 +1,4 @@
-# faker::default::south_africa
+# faker_rust::default::south_africa
 
 generate south african id numbers, phone numbers and company registration
 numbers. delegates as needed to `idnumber`, `phonenumber` and

@@ -1,4 +1,4 @@
-# faker::movies::BackToTheFuture
+# faker_rust::movies::BackToTheFuture
 
 ```rust
 BackToTheFuture::character() //=> "Marty McFly"

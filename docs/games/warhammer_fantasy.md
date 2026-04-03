@@ -1,4 +1,4 @@
-# faker::games::WarhammerFantasy
+# faker_rust::games::WarhammerFantasy
 
 ```rust
 // Generate random a hero from Warhammer Fantasy

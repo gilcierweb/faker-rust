@@ -1,4 +1,4 @@
-# faker::tv_shows::BrooklynNineNine
+# faker_rust::tv_shows::BrooklynNineNine
 
 ```rust
 BrooklynNineNine::character() //=> "Jake Peralta"

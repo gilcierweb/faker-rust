@@ -1,4 +1,4 @@
-# faker::movies::HarryPotter
+# faker_rust::movies::HarryPotter
 
 Available since version 1.7.3.
 

@@ -1,4 +1,4 @@
-# faker::music::PearlJam
+# faker_rust::music::PearlJam
 
 ```rust
 PearlJam::musician() //=> "Eddie Vedder"

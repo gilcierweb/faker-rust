@@ -1,7 +1,7 @@
 //! Technology & Programming Example
 //! Demonstrates technology, internet, programming, and device generators
 
-use faker::{
+use faker_rust::{
     app, code, computer, device, electrical_components, hacker, html,
     internet, internet_http, programming_language, source, string, types,
     drone, lorem_flickr, placeholdit,
@@ -26,7 +26,7 @@ fn main() {
     println!("  Password:           {}", internet::password(12, 20, true, true));
     println!("  IPv4:               {}", internet::ip_v4());
     println!("  IPv6:               {}", internet::ip_v6());
-    println!("  MAC Address:        {}", internet::mac_address());
+    println!("  MAC Address:        {}", internet::mac_address(None));
     println!("  User Agent:         {}", internet::user_agent(None));
     println!();
 

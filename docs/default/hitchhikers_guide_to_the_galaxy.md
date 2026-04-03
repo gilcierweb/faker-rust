@@ -1,4 +1,4 @@
-# faker::default::hitchhikers_guide_to_the_galaxy
+# faker_rust::default::hitchhikers_guide_to_the_galaxy
 
 available since version 1.8.0.
 

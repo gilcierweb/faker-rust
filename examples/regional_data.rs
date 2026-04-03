@@ -1,7 +1,7 @@
 //! Regional Data Example
 //! Demonstrates regional data generators (Chile, South Africa, UK, US, NHS, etc.)
 
-use faker::{
+use faker_rust::{
     chile_rut, driving_licence, id_number, national_health_service,
     phone_number, south_africa, address,
 };

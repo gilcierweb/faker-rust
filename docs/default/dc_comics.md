@@ -1,4 +1,4 @@
-# faker::default::dc_comics
+# faker_rust::default::dc_comics
 
 a fun collection of hundreds of your favorite dc comics heroes, heroines, villains, alter egos and side characters. have fun!
 

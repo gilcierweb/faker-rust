@@ -1,4 +1,4 @@
-# faker::games::FinalFantasyXIV
+# faker_rust::games::FinalFantasyXIV
 
 ```rust
 // Generate a random character from Final Fantasy XIV

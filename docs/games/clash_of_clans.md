@@ -1,4 +1,4 @@
-# faker::games::ClashOfClans
+# faker_rust::games::ClashOfClans
 
 ```rust
 ClashOfClans::troop() //=> "Barbarian"

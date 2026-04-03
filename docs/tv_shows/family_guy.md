@@ -1,4 +1,4 @@
-# faker::tv_shows::FamilyGuy
+# faker_rust::tv_shows::FamilyGuy
 
 ```rust
 FamilyGuy::character() //=> "Peter Griffin"

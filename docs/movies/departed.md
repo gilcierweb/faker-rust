@@ -1,4 +1,4 @@
-# faker::movies::Departed
+# faker_rust::movies::Departed
 
 Available since version next.
 

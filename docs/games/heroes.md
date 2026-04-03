@@ -1,4 +1,4 @@
-# faker::games::Heroes
+# faker_rust::games::Heroes
 
 ```rust
 Heroes::name() //=> "Christian"

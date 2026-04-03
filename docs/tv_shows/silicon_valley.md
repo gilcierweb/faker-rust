@@ -1,4 +1,4 @@
-# faker::tv_shows::SiliconValley
+# faker_rust::tv_shows::SiliconValley
 
 ```rust
 SiliconValley::character // "Jian Yang"

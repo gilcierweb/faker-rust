@@ -1,4 +1,4 @@
-# faker::travel::TrainStation
+# faker_rust::travel::TrainStation
 
 ```rust
 TrainStation::name() //=> "Brockley"

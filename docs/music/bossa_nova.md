@@ -1,4 +1,4 @@
-# faker::music::BossaNova
+# faker_rust::music::BossaNova
 
 ```rust
 BossaNova::artist() //=> "Tom Jobim"

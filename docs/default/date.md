@@ -1,4 +1,4 @@
-# faker::default::date
+# faker_rust::default::date
 
 ```rust
 date::between() //=> #<date: 2014-09-24>

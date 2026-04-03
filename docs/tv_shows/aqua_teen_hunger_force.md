@@ -1,4 +1,4 @@
-# faker::tv_shows::AquaTeenHungerForce
+# faker_rust::tv_shows::AquaTeenHungerForce
 
 ```rust
 AquaTeenHungerForce::character() //=> "Master Shake"

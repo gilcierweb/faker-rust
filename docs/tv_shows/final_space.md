@@ -1,4 +1,4 @@
-# faker::tv_shows::FinalSpace
+# faker_rust::tv_shows::FinalSpace
 
 ```rust
 FinalSpace::character() //=> "Gary Goodspeed"

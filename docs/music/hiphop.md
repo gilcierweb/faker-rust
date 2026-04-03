@@ -1,4 +1,4 @@
-# faker::music::Hiphop
+# faker_rust::music::Hiphop
 
 ```rust
 Hiphop::artist() //=> "Lil Wayne"

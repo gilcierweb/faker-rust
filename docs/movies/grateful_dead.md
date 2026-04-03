@@ -1,4 +1,4 @@
-# faker::movies::GratefulDead
+# faker_rust::movies::GratefulDead
 
 ```rust
 GratefulDead::player() //=> "Jerry Garcia"

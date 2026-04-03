@@ -1,4 +1,4 @@
-# faker::tv_shows::Simpsons
+# faker_rust::tv_shows::Simpsons
 
 Available since version 1.8.0.
 

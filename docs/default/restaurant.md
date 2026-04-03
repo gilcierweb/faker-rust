@@ -1,4 +1,4 @@
-# faker::default::restaurant
+# faker_rust::default::restaurant
 
 ```rust
 restaurant::name          //=> "curry king"

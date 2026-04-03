@@ -1,4 +1,4 @@
-# faker::tv_shows::Stargate
+# faker_rust::tv_shows::Stargate
 
 ```rust
 Stargate::character() //=> "Jack O'Neill"

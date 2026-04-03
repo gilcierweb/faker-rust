@@ -1,7 +1,7 @@
 //! Fantasy & RPG Example
 //! Demonstrates fantasy, games, DnD, and superhero generators
 
-use faker::{
+use faker_rust::{
     fantasy, games, superhero, cosmere,
     dc_comics, religion, quotes,
 };

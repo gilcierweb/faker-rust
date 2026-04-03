@@ -1,4 +1,4 @@
-# faker::movies::ghostbusters
+# faker_rust::movies::ghostbusters
 
 // Ghostbusters
 

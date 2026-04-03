@@ -1,4 +1,4 @@
-# faker::creature::Cat
+# faker_rust::creature::Cat
 
 Available since version 1.6.2.
 

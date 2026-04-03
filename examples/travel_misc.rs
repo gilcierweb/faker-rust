@@ -1,7 +1,7 @@
 //! Travel & Miscellaneous Example
 //! Demonstrates Travel and other utility generators
 
-use faker::{
+use faker_rust::{
     bank, barcode, beer, blood, boolean, coffee, color, currency, date, file,
     food, gender, hacker, job, lorem, military, number, science, space,
     time, travel, university, vehicle,
@@ -27,7 +27,7 @@ fn main() {
     // Banking & Finance
     println!("💰 BANKING:");
     println!("  Bank Name:           {}", bank::name());
-    println!("  Account Number:      {}", bank::account_number(10));
+    println!("  Account Number:      {}", bank::account_number());
     println!("  IBAN:                {}", bank::iban());
     println!("  SWIFT/BIC:           {}", bank::swift_bic());
     println!();
@@ -42,14 +42,14 @@ fn main() {
     println!("📊 CODES & NUMBERS:");
     println!("  EAN-13:              {}", barcode::ean_13());
     println!("  UPC-A:               {}", barcode::upc_a());
-    println!("  ISBN-13:             {}", barcode::isbn_13());
-    println!("  Number (1-100):      {}", number::number(1, 100));
-    println!("  Decimal:             {}", number::decimal(2));
+    println!("  ISBN:                {}", barcode::isbn());
+    println!("  Number (1-100):      {}", number::number_range(1, 100));
+    println!("  Decimal:             {}", number::decimal(2, 2));
     println!();
 
     // Personal attributes
     println!("🧬 PERSONAL ATTRIBUTES:");
-    println!("  Blood Type:          {}", blood::blood_type());
+    println!("  Blood Group:         {}", blood::group());
     println!("  Gender:              {}", gender::gender());
     println!("  Boolean:             {}", boolean::boolean());
     println!();
@@ -59,9 +59,9 @@ fn main() {
     println!("  Food Dish:           {}", food::dish());
     println!("  Ingredient:          {}", food::ingredient());
     println!("  Beer Style:          {}", beer::style());
-    println!("  Beer Brand:          {}", beer::brand());
-    println!("  Coffee Blend:        {}", coffee::blend());
-    println!("  Coffee Origin:       {}", coffee::origin());
+    println!("  Beer Name:           {}", beer::name());
+    println!("  Coffee Blend:        {}", coffee::blend_name());
+    println!("  Coffee Country:      {}", coffee::country());
     println!();
 
     // Science & Space
@@ -76,14 +76,14 @@ fn main() {
     println!("🎨 COLORS:");
     println!("  Color Name:          {}", color::name());
     println!("  Hex Color:           {}", color::hex());
-    println!("  RGB:                 {}", color::rgb());
+    println!("  RGB:                 {:?}", color::rgb());
     println!();
 
     // Lorem Ipsum
     println!("📝 LOREM IPSUM:");
     println!("  Word:                {}", lorem::word());
-    println!("  Words (5):           {}", lorem::words(5).join(" "));
-    println!("  Sentence:            {}", lorem::sentence());
+    println!("  Words (5):           {}", lorem::words(5));
+    println!("  Sentence:            {}", lorem::sentence(None));
     println!();
 
     // Education & Work
@@ -98,7 +98,7 @@ fn main() {
     println!("  Army Rank:           {}", military::army_rank());
     println!("  Marines Rank:        {}", military::marines_rank());
     println!("  Vehicle Make:        {}", vehicle::make());
-    println!("  Vehicle Model:       {}", vehicle::model());
+    println!("  Vehicle Type:        {}", vehicle::car_type());
     println!();
 
     // Files & Dates
@@ -111,7 +111,7 @@ fn main() {
 
     // Time & Hacker
     println!("⏰ TIME & HACKER:");
-    println!("  Time:                {}", time::time());
+    println!("  Time Forward (1):    {}", time::forward(1));
     println!("  Hacker Phrase:       {}", hacker::phrase());
     println!();
 }

@@ -1,4 +1,4 @@
-# faker::default::json
+# faker_rust::default::json
 
 **shallow_json()** -> json formatted string
 

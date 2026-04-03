@@ -1,4 +1,4 @@
-# faker::creature::Dog
+# faker_rust::creature::Dog
 
 ```rust
 // Random dog name

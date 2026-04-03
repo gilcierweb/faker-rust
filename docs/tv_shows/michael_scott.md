@@ -1,4 +1,4 @@
-# faker::tv_shows::MichaelScott
+# faker_rust::tv_shows::MichaelScott
 
 Available since version 1.9.0.
 

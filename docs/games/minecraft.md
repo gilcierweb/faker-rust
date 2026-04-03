@@ -1,4 +1,4 @@
-# faker::games::Minecraft
+# faker_rust::games::Minecraft
 
 ```rust
 

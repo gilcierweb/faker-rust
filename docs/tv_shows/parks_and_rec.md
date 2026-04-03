@@ -1,4 +1,4 @@
-# faker::tv_shows::ParksAndRec
+# faker_rust::tv_shows::ParksAndRec
 
 ```rust
 ParksAndRec::character() //=> "Leslie Knope"

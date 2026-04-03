@@ -1,4 +1,4 @@
-# faker::movies::VForVendetta
+# faker_rust::movies::VForVendetta
 
 ```rust
 VForVendetta::character() //=> "V"

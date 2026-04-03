@@ -1,7 +1,7 @@
 //! Sports & Blockchain Example
 //! Demonstrates Sports and Cryptocurrency generators
 
-use faker::{
+use faker_rust::{
     blockchain, sports,
 };
 

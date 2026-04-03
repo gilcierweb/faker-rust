@@ -1,9 +1,9 @@
-# faker::fantasy::tolkien
+# faker_rust::fantasy::tolkien
 
 Generate data from Tolkien's legendarium.
 
 ```rust
-use faker::fantasy::tolkien;
+use faker_rust::fantasy::tolkien;
 
 // Any character from the entire Tolkien legendarium
 tolkien::character() //=> "Bungo Baggins"

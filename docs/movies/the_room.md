@@ -1,4 +1,4 @@
-# faker::movies::TheRoom
+# faker_rust::movies::TheRoom
 
 ```rust
 TheRoom::actor() //=> "Tommy Wiseau"

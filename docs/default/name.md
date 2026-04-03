@@ -1,4 +1,4 @@
-# faker::default::name
+# faker_rust::default::name
 
 ```rust
 name::name             //=> "tyshawn johns sr."

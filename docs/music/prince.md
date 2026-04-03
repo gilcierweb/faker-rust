@@ -1,4 +1,4 @@
-# faker::music::Prince
+# faker_rust::music::Prince
 
 ```rust
 Prince::lyric() //=> "It's been 7 hours and 16 days since you took your love away."

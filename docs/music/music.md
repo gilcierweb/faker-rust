@@ -1,4 +1,4 @@
-# faker::music::music
+# faker_rust::music::music
 
 // Music
 

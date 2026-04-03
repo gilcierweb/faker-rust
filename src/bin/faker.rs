@@ -13,7 +13,7 @@
 //!   faker list                    # List all available generators
 
 use clap::{Parser, Subcommand};
-use faker::{
+use faker_rust::{
     address, company, internet, name, phone_number, Faker,
     games, movies, tv_shows,
 };

@@ -1,4 +1,4 @@
-# faker::default::app
+# faker_rust::default::app
 
 available since version 1.4.3.
 

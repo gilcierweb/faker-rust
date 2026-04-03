@@ -1,9 +1,9 @@
-# faker::kpop
+# faker_rust::kpop
 
 Generate K-pop data.
 
 ```rust
-use faker::kpop;
+use faker_rust::kpop;
 
 kpop::i_groups()      //=> "Seo Taiji and Boys"      // 1990's OG groups
 kpop::ii_groups()     //=> "Girls' Generation"       // 2000's groups

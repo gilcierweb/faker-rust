@@ -1,4 +1,4 @@
-# faker::games::HalfLife
+# faker_rust::games::HalfLife
 
 ```rust
 // Any character from the game

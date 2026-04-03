@@ -1,4 +1,4 @@
-# faker::books::lovecraft
+# faker_rust::books::lovecraft
 
 // Books::Lovecraft
 

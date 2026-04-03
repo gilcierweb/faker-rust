@@ -1,4 +1,4 @@
-# faker::default::internet
+# faker_rust::default::internet
 
 ```rust
 internet::user() //=> { username: 'alexie', email: 'trudie@grant::test' }
@@ -23,10 +23,10 @@ internet::password() //=> "*%nkonjsh4"
 
 internet::domain_name() //=> "herzog::example"
 internet::domain_name() //=> "tillman::kohler::test"
-internet::domain_name() //=> "ebert::faker::example"
+internet::domain_name() //=> "ebert::faker_rust::example"
 internet::domain_name()  //=> "faker-ruby::org"
 internet::domain_name() //=> "foo::faker-ruby::org"
-internet::domain_name()  //=> "faker::faker-ruby::org"
+internet::domain_name()  //=> "faker_rust::faker-ruby::org"
 
 internet::domain_word() //=> "haleyziemann"
 

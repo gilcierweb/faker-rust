@@ -1,4 +1,4 @@
-# faker::blockchain::Bitcoin
+# faker_rust::blockchain::Bitcoin
 
 ```rust
 Bitcoin::address() //=> "1HUoGjmgChmnxxYhz87YytV4gVjfPaExmh"

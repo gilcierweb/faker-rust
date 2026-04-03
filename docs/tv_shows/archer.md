@@ -1,4 +1,4 @@
-# faker::tv_shows::Archer
+# faker_rust::tv_shows::Archer
 
 ```rust
 Archer::character() //=> "Sterling Archer"

@@ -2,47 +2,47 @@ fn main() {
     println!("=== Testing faker-rust ===");
     println!();
 
-    println!("Name: {}", faker::name::name());
-    println!("Email: {}", faker::internet::email(None, None, None));
-    println!("City: {}", faker::address::city());
-    println!("Company: {}", faker::company::name());
-    println!("Phone: {}", faker::phone_number::phone_number());
-    println!("Job title: {}", faker::job::title());
-    println!("University: {}", faker::university::name());
-    println!("Bank: {}", faker::bank::name());
-    println!("Gender: {}", faker::gender::gender());
+    println!("Name: {}", faker_rust::name::name());
+    println!("Email: {}", faker_rust::internet::email(None, None, None));
+    println!("City: {}", faker_rust::address::city());
+    println!("Company: {}", faker_rust::company::name());
+    println!("Phone: {}", faker_rust::phone_number::phone_number());
+    println!("Job title: {}", faker_rust::job::title());
+    println!("University: {}", faker_rust::university::name());
+    println!("Bank: {}", faker_rust::bank::name());
+    println!("Gender: {}", faker_rust::gender::gender());
     println!(
         "Commerce: {} - {}",
-        faker::commerce::department(),
-        faker::commerce::product_name()
+        faker_rust::commerce::department(),
+        faker_rust::commerce::product_name()
     );
 
     // New modules
     println!("\n--- New Modules ---");
-    println!("Book title: {}", faker::books::book::title());
-    println!("Book author: {}", faker::books::book::author());
-    println!("Movie: {}", faker::movies::movie::title());
-    println!("Music band: {}", faker::music::music::band());
-    println!("Music album: {}", faker::music::music::album());
-    println!("Music genre: {}", faker::music::music::genre());
-    println!("Game: {}", faker::games::game::title());
-    println!("Device: {}", faker::device::model_name());
-    println!("Vehicle: {}", faker::vehicle::manufacturer());
-    println!("Color: {}", faker::color::name());
-    println!("Boolean: {}", faker::boolean::boolean());
-    println!("App name: {}", faker::app::name());
-    println!("Crypto coin: {}", faker::crypto::coin());
-    println!("File extension: {}", faker::file::extension());
-    println!("Food dish: {}", faker::food::dish());
-    println!("Science element: {}", faker::science::element());
-    println!("Space planet: {}", faker::space::planet());
-    println!("Avatar character: {}", faker::avatar::character());
-    println!("Beer name: {}", faker::beer::name());
-    println!("Coffee blend: {}", faker::coffee::blend_name());
-    println!("Chuck Norris fact: {}", faker::chuck_norris::fact());
-    println!("Code ISBN: {}", faker::code::isbn());
-    println!("Currency name: {}", faker::currency::name());
-    println!("Time (now): {}", faker::time::backward(1));
+    println!("Book title: {}", faker_rust::books::book::title());
+    println!("Book author: {}", faker_rust::books::book::author());
+    println!("Movie: {}", faker_rust::movies::movie::title());
+    println!("Music band: {}", faker_rust::music::music::band());
+    println!("Music album: {}", faker_rust::music::music::album());
+    println!("Music genre: {}", faker_rust::music::music::genre());
+    println!("Game: {}", faker_rust::games::game::title());
+    println!("Device: {}", faker_rust::device::model_name());
+    println!("Vehicle: {}", faker_rust::vehicle::manufacturer());
+    println!("Color: {}", faker_rust::color::name());
+    println!("Boolean: {}", faker_rust::boolean::boolean());
+    println!("App name: {}", faker_rust::app::name());
+    println!("Crypto coin: {}", faker_rust::crypto::coin());
+    println!("File extension: {}", faker_rust::file::extension());
+    println!("Food dish: {}", faker_rust::food::dish());
+    println!("Science element: {}", faker_rust::science::element());
+    println!("Space planet: {}", faker_rust::space::planet());
+    println!("Avatar character: {}", faker_rust::avatar::character());
+    println!("Beer name: {}", faker_rust::beer::name());
+    println!("Coffee blend: {}", faker_rust::coffee::blend_name());
+    println!("Chuck Norris fact: {}", faker_rust::chuck_norris::fact());
+    println!("Code ISBN: {}", faker_rust::code::isbn());
+    println!("Currency name: {}", faker_rust::currency::name());
+    println!("Time (now): {}", faker_rust::time::backward(1));
 
     println!("\nAll tests passed!");
 }

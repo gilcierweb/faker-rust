@@ -1,4 +1,4 @@
-# faker::japanese_media::Naruto
+# faker_rust::japanese_media::Naruto
 
 ```rust
 Naruto::character() //=> "Naruto Uzumaki"

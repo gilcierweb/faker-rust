@@ -1,4 +1,4 @@
-# faker::japanese_media::Doraemon
+# faker_rust::japanese_media::Doraemon
 
 ```rust
 Doraemon::character() //=> "Nobita"

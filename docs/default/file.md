@@ -1,4 +1,4 @@
-# faker::default::file
+# faker_rust::default::file
 
 available since version 1.6.4.
 

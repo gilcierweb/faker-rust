@@ -1,4 +1,4 @@
-# faker::blockchain::Ethereum
+# faker_rust::blockchain::Ethereum
 
 Available since version 1.9.0.
 

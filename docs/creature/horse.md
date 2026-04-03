@@ -1,4 +1,4 @@
-# faker::creature::Horse
+# faker_rust::creature::Horse
 
 ```rust
 Horse::name() //=> "Noir"

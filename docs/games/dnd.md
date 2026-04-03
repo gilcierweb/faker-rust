@@ -1,4 +1,4 @@
-# faker::games::DnD
+# faker_rust::games::DnD
 
 ```rust
 DnD::alignment() //=> "Lawful Neutral"

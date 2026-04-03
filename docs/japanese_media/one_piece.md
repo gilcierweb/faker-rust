@@ -1,4 +1,4 @@
-# faker::japanese_media::OnePiece
+# faker_rust::japanese_media::OnePiece
 
 ```rust
 OnePiece::character() //=> "Monkey D. Luffy"

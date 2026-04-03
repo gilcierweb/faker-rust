@@ -1,4 +1,4 @@
-# faker::games::HeroesOfTheStorm
+# faker_rust::games::HeroesOfTheStorm
 
 ```rust
 HeroesOfTheStorm::battleground() //=> "Towers of Doom"

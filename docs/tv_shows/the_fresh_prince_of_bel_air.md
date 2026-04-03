@@ -1,4 +1,4 @@
-# faker::tv_shows::TheFreshPrinceOfBelAir
+# faker_rust::tv_shows::TheFreshPrinceOfBelAir
 
 ```rust
 TheFreshPrinceOfBelAir::character() //=> "Will Smith"

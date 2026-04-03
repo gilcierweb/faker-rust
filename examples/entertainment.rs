@@ -1,7 +1,7 @@
 //! Entertainment Example
 //! Demonstrates Movies, TV Shows, Games, and Music generators
 
-use faker::{
+use faker_rust::{
     games, movies, music, tv_shows,
 };
 
@@ -11,9 +11,7 @@ fn main() {
     // Movies
     println!("🎬 MOVIES:");
     println!("  Star Wars Character:    {}", movies::star_wars::character());
-    println!("  Star Wars Planet:       {}", movies::star_wars::planet());
     println!("  Harry Potter Character: {}", movies::harry_potter::character());
-    println!("  Harry Potter House:     {}", movies::harry_potter::house());
     println!("  LOTR Character:         {}", movies::lord_of_the_rings::character());
     println!("  Movie Quote:            {}", movies::lebowski::quote());
     println!();
@@ -33,11 +31,11 @@ fn main() {
     // Games
     println!("🎮 GAMES:");
     println!("  Pokemon:                {}", games::pokemon::name());
-    println!("  Pokemon Type:           {}", games::pokemon::pokemon_type());
+    println!("  Pokemon Move:           {}", games::pokemon::move_name());
     println!("  Zelda Character:        {}", games::zelda::character());
     println!("  Mario Character:        {}", games::super_mario::character());
     println!("  Minecraft Item:         {}", games::minecraft::item());
-    println!("  DnD Class:              {}", games::dnd::class());
+    println!("  DnD Class:              {}", games::dnd::klass());
     println!("  DnD Race:               {}", games::dnd::race());
     println!("  WoW Race:               {}", games::world_of_warcraft::race());
     println!("  Street Fighter:         {}", games::street_fighter::character());

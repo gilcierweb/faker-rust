@@ -1,4 +1,4 @@
-# faker::default::markdown
+# faker_rust::default::markdown
 
 available since version 1.8.0.
 

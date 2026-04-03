@@ -1,4 +1,4 @@
-# faker::default::number
+# faker_rust::default::number
 
 ```rust
 number::number() //=> 1968353479

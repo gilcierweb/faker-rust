@@ -1,9 +1,9 @@
-# faker::religion::bible
+# faker_rust::religion::bible
 
 Generate Bible data.
 
 ```rust
-use faker::religion::bible;
+use faker_rust::religion::bible;
 
 bible::character() //=> "Jesus"
 

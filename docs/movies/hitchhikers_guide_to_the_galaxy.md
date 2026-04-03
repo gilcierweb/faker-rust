@@ -1,4 +1,4 @@
-# faker::movies::HitchhikersGuideToTheGalaxy
+# faker_rust::movies::HitchhikersGuideToTheGalaxy
 
 Available since version 1.8.0.
 

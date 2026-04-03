@@ -1,4 +1,4 @@
-# faker::tv_shows::TheOffice
+# faker_rust::tv_shows::TheOffice
 
 ```rust
 TheOffice::character() //=> "Michael Scott"

@@ -1,4 +1,4 @@
-# faker::default::phone_number
+# faker_rust::default::phone_number
 
 phone numbers generate north american numbering plan formats (with +1 as the country code). for different countries formats, see [phone numbers and locales](#phone-number-and-locales).
 

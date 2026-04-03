@@ -1,4 +1,4 @@
-# faker::tv_shows::VentureBros
+# faker_rust::tv_shows::VentureBros
 
 ```rust
 VentureBros::character() //=> "Scaramantula"

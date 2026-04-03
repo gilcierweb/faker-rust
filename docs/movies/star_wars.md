@@ -1,9 +1,9 @@
-# faker::movies::star_wars
+# faker_rust::movies::star_wars
 
 Generate Star Wars data.
 
 ```rust
-use faker::movies::star_wars;
+use faker_rust::movies::star_wars;
 
 star_wars::call_squadron() //=> "Green"
 

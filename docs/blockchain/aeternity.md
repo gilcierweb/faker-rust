@@ -1,4 +1,4 @@
-# faker::blockchain::Aeternity
+# faker_rust::blockchain::Aeternity
 
 ```rust
 Aeternity::address() //=> "ak_zvU8YQLagjcfng7Tg8yCdiZ1rpiWNp1PBn3vtUs44utSvbJVR"

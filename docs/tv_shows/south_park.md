@@ -1,4 +1,4 @@
-# faker::tv_shows::SouthPark
+# faker_rust::tv_shows::SouthPark
 
 ```rust
 SouthPark::character() //=> "Mr. Garrison"

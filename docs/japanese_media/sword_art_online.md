@@ -1,4 +1,4 @@
-# faker::japanese_media::SwordArtOnline
+# faker_rust::japanese_media::SwordArtOnline
 
 Available since version 1.9.0.
 

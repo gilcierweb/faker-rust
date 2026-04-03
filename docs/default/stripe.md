@@ -1,4 +1,4 @@
-# faker::default::stripe
+# faker_rust::default::stripe
 
 test stripe transactions without hardcoding card numbers and tokens
 

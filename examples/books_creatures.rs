@@ -1,7 +1,7 @@
 //! Books & Creatures Example
 //! Demonstrates Book and Animal generators
 
-use faker::{
+use faker_rust::{
     books, creature,
 };
 

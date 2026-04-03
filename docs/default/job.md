@@ -1,4 +1,4 @@
-# faker::default::job
+# faker_rust::default::job
 
 ```rust
 job::title() //=> "lead accounting associate"

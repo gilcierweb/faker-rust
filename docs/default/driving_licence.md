@@ -1,4 +1,4 @@
-# faker::default::driving_licence
+# faker_rust::default::driving_licence
 
 ```rust
 drivinglicence::british_driving_licence        //=> "mcder712081vf7ek"

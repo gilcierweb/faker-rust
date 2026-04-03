@@ -1,4 +1,4 @@
-# faker::tv_shows::DumbAndDumber
+# faker_rust::tv_shows::DumbAndDumber
 
 ```rust
 DumbAndDumber::actor() //=> "Jim Carrey"

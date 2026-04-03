@@ -1,4 +1,4 @@
-# faker::games::Witcher
+# faker_rust::games::Witcher
 
 ```rust
 Witcher::character // "Triss Merigold"

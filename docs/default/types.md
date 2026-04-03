@@ -1,4 +1,4 @@
-# faker::default::types
+# faker_rust::default::types
 
 ```rust
 types::rb_string() //=> "foobar"

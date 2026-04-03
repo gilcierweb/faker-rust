@@ -1,4 +1,4 @@
-# faker::travel::Airport
+# faker_rust::travel::Airport
 
 ```rust
 Airport::name() //=> "Los Angeles International Airport"

@@ -1,4 +1,4 @@
-# faker::games::Dota
+# faker_rust::games::Dota
 
 Available since version 1.9.0.
 

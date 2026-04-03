@@ -1,7 +1,7 @@
 //! Education & Science Example
 //! Demonstrates educational and scientific data generators
 
-use faker::{
+use faker_rust::{
     color, greek_philosophers, measurement, mountain, science,
     space, university, verb, adjective,
 };

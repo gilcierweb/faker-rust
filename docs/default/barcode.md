@@ -1,4 +1,4 @@
-# faker::default::barcode
+# faker_rust::default::barcode
 
 generates ean, upc, isbn, ismn, issn format barcode with check digit attached at last
 

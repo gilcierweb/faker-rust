@@ -1,4 +1,4 @@
-# faker::movies::Hobbit
+# faker_rust::movies::Hobbit
 
 Available since version 1.8.0.
 

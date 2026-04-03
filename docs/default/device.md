@@ -1,4 +1,4 @@
-# faker::default::device
+# faker_rust::default::device
 
 available since version 1.9.0.
 

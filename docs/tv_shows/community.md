@@ -1,4 +1,4 @@
-# faker::tv_shows::Community
+# faker_rust::tv_shows::Community
 
 Available since version 1.9.0.
 

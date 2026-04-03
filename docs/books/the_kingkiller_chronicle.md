@@ -1,4 +1,4 @@
-# faker::books::the_kingkiller_chronicle
+# faker_rust::books::the_kingkiller_chronicle
 
 // Books::TheKingkillerChronicle
 

@@ -1,4 +1,4 @@
-# faker::tv_shows::TheExpanse
+# faker_rust::tv_shows::TheExpanse
 
 ```rust
 TheExpanse::character() //=> "Jim Holden"

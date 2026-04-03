@@ -1,4 +1,4 @@
-# faker::quotes::quote
+# faker_rust::quotes::quote
 
 // Quote
 

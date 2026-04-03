@@ -1,4 +1,4 @@
-# faker::movies::PrincessBride
+# faker_rust::movies::PrincessBride
 
 Available since version 1.9.0.
 

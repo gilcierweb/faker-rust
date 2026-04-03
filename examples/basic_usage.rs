@@ -1,7 +1,7 @@
 //! Basic Usage Example
 //! Demonstrates core generators: Name, Address, Internet, Phone, Company
 
-use faker::{
+use faker_rust::{
     address, company, internet, name, phone_number,
     Faker,
 };

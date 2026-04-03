@@ -1,4 +1,4 @@
-# faker::default::avatar
+# faker_rust::default::avatar
 
 ```rust
 avatar::image() //=> "https://robohash::org/sitsequiquia::png?size=300x300&set=set1"

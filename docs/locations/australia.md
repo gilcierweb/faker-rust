@@ -1,4 +1,4 @@
-# faker::locations::Australia
+# faker_rust::locations::Australia
 
 ```rust
 Australia::location // "Sydney"

@@ -1,4 +1,4 @@
-# faker::sports::sport
+# faker_rust::sports::sport
 
 // Sport
 

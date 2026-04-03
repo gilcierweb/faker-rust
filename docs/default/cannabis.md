@@ -1,4 +1,4 @@
-# faker::default::cannabis
+# faker_rust::default::cannabis
 
 available since version 1.9.0.
 

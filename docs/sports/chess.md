@@ -1,4 +1,4 @@
-# faker::sports::Chess
+# faker_rust::sports::Chess
 
 ```rust
 Chess::player() //=> "Emanuel Lasker"

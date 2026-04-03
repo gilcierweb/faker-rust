@@ -1,7 +1,7 @@
 //! Japanese Media Example
 //! Demonstrates Anime and Manga generators
 
-use faker::japanese_media;
+use faker_rust::japanese_media;
 
 fn main() {
     println!("=== Faker-Rust Japanese Media Examples ===\n");

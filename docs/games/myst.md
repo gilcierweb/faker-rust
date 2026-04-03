@@ -1,4 +1,4 @@
-# faker::games::Myst
+# faker_rust::games::Myst
 
 Available since version 1.9.0.
 

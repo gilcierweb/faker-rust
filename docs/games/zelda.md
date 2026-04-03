@@ -1,4 +1,4 @@
-# faker::games::Zelda
+# faker_rust::games::Zelda
 
 Available since version 1.7.3.
 

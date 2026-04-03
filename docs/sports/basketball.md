@@ -1,4 +1,4 @@
-# faker::sports::Basketball
+# faker_rust::sports::Basketball
 
 ```rust
 Basketball::team() //=> "Golden State Warriors"

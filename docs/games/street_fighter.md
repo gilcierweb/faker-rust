@@ -1,4 +1,4 @@
-# faker::games::StreetFighter
+# faker_rust::games::StreetFighter
 
 ```rust
 

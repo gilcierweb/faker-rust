@@ -1,4 +1,4 @@
-# faker::games::Pokemon
+# faker_rust::games::Pokemon
 
 Available since version 1.7.0.
 
