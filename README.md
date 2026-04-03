@@ -56,11 +56,11 @@ Then run `cargo build`.
 ## Usage
 
 ```rust
-use faker_rust_rust_temp::name;
-use faker_rust_rust_temp::internet;
-use faker_rust_rust_temp::address;
-use faker_rust_rust_temp::lorem;
-use faker_rust_rust_temp::programming_language;
+use faker_rust::name;
+use faker_rust::internet;
+use faker_rust::address;
+use faker_rust::lorem;
+use faker_rust::programming_language;
 
 fn main() {
     // Person
@@ -217,8 +217,8 @@ To see the full list, check out the [GENERATORS](./GENERATORS.md) document.
 Faker supports seeding of its pseudo-random number generator to provide deterministic output:
 
 ```rust
-use faker_rust_rust_temp::Faker;
-use faker_rust_rust_temp::name;
+use faker_rust::Faker;
+use faker_rust::name;
 
 fn main() {
     Faker::set_seed(42);
