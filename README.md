@@ -1,6 +1,7 @@
 # Faker-Rust [![Crates.io][crates-badge]][crates] [![Documentation][docs-badge]][docs] [![License: MIT][license-badge]][license]
 
 <div align="center">
+  <img src="assets/images/logo.png" width="400"/>
   <p>Generate realistic fake data for testing, demos, and populating your database during development.</p>
   <p><em>Inspired by the legendary <a href="https://github.com/faker-ruby/faker">Ruby Faker gem</a></em></p>
 </div>
@@ -251,3 +252,24 @@ Faker-Rust is inspired by the legendary [Ruby Faker gem](https://github.com/fake
 ## License
 
 This code is free to use under the terms of the MIT license.
+
+[MIT License](https://github.com/faker-rust/faker-rust/blob/main/LICENSE)
+
+## Links
+https://github.com/faker-rust/faker-rust
+
+https://github.com/faker-rust/faker-rust/issues
+
+https://github.com/faker-rust/faker-rust/discussions
+
+https://github.com/faker-rust/faker-rust/pulls
+
+https://github.com/faker-rust/faker-rust/wiki
+
+https://github.com/faker-rust/faker-rust/blob/main/SECURITY.md
+
+https://github.com/faker-rust/faker-rust/blob/main/CONTRIBUTING.md
+
+https://github.com/faker-rust/faker-rust/blob/main/CODE_OF_CONDUCT.md
+
+https://gilcierweb.com.br
