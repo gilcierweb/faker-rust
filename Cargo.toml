@@ -28,7 +28,7 @@ chrono = "0.4"
 clap = { version = "4", features = ["derive"] }
 
 [[bin]]
-name = "faker"
-path = "src/bin/faker.rs"
+name = "faker-rust"
+path = "src/bin/faker_rust.rs"
 
 [dev-dependencies]
