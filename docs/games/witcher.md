@@ -1,22 +1,21 @@
-
 # faker::games::Witcher
 
 ```rust
-Witcher.character # => "Triss Merigold"
+Witcher::character // "Triss Merigold"
 
-Witcher.witcher # => "Geralt of Rivia"
+Witcher::witcher // "Geralt of Rivia"
 
-Witcher.location # => "Novigrad"
+Witcher::location // "Novigrad"
 
-Witcher.school # => "Wolf"
+Witcher::school // "Wolf"
 
-Witcher.quote # => "No Lollygagin'!"
+Witcher::quote // "No Lollygagin'!"
 
-Witcher.monster # => "Katakan"
+Witcher::monster // "Katakan"
 
-Witcher.sign # => "Igni"
+Witcher::sign // "Igni"
 
-Witcher.potion # => "Gadwall"
+Witcher::potion // "Gadwall"
 
-Witcher.book # => "Sword of Destiny"
+Witcher::book // "Sword of Destiny"
 ```

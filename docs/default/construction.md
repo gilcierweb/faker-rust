@@ -1,24 +1,17 @@
+# faker::default::construction
 
-# faker::Construction
-
-Available in future versions of faker
+available in future versions of faker
 
 ```rust
-# Random material
-Construction::material() //=> "Wood"
+construction::material() //=> "wood"
 
-# Random subcontract category
-Construction::subcontract_category() //=> "Curb & Gutter"
+construction::subcontract_category() //=> "curb & gutter"
 
-# Random heavy_equipment
-Construction::heavy_equipment() //=> "Excavator"
+construction::heavy_equipment() //=> "excavator"
 
-# Random trade
-Construction::trade() //=> "Carpenter"
+construction::trade() //=> "carpenter"
 
-# Random standard_cost_code
-Construction::standard_cost_code() //=> "1-000 - Purpose"
+construction::standard_cost_code() //=> "1-000 - purpose"
 
-# Random role
-Construction::role() //=> "Engineer"
+construction::role() //=> "engineer"
 ```

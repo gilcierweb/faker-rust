@@ -1,21 +1,15 @@
+# faker::default::university
 
-# faker::University
-
-Available since version 1.5.0.
+available since version 1.5.0.
 
 ```rust
-# Random University Name
-University::name() //=> "South Texas College"
+university::name() //=> "south texas college"
 
-# Random University Prefix
-University::prefix() //=> "North"
+university::prefix() //=> "north"
 
-# Random University Suffix
-University::suffix() //=> "Institute"
+university::suffix() //=> "institute"
 
-# Random Greek Organization
-University::greek_organization() //=> "ABΓ"
+university::greek_organization() //=> "abΓ"
 
-# Greek Alphabet
-University::greek_alphabet() //=> ["Α", "B", "Γ", "Δ", ...]
+university::greek_alphabet() //=> ["Α", "b", "Γ", "Δ", ...]
 ```

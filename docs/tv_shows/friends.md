@@ -1,4 +1,3 @@
-
 # faker::tv_shows::Friends
 
 Available since version 1.7.3.

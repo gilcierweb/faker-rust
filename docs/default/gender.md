@@ -1,12 +1,11 @@
+# faker::default::gender
 
-# faker::Gender
-
-Available since version 1.9.0.
+available since version 1.9.0.
 
 ```rust
-Gender::type() //=> "Non-binary"
+gender::type() //=> "non-binary"
 
-Gender::binary_type() //=> "Female"
+gender::binary_type() //=> "female"
 
-Gender::short_binary_type() //=> "f"
+gender::short_binary_type() //=> "f"
 ```

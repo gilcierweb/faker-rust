@@ -1,4 +1,3 @@
-
 # faker::sports::Basketball
 
 ```rust

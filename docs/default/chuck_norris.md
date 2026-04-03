@@ -1,8 +1,7 @@
+# faker::default::chuck_norris
 
-# faker::ChuckNorris
-
-Available since version 1.6.4.
+available since version 1.6.4.
 
 ```rust
-ChuckNorris::fact() //=> "Chuck Norris can solve the Towers of Hanoi in one move."
+chucknorris::fact() //=> "chuck norris can solve the towers of hanoi in one move."
 ```

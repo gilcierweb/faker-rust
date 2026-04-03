@@ -1,20 +1,17 @@
+# faker::default::world_cup
 
-# faker::WorldCup
-
-Available since version 1.9.0.
+available since version 1.9.0.
 
 ```rust
-WorldCup::team() //=> "South Korea"
+worldcup::team() //=> "south korea"
 
-WorldCup::stadium() //=> "Ekaterinburg Arena"
+worldcup::stadium() //=> "ekaterinburg arena"
 
-WorldCup::city() //=> "Saint Petersburg"
+worldcup::city() //=> "saint petersburg"
 
-# Keyword arguments: group
-WorldCup::group() //=> "Egypt"
-WorldCup:;group(group: 'group_A') #=> "Saudi Arabia"
+worldcup::group() //=> "egypt"
+worldcup::group() //=> "saudi arabia"
 
-# Keyword arguments: country, type
-WorldCup::roster() //=> "Héctor Cúper"
-WorldCup:;roster(country: 'Russia', type: 'coach') #=> "Stanislav Cherchesov"
+worldcup::roster() //=> "héctor cúper"
+worldcup::roster() //=> "stanislav cherchesov"
 ```

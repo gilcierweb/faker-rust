@@ -1,10 +1,13 @@
+# faker::religion::bible
 
-# faker::religion::Bible
+Generate Bible data.
 
 ```rust
-// faker::religion::Bible::character() //=> "Jesus"
+use faker::religion::bible;
 
-// faker::religion::Bible::location() //=> "Nasareth"
+bible::character() //=> "Jesus"
 
-// faker::religion::Bible::quote() //=> "Seek first the kingdom of God "
+bible::location() //=> "Nazareth"
+
+bible::quote() //=> "Seek first the kingdom of God"
 ```

@@ -1,4 +1,3 @@
-
 # faker::sports::Mountaineering
 
 ```rust

@@ -1,7 +1,9 @@
-# Faker::Movie
+# faker::movies::movie
+
+// Movie
 
 ```rust
-Faker::Movie::title() //=> "The Lord of the Rings: The Two Towers"
+Movie::title() //=> "The Lord of the Rings: The Two Towers"
 
-Faker::Movie::quote() //=> "Bumble bee tuna"
+Movie::quote() //=> "Bumble bee tuna"
 ```

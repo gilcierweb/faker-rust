@@ -1,10 +1,9 @@
+# faker::default::appliance
 
-# faker::Appliance
-
-Available since version 1.9.0.
+available since version 1.9.0.
 
 ```rust
-Appliance::brand() //=> "Bosch"
+appliance::brand() //=> "bosch"
 
-Appliance::equipment() //=> "Appliance plug"
+appliance::equipment() //=> "appliance plug"
 ```

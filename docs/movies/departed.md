@@ -1,4 +1,3 @@
-
 # faker::movies::Departed
 
 Available since version next.

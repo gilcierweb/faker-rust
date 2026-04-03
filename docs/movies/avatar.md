@@ -1,4 +1,3 @@
-
 # faker::movies::Avatar
 
 ```rust

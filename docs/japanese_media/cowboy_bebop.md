@@ -1,11 +1,12 @@
+# faker::japanese_media::cowboy_bebop
 
-# faker::japanese_media::CowboyBebop
-
-Available since version @faker.version next
+Generate Cowboy Bebop data.
 
 ```rust
-CowboyBebop::character() //=> "Spike Spiegel"
-CowboyBebop::episode() //=> "Honky Tonk Women"
-CowboyBebop::song() //=> "Live in Baghdad"
-CowboyBebop::quote() //=> "Bang!"
+use faker::japanese_media::cowboy_bebop;
+
+cowboy_bebop::character() //=> "Spike Spiegel"
+cowboy_bebop::episode() //=> "Honky Tonk Women"
+cowboy_bebop::song() //=> "Live in Baghdad"
+cowboy_bebop::quote() //=> "Bang!"
 ```

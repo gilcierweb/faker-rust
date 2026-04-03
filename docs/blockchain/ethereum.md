@@ -1,4 +1,3 @@
-
 # faker::blockchain::Ethereum
 
 Available since version 1.9.0.

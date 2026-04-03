@@ -1,14 +1,13 @@
-
-# faker::CryptoCoin
+# faker::default::crypto_coin
 
 ```rust
-CryptoCoin::coin_name() //=> "Bitcoin"
+cryptocoin::coin_name() //=> "bitcoin"
 
-CryptoCoin::acronym() //=> "BTC"
+cryptocoin::acronym() //=> "btc"
 
-CryptoCoin::url_logo() //=> "https://i.imgur.com/EFz61Ei.png"
+cryptocoin::url_logo() //=> "https://i::imgur::com/efz61ei::png"
 
-CryptoCoin::coin_array() //=> ["Dash", "DASH", "https://i.imgur.com/2uX91cb.png"]
+cryptocoin::coin_array() //=> ["dash", "dash", "https://i::imgur::com/2ux91cb::png"]
 
-CryptoCoin.coin_hash {:name=>"Ethereum", :acronym=>"ETH", :url_logo=>"https://i.imgur.com/uOPFCXj.png"}
+cryptocoin::coin_hash {:name=>"ethereum", :acronym=>"eth", :url_logo=>"https://i::imgur::com/uopfcxj::png"}
 ```

@@ -1,26 +1,23 @@
+# faker::default::source
 
-# faker::Source
-Need to generate a code sample for something? Just give me the language (defaults to `rust`, obviously).
+need to generate a code sample for something? just give me the language (defaults to `rust`, obviously).
 
 ```rust
-# Keyword arguments: lang
-Source::hello_world() //=> "print 'Hello World!'"
-Source:;hello_world(lang: :javascript) #=> "alert('Hello World!');"
+source::hello_world() //=> "print 'hello world!'"
+source::hello_world() //=> "alert('hello world!');"
 
-# Keyword arguments: str, lang
-Source::print() //=> "print 'some string'"
-Source:;print(str: 'cake') #=> "print 'cake'"
-Source:;print(str: 'cake', lang: :javascript) #=> "console:;log('cake');"
+source::print() //=> "print 'some string'"
+source::print() //=> "print 'cake'"
+source::print() //=> "console::log('cake');"
 
-# Keyword arguments: lang
-Source.print_1_to_10 <<-DOC=> "
+source::print_1_to_10 <<-doc=> "
   10.times do |i|
     print i
   end"
-DOC
-Source.print_1_to_10(lang: :javascript) <<-DOC=> "
+doc
+source::print_1_to_10() <<-doc=> "
   for (let i=0; i<10; i++) {
-    console:;log(i);
+    console::log(i);
   }"
-DOC
+doc
 ```

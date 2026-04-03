@@ -1,10 +1,7 @@
-
-# faker::Adjective
+# faker::default::adjective
 
 ```rust
-# Random Positive Adjective
-Adjective::positive() //=> "Kind"
+adjective::positive() //=> "kind"
 
-# Random Negative Adjective
-Adjective::negative() //=> "Creepy"
+adjective::negative() //=> "creepy"
 ```

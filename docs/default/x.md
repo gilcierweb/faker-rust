@@ -1,23 +1,21 @@
+# faker::default::x
 
-# faker::X
+generates approximate x (previously twitter) user and tweet objects, based on x's api v2 responses.
 
-Generates approximate X (previously Twitter) user and tweet objects, based on X's API v2 responses.
-
-The generators are not a comprehensive match of the API. However, they are enough to create a demo app using X’s user or tweet data, for example.
+the generators are not a comprehensive match of the api. however, they are enough to create a demo app using x’s user or tweet data, for example.
 
 #
-# faker::X.user
 
-Produces a random X user based on X's v2 API:
+produces a random x user based on x's v2 api:
 
 ```rust
-X.user =>
+x::user =>
 {
   data: [
     {
       author_id: "5688134805624042468",
       id: "2007502004337242257",
-      text: "Qui sint magni vel."
+      text: "qui sint magni vel."
     }
   ],
   includes: {
@@ -33,19 +31,19 @@ X.user =>
         pinned_tweet_id: "1702549793917523469",
         entities: {
           url: {
-            urls: [ { url: "https://t.co/0iz5wx1ysh", expanded_url: "http://example.com/stuart", display_url: "example.com/stuart" }]
+            urls: [ { url: "https://t::co/0iz5wx1ysh", expanded_url: "http://example::com/stuart", display_url: "example::com/stuart" }]
           },
-          description: { hashtags: [{tag: "Adipisci"}] }
+          description: { hashtags: [{tag: "adipisci"}] }
         },
-        description: "Est est laborum dolores.",
-        name: "Kimberli Ullrich Jr.",
+        description: "est est laborum dolores.",
+        name: "kimberli ullrich jr.",
         verified: false,
         location: "104.82.135.3",
         id: "5688134805624042468",
         protected: false,
-        url: "https://t.co/lqsqf67cx5",
-        profile_image_url: "https://robohash.org/990174365255127568.png?size=48x48&set=set1",
-        created_at: "2018-07-11T00:00:00+00:00"
+        url: "https://t::co/lqsqf67cx5",
+        profile_image_url: "https://robohash::org/990174365255127568.png?size=48x48&set=set1",
+        created_at: "2018-07-11t00:00:00+00:00"
       }
     ]
   }
@@ -53,28 +51,26 @@ X.user =>
 ```
 
 #
-# faker::X.tweet
 
-Produces a random X tweet with default attributes. Available extensions can be returned with `include_media` and `include_user`:
+produces a random x tweet with default attributes. available extensions can be returned with `include_media` and `include_user`:
 
 ```rust
-# Keyword arguments: include_user, include_media
-X::tweet() //=> { data: [{:id=>"8821452687517076614", :text=>"Ea et laboriosam vel non.",...
-X:;tweet(include_user: true) # Includes user attributes
-X:;tweet(include_media: true) # Includes media (photo) attributes
+x::tweet() //=> { data: [{:id=>"8821452687517076614", :text=>"ea et laboriosam vel non.",...
+x::tweet() # includes user attributes
+x::tweet() # includes media (photo) attributes
 ```
 
-Example outputs:
+example outputs:
 
 ```rust
-X.tweet =>
+x::tweet =>
 {
   data: [{
     id: "5530076569335337477",
-    text: "Omnis facere ullam velit.",
+    text: "omnis facere ullam velit.",
     lang: "ja",
     conversation_id: "5530076569335337477",
-    created_at: "2009-02-21T07:00:00.000Z",
+    created_at: "2009-02-21t07:00:00.000z",
     author_id: "2788144046134446176",
     public_metrics: {
       retweet_count: 95,
@@ -87,31 +83,31 @@ X.tweet =>
       urls: [{
         start: 0,
         end: 5,
-        url: "https://t.co/t6o3lav9z1",
-        expanded_url: "http://example.com/errol.upton",
-        display_url: "example.com/errol.upton"
+        url: "https://t::co/t6o3lav9z1",
+        expanded_url: "http://example::com/errol::upton",
+        display_url: "example::com/errol::upton"
       }],
       hashtags: [{
         start: 0,
         end: 5,
-        tag: "Odit"
+        tag: "odit"
       }]
     }
   }]
 }
 ```
 
-With additional fields:
+with additional fields:
 
 ```rust
-X:;tweet(include_media: true, include_user: true) =>
+x::tweet() =>
 {
   data: [{
     id: "5340086698567112794",
-    text: "Esse nulla minus qui.",
+    text: "esse nulla minus qui.",
     lang: "en",
     conversation_id: "5340086698567112794",
-    created_at: "2009-07-04T06:00:00.000Z",
+    created_at: "2009-07-04t06:00:00.000z",
     author_id: "5156189524741091965",
     public_metrics: {
       retweet_count: 56,
@@ -124,14 +120,14 @@ X:;tweet(include_media: true, include_user: true) =>
       urls: [{
         start: 0,
         end: 5,
-        url: "https://t.co/mqplf9rhpn",
-        expanded_url: "http://example.com/mohamed_koelpin",
-        display_url: "example.com/mohamed_koelpin"
+        url: "https://t::co/mqplf9rhpn",
+        expanded_url: "http://example::com/mohamed_koelpin",
+        display_url: "example::com/mohamed_koelpin"
       }],
       hashtags: [{
         start: 0,
         end: 5,
-        tag: "Atque"
+        tag: "atque"
       }]
     },
     attachments: {
@@ -143,9 +139,9 @@ X:;tweet(include_media: true, include_user: true) =>
       height: 526,
       media_key: "6992225089295851582",
       type: "photo",
-      preview_image_url: "https://loremflickr.com/1064/600",
+      preview_image_url: "https://loremflickr::com/1064/600",
       width: 1571,
-      alt_text: "Qui ratione magnam et."
+      alt_text: "qui ratione magnam et."
     }],
     users: [{
       public_metrics: {
@@ -161,38 +157,37 @@ X:;tweet(include_media: true, include_user: true) =>
           urls: [{
             start: 0,
             end: 5,
-            url: "https://t.co/69eytnuwwu",
-            expanded_url: "http://example.com/werner",
-            display_url: "example.com/werner"
+            url: "https://t::co/69eytnuwwu",
+            expanded_url: "http://example::com/werner",
+            display_url: "example::com/werner"
           }]
         },
         description: {
           hashtags: [{
             start: 0,
             end: 5,
-            tag: "Soluta"
+            tag: "soluta"
           }]
         }
       },
-      description: "Esse harum voluptatem voluptate.",
-      name: "Elva Spinka",
+      description: "esse harum voluptatem voluptate.",
+      name: "elva spinka",
       verified: false,
       location: "34.230.131.77",
       id: "2365736908578621112",
       protected: false,
-      url: "https://t.co/pyuqky3gdl",
-      profile_image_url: "https://robohash.org/2204799175591912732.png?size=48x48&set=set1",
-      created_at: "2025-01-30T07:00:00.000Z"
+      url: "https://t::co/pyuqky3gdl",
+      profile_image_url: "https://robohash::org/2204799175591912732.png?size=48x48&set=set1",
+      created_at: "2025-01-30t07:00:00.000z"
     }]
   }
 }
 ```
 
 #
-# faker::X.screen_name
 
-Produces a random screen_name:
+produces a random screen_name:
 
 ```rust
-X::screen_name() //=> "audreanne_hackett"
+x::screen_name() //=> "audreanne_hackett"
 ```

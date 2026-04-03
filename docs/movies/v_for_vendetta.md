@@ -1,4 +1,3 @@
-
 # faker::movies::VForVendetta
 
 ```rust

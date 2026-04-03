@@ -1,20 +1,19 @@
+# faker::default::hitchhikers_guide_to_the_galaxy
 
-# faker::HitchhikersGuideToTheGalaxy
-
-Available since version 1.8.0.
+available since version 1.8.0.
 
 ```rust
-HitchhikersGuideToTheGalaxy::character() //=> "Marvin"
+hitchhikersguidetothegalaxy::character() //=> "marvin"
 
-HitchhikersGuideToTheGalaxy::location() //=> "Arthur Dent's house"
+hitchhikersguidetothegalaxy::location() //=> "arthur dent's house"
 
-HitchhikersGuideToTheGalaxy::marvin_quote() //=> "Life? Don't talk to me about life."
+hitchhikersguidetothegalaxy::marvin_quote() //=> "life? don't talk to me about life."
 
-HitchhikersGuideToTheGalaxy::planet() //=> "Magrathea"
+hitchhikersguidetothegalaxy::planet() //=> "magrathea"
 
-HitchhikersGuideToTheGalaxy::quote() //=> "In the beginning, the Universe was created. This has made a lot of people very angry and been widely regarded as a bad move."
+hitchhikersguidetothegalaxy::quote() //=> "in the beginning, the universe was created. this has made a lot of people very angry and been widely regarded as a bad move."
 
-HitchhikersGuideToTheGalaxy::specie() //=> "Perfectly Normal Beast"
+hitchhikersguidetothegalaxy::specie() //=> "perfectly normal beast"
 
-HitchhikersGuideToTheGalaxy::starship() //=> "Vogon Constructor Fleet"
+hitchhikersguidetothegalaxy::starship() //=> "vogon constructor fleet"
 ```

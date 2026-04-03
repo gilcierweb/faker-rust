@@ -1,4 +1,3 @@
-
 # faker::tv_shows::RuPaul
 
 Available since version 1.8.0.

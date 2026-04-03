@@ -1,30 +1,23 @@
+# faker::default::south_africa
 
-# faker::SouthAfrica
-
-Generate South African ID Numbers, phone numbers and company registration
-numbers. Delegates as needed to `IdNumber`, `PhoneNumber` and
-`Company`
+generate south african id numbers, phone numbers and company registration
+numbers. delegates as needed to `idnumber`, `phonenumber` and
+`company`
 
 ```rust
-# Generate a valid South African ID Number:
-SouthAfrica::id_number() //=> "6110311856083"
-# or
-SouthAfrica::valid_id_number() //=> "6110311856083"
+southafrica::id_number() //=> "6110311856083"
+southafrica::valid_id_number() //=> "6110311856083"
 
-# Generate an invalid South African ID Number:
-SouthAfrica::invalid_id_number() //=> "7018356904081"
+southafrica::invalid_id_number() //=> "7018356904081"
 
-# Generate phone numbers:
-SouthAfrica::phone_number() //=> "010 788 5009"
+southafrica::phone_number() //=> "010 788 5009"
 
-SouthAfrica::cell_phone() //=> "082 946 7470"
+southafrica::cell_phone() //=> "082 946 7470"
 
-# Generate company registration numbers:
-SouthAfrica::pty_ltd_registration_number() //=> "5301/714689/07"
-SouthAfrica::close_corporation_registration_number() //=> "CK74/7585/23"
-SouthAfrica::listed_company_registration_number() //=> "7039/3135/06"
-SouthAfrica::trust_registration_number() //=> "IT38/6489900"
+southafrica::pty_ltd_registration_number() //=> "5301/714689/07"
+southafrica::close_corporation_registration_number() //=> "ck74/7585/23"
+southafrica::listed_company_registration_number() //=> "7039/3135/06"
+southafrica::trust_registration_number() //=> "it38/6489900"
 
-# Generate VAT number:
-SouthAfrica::vat_number() //=> "ZA79494416181"
+southafrica::vat_number() //=> "za79494416181"
 ```

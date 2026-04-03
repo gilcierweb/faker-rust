@@ -1,4 +1,3 @@
-
 # faker::creature::Horse
 
 ```rust

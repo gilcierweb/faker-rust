@@ -1,16 +1,11 @@
+# faker::default::tea
 
-# faker::Tea
-
-Available since version next.
+available since version next.
 
 ```rust
-# Get a tea variety
-Tea.variety # => "Earl Grey"
+tea::variety // "earl grey"
 
-# Get a tea variety, by type of tea. Accepted types:
-# ['Black', 'Green', 'Herbal', 'Oolong', 'White']
-Tea:;variety(type: 'Green') #=> "Jasmine"
+tea::variety() //=> "jasmine"
 
-# Get a type of tea
-Tea::type() //=> "Herbal"
+tea::type() //=> "herbal"
 ```

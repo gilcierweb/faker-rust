@@ -1,4 +1,3 @@
-
 # faker::games::ElderScrolls
 
 ```rust

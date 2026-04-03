@@ -1,28 +1,27 @@
+# faker::default::food
 
-# faker::Food
-
-Available since version 1.7.0.
+available since version 1.7.0.
 
 ```rust
-Food::allergen() //=> "Peanuts"
+food::allergen() //=> "peanuts"
 
-Food::description() //=> "Three eggs with cilantro, tomatoes, onions, avocados and melted Emmental cheese. With a side of roasted potatoes, and your choice of toast or croissant."
+food::description() //=> "three eggs with cilantro, tomatoes, onions, avocados and melted emmental cheese. with a side of roasted potatoes, and your choice of toast or croissant."
 
-Food::dish() //=> "Caesar Salad"
+food::dish() //=> "caesar salad"
 
-Food::ethnic_category() //=> "Indian cuisine"
+food::ethnic_category() //=> "indian cuisine"
 
-Food::fruits() //=> "Peaches"
+food::fruits() //=> "peaches"
 
-Food::ingredient() //=> "Adzuki Beans"
+food::ingredient() //=> "adzuki beans"
 
-Food::measurement() //=> "1/4 tablespoon"
+food::measurement() //=> "1/4 tablespoon"
 
-Food::metric_measurement() //=> "centiliter"
+food::metric_measurement() //=> "centiliter"
 
-Food::spice() //=> "Caraway Seed"
+food::spice() //=> "caraway seed"
 
-Food::sushi() //=> "Sea bream"
+food::sushi() //=> "sea bream"
 
-Food::vegetables() //=> "Broccolini"
+food::vegetables() //=> "broccolini"
 ```

@@ -1,7 +1,4 @@
-
-# faker::Hobby
-
-# @faker.version next
+# faker::default::hobby
 
 ```rust
-Hobby::activity() //=> "Cooking"
+hobby::activity() //=> "cooking"

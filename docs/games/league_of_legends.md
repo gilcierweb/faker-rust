@@ -1,4 +1,3 @@
-
 # faker::games::LeagueOfLegends
 
 Available since version 1.8.0.

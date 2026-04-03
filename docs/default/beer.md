@@ -1,24 +1,23 @@
+# faker::default::beer
 
-# faker::Beer
-
-Available since version 1.6.2.
+available since version 1.6.2.
 
 ```rust
-Beer::brand() //=> "Heineken"
+beer::brand() //=> "heineken"
 
-Beer::name() //=> "Hercules Double IPA"
+beer::name() //=> "hercules double ipa"
 
-Beer::style() //=> "Belgian Strong Ale"
+beer::style() //=> "belgian strong ale"
 
-Beer::hop() //=> "Equinox"
+beer::hop() //=> "equinox"
 
-Beer::yeast() //=> "2278 - Czech Pils"
+beer::yeast() //=> "2278 - czech pils"
 
-Beer::malts() //=> "Rye malt"
+beer::malts() //=> "rye malt"
 
-Beer::ibu() //=> "40 IBU"
+beer::ibu() //=> "40 ibu"
 
-Beer::alcohol() //=> "6.3%"
+beer::alcohol() //=> "6.3%"
 
-Beer::blg() //=> "18.5°Blg"
+beer::blg() //=> "18.5°blg"
 ```

@@ -1,4 +1,3 @@
-
 # faker::sports::Volleyball
 
 ```rust

@@ -1,4 +1,3 @@
-
 # faker::japanese_media::OnePiece
 
 ```rust

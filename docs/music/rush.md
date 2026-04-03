@@ -1,4 +1,3 @@
-
 # faker::music::Rush
 
 ```rust

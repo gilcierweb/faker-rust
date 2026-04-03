@@ -1,21 +1,15 @@
+# faker::default::superhero
 
-# faker::Superhero
-
-Available since version 1.6.2.
+available since version 1.6.2.
 
 ```rust
-# Random Superhero name
-Superhero::name() //=> "Magnificent Shatterstar"
+superhero::name() //=> "magnificent shatterstar"
 
-# Random Superhero power
-Superhero::power() //=> "Photokinesis"
+superhero::power() //=> "photokinesis"
 
-# Random Superhero prefix
-Superhero::prefix() //=> "Captain"
+superhero::prefix() //=> "captain"
 
-# Random Superhero suffix
-Superhero::suffix() //=> "the Fated"
+superhero::suffix() //=> "the fated"
 
-# Random Superhero descriptor
-Superhero::descriptor() //=> "Bizarro"
+superhero::descriptor() //=> "bizarro"
 ```

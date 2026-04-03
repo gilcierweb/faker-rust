@@ -1,6 +1,5 @@
-
-# faker::Marketing
+# faker::default::marketing
 
 ```rust
-Marketing::buzzwords() //=> "rubber meets the road", "sprint to the finish line"
+marketing::buzzwords() //=> "rubber meets the road", "sprint to the finish line"
 ```

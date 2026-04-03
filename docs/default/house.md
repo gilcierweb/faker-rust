@@ -1,8 +1,7 @@
-
-# faker::House
+# faker::default::house
 
 ```rust
-House::furniture() //=> "chair"
+house::furniture() //=> "chair"
 
-House::room() //=> "kitchen"
+house::room() //=> "kitchen"
 ```

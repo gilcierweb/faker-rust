@@ -1,37 +1,25 @@
-
-# faker::Science
+# faker::default::science
 
 ```rust
-##
-# Produces a name of a science
-# You can optionally filter by specifying one or more of the following:
-# `:empirical, :formal, :natural, :social, :basic, :applied`
-# @see https://en.wikipedia.org/wiki/Science#Branches_of_science
-# @see Educator.subject
-Science::science() //=> "Space science"
-Science:;science(:natural, :applied) #=> "Engineering"
-Science:;science(:formal, :applied) #=> "Computer Science"
+science::science() //=> "space science"
+science::science(:natural, :applied) //=> "engineering"
+science::science(:formal, :applied) //=> "computer science"
 
-Science::element() //=> "Carbon"
+science::element() //=> "carbon"
 
-Science::element_symbol() //=> "Pb"
+science::element_symbol() //=> "pb"
 
-Science::element_state() //=> "Liquid"
+science::element_state() //=> "liquid"
 
-Science::element_subcategory() //=> "Reactive nonmetal"
+science::element_subcategory() //=> "reactive nonmetal"
 
-Science::scientist() //=> "Isaac Newton"
+science::scientist() //=> "isaac newton"
 
-Science::scientist() //=> "Isaac Newton"
+science::scientist() //=> "isaac newton"
 
-Science::modifier() //=> "Quantum"
+science::modifier() //=> "quantum"
 
-##
-# Produces the name of a scientific tool.
-# Optionally it can generate tools with a science word modifier that sound more fancy.
 #
-# @param simple [Boolean] Whether to generate fancy non-realistic tool names, using the Q-word for example.
-# @return [String]
-Science::tool() //=> "Superconductive Microcentrifuge"
-Science:;tool(simple: true) #=> "Microcentrifuge"
+science::tool() //=> "superconductive microcentrifuge"
+science::tool() //=> "microcentrifuge"
 ```

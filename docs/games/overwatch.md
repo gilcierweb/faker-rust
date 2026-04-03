@@ -1,4 +1,3 @@
-
 # faker::games::Overwatch
 
 Available since version 1.8.0.

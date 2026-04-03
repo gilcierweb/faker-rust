@@ -1,6 +1,9 @@
+# faker::quotes::rajnikanth
 
-# faker::quotes::Rajnikanth
+Generate Rajnikanth jokes.
 
 ```rust
-// faker::quotes::Rajnikanth::joke() //=> "Rajinikanth can get rid of his shadow"
+use faker::quotes::rajnikanth;
+
+rajnikanth::joke() //=> "Rajinikanth can get rid of his shadow"
 ```

@@ -1,14 +1,13 @@
-
-# faker::Verb
+# faker::default::verbs
 
 ```rust
-Verb::base() //=> "hurt"
+verb::base() //=> "hurt"
 
-Verb::past() //=> "completed"
+verb::past() //=> "completed"
 
-Verb::past_participle() //=> "digested"
+verb::past_participle() //=> "digested"
 
-Verb::simple_present() //=> "climbs"
+verb::simple_present() //=> "climbs"
 
-Verb::ing_form() //=> "causing"
+verb::ing_form() //=> "causing"
 ```

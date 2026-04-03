@@ -1,4 +1,3 @@
-
 # faker::blockchain::Tezos
 
 ```rust

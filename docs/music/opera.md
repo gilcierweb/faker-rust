@@ -1,4 +1,3 @@
-
 # faker::music::Opera
 
 ```rust

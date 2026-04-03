@@ -1,18 +1,13 @@
+# faker::default::computer
 
-# faker::Computer
-
-Available since version 2.12.0.
+available since version 2.12.0.
 
 ```rust
-# A random computer platform
-Computer::platform() //=> "Linux"
+computer::platform() //=> "linux"
 
-# A random computer type
-Computer::type() //=> "server"
+computer::type() //=> "server"
 
-# A random computer OS
-Computer::os() //=> "RHEL 6.10"
+computer::os() //=> "rhel 6.10"
 
-# A random computer platform and OS combination.
-Computer::stack() //=> "Linux, RHEL 6.10"
+computer::stack() //=> "linux, rhel 6.10"
 ```

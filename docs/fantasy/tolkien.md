@@ -1,16 +1,19 @@
+# faker::fantasy::tolkien
 
-# faker::fantasy::Tolkien
+Generate data from Tolkien's legendarium.
 
 ```rust
-# Any character from the entire Tolkien legendarium
-// faker::fantasy::Tolkien::character() //=> "Bungo Baggins"
+use faker::fantasy::tolkien;
 
-# Any location from the entire Tolkien legendarium
-// faker::fantasy::Tolkien::location() //=> "Minas Morgul"
+// Any character from the entire Tolkien legendarium
+tolkien::character() //=> "Bungo Baggins"
 
-# Any poem title from the entire Tolkien legendarium
-// faker::fantasy::Tolkien::poem() //=> "Fifteen birds in five fir trees"
+// Any location from the entire Tolkien legendarium
+tolkien::location() //=> "Minas Morgul"
 
-# Any race from the entire Tolkien legendarium
-// faker::fantasy::Tolkien::race() //=> "Ents"
+// Any poem title from the entire Tolkien legendarium
+tolkien::poem() //=> "Fifteen birds in five fir trees"
+
+// Any race from the entire Tolkien legendarium
+tolkien::race() //=> "Ents"
 ```

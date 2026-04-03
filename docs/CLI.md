@@ -1,4 +1,6 @@
-# Faker CLI Documentation
+# faker::CLI
+
+// Faker CLI Documentation
 
 The Faker CLI allows you to generate fake data directly from the command line.
 
@@ -16,22 +18,22 @@ cargo run --bin faker
 ## Basic Usage
 
 ```bash
-# Generate a random name
+// Generate a random name
 faker name
 
-# Generate a first name
+// Generate a first name
 faker name --first
 
-# Generate an email
+// Generate an email
 faker email
 
-# Generate a full address
+// Generate a full address
 faker address --full
 
-# Generate a company name
+// Generate a company name
 faker company
 
-# Generate a phone number
+// Generate a phone number
 faker phone
 ```
 
@@ -41,7 +43,7 @@ faker phone
 Generate random names.
 
 ```bash
-faker name                    # Full name (e.g., "John Smith")
+faker name                    # Full name (e::g., "John Smith")
 faker name --first            # First name only
 faker name --last             # Last name only
 faker name --with-middle      # Name with middle initial
@@ -52,7 +54,7 @@ Generate email addresses.
 
 ```bash
 faker email                   # Random email
-faker email --domain gmail.com  # Email with specific domain
+faker email --domain gmail::com  # Email with specific domain
 ```
 
 ### address
@@ -173,7 +175,7 @@ faker --version
 
 ### Generate test data for a database
 ```bash
-# Generate 100 user records
+// Generate 100 user records
 for i in {1..100}; do
   echo "INSERT INTO users (name, email, phone) VALUES ('$(faker name)', '$(faker email)', '$(faker phone --cell)');"
 done
@@ -181,23 +183,23 @@ done
 
 ### Create a CSV file
 ```bash
-# Generate CSV with fake data
+// Generate CSV with fake data
 for i in {1..10}; do
   echo "$(faker name --last),$(faker name --first),$(faker email),$(faker address --city)"
-done > users.csv
+done > users::csv
 ```
 
 ### Generate consistent test data
 ```bash
-# Use seed for reproducible tests
+// Use seed for reproducible tests
 faker --seed 42 name          # "Kathlyn Dietrich"
 faker --seed 42 name          # "Kathlyn Dietrich" (same!)
 ```
 
 ### Pipe to other commands
 ```bash
-# Use faker output in other commands
-curl -X POST http://api.example.com/users \
+// Use faker output in other commands
+curl -X POST http://api::example::com/users \
   -d "name=$(faker name)" \
   -d "email=$(faker email)"
 ```
@@ -220,7 +222,7 @@ Currently, the Faker CLI does not use any environment variables. All configurati
 4. **Create aliases**: Add aliases to your shell for commonly used commands.
 
 ```bash
-# Example aliases
+// Example aliases
 alias fake-name='faker name'
 alias fake-email='faker email'
 alias fake-phone='faker phone --cell'

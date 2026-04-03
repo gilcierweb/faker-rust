@@ -1,8 +1,7 @@
+# faker::default::artist
 
-# faker::Artist
-
-Available since version 1.8.8.
+available since version 1.8.8.
 
 ```rust
-Artist::name() //=> "Michelangelo"
+artist::name() //=> "michelangelo"
 ```

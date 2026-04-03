@@ -1,73 +1,55 @@
-
-# faker::Lorem
+# faker::default::lorem
 
 ```rust
-# Keyword arguments: exclude_words (prevent specific words from being produced)
-Lorem::word() //=> "repellendus"
-Lorem:;word(exclude_words: 'error') #=> "nisi"
-Lorem:;word(exclude_words: 'id, error') #=> "et"
-Lorem:;word(exclude_words: ['id', 'error']) #=> "consequatur"
+lorem::word() //=> "repellendus"
+lorem::word() //=> "nisi"
+lorem::word() //=> "et"
+lorem::word() //=> "consequatur"
 
-# Keyword arguments: number, supplemental (words from a supplementary list of Lorem-like words)
-Lorem::words() //=> ["dolores", "adipisci", "nesciunt"]
-Lorem:;words(number: 4) #=> ["culpa", "recusandae", "aut", "omnis"]
-Lorem:;words(number: 4, supplemental: true) #=> ["colloco", "qui", "vergo", "deporto"]
+lorem::words() //=> ["dolores", "adipisci", "nesciunt"]
+lorem::words() //=> ["culpa", "recusandae", "aut", "omnis"]
+lorem::words() //=> ["colloco", "qui", "vergo", "deporto"]
 
-Lorem::multibyte() //=> 😀
+lorem::multibyte() //=> 😀
 
-# Keyword arguments: exclude_words (prevent specific words from being produced)
-Lorem::words() //=> ["error", "cum", "nesciunt"]
-Lorem:;words(number: 4, exclude_words: 'error') #=> ["nisi", "allatus", "consequatur", "aut"]
-Lorem:;words(number: 4, exclude_words: 'error, cum') #=> ["nisi", "allatus", "consequatur", "aut"]
-Lorem:;words(number: 4, exclude_words: ['error', 'cum']) #=> ["nisi", "allatus", "consequatur", "aut"]
+lorem::words() //=> ["error", "cum", "nesciunt"]
+lorem::words() //=> ["nisi", "allatus", "consequatur", "aut"]
+lorem::words() //=> ["nisi", "allatus", "consequatur", "aut"]
+lorem::words() //=> ["nisi", "allatus", "consequatur", "aut"]
 
-# Keyword arguments: number, min_alpha, min_numeric
-Lorem::characters() //=> "uw1ep04lhs0c4d931n1jmrspprf5wrj85fefue0y7y6m56b6omquh7br7dhqijwlawejpl765nb1716idmp3xnfo85v349pzy2o9rir23y2qhflwr71c1585fnynguiphkjm8p0vktwitcsm16lny7jzp9t4drwav3qmhz4yjq4k04x14gl6p148hulyqioo72tf8nwrxxcclfypz2lc58lsibgfe5w5p0xv95peafjjmm2frkhdc6duoky0aha"
-Lorem:;characters(number: 10) #=> "ang9cbhoa8"
-Lorem:;characters(number: 10, min_alpha: 4) #=> "ang9cbhoa8"
-Lorem:;characters(number: 10, min_alpha: 4, min_numeric: 1) #=> "ang9cbhoa8"
+lorem::characters() //=> "uw1ep04lhs0c4d931n1jmrspprf5wrj85fefue0y7y6m56b6omquh7br7dhqijwlawejpl765nb1716idmp3xnfo85v349pzy2o9rir23y2qhflwr71c1585fnynguiphkjm8p0vktwitcsm16lny7jzp9t4drwav3qmhz4yjq4k04x14gl6p148hulyqioo72tf8nwrxxcclfypz2lc58lsibgfe5w5p0xv95peafjjmm2frkhdc6duoky0aha"
+lorem::characters() //=> "ang9cbhoa8"
+lorem::characters() //=> "ang9cbhoa8"
+lorem::characters() //=> "ang9cbhoa8"
 
-# Keyword arguments: word_count, supplemental, random_words_to_add
-# The 'random_words_to_add' argument increases the sentence's word count by a random value within (0..random_words_to_add).
-# To specify an exact word count for a sentence, set word_count to the number you want and random_words_to_add equal to 0.
-# By default, sentences will not have any random words added (and will all be exactly 4 words long)
-Lorem::sentence() //=> "Quia illum libero magni."
-Lorem:;sentence(word_count: 3) #=> "Quaerat quam unde."
-Lorem:;sentence(word_count: 3, supplemental: true) #=> "Vehemens velit cogo."
-Lorem:;sentence(word_count: 3, supplemental: false, random_words_to_add: 4) #=> "Aut voluptatem illum fugit ut sit."
-Lorem:;sentence(word_count: 3, supplemental: true, random_words_to_add: 4) #=> "Accusantium tantillus dolorem timor."
+lorem::sentence() //=> "quia illum libero magni."
+lorem::sentence() //=> "quaerat quam unde."
+lorem::sentence() //=> "vehemens velit cogo."
+lorem::sentence() //=> "aut voluptatem illum fugit ut sit."
+lorem::sentence() //=> "accusantium tantillus dolorem timor."
 
-# Keyword arguments: number, supplemental
-Lorem::sentences() //=> ["Vero earum commodi soluta.", "Quaerat fuga cumque et vero eveniet omnis ut.", "Cumque sit dolor ut est consequuntur."]
-Lorem:;sentences(number: 1) #=> ["Ut perspiciatis explicabo possimus doloribus enim quia."]
-Lorem:;sentences(number: 1, supplemental: true) #=> ["Quis capillus curo ager veritatis voro et ipsum."]
+lorem::sentences() //=> ["vero earum commodi soluta.", "quaerat fuga cumque et vero eveniet omnis ut.", "cumque sit dolor ut est consequuntur."]
+lorem::sentences() //=> ["ut perspiciatis explicabo possimus doloribus enim quia."]
+lorem::sentences() //=> ["quis capillus curo ager veritatis voro et ipsum."]
 
-# Keyword arguments: sentence_count, supplemental, random_sentences_to_add
-# The 'random_sentences_to_add' argument increases the paragraph's sentence count by a random value within (0..random_sentences_to_add).
-# To specify an exact sentence count for a paragraph, set sentence_count to the number you want and random_sentences_to_add equal to 0.
-# By default, sentences will have a random number of words within the range (3..6).
-Lorem::paragraph() //=> "Recusandae minima consequatur. Expedita sequi blanditiis. Ut fuga et."
-Lorem:;paragraph(sentence_count: 2) #=> "Ducimus mollitia deserunt. Dicta et corporis."
-Lorem:;paragraph(sentence_count: 2, supplemental: true) #=> "Strues amplitudo dignissimos. Ver trucido charisma."
-Lorem:;paragraph(sentence_count: 2, supplemental: false, random_sentences_to_add: 4) #=> "Neque aut et nemo aut incidunt voluptates. Dolore cum est sint est. Vitae assumenda porro odio dolores fugiat. Est voluptatum quia rerum."
-Lorem:;paragraph(sentence_count: 2, supplemental: true, random_sentences_to_add: 4) #=> "Vomito unde uxor annus. Et patior utilis sursum."
+lorem::paragraph() //=> "recusandae minima consequatur. expedita sequi blanditiis. ut fuga et."
+lorem::paragraph() //=> "ducimus mollitia deserunt. dicta et corporis."
+lorem::paragraph() //=> "strues amplitudo dignissimos. ver trucido charisma."
+lorem::paragraph() //=> "neque aut et nemo aut incidunt voluptates. dolore cum est sint est. vitae assumenda porro odio dolores fugiat. est voluptatum quia rerum."
+lorem::paragraph() //=> "vomito unde uxor annus. et patior utilis sursum."
 
-# Keyword arguments: number, supplemental
-Lorem::paragraphs() //=> ["Dolores quis quia ad quo voluptates. Maxime delectus totam numquam. Necessitatibus vel atque qui dolore.", "Id neque nemo. Dolores iusto facere est ad. Accusamus ipsa dolor ut.", "Et officiis ut hic. Sunt asperiores minus distinctio debitis ipsa dolor. Minima eos deleniti."]
-Lorem:;paragraphs(number: 1) #=> ["Labore voluptas sequi. Ratione nulla eaque quia molestiae fugit. At quam laboriosam aut ut dignissimos."]
-Lorem:;paragraphs(number: 1, supplemental: true) #=> ["Depulso animi cunctatio amicitia adficio. Vester viduo qui despirmatio voluptas. Validus laudantium adopto ut agnitio venustas. Aer arcus odio esse."]
+lorem::paragraphs() //=> ["dolores quis quia ad quo voluptates. maxime delectus totam numquam. necessitatibus vel atque qui dolore.", "id neque nemo. dolores iusto facere est ad. accusamus ipsa dolor ut.", "et officiis ut hic. sunt asperiores minus distinctio debitis ipsa dolor. minima eos deleniti."]
+lorem::paragraphs() //=> ["labore voluptas sequi. ratione nulla eaque quia molestiae fugit. at quam laboriosam aut ut dignissimos."]
+lorem::paragraphs() //=> ["depulso animi cunctatio amicitia adficio. vester viduo qui despirmatio voluptas. validus laudantium adopto ut agnitio venustas. aer arcus odio esse."]
 
-# Keyword arguments: word_count, supplemental, random_words_to_add
-Lorem::question() //=> "Vero eum dolore qui?"
-Lorem:;question(word_count: 4) #=> "Eos temporibus necessitatibus labore?"
-Lorem:;question(word_count: 4, supplemental: false) #=> "Eum ut repellendus neque?"
-Lorem:;question(word_count: 4, supplemental: false, random_words_to_add: 0) #=> "Expedita quia labore voluptatem?"
+lorem::question() //=> "vero eum dolore qui?"
+lorem::question() //=> "eos temporibus necessitatibus labore?"
+lorem::question() //=> "eum ut repellendus neque?"
+lorem::question() //=> "expedita quia labore voluptatem?"
 
-# Keyword arguments: number, supplemental
-Lorem:;questions(number: 3) #=> ["Ratione eaque doloremque?", "Qui aliquid fuga?", "Est cum ipsum?"]
-Lorem:;questions(number: 3, supplemental: false) #=> ["Iusto ipsa magnam?", "Quibusdam eaque amet?", "Officia delectus laboriosam?"]
+lorem::questions() //=> ["ratione eaque doloremque?", "qui aliquid fuga?", "est cum ipsum?"]
+lorem::questions() //=> ["iusto ipsa magnam?", "quibusdam eaque amet?", "officia delectus laboriosam?"]
 
-# Keyword arguments: number, supplemental
-Lorem::paragraph_by_chars() //=> "Truffaut stumptown trust fund 8-bit messenger bag portland. Meh kombucha selvage swag biodiesel. Lomo kinfolk jean shorts asymmetrical diy. Wayfarers portland twee stumptown. Wes anderson biodiesel retro 90's pabst. Diy echo 90's mixtape semiotics. Cornho."
-Lorem:;paragraph_by_chars(number: 256, supplemental: false) #=> "Hella kogi blog narwhal sartorial selfies mustache schlitz. Bespoke normcore kitsch cred hella fixie. Park aesthetic fixie migas twee. Cliche mustache brunch tumblr fixie godard. Drinking pop-up synth hoodie dreamcatcher typewriter. Kitsch biodiesel green."
+lorem::paragraph_by_chars() //=> "truffaut stumptown trust fund 8-bit messenger bag portland. meh kombucha selvage swag biodiesel. lomo kinfolk jean shorts asymmetrical diy. wayfarers portland twee stumptown. wes anderson biodiesel retro 90's pabst. diy echo 90's mixtape semiotics. cornho."
+lorem::paragraph_by_chars() //=> "hella kogi blog narwhal sartorial selfies mustache schlitz. bespoke normcore kitsch cred hella fixie. park aesthetic fixie migas twee. cliche mustache brunch tumblr fixie godard. drinking pop-up synth hoodie dreamcatcher typewriter. kitsch biodiesel green."
 ```

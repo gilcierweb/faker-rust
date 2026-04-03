@@ -1,14 +1,13 @@
-
-# faker::Coffee
+# faker::default::coffee
 
 ```rust
-Coffee::blend_name() //=> "Summer Solstice"
+coffee::blend_name() //=> "summer solstice"
 
-Coffee::origin() //=> "Antigua, Guatemala"
+coffee::origin() //=> "antigua, guatemala"
 
-Coffee::variety() //=> "Pacas"
+coffee::variety() //=> "pacas"
 
-Coffee::notes() //=> "balanced, silky, marzipan, orange-creamsicle, bergamot"
+coffee::notes() //=> "balanced, silky, marzipan, orange-creamsicle, bergamot"
 
-Coffee::intensifier() //=> "quick"
+coffee::intensifier() //=> "quick"
 ```

@@ -1,13 +1,9 @@
-
-# faker::Theater
+# faker::default::theater
 
 ```rust
-# Produces the name of a musical for an older audience
-Theater::adult_musical() //=> "Mamma Mia!"
+theater::adult_musical() //=> "mamma mia!"
 
-# Produces the name of a musical for a younger audience
-Theater::kids_musical() //=> "Into the Woods JR."
+theater::kids_musical() //=> "into the woods jr."
 
-# Produces the name of a play
-Theater::play() //=> "The Death of a Salesman"
+theater::play() //=> "the death of a salesman"
 

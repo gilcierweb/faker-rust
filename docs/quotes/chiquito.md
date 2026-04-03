@@ -1,13 +1,16 @@
+# faker::quotes::chiquito
 
-# faker::quotes::Chiquito
+Generate quotes from Chiquito de la Calzada.
 
 ```rust
-// faker::quotes::Chiquito.expression # => "¡Ereh un torpedo!"
+use faker::quotes::chiquito;
 
-// faker::quotes::Chiquito.term # => "Fistro"
+chiquito::expression() //=> "¡Ereh un torpedo!"
 
-// faker::quotes::Chiquito.sentence # => "Te llamo trigo por no llamarte Rodrigo"
+chiquito::term() //=> "Fistro"
 
-// faker::quotes::Chiquito.joke # => "- Papár papár llévame al circo!
-                             #     - Noorl! El que quiera verte que venga a la casa"
+chiquito::sentence() //=> "Te llamo trigo por no llamarte Rodrigo"
+
+chiquito::joke() //=> "- Papár papár llévame al circo!
+                   //     - Noorl! El que quiera verte que venga a la casa"
 ```

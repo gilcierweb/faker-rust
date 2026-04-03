@@ -1,4 +1,3 @@
-
 # faker::games::Myst
 
 Available since version 1.9.0.

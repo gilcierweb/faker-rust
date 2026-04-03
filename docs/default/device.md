@@ -1,18 +1,17 @@
+# faker::default::device
 
-# faker::Device
-
-Available since version 1.9.0.
+available since version 1.9.0.
 
 ```rust
-Device::build_number() //=> "5"
+device::build_number() //=> "5"
 
-Device::manufacturer() //=> "Apple"
+device::manufacturer() //=> "apple"
 
-Device::model_name() //=> "iPhone 4"
+device::model_name() //=> "iphone 4"
 
-Device::platform() //=> "webOS"
+device::platform() //=> "webos"
 
-Device::serial() //=> "ejfjnRNInxh0363JC2WM"
+device::serial() //=> "ejfjnrninxh0363jc2wm"
 
-Device::version() //=> "4"
+device::version() //=> "4"
 ```

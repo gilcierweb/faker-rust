@@ -1,18 +1,17 @@
-
-# faker::Military
+# faker::default::military
 
 ```rust
-Military::army_rank() //=> "Staff Sergeant"
+military::army_rank() //=> "staff sergeant"
 
-Military::marines_rank() //=> "Gunnery Sergeant"
+military::marines_rank() //=> "gunnery sergeant"
 
-Military::navy_rank() //=> "Seaman"
+military::navy_rank() //=> "seaman"
 
-Military::air_force_rank() //=> "Captain"
+military::air_force_rank() //=> "captain"
 
-Military::space_force_rank() //=> "Senior Enlisted Advisor of the Space Force"
+military::space_force_rank() //=> "senior enlisted advisor of the space force"
 
-Military::coast_guard_rank() //=> "Master Chief Petty Officer of the Coast Guard"
+military::coast_guard_rank() //=> "master chief petty officer of the coast guard"
 
-Military::dod_paygrade() //=> "E-6"
+military::dod_paygrade() //=> "e-6"
 ```

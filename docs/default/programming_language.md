@@ -1,8 +1,7 @@
-
-# faker::ProgrammingLanguage
+# faker::default::programming_language
 
 ```rust
-ProgrammingLanguage::name() //=> "Ruby"
+programminglanguage::name() //=> "ruby"
 
-ProgrammingLanguage::creator() //=> "Yukihiro Matsumoto"
+programminglanguage::creator() //=> "yukihiro matsumoto"
 ```

@@ -1,18 +1,17 @@
+# faker::default::harry_potter
 
-# faker::HarryPotter
-
-Available since version 1.7.3.
+available since version 1.7.3.
 
 ```rust
-HarryPotter::character() //=> "Harry Potter"
+harrypotter::character() //=> "harry potter"
 
-HarryPotter::location() //=> "Hogwarts"
+harrypotter::location() //=> "hogwarts"
 
-HarryPotter::quote() //=> "I solemnly swear that I am up to no good."
+harrypotter::quote() //=> "i solemnly swear that i am up to no good."
 
-HarryPotter::book() //=> "Harry Potter and the Chamber of Secrets"
+harrypotter::book() //=> "harry potter and the chamber of secrets"
 
-HarryPotter::house() //=> "Gryffindor"
+harrypotter::house() //=> "gryffindor"
 
-HarryPotter::spell() //=> "Reparo"
+harrypotter::spell() //=> "reparo"
 ```

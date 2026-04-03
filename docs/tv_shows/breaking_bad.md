@@ -1,4 +1,3 @@
-
 # faker::tv_shows::BreakingBad
 
 Available since version 1.8.8.

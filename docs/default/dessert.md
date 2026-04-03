@@ -1,15 +1,11 @@
+# faker::default::dessert
 
-# faker::Dessert
-
-Available since version 1.8.0.
+available since version 1.8.0.
 
 ```rust
-# Random dessert variety
-Dessert::variety() //=> "Cake"
+dessert::variety() //=> "cake"
 
-# Random dessert topping
-Dessert::topping() //=> "Gummy Bears"
+dessert::topping() //=> "gummy bears"
 
-# Random dessert flavor
-Dessert::flavor() //=> "Salted Caramel"
+dessert::flavor() //=> "salted caramel"
 ```

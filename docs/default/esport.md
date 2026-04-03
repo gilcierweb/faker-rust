@@ -1,19 +1,13 @@
-
-# faker::Esport
+# faker::default::esport
 
 ```rust
-# Random player
-Esport::player() //=> "Crimsix"
+esport::player() //=> "crimsix"
 
-# Random team
-Esport::team() //=> "CLG"
+esport::team() //=> "clg"
 
-# Random league
-Esport::league() //=> "IEM"
+esport::league() //=> "iem"
 
-# Random event
-Esport::event() //=> "ESL Cologne"
+esport::event() //=> "esl cologne"
 
-# Random game
-Esport::game() //=> "Dota2"
+esport::game() //=> "dota2"
 ```

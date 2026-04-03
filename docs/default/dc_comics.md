@@ -1,16 +1,15 @@
+# faker::default::dc_comics
 
-# faker::DcComics
-
-A fun collection of hundreds of your favorite DC Comics Heroes, Heroines, Villains, Alter Egos and Side Characters. Have fun!
+a fun collection of hundreds of your favorite dc comics heroes, heroines, villains, alter egos and side characters. have fun!
 
 ```rust
-DcComics::hero() //=> "Batman"
+dccomics::hero() //=> "batman"
 
-DcComics::heroine() //=> "Supergirl"
+dccomics::heroine() //=> "supergirl"
 
-DcComics::villain() //=> "The Joker"
+dccomics::villain() //=> "the joker"
 
-DcComics::name() //=> "Clark Kent"
+dccomics::name() //=> "clark kent"
 
-DcComics::title() //=> "Teen Titans: The Judas Contract
+dccomics::title() //=> "teen titans: the judas contract
 ```

@@ -1,18 +1,17 @@
-
-# faker::Job
+# faker::default::job
 
 ```rust
-Job::title() //=> "Lead Accounting Associate"
+job::title() //=> "lead accounting associate"
 
-Job::field() //=> "Manufacturing"
+job::field() //=> "manufacturing"
 
-Job::seniority() //=> "Lead"
+job::seniority() //=> "lead"
 
-Job::position() //=> "Supervisor"
+job::position() //=> "supervisor"
 
-Job::key_skill() //=> "Teamwork"
+job::key_skill() //=> "teamwork"
 
-Job::employment_type() //=> "Full-time"
+job::employment_type() //=> "full-time"
 
-Job::education_level() //=> "Bachelor"
+job::education_level() //=> "bachelor"
 ```

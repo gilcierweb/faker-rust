@@ -1,20 +1,19 @@
+# faker::default::app
 
-# faker::App
-
-Available since version 1.4.3.
+available since version 1.4.3.
 
 ```rust
-App::name() //=> "Treeflex"
+app::name() //=> "treeflex"
 
-App::version() //=> "1.85"
+app::version() //=> "1.85"
 
-App::author() //=> "Daphne Swift"
+app::author() //=> "daphne swift"
 
-App::semantic_version() //=> "3.2.5"
+app::semantic_version() //=> "3.2.5"
 
-App:;semantic_version(major: 42) #=> "42.5.2"
+app::semantic_version() //=> "42.5.2"
 
-App:;semantic_version(minor: 100..101) #=> "42.100.4"
+app::semantic_version() //=> "42.100.4"
 
-App:;semantic_version(patch: 5..6) #=> "7.2.6"
+app::semantic_version() //=> "7.2.6"
 ```

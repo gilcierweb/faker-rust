@@ -1,28 +1,27 @@
-
 # faker::creature::Dog
 
 ```rust
-# Random dog name
+// Random dog name
 Dog::name() //=> "Spike"
 
-# Random dog breed
+// Random dog breed
 Dog::breed() //=> "Yorkshire Terrier"
 
-# Random dog sound
+// Random dog sound
 Dog::sound() //=> "woof woof"
 
-# Random dog meme phrase
+// Random dog meme phrase
 Dog::meme_phrase() //=> "smol pupperino"
 
-# Random dog age
+// Random dog age
 Dog::age() //=> "puppy"
 
-# Random dog gender
+// Random dog gender
 Dog::gender() //=> "female"
 
-# Random dog coat length
+// Random dog coat length
 Dog::coat_length() //=> "short"
 
-# Random dog size
+// Random dog size
 Dog::size() //=> "small"
 ```

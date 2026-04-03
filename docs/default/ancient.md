@@ -1,14 +1,13 @@
+# faker::default::ancient
 
-# faker::Ancient
-
-Available since version 1.7.0.
+available since version 1.7.0.
 
 ```rust
-Ancient::god() //=> "Zeus"
+ancient::god() //=> "zeus"
 
-Ancient::primordial() //=> "Gaia"
+ancient::primordial() //=> "gaia"
 
-Ancient::titan() //=> "Atlas"
+ancient::titan() //=> "atlas"
 
-Ancient::hero() //=> "Achilles"
+ancient::hero() //=> "achilles"
 ```

@@ -1,7 +1,6 @@
-
-# faker::Mountain
+# faker::default::mountain
 
 ```rust
-Mountain::name() //=> "Mount Everest"
-Mountain::range() //=> "Dhaulagiri Himalaya"
+mountain::name() //=> "mount everest"
+mountain::range() //=> "dhaulagiri himalaya"
 ```

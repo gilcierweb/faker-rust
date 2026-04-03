@@ -1,36 +1,25 @@
+# faker::default::cannabis
 
-# faker::Cannabis
-
-Available since version 1.9.0.
+available since version 1.9.0.
 
 ```rust
-# Random strain
-Cannabis::strain() //=> "24k"
+cannabis::strain() //=> "24k"
 
-# Random cannabinoid_abbreviation
-Cannabis::cannabinoid_abbreviation() //=> "THC"
+cannabis::cannabinoid_abbreviation() //=> "thc"
 
-# Random cannabinoid
-Cannabis::cannabinoid() //=> "Tetrahydrocannabinol"
+cannabis::cannabinoid() //=> "tetrahydrocannabinol"
 
-# Random terpene
-Cannabis::terpene() //=> "α Pinene"
+cannabis::terpene() //=> "α pinene"
 
-# Random medical_use
-Cannabis::medical_use() //=> "analgesic"
+cannabis::medical_use() //=> "analgesic"
 
-# Random health_benefit
-Cannabis::health_benefit() //=> "relieves pain"
+cannabis::health_benefit() //=> "relieves pain"
 
-# Random category
-Cannabis::category() //=> "capsules"
+cannabis::category() //=> "capsules"
 
-# Random type
-Cannabis::type() //=> "hybrid"
+cannabis::type() //=> "hybrid"
 
-# Random buzzword
-Cannabis::buzzword() //=> "blunt wrap"
+cannabis::buzzword() //=> "blunt wrap"
 
-# Random brand
-Cannabis::brand() //=> "Chong's Choice"
+cannabis::brand() //=> "chong's choice"
 ```

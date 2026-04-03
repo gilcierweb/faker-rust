@@ -1,14 +1,13 @@
-
-# faker::Subscription
+# faker::default::subscription
 
 ```rust
-Subscription::plan() //=> "Platinum"
+subscription::plan() //=> "platinum"
 
-Subscription::status() //=> "Active"
+subscription::status() //=> "active"
 
-Subscription::payment_method() //=> "Paypal"
+subscription::payment_method() //=> "paypal"
 
-Subscription::subscription_term() //=> "Annual"
+subscription::subscription_term() //=> "annual"
 
-Subscription::payment_term() //=> "Monthly"
+subscription::payment_term() //=> "monthly"
 ```

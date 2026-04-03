@@ -1,12 +1,11 @@
+# faker::default::electrical_components
 
-# faker::ElectricalComponents
-
-Available since version 1.9.0.
+available since version 1.9.0.
 
 ```rust
-ElectricalComponents::active() //=> "Transistor"
+electricalcomponents::active() //=> "transistor"
 
-ElectricalComponents::passive() //=> "Resistor"
+electricalcomponents::passive() //=> "resistor"
 
-ElectricalComponents::electromechanical() //=> "Toggle Switch"
+electricalcomponents::electromechanical() //=> "toggle switch"
 ```

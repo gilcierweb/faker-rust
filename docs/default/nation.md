@@ -1,20 +1,14 @@
+# faker::default::nation
 
-# faker::Nation
-
-Available since version 1.9.0.
+available since version 1.9.0.
 
 ```rust
-# Random Nationality
-Nation::nationality() //=> "Nepalese"
+nation::nationality() //=> "nepalese"
 
-# Random National Language
-Nation::language() //=> "Nepali"
+nation::language() //=> "nepali"
 
-# Random Capital City
-Nation::capital_city() //=> "Kathmandu"
+nation::capital_city() //=> "kathmandu"
 
-# Random National Sport
-Nation::national_sport() //=> "dandi biyo"
+nation::national_sport() //=> "dandi biyo"
 
-# Random National Flag
-Nation::flag() //=> "🇫🇮"
+nation::flag() //=> "🇫🇮"

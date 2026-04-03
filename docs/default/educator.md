@@ -1,20 +1,19 @@
+# faker::default::educator
 
-# faker::Educator
-
-Available since version 1.6.4.
+available since version 1.6.4.
 
 ```rust
-Educator::university() //=> "Mallowtown Technical College"
+educator::university() //=> "mallowtown technical college"
 
-Educator::secondary_school() //=> "Iceborough Secondary College"
+educator::secondary_school() //=> "iceborough secondary college"
 
-Educator::primary_school() //=> "Brighthurst Elementary School"
+educator::primary_school() //=> "brighthurst elementary school"
 
-Educator::degree() //=> "Associate Degree in Criminology"
+educator::degree() //=> "associate degree in criminology"
 
-Educator::course_name() //=> "Criminology 101"
+educator::course_name() //=> "criminology 101"
 
-Educator::subject() //=> "Criminology"
+educator::subject() //=> "criminology"
 
-Educator::campus() //=> "Vertapple Campus"
+educator::campus() //=> "vertapple campus"
 ```

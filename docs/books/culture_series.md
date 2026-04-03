@@ -1,15 +1,17 @@
-# Faker::Books::CultureSeries
+# faker::books::culture_series
+
+// Books::CultureSeries
 
 ```rust
-Faker::Books::CultureSeries::book() //=> "The Player of Games"
+Books::CultureSeries::book() //=> "The Player of Games"
 
-Faker::Books::CultureSeries::culture_ship() //=> "Fate Amenable To Change"
+Books::CultureSeries::culture_ship() //=> "Fate Amenable To Change"
 
-Faker::Books::CultureSeries::culture_ship_class() //=> "General Systems Vehicle"
+Books::CultureSeries::culture_ship_class() //=> "General Systems Vehicle"
 
-Faker::Books::CultureSeries::culture_ship_class_abv() //=> "GSV"
+Books::CultureSeries::culture_ship_class_abv() //=> "GSV"
 
-Faker::Books::CultureSeries::civ() //=> "Culture"
+Books::CultureSeries::civ() //=> "Culture"
 
-Faker::Books::CultureSeries::planet() //=> "Xinth"
+Books::CultureSeries::planet() //=> "Xinth"
 ```

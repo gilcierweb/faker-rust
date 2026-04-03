@@ -1,12 +1,14 @@
-# Faker::Game
+# faker::games::game
+
+// Game
 
 ```rust
-# Random Game Title
-Faker::Game::title() //=> "Half-Life"
+// Random Game Title
+Game::title() //=> "Half-Life"
 
-# Random Game Genre
-Faker::Game::genre() //=> "First-person shooter"
+// Random Game Genre
+Game::genre() //=> "First-person shooter"
 
-# Random Game Platform
-Faker::Game::platform() //=> "Nintendo DS"
+// Random Game Platform
+Game::platform() //=> "Nintendo DS"
 ```

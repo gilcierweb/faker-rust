@@ -1,10 +1,9 @@
-
-# faker::Currency
+# faker::default::currency
 
 ```rust
-Currency::name() //=> "Swedish Krona"
+currency::name() //=> "swedish krona"
 
-Currency::code() //=> "USD"
+currency::code() //=> "usd"
 
-Currency::symbol() //=> "$"
+currency::symbol() //=> "$"
 ```

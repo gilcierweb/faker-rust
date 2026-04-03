@@ -1,6 +1,5 @@
-
-# faker::RockBand
+# faker::default::rock_band
 
 ```rust
-RockBand::name() //=> "Led Zeppelin"
+rockband::name() //=> "led zeppelin"
 ```

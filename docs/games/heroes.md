@@ -1,4 +1,3 @@
-
 # faker::games::Heroes
 
 ```rust

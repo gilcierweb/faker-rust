@@ -1,4 +1,3 @@
-
 # faker::music::Hiphop
 
 ```rust

@@ -1,4 +1,3 @@
-
 # faker::tv_shows::TwinPeaks
 
 Available since version 1.7.0.

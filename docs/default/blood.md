@@ -1,12 +1,11 @@
+# faker::default::blood
 
-# faker::Blood
-
-Available since version 2.12.0.
+available since version 2.12.0.
 
 ```rust
-Blood::type() //=> "AB"
+blood::type() //=> "ab"
 
-Blood::rh_factor() //=> "-"
+blood::rh_factor() //=> "-"
 
-Blood::group() //=> "AB-"
+blood::group() //=> "ab-"
 ```

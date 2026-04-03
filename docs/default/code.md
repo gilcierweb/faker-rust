@@ -1,23 +1,21 @@
-
-# faker::Code
+# faker::default::code
 
 ```rust
-Code::npi() //=> "0000126252"
+code::npi() //=> "0000126252"
 
-Code::isbn() //=> "759021701-8"
+code::isbn() //=> "759021701-8"
 
-Code::ean() //=> "4600051000057"
+code::ean() //=> "4600051000057"
 
-Code::rut() //=> "91389184-8"
+code::rut() //=> "91389184-8"
 
-Code::nric() //=> "S5589083H"
+code::nric() //=> "s5589083h"
 
-# Keyword arguments: min_age, max_age
-Code:;nric(min_age: 27, max_age: 34) #=> S8505970Z
+code::nric() //=> s8505970z
 
-Code.imei #= "546327785982623"
+code::imei #= "546327785982623"
 
-Code::asin() //=> "B00000IGGJ"
+code::asin() //=> "b00000iggj"
 
-Code::sin() //=> "159160274"
+code::sin() //=> "159160274"
 ```

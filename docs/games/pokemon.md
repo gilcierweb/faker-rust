@@ -1,4 +1,3 @@
-
 # faker::games::Pokemon
 
 Available since version 1.7.0.

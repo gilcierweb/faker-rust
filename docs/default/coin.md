@@ -1,10 +1,7 @@
-
-# faker::Coin
+# faker::default::coin
 
 ```rust
-# Flip a coin
-Coin::flip() //=> "Heads"
+coin::flip() //=> "heads"
 
-# The currency of the coin
-Coin::name() //=> "Philippine Peso"
+coin::name() //=> "philippine peso"
 ```

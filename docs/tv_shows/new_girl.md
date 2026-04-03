@@ -1,4 +1,3 @@
-
 # faker::tv_shows::NewGirl
 
 ```rust

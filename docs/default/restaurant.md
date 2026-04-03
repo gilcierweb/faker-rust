@@ -1,12 +1,11 @@
-
-# faker::Restaurant
+# faker::default::restaurant
 
 ```rust
-Restaurant.name          #=> "Curry King"
+restaurant::name          //=> "curry king"
 
-Restaurant.type          #=> "Comfort Food"
+restaurant::type          //=> "comfort food"
 
-Restaurant.description   #=> "We are committed to using the finest ingredients in our recipes. No food leaves our kitchen that we ourselves would not eat."
+restaurant::description   //=> "we are committed to using the finest ingredients in our recipes. no food leaves our kitchen that we ourselves would not eat."
 
-Restaurant.review        #=> "Brand new. Great design. Odd to hear pop music in a Mexican establishment. Music is a bit loud. It should be background."
+restaurant::review        //=> "brand new. great design. odd to hear pop music in a mexican establishment. music is a bit loud. it should be background."
 ```

@@ -1,4 +1,3 @@
-
 # faker::games::ClashOfClans
 
 ```rust

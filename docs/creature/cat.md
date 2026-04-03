@@ -1,15 +1,14 @@
-
 # faker::creature::Cat
 
 Available since version 1.6.2.
 
 ```rust
-# Random cat name
+// Random cat name
 Cat::name() //=> "Shadow"
 
-# Random cat breed
+// Random cat breed
 Cat::breed() //=> "British Semipi-longhair"
 
-# Random cat registry
+// Random cat registry
 Cat::registry() //=> "American Cat Fanciers Association"
 ```

@@ -1,4 +1,3 @@
-
 # faker::tv_shows::StarTrek
 
 Available since version 1.8.0.

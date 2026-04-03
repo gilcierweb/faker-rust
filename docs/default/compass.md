@@ -1,51 +1,35 @@
+# faker::default::compass
 
-# faker::Compass
-
-Available since version 1.8.0.
+available since version 1.8.0.
 
 ```rust
-# A random direction
-Compass.direction                 #=> "southeast"
+compass::direction                 //=> "southeast"
 
-# Random cardinal
-Compass.cardinal                  #=> "north"
+compass::cardinal                  //=> "north"
 
-# Random ordinal
-Compass.ordinal                   #=> "northwest"
+compass::ordinal                   //=> "northwest"
 
-# Random half_wind
-Compass.half_wind                 #=> "north-northwest"
+compass::half_wind                 //=> "north-northwest"
 
-# Random quarter wind
-Compass.quarter_wind              #=> "north by west"
+compass::quarter_wind              //=> "north by west"
 
-# Random abbreviation
-Compass.abbreviation              #=> "NEbN"
+compass::abbreviation              //=> "nebn"
 
-# Random cardinal abbreviation
-Compass.cardinal_abbreviation     #=>    "N"
+compass::cardinal_abbreviation     //=>    "n"
 
-# Random ordinal abbreviation
-Compass.ordinal_abbreviation      #=>   "SW"
+compass::ordinal_abbreviation      //=>   "sw"
 
-# Random half wind abbreviation
-Compass.half_wind_abbreviation    #=>  "NNE"
+compass::half_wind_abbreviation    //=>  "nne"
 
-# Random quarter wind abbreviation
-Compass::quarter_wind_abbreviation() //=> "SWbS"
+compass::quarter_wind_abbreviation() //=> "swbs"
 
-# Random azimuth
-Compass.azimuth                   #=> "168.75"
+compass::azimuth                   //=> "168.75"
 
-# Random cardinal azimuth
-Compass.cardinal_azimuth          #=>     "90"
+compass::cardinal_azimuth          //=>     "90"
 
-# Random ordinal azimuth
-Compass.ordinal_azimuth           #=>    "135"
+compass::ordinal_azimuth           //=>    "135"
 
-# Random half wind azimuth
-Compass.half_wind_azimuth         #=>  "292.5"
+compass::half_wind_azimuth         //=>  "292.5"
 
-# Random quarter wind azimuth
-Compass.quarter_wind_azimuth      #=>  "56.25"
+compass::quarter_wind_azimuth      //=>  "56.25"
 ```

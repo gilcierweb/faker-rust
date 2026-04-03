@@ -1,7 +1,6 @@
-
-# faker::Emotion
+# faker::default::emotion
 
 ```rust
-Emotion::noun() //=> "euphoria"
-Emotion::adjective() //=> "chagrined"
+emotion::noun() //=> "euphoria"
+emotion::adjective() //=> "chagrined"
 ```

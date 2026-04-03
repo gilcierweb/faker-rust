@@ -1,18 +1,15 @@
-
-# faker::Relationship
-### A Faker module for familial relationships.
+# faker::default::relationship
 
 ```rust
-# Keyword arguments: connection
-Relationship::familial() //=> "Mother" or "Grandmother"
-Relationship:;familial(connection: 'direct') #=> "Mother" or "Brother"
-Relationship:;familial(connection: 'extended') #=> "Grandmother" or "Niece" or "Aunt"
+relationship::familial() //=> "mother" or "grandmother"
+relationship::familial() //=> "mother" or "brother"
+relationship::familial() //=> "grandmother" or "niece" or "aunt"
 
-Relationship::spouse() //=> "Husband" or "Wife"
+relationship::spouse() //=> "husband" or "wife"
 
-Relationship::parent() //=> "Father" or "Mother"
+relationship::parent() //=> "father" or "mother"
 
-Relationship::in_law() //=> "Father-in-law"
+relationship::in_law() //=> "father-in-law"
 
-Relationship::sibling() //=> "Sister" or "Brother"
+relationship::sibling() //=> "sister" or "brother"
 ```

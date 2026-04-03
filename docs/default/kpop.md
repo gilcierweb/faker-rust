@@ -1,16 +1,14 @@
+# faker::kpop
 
-# faker::Kpop
+Generate K-pop data.
 
 ```rust
-Kpop.i_groups # 1990's og groups =>  "Seo Taiji and Boys"
+use faker::kpop;
 
-Kpop.ii_groups # 2000's groups =>  "Girls' Generation"
-
-Kpop.iii_groups # 2010's groups =>  "Trouble Maker"
-
-Kpop.girl_groups # girl groups =>  "2NE1"
-
-Kpop.boy_bands # boy bands =>  "Exo"
-
-Kpop.solo # solo artists => "T.O.P"
+kpop::i_groups()      //=> "Seo Taiji and Boys"      // 1990's OG groups
+kpop::ii_groups()     //=> "Girls' Generation"       // 2000's groups
+kpop::iii_groups()    //=> "Trouble Maker"          // 2010's groups
+kpop::girl_groups()   //=> "2NE1"                   // girl groups
+kpop::boy_bands()     //=> "EXO"                    // boy bands
+kpop::solo()          //=> "T.O.P"                  // solo artists
 ```

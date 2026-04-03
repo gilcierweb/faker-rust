@@ -1,4 +1,3 @@
-
 # faker::movies::Tron
 
 ```rust
@@ -12,7 +11,7 @@ Tron::program() //=> "Clu"
 
 Tron::quote() //=> "Greetings, Programs!"
 
-Tron:;quote(character: "mcp") #=> "End of Line."
+Tron::quote() //=> "End of Line."
 
 Tron::tagline() //=> "The Electronic Gladiator"
 

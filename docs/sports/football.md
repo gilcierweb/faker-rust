@@ -1,4 +1,3 @@
-
 # faker::sports::Football
 
 Available since version 1.9.0.

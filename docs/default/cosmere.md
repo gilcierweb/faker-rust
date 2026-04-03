@@ -1,24 +1,23 @@
-
-# faker::Cosmere
+# faker::default::cosmere
 
 ```rust
-Cosmere.aon                    #=> "Rao"
+cosmere::aon                    //=> "rao"
 
-Cosmere.shard_world            #=> "Yolen"
+cosmere::shard_world            //=> "yolen"
 
-Cosmere.shard                  #=> "Ambition"
+cosmere::shard                  //=> "ambition"
 
-Cosmere.surge                  #=> "Progression"
+cosmere::surge                  //=> "progression"
 
-Cosmere.knight_radiant          #=> "Truthwatcher"
+cosmere::knight_radiant          //=> "truthwatcher"
 
-Cosmere.metal                  #=> "Brass"
+cosmere::metal                  //=> "brass"
 
-Cosmere.allomancer             #=> "Coinshot"
+cosmere::allomancer             //=> "coinshot"
 
-Cosmere.feruchemist            #=> "Archivist"
+cosmere::feruchemist            //=> "archivist"
 
-Cosmere.herald                 #=> "Ishar"
+cosmere::herald                 //=> "ishar"
 
-Cosmere.spren                  #=> "Flamespren"
+cosmere::spren                  //=> "flamespren"
 ```

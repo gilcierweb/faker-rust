@@ -1,10 +1,9 @@
-
-# faker::Camera
+# faker::default::camera
 
 ```rust
-Camera::brand() //=> "Canon"
+camera::brand() //=> "canon"
 
-Camera::model() //=> "450D"
+camera::model() //=> "450d"
 
-Camera::brand_with_model() //=> "Canon 450D"
+camera::brand_with_model() //=> "canon 450d"
 ```

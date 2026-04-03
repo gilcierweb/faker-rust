@@ -1,77 +1,54 @@
+# faker::default::vehicle
 
-# faker::Vehicle
-
-Available since version 1.6.4.
+available since version 1.6.4.
 
 ```rust
-Vehicle::vin() //=> "LLDWXZLG77VK2LUUF"
+vehicle::vin() //=> "lldwxzlg77vk2luuf"
 
-# Random vehicle manufacturer
-Vehicle::manufacturer() //=> "Lamborghini"
+vehicle::manufacturer() //=> "lamborghini"
 
-Vehicle::make() //=> "Honda"
+vehicle::make() //=> "honda"
 
-# Random vehicle model
-# Keyword arguments: make_of_model
-Vehicle::model() //=> "A8"
-Vehicle:;model(make_of_model: 'Toyota') #=> "Prius"
+vehicle::model() //=> "a8"
+vehicle::model() //=> "prius"
 
-# Random vehicle make and model
-Vehicle::make_and_model() //=> "Dodge Charger"
+vehicle::make_and_model() //=> "dodge charger"
 
-# Random vehicle version
-Vehicle::version() //=> "2.5 Turbo"
+vehicle::version() //=> "2.5 turbo"
 
-Vehicle::version() //=> "Altis Hybrid 1.8 16V CVT"
+vehicle::version() //=> "altis hybrid 1.8 16v cvt"
 
-# Random vehicle color
-Vehicle::color() //=> "Red"
+vehicle::color() //=> "red"
 
-# Random vehicle transmission
-Vehicle::transmission() //=> "Automanual"
+vehicle::transmission() //=> "automanual"
 
-# Random vehicle drive type
-Vehicle::drive_type() //=> "4x2/2-wheel drive"
+vehicle::drive_type() //=> "4x2/2-wheel drive"
 
-# Random vehicle fuel type
-Vehicle::fuel_type() //=> "Diesel"
+vehicle::fuel_type() //=> "diesel"
 
-# Random vehicle style
-Vehicle::style() //=> "ESi"
+vehicle::style() //=> "esi"
 
-# Random car type
-Vehicle::car_type() //=> "Sedan"
+vehicle::car_type() //=> "sedan"
 
-# Random car options
-Vehicle::car_options() //=> ["DVD System", "MP3 (Single Disc)", "Tow Package", "CD (Multi Disc)", "Cassette Player", "Bucket Seats", "Cassette Player", "Leather Interior", "AM/FM Stereo", "Third Row Seats"]
+vehicle::car_options() //=> ["dvd system", "mp3 (single disc)", "tow package", "cd (multi disc)", "cassette player", "bucket seats", "cassette player", "leather interior", "am/fm stereo", "third row seats"]
 
-# Random standard car specs
-Vehicle::standard_specs() //=> ["Full-size spare tire w/aluminum alloy wheel", "Back-up camera", "Carpeted cargo area", "Silver accent IP trim finisher -inc: silver shifter finisher", "Back-up camera", "Water-repellent windshield & front door glass", "Floor carpeting"]
+vehicle::standard_specs() //=> ["full-size spare tire w/aluminum alloy wheel", "back-up camera", "carpeted cargo area", "silver accent ip trim finisher -inc: silver shifter finisher", "back-up camera", "water-repellent windshield & front door glass", "floor carpeting"]
 
-# Random number of doors
-Vehicle::doors() //=> 1
-Vehicle::door_count() //=> 3
+vehicle::doors() //=> 1
+vehicle::door_count() //=> 3
 
-# Random engine size
-Vehicle::engine_size() //=> 6
-Vehicle::engine() //=> 4
+vehicle::engine_size() //=> 6
+vehicle::engine() //=> 4
 
-# Random car year
-# Between 1 and 15 years ago
-Vehicle::year() //=> 2008
+vehicle::year() //=> 2008
 
-# Random mileage/kilometrage
-# Keyword arguments: min, max
-Vehicle::mileage() //=> 26961
-Vehicle:;mileage(min: 50_000) #=> 81557
-Vehicle:;mileage(min: 50_000, max: 250_000) #=> 117503
-Vehicle::kilometrage() //=> 35378
+vehicle::mileage() //=> 26961
+vehicle::mileage() //=> 81557
+vehicle::mileage() //=> 117503
+vehicle::kilometrage() //=> 35378
 
-# Random vehicle license plate (USA by default)
-# Keyword arguments: state_abbreviation
-Vehicle::license_plate() //=> "DEP-2483"
-Vehicle:;license_plate(state_abbreviation: 'FL') #=> "977 UNU"
+vehicle::license_plate() //=> "dep-2483"
+vehicle::license_plate() //=> "977 unu"
 
-# Random vehicle license plate for Singapore (if locale is set)
-Vehicle::singapore_license_plate() //=> "SLV1854M"
+vehicle::singapore_license_plate() //=> "slv1854m"
 ```

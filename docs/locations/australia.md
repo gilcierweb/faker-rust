@@ -1,10 +1,9 @@
-
 # faker::locations::Australia
 
 ```rust
-Australia.location # => "Sydney"
+Australia::location // "Sydney"
 
-Australia.animal # => "Kangaroo"
+Australia::animal // "Kangaroo"
 
-Australia.state # => "New South Wales"
+Australia::state // "New South Wales"
 ```

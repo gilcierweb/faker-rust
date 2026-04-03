@@ -1,26 +1,24 @@
-
-# faker::Name
+# faker::default::name
 
 ```rust
-Name.name             #=> "Tyshawn Johns Sr."
+name::name             //=> "tyshawn johns sr."
 
-Name::name_with_middle() //=> "Aditya Elton Douglas"
+name::name_with_middle() //=> "aditya elton douglas"
 
-Name.first_name       #=> "Kaci"
+name::first_name       //=> "kaci"
 
-Name.middle_name      #=> "Abraham"
+name::middle_name      //=> "abraham"
 
-Name.male_first_name   #=> "Edward"
+name::male_first_name   //=> "edward"
 
-Name::female_first_name() //=> "Natasha"
+name::female_first_name() //=> "natasha"
 
-Name.last_name        #=> "Ernser"
+name::last_name        //=> "ernser"
 
-Name.prefix           #=> "Mr."
+name::prefix           //=> "mr."
 
-Name.suffix           #=> "IV"
+name::suffix           //=> "iv"
 
-# Keyword arguments: number
-Name.initials            #=> "NJM"
-Name:;initials(number: 2) #=> "NM"
+name::initials            //=> "njm"
+name::initials() //=> "nm"
 ```

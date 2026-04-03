@@ -1,4 +1,6 @@
-# Faker::Ghostbusters
+# faker::movies::ghostbusters
+
+// Ghostbusters
 
 ```rust
 Ghostbusters::actor() //=> "Bill Murray"

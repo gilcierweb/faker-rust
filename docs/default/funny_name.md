@@ -1,16 +1,15 @@
+# faker::default::funny_name
 
-# faker::FunnyName
-
-Available since version 1.8.0.
+available since version 1.8.0.
 
 ```rust
-FunnyName::name() //=> "Sam Pull"
+funnyname::name() //=> "sam pull"
 
-FunnyName::two_word_name() //=> "Shirley Knot"
+funnyname::two_word_name() //=> "shirley knot"
 
-FunnyName::three_word_name() //=> "Carson O. Gin"
+funnyname::three_word_name() //=> "carson o. gin"
 
-FunnyName::four_word_name() //=> "Maude L. T. Ford"
+funnyname::four_word_name() //=> "maude l. t. ford"
 
-FunnyName::name_with_initial() //=> "Heather N. Yonn"
+funnyname::name_with_initial() //=> "heather n. yonn"
 ```

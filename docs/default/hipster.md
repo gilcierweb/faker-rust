@@ -1,44 +1,37 @@
+# faker::default::hipster
 
-# faker::Hipster
-
-Adapted from [Hipster Ipsum](http://hipsum.co/)
+adapted from [hipster ipsum]()
 
 ```rust
-Hipster::word() //=> "irony"
+hipster::word() //=> "irony"
 
-# Keyword arguments: number, supplemental, spaces_allowed
-Hipster::words() //=> ["pug", "pitchfork", "chia"]
-Hipster:;words(number: 4) #=> ["ugh", "cardigan", "poutine", "stumptown"]
-Hipster:;words(number: 4, supplemental: true) #=> ["iste", "seitan", "normcore", "provident"]
-Hipster:;words(number: 4, supplemental: true, spaces_allowed: true) #=> ["qui", "magni", "craft beer", "est"]
+hipster::words() //=> ["pug", "pitchfork", "chia"]
+hipster::words() //=> ["ugh", "cardigan", "poutine", "stumptown"]
+hipster::words() //=> ["iste", "seitan", "normcore", "provident"]
+hipster::words() //=> ["qui", "magni", "craft beer", "est"]
 
-# Keyword arguments: word_count, supplemental, random_words_to_add, open_compounds_allowed
-Hipster::sentence() //=> "Park iphone leggings put a bird on it."
-Hipster:;sentence(word_count: 3) #=> "Pour-over swag godard."
-Hipster:;sentence(word_count: 3, supplemental: true) #=> "Beard laboriosam sequi celiac."
-Hipster:;sentence(word_count: 3, supplemental: false, random_words_to_add: 4) #=> "Bitters retro mustache aesthetic biodiesel 8-bit."
-Hipster:;sentence(word_count: 3, supplemental: true, random_words_to_add: 4) #=> "Occaecati deleniti messenger bag meh crucifix autem."
-Hipster:;sentence(word_count: 3, supplemental: true, random_words_to_add: 0, open_compounds_allowed: true) #=> "Kale chips nihil eos."
-Hipster:;sentence(word_count: 3, supplemental: true, random_words_to_add: 0, open_compounds_allowed: false) #=> "Dreamcatcher umami fixie."
+hipster::sentence() //=> "park iphone leggings put a bird on it."
+hipster::sentence() //=> "pour-over swag godard."
+hipster::sentence() //=> "beard laboriosam sequi celiac."
+hipster::sentence() //=> "bitters retro mustache aesthetic biodiesel 8-bit."
+hipster::sentence() //=> "occaecati deleniti messenger bag meh crucifix autem."
+hipster::sentence() //=> "kale chips nihil eos."
+hipster::sentence() //=> "dreamcatcher umami fixie."
 
-# Keyword arguments: number, supplemental
-Hipster::sentences() //=> ["Godard pitchfork vinegar chillwave everyday 90's whatever.", "Pour-over artisan distillery street waistcoat.", "Salvia yr leggings franzen blue bottle."]
-Hipster:;sentences(number: 1) #=> ["Before they sold out pinterest venmo umami try-hard ugh hoodie artisan."]
-Hipster:;sentences(number: 1, supplemental: true) #=> ["Et sustainable optio aesthetic et."]
+hipster::sentences() //=> ["godard pitchfork vinegar chillwave everyday 90's whatever.", "pour-over artisan distillery street waistcoat.", "salvia yr leggings franzen blue bottle."]
+hipster::sentences() //=> ["before they sold out pinterest venmo umami try-hard ugh hoodie artisan."]
+hipster::sentences() //=> ["et sustainable optio aesthetic et."]
 
-# Keyword arguments: sentence_count, supplemental, random_sentences_to_add
-Hipster::paragraph() //=> "Migas fingerstache pbr&b tofu. Polaroid distillery typewriter echo tofu actually. Slow-carb fanny pack pickled direct trade scenester mlkshk plaid. Banjo venmo chambray cold-pressed typewriter. Fap skateboard intelligentsia."
-Hipster:;paragraph(sentence_count: 2) #=> "Yolo tilde farm-to-table hashtag. Lomo kitsch disrupt forage +1."
-Hipster:;paragraph(sentence_count: 2, supplemental: true) #=> "Typewriter iste ut viral kombucha voluptatem. Sint voluptates saepe. Direct trade irony chia excepturi yuccie. Biodiesel esse listicle et quam suscipit."
-Hipster:;paragraph(sentence_count: 2, supplemental: false, random_sentences_to_add: 4) #=> "Selvage vhs chartreuse narwhal vinegar. Authentic vinyl truffaut carry vhs pop-up. Hammock everyday iphone locavore thundercats bitters vegan goth. Fashion axe banh mi shoreditch whatever artisan."
-Hipster:;paragraph(sentence_count: 2, supplemental: true, random_sentences_to_add: 4) #=> "Deep v gluten-free unde waistcoat aperiam migas voluptas dolorum. Aut drinking illo sustainable sapiente. Direct trade fanny pack kale chips ennui semiotics."
+hipster::paragraph() //=> "migas fingerstache pbr&b tofu. polaroid distillery typewriter echo tofu actually. slow-carb fanny pack pickled direct trade scenester mlkshk plaid. banjo venmo chambray cold-pressed typewriter. fap skateboard intelligentsia."
+hipster::paragraph() //=> "yolo tilde farm-to-table hashtag. lomo kitsch disrupt forage +1."
+hipster::paragraph() //=> "typewriter iste ut viral kombucha voluptatem. sint voluptates saepe. direct trade irony chia excepturi yuccie. biodiesel esse listicle et quam suscipit."
+hipster::paragraph() //=> "selvage vhs chartreuse narwhal vinegar. authentic vinyl truffaut carry vhs pop-up. hammock everyday iphone locavore thundercats bitters vegan goth. fashion axe banh mi shoreditch whatever artisan."
+hipster::paragraph() //=> "deep v gluten-free unde waistcoat aperiam migas voluptas dolorum. aut drinking illo sustainable sapiente. direct trade fanny pack kale chips ennui semiotics."
 
-# Keyword arguments: number, supplemental
-Hipster::paragraphs() //=> ["Tilde microdosing blog cliche meggings. Intelligentsia five dollar toast forage yuccie. Master kitsch knausgaard. Try-hard everyday trust fund mumblecore.", "Normcore viral pickled. Listicle humblebrag swag tote bag. Taxidermy street hammock neutra butcher cred kale chips. Blog portland humblebrag trust fund irony.", "Single-origin coffee fixie cleanse tofu xoxo. Post-ironic tote bag ramps gluten-free locavore mumblecore hammock. Umami loko twee. Ugh kitsch before they sold out."]
-Hipster:;paragraphs(number: 1) #=> ["Skateboard cronut synth +1 fashion axe. Pop-up polaroid skateboard asymmetrical. Ennui fingerstache shoreditch before they sold out. Tattooed pitchfork ramps. Photo booth yr messenger bag raw denim bespoke locavore lomo synth."]
-Hipster:;paragraphs(number: 1, supplemental: true) #=> ["Quae direct trade pbr&b quo taxidermy autem loko. Umami quas ratione migas cardigan sriracha minima. Tenetur perspiciatis pickled sed eum doloribus truffaut. Excepturi dreamcatcher meditation."]
+hipster::paragraphs() //=> ["tilde microdosing blog cliche meggings. intelligentsia five dollar toast forage yuccie. master kitsch knausgaard. try-hard everyday trust fund mumblecore.", "normcore viral pickled. listicle humblebrag swag tote bag. taxidermy street hammock neutra butcher cred kale chips. blog portland humblebrag trust fund irony.", "single-origin coffee fixie cleanse tofu xoxo. post-ironic tote bag ramps gluten-free locavore mumblecore hammock. umami loko twee. ugh kitsch before they sold out."]
+hipster::paragraphs() //=> ["skateboard cronut synth +1 fashion axe. pop-up polaroid skateboard asymmetrical. ennui fingerstache shoreditch before they sold out. tattooed pitchfork ramps. photo booth yr messenger bag raw denim bespoke locavore lomo synth."]
+hipster::paragraphs() //=> ["quae direct trade pbr&b quo taxidermy autem loko. umami quas ratione migas cardigan sriracha minima. tenetur perspiciatis pickled sed eum doloribus truffaut. excepturi dreamcatcher meditation."]
 
-# Keyword arguments: characters, supplemental
-Hipster::paragraph_by_chars() //=> "Truffaut stumptown trust fund 8-bit messenger bag portland. Meh kombucha selvage swag biodiesel. Lomo kinfolk jean shorts asymmetrical diy. Wayfarers portland twee stumptown. Wes anderson biodiesel retro 90's pabst. Diy echo 90's mixtape semiotics. Cornho."
-Hipster:;paragraph_by_chars(characters: 256, supplemental: false) #=> "Hella kogi blog narwhal sartorial selfies mustache schlitz. Bespoke normcore kitsch cred hella fixie. Park aesthetic fixie migas twee. Cliche mustache brunch tumblr fixie godard. Drinking pop-up synth hoodie dreamcatcher typewriter. Kitsch biodiesel green."
+hipster::paragraph_by_chars() //=> "truffaut stumptown trust fund 8-bit messenger bag portland. meh kombucha selvage swag biodiesel. lomo kinfolk jean shorts asymmetrical diy. wayfarers portland twee stumptown. wes anderson biodiesel retro 90's pabst. diy echo 90's mixtape semiotics. cornho."
+hipster::paragraph_by_chars() //=> "hella kogi blog narwhal sartorial selfies mustache schlitz. bespoke normcore kitsch cred hella fixie. park aesthetic fixie migas twee. cliche mustache brunch tumblr fixie godard. drinking pop-up synth hoodie dreamcatcher typewriter. kitsch biodiesel green."
 ```

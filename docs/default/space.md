@@ -1,48 +1,33 @@
+# faker::default::space
 
-# faker::Space
-
-Available since version 1.6.4.
+available since version 1.6.4.
 
 ```rust
-# Random planet from our Solar System
-Space::planet() //=> "Venus"
+space::planet() //=> "venus"
 
-# Random moon from our Solar System
-Space::moon() //=> "Europa"
+space::moon() //=> "europa"
 
-# Random galaxy
-Space::galaxy() //=> "Andromeda"
+space::galaxy() //=> "andromeda"
 
-# Random nebula name
-Space::nebula() //=> "Triffid Nebula"
+space::nebula() //=> "triffid nebula"
 
-# Random star cluster
-Space::star_cluster() //=> "Messier 70"
+space::star_cluster() //=> "messier 70"
 
-# Random constellation
-Space::constellation() //=> "Orion"
+space::constellation() //=> "orion"
 
-# Random star
-Space::star() //=> "Proxima Centauri"
+space::star() //=> "proxima centauri"
 
-# Random national space agency
-Space::agency() //=> "Japan Aerospace Exploration Agency"
+space::agency() //=> "japan aerospace exploration agency"
 
-# Random space agency abbreviation
-Space::agency_abv() //=> "NASA"
+space::agency_abv() //=> "nasa"
 
-# Random spacecraft name (limited to NASA)
-Space::nasa_space_craft() //=> "Endeavour"
+space::nasa_space_craft() //=> "endeavour"
 
-# Random private space company title
-Space::company() //=> "SpaceX"
+space::company() //=> "spacex"
 
-# Random unit of stellar distance with number
-Space::distance_measurement() //=> "15 parsecs"
+space::distance_measurement() //=> "15 parsecs"
 
-# Random meteorite name
-Space::meteorite() //=> "Ensisheim"
+space::meteorite() //=> "ensisheim"
 
-# Random launch vehicle name
-Space::launch_vehicle() //=> "Saturn IV"
+space::launch_vehicle() //=> "saturn iv"
 ```

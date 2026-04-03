@@ -1,19 +1,13 @@
-
-# faker::Team
+# faker::default::team
 
 ```rust
-# Random Team Creature
-Team::creature() //=> "gooses"
+team::creature() //=> "gooses"
 
-# Random Team Name created from random US State (Address.state) prepended to a random Team Creature
-Team::name() //=> "Oregon vixens"
+team::name() //=> "oregon vixens"
 
-# Random Team State
-Team::state() //=> "Oregon"
+team::state() //=> "oregon"
 
-# Random Team Sport
-Team::sport() //=> "lacrosse"
+team::sport() //=> "lacrosse"
 
-# Random Team Mascot
-Team::mascot() //=> "Hugo"
+team::mascot() //=> "hugo"
 ```

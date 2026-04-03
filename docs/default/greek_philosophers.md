@@ -1,10 +1,9 @@
+# faker::default::greek_philosophers
 
-# faker::GreekPhilosophers
-
-Available since version 1.9.0.
+available since version 1.9.0.
 
 ```rust
-GreekPhilosophers::name() //=> "Socrates"
+greekphilosophers::name() //=> "socrates"
 
-GreekPhilosophers::quote() //=> "Only the educated are free."
+greekphilosophers::quote() //=> "only the educated are free."
 ```
