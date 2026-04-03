@@ -1,13 +1,13 @@
-# faker_rust::tv_shows::Buffy
+# faker_rust::tv_shows::buffy
 
 ```rust
-Buffy::character() //=> "Buffy Summers"
+buffy::character() //=> "Buffy Summers"
 
-Buffy::quote() //=> "If the apocalypse comes, beep me."
+buffy::quote() //=> "If the apocalypse comes, beep me."
 
-Buffy::actor() //=> "John Ritter"
+buffy::actor() //=> "John Ritter"
 
-Buffy::big_bad() //=> "Glory"
+buffy::big_bad() //=> "Glory"
 
-Buffy::episode #> "Once More, with Feeling"
+buffy::episode #> "Once More, with Feeling"
 ```

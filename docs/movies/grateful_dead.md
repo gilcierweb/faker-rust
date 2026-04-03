@@ -1,7 +1,7 @@
-# faker_rust::movies::GratefulDead
+# faker_rust::movies::grateful_dead
 
 ```rust
-GratefulDead::player() //=> "Jerry Garcia"
+grateful_dead::player() //=> "Jerry Garcia"
 
-GratefulDead::song() //=> "China Cat Sunflower"
+grateful_dead::song() //=> "China Cat Sunflower"
 ```

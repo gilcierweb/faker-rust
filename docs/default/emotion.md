@@ -1,4 +1,4 @@
-# faker_rust::default::emotion
+# faker_rust::emotion
 
 ```rust
 emotion::noun() //=> "euphoria"

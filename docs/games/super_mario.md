@@ -1,12 +1,12 @@
-# faker_rust::games::Super Mario
+# faker_rust::games::super_mario
 
 ```rust
 // Random Super Mario character
-SuperMario::character() //=> "Luigi"
+super_mario::character() //=> "Luigi"
 
 // Random Super Mario game
-SuperMario::game() //=> "Super Mario Odyssey"
+super_mario::game() //=> "Super Mario Odyssey"
 
 // Random Super Mario location
-SuperMario::location() //=> "Kong City"
+super_mario::location() //=> "Kong City"
 ```

@@ -1,7 +1,7 @@
-# faker_rust::music::GratefulDead
+# faker_rust::music::grateful_dead
 
 ```rust
-GratefulDead::player() //=> "Jerry Garcia"
+grateful_dead::player() //=> "Jerry Garcia"
 
-GratefulDead::song() //=> "Cassidy"
+grateful_dead::song() //=> "Cassidy"
 ```

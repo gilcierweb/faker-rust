@@ -1,4 +1,4 @@
-# faker_rust::default::relationship
+# faker_rust::relationship
 
 ```rust
 relationship::familial() //=> "mother" or "grandmother"

@@ -1,4 +1,4 @@
-# faker_rust::default::esport
+# faker_rust::esport
 
 ```rust
 esport::player() //=> "crimsix"

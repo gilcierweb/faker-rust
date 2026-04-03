@@ -1,15 +1,15 @@
-# faker_rust::sports::Football
+# faker_rust::sports::football
 
 Available since version 1.9.0.
 
 ```rust
-Football::team() //=> "Manchester United"
+football::team() //=> "Manchester United"
 
-Football::player() //=> "Lionel Messi"
+football::player() //=> "Lionel Messi"
 
-Football::coach() //=> "Jose Mourinho"
+football::coach() //=> "Jose Mourinho"
 
-Football::competition() //=> "FIFA World Cup"
+football::competition() //=> "FIFA World Cup"
 
-Football::position() //=> "Defensive Midfielder"
+football::position() //=> "Defensive Midfielder"
 ```

@@ -3,15 +3,15 @@
 // Books::CultureSeries
 
 ```rust
-Books::CultureSeries::book() //=> "The Player of Games"
+Books::culture_series::book() //=> "The Player of Games"
 
-Books::CultureSeries::culture_ship() //=> "Fate Amenable To Change"
+Books::culture_series::culture_ship() //=> "Fate Amenable To Change"
 
-Books::CultureSeries::culture_ship_class() //=> "General Systems Vehicle"
+Books::culture_series::culture_ship_class() //=> "General Systems Vehicle"
 
-Books::CultureSeries::culture_ship_class_abv() //=> "GSV"
+Books::culture_series::culture_ship_class_abv() //=> "GSV"
 
-Books::CultureSeries::civ() //=> "Culture"
+Books::culture_series::civ() //=> "Culture"
 
-Books::CultureSeries::planet() //=> "Xinth"
+Books::culture_series::planet() //=> "Xinth"
 ```

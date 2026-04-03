@@ -4,14 +4,14 @@
 
 ```rust
 // Random Book Title
-Book::title() //=> "The Odd Sister"
+book::title() //=> "The Odd Sister"
 
 // Random Author
-Book::author() //=> "Alysha Olsen"
+book::author() //=> "Alysha Olsen"
 
 // Random Publisher
-Book::publisher() //=> "Opus Reader"
+book::publisher() //=> "Opus Reader"
 
 // Random Genre
-Book::genre() //=> "Mystery"
+book::genre() //=> "Mystery"
 ```

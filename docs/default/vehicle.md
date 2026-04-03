@@ -1,4 +1,4 @@
-# faker_rust::default::vehicle
+# faker_rust::vehicle
 
 available since version 1.6.4.
 

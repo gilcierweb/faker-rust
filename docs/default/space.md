@@ -1,4 +1,4 @@
-# faker_rust::default::space
+# faker_rust::space
 
 available since version 1.6.4.
 

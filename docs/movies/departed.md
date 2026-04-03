@@ -1,11 +1,11 @@
-# faker_rust::movies::Departed
+# faker_rust::movies::departed
 
 Available since version next.
 
 ```rust
-Departed::actor() //=> "Matt Damon"
+departed::actor() //=> "Matt Damon"
 
-Departed::character() //=> "Frank Costello"
+departed::character() //=> "Frank Costello"
 
-Departed::quote() //=> "I'm the guy who does his job. You must be the other guy"
+departed::quote() //=> "I'm the guy who does his job. You must be the other guy"
 ```

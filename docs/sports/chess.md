@@ -1,17 +1,17 @@
-# faker_rust::sports::Chess
+# faker_rust::sports::chess
 
 ```rust
-Chess::player() //=> "Emanuel Lasker"
+chess::player() //=> "Emanuel Lasker"
 
-Chess::federation() //=> "CUB"
+chess::federation() //=> "CUB"
 
-Chess::tournament() //=> "Khanty-Mansisyk (Grand Prix 2014–2015)"
+chess::tournament() //=> "Khanty-Mansisyk (Grand Prix 2014–2015)"
 
-Chess::rating() //=> "2514"
+chess::rating() //=> "2514"
 
-Chess::rating() //=> "2688"
+chess::rating() //=> "2688"
 
-Chess::opening() //=> "Queen’s Indian Defense"
+chess::opening() //=> "Queen’s Indian Defense"
 
-Chess::title() //=> "WGM"
+chess::title() //=> "WGM"
 ```

@@ -1,15 +1,15 @@
-# faker_rust::tv_shows::GameOfThrones
+# faker_rust::tv_shows::game_of_thrones
 
 Available since version 1.6.6.
 
 ```rust
-GameOfThrones::character() //=> "Tyrion Lannister"
+game_of_thrones::character() //=> "Tyrion Lannister"
 
-GameOfThrones::house() //=> "Stark"
+game_of_thrones::house() //=> "Stark"
 
-GameOfThrones::city() //=> "Lannisport"
+game_of_thrones::city() //=> "Lannisport"
 
-GameOfThrones::quote() //=> "Never forget who you are. The rest of the world won't. Wear it like an armor and it can never be used against you."
+game_of_thrones::quote() //=> "Never forget who you are. The rest of the world won't. Wear it like an armor and it can never be used against you."
 
-GameOfThrones::dragon() //=> "Drogon"
+game_of_thrones::dragon() //=> "Drogon"
 ```

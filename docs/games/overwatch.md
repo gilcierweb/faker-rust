@@ -1,11 +1,11 @@
-# faker_rust::games::Overwatch
+# faker_rust::games::overwatch
 
 Available since version 1.8.0.
 
 ```rust
-Overwatch::hero() //=> "Tracer"
+overwatch::hero() //=> "Tracer"
 
-Overwatch::location() //=> "Numbani"
+overwatch::location() //=> "Numbani"
 
-Overwatch::quote() //=> "It's high noon"
+overwatch::quote() //=> "It's high noon"
 ```

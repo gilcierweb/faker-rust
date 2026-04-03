@@ -1,9 +1,9 @@
-# faker_rust::japanese_media::StudioGhibli
+# faker_rust::japanese_media::studio_ghibli
 
 ```rust
-StudioGhibli::character() //=> "Howl Jenkins Pendragon"
+studio_ghibli::character() //=> "Howl Jenkins Pendragon"
 
-StudioGhibli::quote() //=> "Here's another curse for you, may all your bacon burn."
+studio_ghibli::quote() //=> "Here's another curse for you, may all your bacon burn."
 
-StudioGhibli::movie() //=> "Howl's Moving Castle"
+studio_ghibli::movie() //=> "Howl's Moving Castle"
 ```

@@ -1,6 +1,6 @@
-# faker_rust::travel::Airport
+# faker_rust::travel::airport
 
 ```rust
-Airport::name() //=> "Los Angeles International Airport"
-Airport::iata() //=> "LAX"
+airport::name() //=> "Los Angeles International Airport"
+airport::iata_code() //=> "LAX"
 ```

@@ -1,47 +1,47 @@
-# faker_rust::music::Opera
+# faker_rust::music::opera
 
 ```rust
-Opera::verdi() //=> "Il Trovatore"
+opera::verdi() //=> "Il Trovatore"
 
-Opera::rossini() //=> "Il Barbiere di Siviglia"
+opera::rossini() //=> "Il Barbiere di Siviglia"
 
-Opera::donizetti() //=> "Lucia di Lammermoor"
+opera::donizetti() //=> "Lucia di Lammermoor"
 
-Opera::bellini() //=> "Norma"
+opera::bellini() //=> "Norma"
 
-Opera::mozart() //=> "Die Zauberfloete"
+opera::mozart() //=> "Die Zauberfloete"
 
-Opera::mozart_italian() //=> "Cosi fan tutte"
+opera::mozart_italian() //=> "Cosi fan tutte"
 
-Opera::mozart_german() //=> "Die Zauberfloete"
+opera::mozart_german() //=> "Die Zauberfloete"
 
-Opera::gluck() //=> "Orfeo ed Euridice"
+opera::gluck() //=> "Orfeo ed Euridice"
 
-Opera::gluck_italian() //=> "Orfeo ed Euridice"
+opera::gluck_italian() //=> "Orfeo ed Euridice"
 
-Opera::gluck_french() //=> "Orphee et Euridice"
+opera::gluck_french() //=> "Orphee et Euridice"
 
-Opera::beethoven() //=> "Fidelio"
+opera::beethoven() //=> "Fidelio"
 
-Opera::weber() //=> "Der Freischuetz"
+opera::weber() //=> "Der Freischuetz"
 
-Opera::strauss() //=> "Elektra"
+opera::strauss() //=> "Elektra"
 
-Opera::wagner() //=> "Tristan und Isolde"
+opera::wagner() //=> "Tristan und Isolde"
 
-Opera::schumann() //=> "Genoveva"
+opera::schumann() //=> "Genoveva"
 
-Opera::schubert() //=> "Alfonso und Estrella"
+opera::schubert() //=> "Alfonso und Estrella"
 
-Opera::berg() //=> "Wozzeck"
+opera::berg() //=> "Wozzeck"
 
-Opera::ravel() //=> "L'enfant et les sortileges"
+opera::ravel() //=> "L'enfant et les sortileges"
 
-Opera::berlioz() //=> "Les Troyens"
+opera::berlioz() //=> "Les Troyens"
 
-Opera::bizet() //=> "Carmen"
+opera::bizet() //=> "Carmen"
 
-Opera::gounod() //=> "Faust"
+opera::gounod() //=> "Faust"
 
-Opera::saint_saens() //=> "Samson and Delilah"
+opera::saint_saens() //=> "Samson and Delilah"
 ```

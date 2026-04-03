@@ -1,11 +1,11 @@
-# faker_rust::music::SmashingPumpkins
+# faker_rust::music::smashing_pumpkins
 
 ```rust
-SmashingPumpkins::musician() //=> "D'arcy Wretsky"
+smashing_pumpkins::musician() //=> "D'arcy Wretsky"
 
-SmashingPumpkins::album() //=> "Mellon Collie and the Infinite Sadness"
+smashing_pumpkins::album() //=> "Mellon Collie and the Infinite Sadness"
 
-SmashingPumpkins::song() //=> "Disarm"
+smashing_pumpkins::song() //=> "Disarm"
 
-SmashingPumpkins::lyric() //=> "The world is a vampire, sent to drain, secret destroyers, hold you up to the flames"
+smashing_pumpkins::lyric() //=> "The world is a vampire, sent to drain, secret destroyers, hold you up to the flames"
 ```

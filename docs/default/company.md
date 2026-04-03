@@ -1,4 +1,4 @@
-# faker_rust::default::company
+# faker_rust::company
 
 ```rust
 company::name() //=> "hirthe-ritchie"

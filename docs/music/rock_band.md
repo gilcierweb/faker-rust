@@ -1,7 +1,7 @@
-# faker_rust::music::RockBand
+# faker_rust::music::rock_band
 
 ```rust
-RockBand::name() //=> "Led Zeppelin"
+rock_band::name() //=> "Led Zeppelin"
 
-RockBand::song() //=> "Dream On"
+rock_band::song() //=> "Dream On"
 ```

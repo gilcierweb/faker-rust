@@ -1,4 +1,4 @@
-# faker_rust::default::source
+# faker_rust::source
 
 need to generate a code sample for something? just give me the language (defaults to `rust`, obviously).
 

@@ -1,17 +1,17 @@
-# faker_rust::japanese_media::SwordArtOnline
+# faker_rust::japanese_media::sword_art_online
 
 Available since version 1.9.0.
 
 ```rust
 // Random Sword Art Online real name
-SwordArtOnline::real_name() //=> "Kirigaya Kazuto"
+sword_art_online::real_name() //=> "Kirigaya Kazuto"
 
 // Random Sword Art Online game name
-SwordArtOnline::game_name() //=> "Silica"
+sword_art_online::game_name() //=> "Silica"
 
 // Random Sword Art Online location
-SwordArtOnline::location() //=> "Ruby Palace"
+sword_art_online::location() //=> "Ruby Palace"
 
 // Random Sword Art Online item
-SwordArtOnline::item() //=> "Blackwyrm Coat"
+sword_art_online::item() //=> "Blackwyrm Coat"
 ```

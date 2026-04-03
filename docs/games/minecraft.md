@@ -1,27 +1,27 @@
-# faker_rust::games::Minecraft
+# faker_rust::games::minecraft
 
 ```rust
 
 // Generate random achievement from Minecraft
-Minecraft::achievement() //=> "Time to Mine!"
+minecraft::achievement() //=> "Time to Mine!"
 
 // Generate random biome from Minecraft
-Minecraft::biome // "Jungle"
+minecraft::biome // "Jungle"
 
 // Generate random block from Minecraft
-Minecraft::block // "Stone"
+minecraft::block // "Stone"
 
 // Generate random enchantment from Minecraft
-Minecraft::enchantment // "Fire Protection"
+minecraft::enchantment // "Fire Protection"
 
 // Generate random game mode from Minecraft
-Minecraft::game_mode() //=> "Survival"
+minecraft::game_mode() //=> "Survival"
 
 // Generate random item from Minecraft
-Minecraft::item // "Iron Shovel"
+minecraft::item // "Iron Shovel"
 
 // Generate random mob from Minecraft
-Minecraft::mob // "Sheep"
+minecraft::mob // "Sheep"
 
 // Generate random status effect from Minecraft
-Minecraft::status_effect() //=> "Weakness"
+minecraft::status_effect() //=> "Weakness"

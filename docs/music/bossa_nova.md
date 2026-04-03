@@ -1,7 +1,7 @@
-# faker_rust::music::BossaNova
+# faker_rust::music::bossa_nova
 
 ```rust
-BossaNova::artist() //=> "Tom Jobim"
+bossa_nova::artist() //=> "Tom Jobim"
 
-BossaNova::song() //=> "Chega de Saudade"
+bossa_nova::song() //=> "Chega de Saudade"
 ```

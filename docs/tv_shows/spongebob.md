@@ -1,9 +1,9 @@
-# faker_rust::tv_shows::Spongebob
+# faker_rust::tv_shows::spongebob
 
 ```rust
-Spongebob::character() //=> "Patrick"
+spongebob::character() //=> "Patrick"
 
-Spongebob::quote() //=> "I'm ready! I'm ready!"
+spongebob::quote() //=> "I'm ready! I'm ready!"
 
-Spongebob::episode #> "Reef Blower"
+spongebob::episode #> "Reef Blower"
 ```

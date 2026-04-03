@@ -1,11 +1,11 @@
-# faker_rust::tv_shows::HeyArnold
+# faker_rust::tv_shows::hey_arnold
 
 Available since version 1.8.0.
 
 ```rust
-HeyArnold::character() //=> "Arnold"
+hey_arnold::character() //=> "Arnold"
 
-HeyArnold::location() //=> "Big Bob's Beeper Emporium"
+hey_arnold::location() //=> "Big Bob's Beeper Emporium"
 
-HeyArnold::quote() //=> "Stoop Kid's afraid to leave his stoop!"
+hey_arnold::quote() //=> "Stoop Kid's afraid to leave his stoop!"
 ```

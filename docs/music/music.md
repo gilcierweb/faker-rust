@@ -5,17 +5,17 @@
 Available since version 1.6.4.
 
 ```rust
-Music::key() //=> "C"
+music::key() //=> "C"
 
-Music::chord() //=> "Amaj7"
+music::chord() //=> "Amaj7"
 
-Music::instrument() //=> "Ukelele"
+music::instrument() //=> "Ukelele"
 
-Music::band() //=> "The Beatles"
+music::band() //=> "The Beatles"
 
-Music::album() //=> "Sgt. Pepper's Lonely Hearts Club"
+music::album() //=> "Sgt. Pepper's Lonely Hearts Club"
 
-Music::genre() //=> "Rock"
+music::genre() //=> "Rock"
 
-Music::mambo_no_5 //=> "Monica"
+music::mambo_no_5 //=> "Monica"
 ```

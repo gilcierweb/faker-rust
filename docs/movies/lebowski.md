@@ -1,11 +1,11 @@
-# faker_rust::movies::Lebowski
+# faker_rust::movies::lebowski
 
 Available since version 1.8.8.
 
 ```rust
-Lebowski::actor() //=> "John Goodman"
+lebowski::actor() //=> "John Goodman"
 
-Lebowski::character() //=> "Jackie Treehorn"
+lebowski::character() //=> "Jackie Treehorn"
 
-Lebowski::quote() //=> "Forget it, Donny, you're out of your element!"
+lebowski::quote() //=> "Forget it, Donny, you're out of your element!"
 ```

@@ -1,7 +1,7 @@
-# faker_rust::creature::Horse
+# faker_rust::creature::horse
 
 ```rust
-Horse::name() //=> "Noir"
+horse::name() //=> "Noir"
 
-Horse::breed() //=> "Spanish Barb see Barb Horse"
+horse::breed() //=> "Spanish Barb see Barb Horse"
 ```

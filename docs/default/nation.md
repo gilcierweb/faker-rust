@@ -1,4 +1,4 @@
-# faker_rust::default::nation
+# faker_rust::nation
 
 available since version 1.9.0.
 

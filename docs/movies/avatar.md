@@ -1,9 +1,9 @@
-# faker_rust::movies::Avatar
+# faker_rust::movies::avatar
 
 ```rust
-Avatar::character() //=> "Miles Quaritch"
+avatar::character() //=> "Miles Quaritch"
 
-Avatar::date() //=> "December 18, 2009"
+avatar::date() //=> "December 18, 2009"
 
-Avatar::quote() //=> "It is hard to fill a cup that is already full."
+avatar::quote() //=> "It is hard to fill a cup that is already full."
 ```

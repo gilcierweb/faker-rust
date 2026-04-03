@@ -1,4 +1,4 @@
-# faker_rust::default::artist
+# faker_rust::artist
 
 available since version 1.8.8.
 

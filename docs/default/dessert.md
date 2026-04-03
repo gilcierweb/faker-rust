@@ -1,4 +1,4 @@
-# faker_rust::default::dessert
+# faker_rust::dessert
 
 available since version 1.8.0.
 

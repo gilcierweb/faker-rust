@@ -1,15 +1,15 @@
-# faker_rust::japanese_media::OnePiece
+# faker_rust::japanese_media::one_piece
 
 ```rust
-OnePiece::character() //=> "Monkey D. Luffy"
+one_piece::character() //=> "Monkey D. Luffy"
 
-OnePiece::sea() //=> "East Blue"
+one_piece::sea() //=> "East Blue"
 
-OnePiece::island() //=> "Laftel"
+one_piece::island() //=> "Laftel"
 
-OnePiece::location() //=> "Foosha Village"
+one_piece::location() //=> "Foosha Village"
 
-OnePiece::quote() //=> "ONE PIECE IS REAL!"
+one_piece::quote() //=> "ONE PIECE IS REAL!"
 
-OnePiece::akuma_no_mi() //=> "Gomu Gomu no Mi"
+one_piece::akuma_no_mi() //=> "Gomu Gomu no Mi"
 ```

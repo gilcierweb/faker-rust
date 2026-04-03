@@ -1,4 +1,4 @@
-# faker_rust::default::time
+# faker_rust::time
 
 ```rust
 time::between() //=> "2014-09-18 12:30:59 -0700"

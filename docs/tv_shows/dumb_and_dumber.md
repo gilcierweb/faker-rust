@@ -1,9 +1,9 @@
-# faker_rust::tv_shows::DumbAndDumber
+# faker_rust::tv_shows::dumb_and_dumber
 
 ```rust
-DumbAndDumber::actor() //=> "Jim Carrey"
+dumb_and_dumber::actor() //=> "Jim Carrey"
 
-DumbAndDumber::character() //=> "Harry Dunne"
+dumb_and_dumber::character() //=> "Harry Dunne"
 
-DumbAndDumber::quote() //=> "Why you going to the airport? Flying somewhere?"
+dumb_and_dumber::quote() //=> "Why you going to the airport? Flying somewhere?"
 ```

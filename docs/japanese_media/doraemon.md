@@ -1,9 +1,9 @@
-# faker_rust::japanese_media::Doraemon
+# faker_rust::japanese_media::doraemon
 
 ```rust
-Doraemon::character() //=> "Nobita"
+doraemon::character() //=> "Nobita"
 
-Doraemon::gadget() //=> "Anywhere Door"
+doraemon::gadget() //=> "Anywhere Door"
 
-Doraemon::location() //=> "Tokyo"
+doraemon::location() //=> "Tokyo"
 ```

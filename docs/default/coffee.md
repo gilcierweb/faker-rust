@@ -1,4 +1,4 @@
-# faker_rust::default::coffee
+# faker_rust::coffee
 
 ```rust
 coffee::blend_name() //=> "summer solstice"

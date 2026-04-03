@@ -1,4 +1,4 @@
-# faker_rust::default::id_number
+# faker_rust::id_number
 
 ```rust
 idnumber::valid() //=> "552-56-3593"

@@ -1,6 +1,6 @@
-# faker_rust::tv_shows::Suits
+# faker_rust::tv_shows::suits
 
 ```rust
-Suits::character() //=> "Harvey Specter"
-Suits::quote() //=> "Don't play the odds, play the man."
+suits::character() //=> "Harvey Specter"
+suits::quote() //=> "Don't play the odds, play the man."
 ```

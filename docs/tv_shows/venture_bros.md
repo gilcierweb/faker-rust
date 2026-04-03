@@ -1,11 +1,11 @@
-# faker_rust::tv_shows::VentureBros
+# faker_rust::tv_shows::venture_bros
 
 ```rust
-VentureBros::character() //=> "Scaramantula"
+venture_bros::character() //=> "Scaramantula"
 
-VentureBros::vehicle() //=> "Monarchmobile"
+venture_bros::vehicle() //=> "Monarchmobile"
 
-VentureBros::organization() //=> "Guild of Calamitous Intent"
+venture_bros::organization() //=> "Guild of Calamitous Intent"
 
-VentureBros::quote() //=> "Revenge like gazpacho soup, is best served cold, precise and merciless."
+venture_bros::quote() //=> "Revenge like gazpacho soup, is best served cold, precise and merciless."
 ```

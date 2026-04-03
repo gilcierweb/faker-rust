@@ -1,23 +1,23 @@
-# faker_rust::games::ElderScrolls
+# faker_rust::games::elder_scrolls
 
 ```rust
-ElderScrolls::race() //=> Argonian
+elder_scrolls::race() //=> Argonian
 
-ElderScrolls::city() //=> Solitude
+elder_scrolls::city() //=> Solitude
 
-ElderScrolls::creature() //=> Frost Troll
+elder_scrolls::creature() //=> Frost Troll
 
-ElderScrolls::region() //=> Cyrodiil
+elder_scrolls::region() //=> Cyrodiil
 
-ElderScrolls::dragon() //=> Blood Dragon
+elder_scrolls::dragon() //=> Blood Dragon
 
-ElderScrolls::first_name() //=> Astrid
+elder_scrolls::first_name() //=> Astrid
 
-ElderScrolls::last_name() //=> Mallory
+elder_scrolls::last_name() //=> Mallory
 
-ElderScrolls::name() //=> Babette Brill
+elder_scrolls::name() //=> Babette Brill
 
-ElderScrolls::weapon() //=> Elven Bow
+elder_scrolls::weapon() //=> Elven Bow
 
-ElderScrolls::jewelry() //=> "Silver Ruby Ring"
+elder_scrolls::jewelry() //=> "Silver Ruby Ring"
 ```

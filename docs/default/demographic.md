@@ -1,4 +1,4 @@
-# faker_rust::default::demographic
+# faker_rust::demographic
 
 available since version 1.7.3.
 

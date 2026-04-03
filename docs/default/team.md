@@ -1,4 +1,4 @@
-# faker_rust::default::team
+# faker_rust::team
 
 ```rust
 team::creature() //=> "gooses"

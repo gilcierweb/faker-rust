@@ -1,4 +1,4 @@
-# faker_rust::default::coin
+# faker_rust::coin
 
 ```rust
 coin::flip() //=> "heads"

@@ -2,11 +2,11 @@
 name = "faker-rust"
 version = "0.1.0"
 edition = "2024"
-authors = ["Faker Rust Team <team@faker-rust.dev>"]
+authors = ["GilcierWeb"]
 description = "A high-performance, locale-aware fake data generator for Rust"
 license = "MIT"
-repository = "https://github.com/faker-rust/faker-rust"
-homepage = "https://github.com/faker-rust/faker-rust"
+repository = "https://github.com/gilcierweb/faker-rust"
+homepage = "https://github.com/gilcierweb/faker-rust"
 documentation = "https://docs.rs/faker-rust"
 readme = "README.md"
 keywords = ["faker", "fake", "data", "generator", "testing"]

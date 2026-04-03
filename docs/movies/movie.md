@@ -3,7 +3,7 @@
 // Movie
 
 ```rust
-Movie::title() //=> "The Lord of the Rings: The Two Towers"
+movie::title() //=> "The Lord of the Rings: The Two Towers"
 
-Movie::quote() //=> "Bumble bee tuna"
+movie::quote() //=> "Bumble bee tuna"
 ```

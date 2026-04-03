@@ -1,4 +1,4 @@
-# faker_rust::default::superhero
+# faker_rust::superhero
 
 available since version 1.6.2.
 

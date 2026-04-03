@@ -1,7 +1,7 @@
-# faker_rust::blockchain::Bitcoin
+# faker_rust::blockchain::bitcoin
 
 ```rust
-Bitcoin::address() //=> "1HUoGjmgChmnxxYhz87YytV4gVjfPaExmh"
+bitcoin::address() //=> "1HUoGjmgChmnxxYhz87YytV4gVjfPaExmh"
 
-Bitcoin::testnet_address() //=> "msHGunDvoEwmVFXvd2Bub1SNw5RP1YHJaf"
+bitcoin::testnet_address() //=> "msHGunDvoEwmVFXvd2Bub1SNw5RP1YHJaf"
 ```

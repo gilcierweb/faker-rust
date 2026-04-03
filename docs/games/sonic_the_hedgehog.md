@@ -1,12 +1,12 @@
-# faker_rust::games::SonicTheHedgehog
+# faker_rust::games::sonic_the_hedgehog
 
 ```rust
 // Any character from the games
-SonicTheHedgehog::character() //=> "Sonic the Hedgehog"
+sonic_the_hedgehog::character() //=> "Sonic the Hedgehog"
 
 // Any zone from the series
-SonicTheHedgehog::zone() //=> "The Legend of Zelda Zone"
+sonic_the_hedgehog::zone() //=> "The Legend of Zelda Zone"
 
 // Any game from the franchise
-SonicTheHedgehog::game() //=> "Waku Waku Sonic Patrol Car"
+sonic_the_hedgehog::game() //=> "Waku Waku Sonic Patrol Car"
 ```

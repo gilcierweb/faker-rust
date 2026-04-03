@@ -1,11 +1,11 @@
-# faker_rust::japanese_media::Naruto
+# faker_rust::japanese_media::naruto
 
 ```rust
-Naruto::character() //=> "Naruto Uzumaki"
+naruto::character() //=> "Naruto Uzumaki"
 
-Naruto::village() //=> "Konohagakure (Leaf Village)"
+naruto::village() //=> "Konohagakure (Leaf Village)"
 
-Naruto::eye() //=> "Konohagakure (Byakugan)"
+naruto::eye() //=> "Konohagakure (Byakugan)"
 
-Naruto::demon() //=> "Nine-Tails (Kurama)"
+naruto::demon() //=> "Nine-Tails (Kurama)"
 ```

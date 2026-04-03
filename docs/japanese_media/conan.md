@@ -1,9 +1,9 @@
-# faker_rust::japanese_media::Conan
+# faker_rust::japanese_media::conan
 
 ```rust
-Conan::character() //=> "Conan Edogawa"
+conan::character() //=> "Conan Edogawa"
 
-Conan::gadget() //=> "Voice-Changing Bowtie"
+conan::gadget() //=> "Voice-Changing Bowtie"
 
-Conan::vehicle() //=> "Agasa's Volkswagen Beetle"
+conan::vehicle() //=> "Agasa's Volkswagen Beetle"
 ```

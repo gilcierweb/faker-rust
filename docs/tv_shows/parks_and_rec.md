@@ -1,7 +1,7 @@
-# faker_rust::tv_shows::ParksAndRec
+# faker_rust::tv_shows::parks_and_rec
 
 ```rust
-ParksAndRec::character() //=> "Leslie Knope"
+parks_and_rec::character() //=> "Leslie Knope"
 
-ParksAndRec::city() //=> "Pawnee"
+parks_and_rec::city() //=> "Pawnee"
 ```

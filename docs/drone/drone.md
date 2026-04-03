@@ -1,4 +1,4 @@
-# faker_rust::drone
+# faker_rust::drone::drone
 
 Generate drone data.
 

@@ -1,11 +1,11 @@
-# faker_rust::tv_shows::Friends
+# faker_rust::tv_shows::friends
 
 Available since version 1.7.3.
 
 ```rust
-Friends::character() //=> "Rachel Green"
+friends::character() //=> "Rachel Green"
 
-Friends::location() //=> "Central Perk"
+friends::location() //=> "Central Perk"
 
-Friends::quote() //=> "We were on a break!"
+friends::quote() //=> "We were on a break!"
 ```

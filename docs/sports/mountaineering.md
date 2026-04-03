@@ -1,5 +1,5 @@
-# faker_rust::sports::Mountaineering
+# faker_rust::sports::mountaineering
 
 ```rust
-Mountaineering::mountaineer() //=> "Junko Tabei"
+mountaineering::mountaineer() //=> "Junko Tabei"
 ```

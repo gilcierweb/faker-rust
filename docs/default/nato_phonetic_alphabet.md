@@ -1,4 +1,4 @@
-# faker_rust::default::nato_phonetic_alphabet
+# faker_rust::nato_phonetic_alphabet
 
 available since version 1.9.0.
 

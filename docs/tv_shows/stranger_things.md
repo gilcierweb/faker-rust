@@ -1,9 +1,9 @@
-# faker_rust::tv_shows::StrangerThings
+# faker_rust::tv_shows::stranger_things
 
 Available since version 1.9.0.
 
 ```rust
-StrangerThings::character() //=> "six"
+stranger_things::character() //=> "six"
 
-StrangerThings::quote() //=> "Friends don't lie"
+stranger_things::quote() //=> "Friends don't lie"
 ```

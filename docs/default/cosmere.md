@@ -1,4 +1,4 @@
-# faker_rust::default::cosmere
+# faker_rust::cosmere
 
 ```rust
 cosmere::aon                    //=> "rao"

@@ -1,21 +1,21 @@
-# faker_rust::movies::Tron
+# faker_rust::movies::tron
 
 ```rust
-Tron::character() //=> "bit"
+tron::character() //=> "bit"
 
-Tron::game() //=> "Space Paranoids"
+tron::game() //=> "Space Paranoids"
 
-Tron::location() //=> "Flynn's Arcade"
+tron::location() //=> "Flynn's Arcade"
 
-Tron::program() //=> "Clu"
+tron::program() //=> "Clu"
 
-Tron::quote() //=> "Greetings, Programs!"
+tron::quote() //=> "Greetings, Programs!"
 
-Tron::quote() //=> "End of Line."
+tron::quote() //=> "End of Line."
 
-Tron::tagline() //=> "The Electronic Gladiator"
+tron::tagline() //=> "The Electronic Gladiator"
 
-Tron::user() //=> "Alan Bradley"
+tron::user() //=> "Alan Bradley"
 
-Tron::vehicle() //=> "Light Cycle"
+tron::vehicle() //=> "Light Cycle"
 ```

@@ -1,11 +1,11 @@
-# faker_rust::games::Heroes
+# faker_rust::games::heroes
 
 ```rust
-Heroes::name() //=> "Christian"
+heroes::name() //=> "Christian"
 
-Heroes::specialty() //=> "Ballista"
+heroes::specialty() //=> "Ballista"
 
-Heroes::klass() //=> "Knight"
+heroes::klass() //=> "Knight"
 
-Heroes::artifact() //=> "Armageddon's Blade"
+heroes::artifact() //=> "Armageddon's Blade"
 ```

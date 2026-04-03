@@ -1,11 +1,11 @@
-# faker_rust::tv_shows::TheExpanse
+# faker_rust::tv_shows::the_expanse
 
 ```rust
-TheExpanse::character() //=> "Jim Holden"
+the_expanse::character() //=> "Jim Holden"
 
-TheExpanse::location() //=> "Ganymede"
+the_expanse::location() //=> "Ganymede"
 
-TheExpanse::ship() //=> "Nauvoo"
+the_expanse::ship() //=> "Nauvoo"
 
-TheExpanse::quote() //=> "I am that guy."
+the_expanse::quote() //=> "I am that guy."
 ```

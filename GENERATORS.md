@@ -85,8 +85,8 @@ Generate addresses, zip codes, street names, states, and countries.
 - [faker_rust::Locations::Australia](/docs/locations/australia.md)
 - [faker_rust::Nation](/docs/default/nation.md)
 - [faker_rust::University](/docs/default/university.md)
-- [Faker:Travel::Airport](/docs/travel/airport.md)
-- [Faker:Travel::TrainStation](/docs/travel/train_station.md)
+- [faker_rust::Travel::Airport](/docs/travel/airport.md)
+- [faker_rust::Travel::TrainStation](/docs/travel/train_station.md)
 
 ### Finance
 
@@ -372,8 +372,8 @@ Want to see a comprehensive list of all generators? Expand the sections below to
 <details>
   <summary>Travel</summary>
 
-  - [Faker:Travel::Airport](/docs/travel/airport.md)
-  - [Faker:Travel::TrainStation](/docs/travel/train_station.md)
+  - [faker_rust::Travel::Airport](/docs/travel/airport.md)
+  - [faker_rust::Travel::TrainStation](/docs/travel/train_station.md)
 </details>
 
 <details>

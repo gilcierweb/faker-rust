@@ -1,4 +1,4 @@
-# faker_rust::default::bank
+# faker_rust::bank
 
 ```rust
 

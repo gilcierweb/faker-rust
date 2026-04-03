@@ -1,11 +1,11 @@
-# faker_rust::sports::Basketball
+# faker_rust::sports::basketball
 
 ```rust
-Basketball::team() //=> "Golden State Warriors"
+basketball::team() //=> "Golden State Warriors"
 
-Basketball::player() //=> "LeBron James"
+basketball::player() //=> "LeBron James"
 
-Basketball::coach() //=> "Gregg Popovich"
+basketball::coach() //=> "Gregg Popovich"
 
-Basketball::position() //=> "Point Guard"
+basketball::position() //=> "Point Guard"
 ```

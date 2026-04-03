@@ -4,11 +4,11 @@
 
 ```rust
 // Random Game Title
-Game::title() //=> "Half-Life"
+game::title() //=> "Half-Life"
 
 // Random Game Genre
-Game::genre() //=> "First-person shooter"
+game::genre() //=> "First-person shooter"
 
 // Random Game Platform
-Game::platform() //=> "Nintendo DS"
+game::platform() //=> "Nintendo DS"
 ```

@@ -1,13 +1,13 @@
-# faker_rust::sports::Volleyball
+# faker_rust::sports::volleyball
 
 ```rust
-Volleyball::team() //=> "Leo Shoes Modena"
+volleyball::team() //=> "Leo Shoes Modena"
 
-Volleyball::player() //=> "Saeid Marouf"
+volleyball::player() //=> "Saeid Marouf"
 
-Volleyball::coach() //=> "Russ Rose"
+volleyball::coach() //=> "Russ Rose"
 
-Volleyball::position() //=> "Middle blocker"
+volleyball::position() //=> "Middle blocker"
 
-Volleyball::formation() //=> "4-2"
+volleyball::formation() //=> "4-2"
 ```

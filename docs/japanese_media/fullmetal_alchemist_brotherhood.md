@@ -1,9 +1,9 @@
-# faker_rust::japanese_media::FullmetalAchemistBrotherhood
+# faker_rust::japanese_media::fullmetal_alchemist_brotherhood
 
 ```rust
-FullmetalAchemistBrotherhood::character() //=> "Edward Elric"
+fullmetal_alchemist_brotherhood::character() //=> "Edward Elric"
 
-FullmetalAchemistBrotherhood::city() //=> "Central City"
+fullmetal_alchemist_brotherhood::city() //=> "Central City"
 
-FullmetalAchemistBrotherhood::country() //=> "Xing"
+fullmetal_alchemist_brotherhood::country() //=> "Xing"
 ```

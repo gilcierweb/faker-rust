@@ -1,9 +1,9 @@
-# faker_rust::locations::Australia
+# faker_rust::locations::australia
 
 ```rust
-Australia::location // "Sydney"
+australia::location // "Sydney"
 
-Australia::animal // "Kangaroo"
+australia::animal // "Kangaroo"
 
-Australia::state // "New South Wales"
+australia::state // "New South Wales"
 ```

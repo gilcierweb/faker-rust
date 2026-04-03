@@ -1,4 +1,4 @@
-# faker_rust::default::programming_language
+# faker_rust::programming_language
 
 ```rust
 programminglanguage::name() //=> "ruby"

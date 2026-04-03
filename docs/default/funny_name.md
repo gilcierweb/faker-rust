@@ -1,4 +1,4 @@
-# faker_rust::default::funny_name
+# faker_rust::funny_name
 
 available since version 1.8.0.
 

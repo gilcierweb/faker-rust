@@ -1,9 +1,9 @@
-# faker_rust::tv_shows::TheThickOfIt
+# faker_rust::tv_shows::the_thick_of_it
 
 ```rust
-TheThickOfIt::character() //=> "Nicola Murray"
+the_thick_of_it::character() //=> "Nicola Murray"
 
-TheThickOfIt::department() //=> "Shadow Cabinet"
+the_thick_of_it::department() //=> "Shadow Cabinet"
 
-TheThickOfIt::position() //=> "Director of Communications"
+the_thick_of_it::position() //=> "Director of Communications"
 ```

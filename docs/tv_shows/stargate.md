@@ -1,9 +1,9 @@
-# faker_rust::tv_shows::Stargate
+# faker_rust::tv_shows::stargate
 
 ```rust
-Stargate::character() //=> "Jack O'Neill"
+stargate::character() //=> "Jack O'Neill"
 
-Stargate::planet() //=> "Abydos"
+stargate::planet() //=> "Abydos"
 
-Stargate::quote() //=> "General, request permission to beat the crap out of this man."
+stargate::quote() //=> "General, request permission to beat the crap out of this man."
 ```

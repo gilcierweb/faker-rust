@@ -1,4 +1,4 @@
-# faker_rust::default::theater
+# faker_rust::theater
 
 ```rust
 theater::adult_musical() //=> "mamma mia!"

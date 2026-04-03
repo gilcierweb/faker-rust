@@ -1,4 +1,4 @@
-# faker_rust::default::chile_rut
+# faker_rust::chile_rut
 
 ```rust
 chilerut::full_rut() //=> "30686957-4"

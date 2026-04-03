@@ -1,4 +1,4 @@
-# faker_rust::default::mountain
+# faker_rust::mountain
 
 ```rust
 mountain::name() //=> "mount everest"

@@ -1,9 +1,9 @@
-# faker_rust::games::ClashOfClans
+# faker_rust::games::clash_of_clans
 
 ```rust
-ClashOfClans::troop() //=> "Barbarian"
+clash_of_clans::troop() //=> "Barbarian"
 
-ClashOfClans::rank() //=> "Legend"
+clash_of_clans::rank() //=> "Legend"
 
-ClashOfClans::defensive_building() //=> "Cannon"
+clash_of_clans::defensive_building() //=> "Cannon"
 ```

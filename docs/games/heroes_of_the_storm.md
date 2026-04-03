@@ -1,11 +1,11 @@
-# faker_rust::games::HeroesOfTheStorm
+# faker_rust::games::heroes_of_the_storm
 
 ```rust
-HeroesOfTheStorm::battleground() //=> "Towers of Doom"
+heroes_of_the_storm::battleground() //=> "Towers of Doom"
 
-HeroesOfTheStorm::class_name() //=> "Support"
+heroes_of_the_storm::class_name() //=> "Support"
 
-HeroesOfTheStorm::hero() //=> "Illidan"
+heroes_of_the_storm::hero() //=> "Illidan"
 
-HeroesOfTheStorm::quote() //=> "MEAT!!!"
+heroes_of_the_storm::quote() //=> "MEAT!!!"
 ```

@@ -1,4 +1,4 @@
-# faker_rust::default::hipster
+# faker_rust::hipster
 
 adapted from [hipster ipsum]()
 

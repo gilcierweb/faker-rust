@@ -1,4 +1,4 @@
-# faker_rust::default::html
+# faker_rust::html
 
 available since version 3.2.1.
 

@@ -1,4 +1,4 @@
-# faker_rust::default::ancient
+# faker_rust::ancient
 
 available since version 1.7.0.
 

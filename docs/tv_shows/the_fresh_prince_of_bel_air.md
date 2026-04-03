@@ -1,9 +1,9 @@
-# faker_rust::tv_shows::TheFreshPrinceOfBelAir
+# faker_rust::tv_shows::the_fresh_prince_of_bel_air
 
 ```rust
-TheFreshPrinceOfBelAir::character() //=> "Will Smith"
+the_fresh_prince_of_bel_air::character() //=> "Will Smith"
 
-TheFreshPrinceOfBelAir::actor() //=> "Quincy Jones"
+the_fresh_prince_of_bel_air::actor() //=> "Quincy Jones"
 
-TheFreshPrinceOfBelAir::quote() //=> "Girl, you look so good, I would marry your brother just to get in your family."
+the_fresh_prince_of_bel_air::quote() //=> "Girl, you look so good, I would marry your brother just to get in your family."
 ```

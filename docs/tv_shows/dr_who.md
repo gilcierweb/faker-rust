@@ -1,17 +1,17 @@
-# faker_rust::tv_shows::DrWho
+# faker_rust::tv_shows::dr_who
 
 ```rust
-DrWho::character    //=> "Captain Jack Harkness"
+dr_who::character    //=> "Captain Jack Harkness"
 
-DrWho::the_doctor   //=> "Ninth Doctor"
+dr_who::the_doctor   //=> "Ninth Doctor"
 
-DrWho::actor        //=> "Matt Smith"
+dr_who::actor        //=> "Matt Smith"
 
-DrWho::catch_phrase() //=> "Fantastic!"
+dr_who::catch_phrase() //=> "Fantastic!"
 
-DrWho::quote        //=> "Lots of planets have a north!"
+dr_who::quote        //=> "Lots of planets have a north!"
 
-DrWho::villain      //=> "The Master"
+dr_who::villain      //=> "The Master"
 
-DrWho::specie       //=> "Dalek"
+dr_who::specie       //=> "Dalek"
 ```

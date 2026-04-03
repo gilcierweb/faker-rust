@@ -1,29 +1,29 @@
-# faker_rust::games::DnD
+# faker_rust::games::dnd
 
 ```rust
-DnD::alignment() //=> "Lawful Neutral"
+dnd::alignment() //=> "Lawful Neutral"
 
-DnD::background() //=> "Urchin"
+dnd::background() //=> "Urchin"
 
-DnD::city() //=> "Earthfast"
+dnd::city() //=> "Earthfast"
 
-DnD::first_name() //=> "Celestine"
+dnd::first_name() //=> "Celestine"
 
-DnD::klass() //=> "Warlock"
+dnd::klass() //=> "Warlock"
 
-DnD::language() //=> "Gnomish"
+dnd::language() //=> "Gnomish"
 
-DnD::last_name() //=> "Nightbreeze"
+dnd::last_name() //=> "Nightbreeze"
 
-DnD::melee_weapon() //=> "Handaxe"
+dnd::melee_weapon() //=> "Handaxe"
 
-DnD::monster() //=> "Manticore"
+dnd::monster() //=> "Manticore"
 
-DnD::name() //=> "Drust Silverveil"
+dnd::name() //=> "Drust Silverveil"
 
-DnD::race() //=> "Dwarf"
+dnd::race() //=> "Dwarf"
 
-DnD::ranged_weapon() //=> "Shortbow"
+dnd::ranged_weapon() //=> "Shortbow"
 
-DnD::title_name() //=> "Selene the Dreamer"
+dnd::title_name() //=> "Selene the Dreamer"
 ```

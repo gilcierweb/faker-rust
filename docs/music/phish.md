@@ -1,9 +1,9 @@
-# faker_rust::music::Phish
+# faker_rust::music::phish
 
 ```rust
-Phish::album() //=> "Fuego"
+phish::album() //=> "Fuego"
 
-Phish::musician() //=> "Trey Anastasio"
+phish::musician() //=> "Trey Anastasio"
 
-Phish::song() //=> "Tweezer"
+phish::song() //=> "Tweezer"
 ```

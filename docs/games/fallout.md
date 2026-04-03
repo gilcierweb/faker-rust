@@ -1,11 +1,11 @@
-# faker_rust::games::Fallout
+# faker_rust::games::fallout
 
 ```rust
-Fallout::character() //=> "Dogmeat"
+fallout::character() //=> "Dogmeat"
 
-Fallout::faction() //=> "The Institute"
+fallout::faction() //=> "The Institute"
 
-Fallout::location() //=> "Capital Wasteland"
+fallout::location() //=> "Capital Wasteland"
 
-Fallout::quote() //=> "Democracy is non-negotiable"
+fallout::quote() //=> "Democracy is non-negotiable"
 ```

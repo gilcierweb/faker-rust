@@ -5,21 +5,21 @@
 ### A Faker module beyond your dreams, test data beyond your imagination.
 
 ```rust
-Books::Dune::character() //=> "Leto Atreides"
+Books::dune::character() //=> "Leto Atreides"
 
-Books::Dune::title() //=> "Duke"
+Books::dune::title() //=> "Duke"
 
-Books::Dune::planet() //=> "Caladan"
+Books::dune::planet() //=> "Caladan"
 
-Books::Dune::city() //=> "Arrakeenn"
+Books::dune::city() //=> "Arrakeenn"
 
-Books::Dune::quote() //=> "A dead man, surely, no longer requires that water."
+Books::dune::quote() //=> "A dead man, surely, no longer requires that water."
 
 // Keyword arguments: character
-Books::Dune::quote() //=> "He who controls the spice, controls the universe!"
+Books::dune::quote() //=> "He who controls the spice, controls the universe!"
 
-Books::Dune::saying() //=> "You do not beg the sun for mercy."
+Books::dune::saying() //=> "You do not beg the sun for mercy."
 
 // Keyword arguments: source
-Books::Dune::saying() //=> "May thy knife chip and shatter."
+Books::dune::saying() //=> "May thy knife chip and shatter."
 ```

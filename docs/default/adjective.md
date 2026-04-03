@@ -1,4 +1,4 @@
-# faker_rust::default::adjective
+# faker_rust::adjective
 
 ```rust
 adjective::positive() //=> "kind"

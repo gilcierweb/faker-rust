@@ -1,12 +1,12 @@
-# faker_rust::games::HalfLife
+# faker_rust::games::half_life
 
 ```rust
 // Any character from the game
-HalfLife::character() //=> "Gordon Freeman"
+half_life::character() //=> "Gordon Freeman"
 
 // Any enemy from the game
-HalfLife::enemy() //=> "Houndeye"
+half_life::enemy() //=> "Houndeye"
 
 // Any location from the game
-HalfLife::location() //=> "Black Mesa Research Facility"
+half_life::location() //=> "Black Mesa Research Facility"
 ```

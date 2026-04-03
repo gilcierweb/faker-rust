@@ -1,4 +1,4 @@
-# faker_rust::default::placeholdit
+# faker_rust::placeholdit
 
 ```rust
 placeholdit::image() //=> "https://via::placeholder::com/300x300.png"

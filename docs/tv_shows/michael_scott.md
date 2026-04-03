@@ -1,7 +1,7 @@
-# faker_rust::tv_shows::MichaelScott
+# faker_rust::tv_shows::michael_scott
 
 Available since version 1.9.0.
 
 ```rust
-MichaelScott::quote() //=> "I am Beyoncé, always."
+michael_scott::quote() //=> "I am Beyoncé, always."
 ```

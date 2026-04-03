@@ -1,4 +1,4 @@
-# faker_rust::default::educator
+# faker_rust::educator
 
 available since version 1.6.4.
 

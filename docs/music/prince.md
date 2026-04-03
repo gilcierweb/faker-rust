@@ -1,12 +1,12 @@
-# faker_rust::music::Prince
+# faker_rust::music::prince
 
 ```rust
-Prince::lyric() //=> "It's been 7 hours and 16 days since you took your love away."
+prince::lyric() //=> "It's been 7 hours and 16 days since you took your love away."
 
-Prince::song() //=> "The Beautiful Ones"
+prince::song() //=> "The Beautiful Ones"
 
-Prince::album() //=> "Purple Rain"
+prince::album() //=> "Purple Rain"
 
-Prince::band() //=> "The New Power Generation"
+prince::band() //=> "The New Power Generation"
 
 ```

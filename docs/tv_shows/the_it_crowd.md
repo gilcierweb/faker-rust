@@ -1,11 +1,11 @@
-# faker_rust::tv_shows::TheITCrowd
+# faker_rust::tv_shows::the_it_crowd
 
 ```rust
-TheITCrowd::actor() //=> "Chris O'Dowd"
+the_it_crowd::actor() //=> "Chris O'Dowd"
 
-TheITCrowd::character() //=> "Roy Trenneman"
+the_it_crowd::character() //=> "Roy Trenneman"
 
-TheITCrowd::email() //=> "roy::trenneman@reynholm::test"
+the_it_crowd::email() //=> "roy::trenneman@reynholm::test"
 
-TheITCrowd::quote() //=> "Hello, IT. Have you tried turning it off and on again?"
+the_it_crowd::quote() //=> "Hello, IT. Have you tried turning it off and on again?"
 ```

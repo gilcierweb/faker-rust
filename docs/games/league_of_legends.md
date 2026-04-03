@@ -1,17 +1,17 @@
-# faker_rust::games::LeagueOfLegends
+# faker_rust::games::league_of_legends
 
 Available since version 1.8.0.
 
 ```rust
-LeagueOfLegends::champion() //=> "Jarvan IV"
+league_of_legends::champion() //=> "Jarvan IV"
 
-LeagueOfLegends::location() //=> "Demacia"
+league_of_legends::location() //=> "Demacia"
 
-LeagueOfLegends::quote() //=> "Purge the unjust."
+league_of_legends::quote() //=> "Purge the unjust."
 
-LeagueOfLegends::summoner_spell() //=> "Flash"
+league_of_legends::summoner_spell() //=> "Flash"
 
-LeagueOfLegends::masteries() //=> "Double Edged Sword"
+league_of_legends::masteries() //=> "Double Edged Sword"
 
-LeagueOfLegends::rank() //=> "Bronze V"
+league_of_legends::rank() //=> "Bronze V"
 ```

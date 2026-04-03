@@ -1,11 +1,11 @@
-# faker_rust::movies::TheRoom
+# faker_rust::movies::the_room
 
 ```rust
-TheRoom::actor() //=> "Tommy Wiseau"
+the_room::actor() //=> "Tommy Wiseau"
 
-TheRoom::character() //=> "Johnny"
+the_room::character() //=> "Johnny"
 
-TheRoom::location() //=> "Johnny's Apartment"
+the_room::location() //=> "Johnny's Apartment"
 
-TheRoom::quote() //=> "A-ha-ha-ha! What a story, Mark!"
+the_room::quote() //=> "A-ha-ha-ha! What a story, Mark!"
 ```

@@ -1,9 +1,9 @@
-# faker_rust::tv_shows::FinalSpace
+# faker_rust::tv_shows::final_space
 
 ```rust
-FinalSpace::character() //=> "Gary Goodspeed"
+final_space::character() //=> "Gary Goodspeed"
 
-FinalSpace::vehicle() //=> "Imperium Cruiser"
+final_space::vehicle() //=> "Imperium Cruiser"
 
-FinalSpace::quote() //=> "It's an alien on my face! It's an alien on my...It's a space alien!"
+final_space::quote() //=> "It's an alien on my face! It's an alien on my...It's a space alien!"
 ```

@@ -1,4 +1,4 @@
-# faker_rust::default::greek_philosophers
+# faker_rust::greek_philosophers
 
 available since version 1.9.0.
 

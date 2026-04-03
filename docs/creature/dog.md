@@ -1,27 +1,27 @@
-# faker_rust::creature::Dog
+# faker_rust::creature::dog
 
 ```rust
 // Random dog name
-Dog::name() //=> "Spike"
+dog::name() //=> "Spike"
 
 // Random dog breed
-Dog::breed() //=> "Yorkshire Terrier"
+dog::breed() //=> "Yorkshire Terrier"
 
 // Random dog sound
-Dog::sound() //=> "woof woof"
+dog::sound() //=> "woof woof"
 
 // Random dog meme phrase
-Dog::meme_phrase() //=> "smol pupperino"
+dog::meme_phrase() //=> "smol pupperino"
 
 // Random dog age
-Dog::age() //=> "puppy"
+dog::age() //=> "puppy"
 
 // Random dog gender
-Dog::gender() //=> "female"
+dog::gender() //=> "female"
 
 // Random dog coat length
-Dog::coat_length() //=> "short"
+dog::coat_length() //=> "short"
 
 // Random dog size
-Dog::size() //=> "small"
+dog::size() //=> "small"
 ```

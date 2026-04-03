@@ -1,4 +1,4 @@
-# faker_rust::default::hobby
+# faker_rust::hobby
 
 ```rust
 hobby::activity() //=> "cooking"

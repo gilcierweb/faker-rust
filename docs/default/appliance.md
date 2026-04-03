@@ -1,4 +1,4 @@
-# faker_rust::default::appliance
+# faker_rust::appliance
 
 available since version 1.9.0.
 

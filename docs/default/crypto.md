@@ -1,4 +1,4 @@
-# faker_rust::default::crypto
+# faker_rust::crypto
 
 available since version 1.6.4.
 

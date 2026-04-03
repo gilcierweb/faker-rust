@@ -1,10 +1,10 @@
-# faker_rust::music::Hiphop
+# faker_rust::music::hiphop
 
 ```rust
-Hiphop::artist() //=> "Lil Wayne"
+hiphop::artist() //=> "Lil Wayne"
 
-Hiphop::groups() //=> "G-Unit"
+hiphop::groups() //=> "G-Unit"
 
-Hiphop::subgenres() //=> "Alternative"
+hiphop::subgenres() //=> "Alternative"
 
 ```

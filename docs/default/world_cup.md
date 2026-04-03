@@ -1,4 +1,4 @@
-# faker_rust::default::world_cup
+# faker_rust::world_cup
 
 available since version 1.9.0.
 

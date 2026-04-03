@@ -1,4 +1,4 @@
-# faker_rust::default::address
+# faker_rust::address
 
 generate address data.
 

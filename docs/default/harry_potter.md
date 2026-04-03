@@ -1,4 +1,4 @@
-# faker_rust::default::harry_potter
+# faker_rust::harry_potter
 
 available since version 1.7.3.
 

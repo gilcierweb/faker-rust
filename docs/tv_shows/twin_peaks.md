@@ -1,11 +1,11 @@
-# faker_rust::tv_shows::TwinPeaks
+# faker_rust::tv_shows::twin_peaks
 
 Available since version 1.7.0.
 
 ```rust
-TwinPeaks::character() //=> "Dale Cooper"
+twin_peaks::character() //=> "Dale Cooper"
 
-TwinPeaks::location() //=> "Black Lodge"
+twin_peaks::location() //=> "Black Lodge"
 
-TwinPeaks::quote() //=> "The owls are not what they seem."
+twin_peaks::quote() //=> "The owls are not what they seem."
 ```

@@ -1,4 +1,4 @@
-# faker_rust::default::subscription
+# faker_rust::subscription
 
 ```rust
 subscription::plan() //=> "platinum"

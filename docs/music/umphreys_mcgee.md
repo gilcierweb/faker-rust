@@ -1,5 +1,5 @@
-# faker_rust::music::UmphreysMcgee
+# faker_rust::music::umphreys_mcgee
 
 ```rust
-UmphreysMcgee::song() //=> "Dump City"
+umphreys_mcgee::song() //=> "Dump City"
 ```

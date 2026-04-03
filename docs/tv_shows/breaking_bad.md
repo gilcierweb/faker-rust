@@ -1,9 +1,9 @@
-# faker_rust::tv_shows::BreakingBad
+# faker_rust::tv_shows::breaking_bad
 
 Available since version 1.8.8.
 
 ```rust
-BreakingBad::character() //=> "Walter White"
+breaking_bad::character() //=> "Walter White"
 
-BreakingBad::episode() //=> "Cancer Man"
+breaking_bad::episode() //=> "Cancer Man"
 ```

@@ -1,9 +1,9 @@
-# faker_rust::tv_shows::FamilyGuy
+# faker_rust::tv_shows::family_guy
 
 ```rust
-FamilyGuy::character() //=> "Peter Griffin"
+family_guy::character() //=> "Peter Griffin"
 
-FamilyGuy::location() //=> "James Woods High"
+family_guy::location() //=> "James Woods High"
 
-FamilyGuy::quote() //=> "It’s Peanut Butter Jelly Time."
+family_guy::quote() //=> "It’s Peanut Butter Jelly Time."
 ```

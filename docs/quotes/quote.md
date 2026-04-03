@@ -5,19 +5,19 @@
 Available since version 1.9.0.
 
 ```rust
-Quote::famous_last_words() //=> "My vocabulary did this to me. Your love will let you go on…"
+quote::famous_last_words() //=> "My vocabulary did this to me. Your love will let you go on…"
 
-Quote::jack_handey() //=> "I hope life isn't a big joke, because I don't get it."
+quote::jack_handey() //=> "I hope life isn't a big joke, because I don't get it."
 
-Quote::matz() //=> "You want to enjoy life, don't you? If you get your job done quickly and your job is fun, that's good isn't it? That's the purpose of life, partly. Your life is better."
+quote::matz() //=> "You want to enjoy life, don't you? If you get your job done quickly and your job is fun, that's good isn't it? That's the purpose of life, partly. Your life is better."
 
-Quote::most_interesting_man_in_the_world() //=> "He can speak Russian… in French"
+quote::most_interesting_man_in_the_world() //=> "He can speak Russian… in French"
 
-Quote::robin() //=> "Holy Razors Edge"
+quote::robin() //=> "Holy Razors Edge"
 
-Quote::singular_siegler() //=> "Texas!"
+quote::singular_siegler() //=> "Texas!"
 
-Quote::yoda() //=> "Use your feelings, Obi-Wan, and find him you will."
+quote::yoda() //=> "Use your feelings, Obi-Wan, and find him you will."
 
-Quote::mitch_hedberg // "I like Kit-Kats, unless I'm with four or more people."
+quote::mitch_hedberg // "I like Kit-Kats, unless I'm with four or more people."
 ```

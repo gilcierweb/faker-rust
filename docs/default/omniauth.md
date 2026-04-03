@@ -1,4 +1,4 @@
-# faker_rust::default::omniauth
+# faker_rust::omniauth
 
 omniauth
 

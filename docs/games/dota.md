@@ -1,22 +1,22 @@
-# faker_rust::games::Dota
+# faker_rust::games::dota
 
 Available since version 1.9.0.
 
 ```rust
 // Random hero
-Dota::hero() //=> "Abaddon"
+dota::hero() //=> "Abaddon"
 
 // Random item
-Dota::item() //=> "Armlet of Mordiggian"
+dota::item() //=> "Armlet of Mordiggian"
 
 // Random team
-Dota::team() //=> "Evil Geniuses"
+dota::team() //=> "Evil Geniuses"
 
 // Random player
-Dota::player() //=> "Dendi"
+dota::player() //=> "Dendi"
 
 // Random quote
 # by default if you don't pass the hero parameter, the quote method will set hero as 'abbadon'
-Dota::quote() //=> "You have called death upon yourself."
-Dota::quote() //=> "Better living through alchemy!"
+dota::quote() //=> "You have called death upon yourself."
+dota::quote() //=> "Better living through alchemy!"
 ```

@@ -1,7 +1,7 @@
-# faker_rust::music::Rush
+# faker_rust::music::rush
 
 ```rust
-Rush::player() //=> "Neil Peart"
+rush::player() //=> "Neil Peart"
 
-Rush::album() //=> "Hold Your Fire"
+rush::album() //=> "Hold Your Fire"
 ```

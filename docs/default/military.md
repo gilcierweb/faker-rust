@@ -1,4 +1,4 @@
-# faker_rust::default::military
+# faker_rust::military
 
 ```rust
 military::army_rank() //=> "staff sergeant"

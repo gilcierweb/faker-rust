@@ -1,4 +1,4 @@
-# faker_rust::default::code
+# faker_rust::code
 
 ```rust
 code::npi() //=> "0000126252"

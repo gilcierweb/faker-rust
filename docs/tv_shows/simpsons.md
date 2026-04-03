@@ -1,11 +1,11 @@
-# faker_rust::tv_shows::Simpsons
+# faker_rust::tv_shows::simpsons
 
 Available since version 1.8.0.
 
 ```rust
-Simpsons::character() //=> "Charles Montgomery Burns"
+simpsons::character() //=> "Charles Montgomery Burns"
 
-Simpsons::location  //=> "Moe's Tavern"
+simpsons::location  //=> "Moe's Tavern"
 
-Simpsons::quote     //=> "It takes two to lie: one to lie and one to listen."
+simpsons::quote     //=> "It takes two to lie: one to lie and one to listen."
 ```

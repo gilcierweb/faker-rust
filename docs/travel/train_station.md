@@ -1,7 +1,7 @@
-# faker_rust::travel::TrainStation
+# faker_rust::travel::train_station
 
 ```rust
-TrainStation::name() //=> "Brockley"
-TrainStation::name() //=> "Düsseldorf Hauptbahnhof"
-TrainStation::name() //=> "Santa Eulàlia"
+train_station::name() //=> "Brockley"
+train_station::name() //=> "Düsseldorf Hauptbahnhof"
+train_station::name() //=> "Santa Eulàlia"
 ```

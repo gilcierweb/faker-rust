@@ -1,4 +1,4 @@
-# faker_rust::default::internet
+# faker_rust::internet
 
 ```rust
 internet::user() //=> { username: 'alexie', email: 'trudie@grant::test' }

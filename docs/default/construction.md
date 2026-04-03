@@ -1,4 +1,4 @@
-# faker_rust::default::construction
+# faker_rust::construction
 
 available in future versions of faker
 

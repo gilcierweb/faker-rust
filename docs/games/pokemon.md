@@ -1,11 +1,11 @@
-# faker_rust::games::Pokemon
+# faker_rust::games::pokemon
 
 Available since version 1.7.0.
 
 ```rust
-Pokemon::name() //=> "Pikachu"
+pokemon::name() //=> "Pikachu"
 
-Pokemon::location() //=> "Pallet Town"
+pokemon::location() //=> "Pallet Town"
 
-Pokemon::move() //=> "Thunder Shock"
+pokemon::move() //=> "Thunder Shock"
 ```

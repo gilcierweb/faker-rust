@@ -1,7 +1,7 @@
-# faker_rust::tv_shows::NewGirl
+# faker_rust::tv_shows::new_girl
 
 ```rust
-NewGirl::character() //=> "Jessica Day"
+new_girl::character() //=> "Jessica Day"
 
-NewGirl::quote() //=> "Are you cooking a frittata in a sauce pan? What is this – prison?"
+new_girl::quote() //=> "Are you cooking a frittata in a sauce pan? What is this – prison?"
 ```

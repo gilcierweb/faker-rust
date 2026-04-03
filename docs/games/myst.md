@@ -1,15 +1,15 @@
-# faker_rust::games::Myst
+# faker_rust::games::myst
 
 Available since version 1.9.0.
 
 ```rust
-Myst::game() //=> "Myst III: Exile"
+myst::game() //=> "Myst III: Exile"
 
-Myst::creature() //=> "squee"
+myst::creature() //=> "squee"
 
-Myst::age() //=> "Relto"
+myst::age() //=> "Relto"
 
-Myst::character() //=> "Gehn"
+myst::character() //=> "Gehn"
 
-Myst::quote() //=> "I realized, the moment I fell into the fissure, that the Book would not be destroyed as I had planned."
+myst::quote() //=> "I realized, the moment I fell into the fissure, that the Book would not be destroyed as I had planned."
 ```

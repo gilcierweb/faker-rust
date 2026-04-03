@@ -1,18 +1,18 @@
-# faker_rust::games::WarhammerFantasy
+# faker_rust::games::warhammer_fantasy
 
 ```rust
 // Generate random a hero from Warhammer Fantasy
-WarhammerFantasy::hero() //=> "Malus Darkblade"
+warhammer_fantasy::hero() //=> "Malus Darkblade"
 
 // Generate random quote from Warhammer Fantasy
-WarhammerFantasy::quote() //=> "Stamp and trample! Gore and crush!"
+warhammer_fantasy::quote() //=> "Stamp and trample! Gore and crush!"
 
 // Generate random location from Warhammer Fantasy
-WarhammerFantasy::location() //=> "Karaz-a-Karak"
+warhammer_fantasy::location() //=> "Karaz-a-Karak"
 
 // Generate random faction from Warhammer Fantasy
-WarhammerFantasy::faction() //=> "Ogre Kingdoms"
+warhammer_fantasy::faction() //=> "Ogre Kingdoms"
 
 // Generate random creature from Warhammer Fantasy
-WarhammerFantasy::creature() //=> "Saurus Warrior"
+warhammer_fantasy::creature() //=> "Saurus Warrior"
 ```

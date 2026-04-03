@@ -1,7 +1,7 @@
-# faker_rust::movies::HowToTrainYourDragon
+# faker_rust::movies::how_to_train_your_dragon
 
 ```rust
-HowToTrainYourDragon::character() //=> "Hiccup"
-HowToTrainYourDragon::location() //=> "Berk"
-HowToTrainYourDragon::dragon() //=> "Toothless"
+how_to_train_your_dragon::character() //=> "Hiccup"
+how_to_train_your_dragon::location() //=> "Berk"
+how_to_train_your_dragon::dragon() //=> "Toothless"
 ```

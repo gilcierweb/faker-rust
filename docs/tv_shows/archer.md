@@ -1,9 +1,9 @@
-# faker_rust::tv_shows::Archer
+# faker_rust::tv_shows::archer
 
 ```rust
-Archer::character() //=> "Sterling Archer"
+archer::character() //=> "Sterling Archer"
 
-Archer::location() //=> "Area 51"
+archer::location() //=> "Area 51"
 
-Archer::quote() //=> "Danger Zone!"
+archer::quote() //=> "Danger Zone!"
 ```

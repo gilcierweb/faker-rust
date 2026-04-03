@@ -1,11 +1,11 @@
-# faker_rust::tv_shows::RickAndMorty
+# faker_rust::tv_shows::rick_and_morty
 
 Available since version 1.8.0.
 
 ```rust
-RickAndMorty::character() //=> "Rick Sanchez"
+rick_and_morty::character() //=> "Rick Sanchez"
 
-RickAndMorty::location() //=> "Dimension C-132"
+rick_and_morty::location() //=> "Dimension C-132"
 
-RickAndMorty::quote() //=> "Ohh yea, you gotta get schwifty."
+rick_and_morty::quote() //=> "Ohh yea, you gotta get schwifty."
 ```

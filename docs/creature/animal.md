@@ -1,5 +1,5 @@
-# faker_rust::creature::Animal
+# faker_rust::creature::animal
 
 ```rust
-Animal::name() //=> "Antelope"
+animal::name() //=> "Antelope"
 ```

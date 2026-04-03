@@ -1,9 +1,9 @@
-# faker_rust::music::PearlJam
+# faker_rust::music::pearl_jam
 
 ```rust
-PearlJam::musician() //=> "Eddie Vedder"
+pearl_jam::musician() //=> "Eddie Vedder"
 
-PearlJam::album() //=> "Ten"
+pearl_jam::album() //=> "Ten"
 
-PearlJam::song() //=> "Jeremy"
+pearl_jam::song() //=> "Jeremy"
 ```

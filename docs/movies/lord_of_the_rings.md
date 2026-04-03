@@ -1,7 +1,7 @@
-# faker_rust::movies::LordOfTheRings
+# faker_rust::movies::lord_of_the_rings
 
 ```rust
-LordOfTheRings::character() //=> "Legolas"
+lord_of_the_rings::character() //=> "Legolas"
 
-LordOfTheRings::location() //=> "Helm's Deep"
+lord_of_the_rings::location() //=> "Helm's Deep"
 ```

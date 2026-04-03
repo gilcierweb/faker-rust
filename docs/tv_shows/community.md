@@ -1,9 +1,9 @@
-# faker_rust::tv_shows::Community
+# faker_rust::tv_shows::community
 
 Available since version 1.9.0.
 
 ```rust
-Community::characters() //=> "Jeff Winger"
+community::characters() //=> "Jeff Winger"
 
-Community::quotes() //=> I fear a political career could shine a negative light on my drug dealing."
+community::quotes() //=> I fear a political career could shine a negative light on my drug dealing."
 ```

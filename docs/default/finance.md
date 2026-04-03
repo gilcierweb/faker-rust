@@ -1,4 +1,4 @@
-# faker_rust::default::finance
+# faker_rust::finance
 
 ```rust
 finance::credit_card() //=> "3018-348979-1853"

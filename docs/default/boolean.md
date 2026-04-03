@@ -1,4 +1,4 @@
-# faker_rust::default::boolean
+# faker_rust::boolean
 
 available since version 1.6.2.
 

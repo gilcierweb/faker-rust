@@ -1,4 +1,4 @@
-# faker_rust::default::commerce
+# faker_rust::commerce
 
 ```rust
 commerce::color() //=> "lavender"

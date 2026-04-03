@@ -1,4 +1,4 @@
-# faker_rust::default::chuck_norris
+# faker_rust::chuck_norris
 
 available since version 1.6.4.
 

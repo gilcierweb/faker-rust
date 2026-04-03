@@ -1,7 +1,7 @@
-# faker_rust::tv_shows::Supernatural
+# faker_rust::tv_shows::supernatural
 
 ```rust
-Supernatural::character() //=> "Sam Winchester"
-Supernatural::creature() //=> "Vampire"
-Supernatural::weapon() //=> "Colt"
+supernatural::character() //=> "Sam Winchester"
+supernatural::creature() //=> "Vampire"
+supernatural::weapon() //=> "Colt"
 ```

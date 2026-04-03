@@ -1,4 +1,4 @@
-# faker_rust::default::university
+# faker_rust::university
 
 available since version 1.5.0.
 

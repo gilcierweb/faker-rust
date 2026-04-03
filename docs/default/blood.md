@@ -1,4 +1,4 @@
-# faker_rust::default::blood
+# faker_rust::blood
 
 available since version 2.12.0.
 

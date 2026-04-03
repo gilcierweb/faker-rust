@@ -1,13 +1,13 @@
-# faker_rust::tv_shows::StarTrek
+# faker_rust::tv_shows::star_trek
 
 Available since version 1.8.0.
 
 ```rust
-StarTrek::character() //=> "Spock"
+star_trek::character() //=> "Spock"
 
-StarTrek::location() //=> "Cardassia"
+star_trek::location() //=> "Cardassia"
 
-StarTrek::specie() //=> "Ferengi"
+star_trek::specie() //=> "Ferengi"
 
-StarTrek::villain() //=> "Khan Noonien Singh"
+star_trek::villain() //=> "Khan Noonien Singh"
 ```
