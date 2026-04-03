@@ -98,32 +98,32 @@ cargo install faker-rust
 Or run directly with:
 ```bash
 # Run the CLI binary
-cargo run --bin faker -- name
+cargo run --bin faker-rust -- name
 
 # Run from installed binary
-faker name
+faker-rust name
 ```
 
 ### Quick CLI Examples
 
 ```bash
 # Generate a random name
-faker name
+faker-rust name
 
 # Or using cargo run
-cargo run --bin faker -- name
+cargo run --bin faker-rust -- name
 
 # Generate an email
-faker email
+faker-rust email
 
 # Generate multiple values
-faker -c 5 name
+faker-rust -c 5 name
 
 # Generate deterministic output (repeatable)
-faker --seed 12345 name
+faker-rust --seed 12345 name
 
 # List all available generators
-faker list
+faker-rust list
 ```
 
 ### CLI Demo Example
@@ -138,15 +138,15 @@ cargo run --example cli_demo
 
 | Command | Description | Example |
 |---------|-------------|---------|
-| `name` | Generate names | `faker name --first` |
-| `email` | Generate emails | `faker email` |
-| `address` | Generate addresses | `faker address --full` |
-| `company` | Generate company names | `faker company` |
-| `phone` | Generate phone numbers | `faker phone --cell` |
-| `internet` | Generate internet data | `faker internet --username` |
-| `games` | Generate game data | `faker games --pokemon` |
-| `movies` | Generate movie data | `faker movies --star-wars` |
-| `tv` | Generate TV show data | `faker tv --simpsons` |
+| `name` | Generate names | `faker-rust name --first` |
+| `email` | Generate emails | `faker-rust email` |
+| `address` | Generate addresses | `faker-rust address --full` |
+| `company` | Generate company names | `faker-rust company` |
+| `phone` | Generate phone numbers | `faker-rust phone --cell` |
+| `internet` | Generate internet data | `faker-rust internet --username` |
+| `games` | Generate game data | `faker-rust games --pokemon` |
+| `movies` | Generate movie data | `faker-rust movies --star-wars` |
+| `tv` | Generate TV show data | `faker-rust tv --simpsons` |
 
 For complete CLI documentation, see [CLI.md](./docs/CLI.md).
 

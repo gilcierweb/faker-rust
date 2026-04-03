@@ -1,16 +1,16 @@
 //! Faker CLI - Command Line Interface for generating fake data
 //!
-//! Usage: faker [COMMAND] [OPTIONS]
+//! Usage: faker-rust [COMMAND] [OPTIONS]
 //!
 //! Examples:
-//!   faker name                    # Generate a random name
-//!   faker name --first            # Generate a random first name
-//!   faker email                   # Generate a random email
-//!   faker address --full          # Generate a full address
-//!   faker company                 # Generate a company name
-//!   faker phone                   # Generate a phone number
-//!   faker --seed 12345 name       # Generate deterministic output
-//!   faker list                    # List all available generators
+//!   faker-rust name                    # Generate a random name
+//!   faker-rust name --first            # Generate a random first name
+//!   faker-rust email                   # Generate a random email
+//!   faker-rust address --full          # Generate a full address
+//!   faker-rust company                 # Generate a company name
+//!   faker-rust phone                   # Generate a phone number
+//!   faker-rust --seed 12345 name       # Generate deterministic output
+//!   faker-rust list                    # List all available generators
 
 use clap::{Parser, Subcommand};
 use faker_rust::{
@@ -19,7 +19,7 @@ use faker_rust::{
 };
 
 #[derive(Parser)]
-#[command(name = "faker")]
+#[command(name = "faker-rust")]
 #[command(about = "A CLI tool for generating fake data")]
 #[command(version = "0.1.0")]
 struct Cli {

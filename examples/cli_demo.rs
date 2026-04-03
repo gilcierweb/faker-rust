@@ -1,17 +1,17 @@
 //! CLI Demo Example
 //! Demonstrates how to use faker_rust as a command line tool
 //!
-//! Run with: cargo run --bin faker -- [COMMAND]
+//! Run with: cargo run --bin faker-rust -- [COMMAND]
 //!
 //! Examples:
-//!   cargo run --bin faker -- name
-//!   cargo run --bin faker -- name --first
-//!   cargo run --bin faker -- email
-//!   cargo run --bin faker -- address --full
-//!   cargo run --bin faker -- company
-//!   cargo run --bin faker -- phone
-//!   cargo run --bin faker -- --seed 12345 name
-//!   cargo run --bin faker -- list
+//!   cargo run --bin faker-rust -- name
+//!   cargo run --bin faker-rust -- name --first
+//!   cargo run --bin faker-rust -- email
+//!   cargo run --bin faker-rust -- address --full
+//!   cargo run --bin faker-rust -- company
+//!   cargo run --bin faker-rust -- phone
+//!   cargo run --bin faker-rust -- --seed 12345 name
+//!   cargo run --bin faker-rust -- list
 
 use std::process::Command;
 
@@ -31,7 +31,7 @@ fn main() {
     run_cli_command("tv", &["--simpsons"]);
 
     println!("\n=== Seeded (Deterministic) Generation ===\n");
-    println!("Running: faker --seed 12345 name");
+    println!("Running: faker-rust --seed 12345 name");
     for i in 0..3 {
         let output = Command::new("cargo")
             .args(["run", "--quiet", "--bin", "faker", "--", "--seed", "12345", "name"])
@@ -43,7 +43,7 @@ fn main() {
     println!("  (All runs produce the same output with same seed)");
 
     println!("\n=== Multiple Values ===\n");
-    println!("Running: faker -c 5 name");
+    println!("Running: faker-rust -c 5 name");
     let output = Command::new("cargo")
         .args(["run", "--quiet", "--bin", "faker", "--", "-c", "5", "name"])
         .output()
