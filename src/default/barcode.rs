@@ -60,7 +60,7 @@ fn calculate_ean_check_digit(s: &str) -> u32 {
             // Weights depend on position from RIGHT (starting at 1)
             // For EAN-13 (12 digits input): index 0 weight 1, 1 weight 3, 2 weight 1...
             // Basically: if (len - i) is even, weight is 3, else 1.
-            let weight = if (len - i) % 2 == 0 { 3 } else { 1 };
+            let weight = if (len - i).is_multiple_of(2) { 3 } else { 1 };
             sum += digit * weight;
         }
     }

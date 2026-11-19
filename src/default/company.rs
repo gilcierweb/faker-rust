@@ -12,7 +12,7 @@ pub fn name() -> String {
         .unwrap_or_else(|| {
             format!(
                 "{} {}",
-                &FALLBACK_NAME_PREFIXES[0], &FALLBACK_NAME_SUFFIXES[0]
+                FALLBACK_NAME_PREFIXES[0], FALLBACK_NAME_SUFFIXES[0]
             )
         });
 
