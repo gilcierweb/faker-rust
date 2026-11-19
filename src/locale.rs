@@ -4,11 +4,24 @@
 #![allow(clippy::collapsible_match)]
 #![allow(clippy::manual_strip)]
 use once_cell::sync::Lazy;
-use serde_yaml::Value;
+use serde_json::Value;
+use serde_saphyr::{DuplicateKeyPolicy, from_str_with_options, options};
 use std::collections::HashMap;
 use std::env;
 use std::fs;
-use std::path::PathBuf;
+use std::path::{Path, PathBuf};
+
+/// Parse a locale YAML document into a generic value tree.
+///
+/// Uses serde-saphyr (pure safe Rust) instead of the deprecated `serde_yaml`.
+/// Lenient duplicate-key handling mirrors the previous `serde_yaml` behavior
+/// for user-provided locale files.
+fn parse_locale_yaml(contents: &str) -> Option<Value> {
+    let parse_options = options! {
+        duplicate_keys: DuplicateKeyPolicy::LastWins,
+    };
+    from_str_with_options(contents, parse_options).ok()
+}
 
 fn get_locales_path() -> PathBuf {
     let exe_dir = env::current_exe()
@@ -46,48 +59,57 @@ fn load_locale_data() -> HashMap<String, Value> {
         for entry in entries.flatten() {
             let path = entry.path();
 
-            if path.is_file() && path.extension().is_some_and(|ext| ext == "yml") {
-                if let Some(filename) = path.file_stem() {
-                    let locale_name = filename.to_string_lossy().to_string();
-                    if let Ok(contents) = fs::read_to_string(&path) {
-                        if let Ok(yaml) = serde_yaml::from_str::<Value>(&contents) {
-                            result.insert(locale_name, yaml);
-                        }
-                    }
-                }
+            if path.is_file()
+                && path.extension().is_some_and(|ext| ext == "yml")
+                && let Some(stem) = path.file_stem()
+            {
+                let locale_name = stem.to_string_lossy().to_string();
+                load_locale_file(&mut result, &path, &locale_name);
             }
 
             if path.is_dir() {
-                let dir_name = path
-                    .file_name()
-                    .map(|s| s.to_string_lossy().to_string())
-                    .unwrap_or_default();
-
-                if let Ok(sub_entries) = fs::read_dir(&path) {
-                    for sub_entry in sub_entries.flatten() {
-                        let sub_path = sub_entry.path();
-                        if sub_path.is_file()
-                            && sub_path.extension().is_some_and(|ext| ext == "yml")
-                        {
-                            let file_stem = sub_path
-                                .file_stem()
-                                .map(|s| s.to_string_lossy().to_string())
-                                .unwrap_or_default();
-
-                            let locale_name = format!("{}_{}", dir_name, file_stem);
-                            if let Ok(contents) = fs::read_to_string(&sub_path) {
-                                if let Ok(yaml) = serde_yaml::from_str::<Value>(&contents) {
-                                    result.insert(locale_name, yaml);
-                                }
-                            }
-                        }
-                    }
-                }
+                load_locale_subdir(&mut result, &path);
             }
         }
     }
 
     result
+}
+
+/// Read and parse one locale YAML file into the result map under `locale_name`.
+///
+/// Unreadable or unparseable files are skipped silently, preserving the
+/// behavior of partial locale directories.
+fn load_locale_file(result: &mut HashMap<String, Value>, path: &Path, locale_name: &str) {
+    if let Ok(contents) = fs::read_to_string(path)
+        && let Some(yaml) = parse_locale_yaml(&contents)
+    {
+        result.insert(locale_name.to_string(), yaml);
+    }
+}
+
+/// Load every `.yml` file of a locale subdirectory into the result map,
+/// keyed by `"<dir>_<stem>"` (e.g. `locales/en/name.yml` becomes `en_name`).
+fn load_locale_subdir(result: &mut HashMap<String, Value>, dir: &Path) {
+    let dir_name = dir
+        .file_name()
+        .map(|name| name.to_string_lossy().to_string())
+        .unwrap_or_default();
+
+    let Ok(entries) = fs::read_dir(dir) else {
+        return;
+    };
+
+    for entry in entries.flatten() {
+        let path = entry.path();
+        if path.is_file()
+            && path.extension().is_some_and(|ext| ext == "yml")
+            && let Some(stem) = path.file_stem()
+        {
+            let locale_name = format!("{}_{}", dir_name, stem.to_string_lossy());
+            load_locale_file(result, &path, &locale_name);
+        }
+    }
 }
 
 /// Sample from locale data and resolve any placeholders in the result
@@ -155,10 +177,10 @@ pub fn fetch_locale_with_context(
 
     for loc in locales_to_try.iter() {
         // 1. Try full locale file (en.yml)
-        if let Some(locale_data) = LOCALE_DATA.get(loc) {
-            if let Some(result) = try_extract(locale_data, loc, key, context_category) {
-                return Some(result);
-            }
+        if let Some(locale_data) = LOCALE_DATA.get(loc)
+            && let Some(result) = try_extract(locale_data, loc, key, context_category)
+        {
+            return Some(result);
         }
 
         // 2. Try subdirectory files (en_name.yml, en_address.yml, etc.)
@@ -259,39 +281,37 @@ fn try_extract(
     key: &str,
     _context_category: Option<&str>,
 ) -> Option<Vec<String>> {
-    if let Value::Mapping(top) = locale_data {
+    if let Value::Object(top) = locale_data {
         // Case 1: en.faker.name.first_name (file starts with locale name)
-        if let Some(inner) = top.get(Value::String(locale.to_string())) {
-            if let Value::Mapping(inner_map) = inner {
-                if let Some(faker) = inner_map.get(Value::String("faker".to_string())) {
-                    let clean_key = clean_key_for_extraction(key);
-                    return extract_nested_array_raw(faker, &clean_key);
-                }
-            }
+        if let Some(inner) = top.get(locale)
+            && let Value::Object(inner_map) = inner
+            && let Some(faker) = inner_map.get("faker")
+        {
+            let clean_key = clean_key_for_extraction(key);
+            return extract_nested_array_raw(faker, &clean_key);
         }
 
         // Case 2: { "faker": {...} } (subdirectory files like en_name.yml)
-        if let Some(faker) = top.get(Value::String("faker".to_string())) {
+        if let Some(faker) = top.get("faker") {
             let clean_key = clean_key_for_extraction(key);
             return extract_nested_array_raw(faker, &clean_key);
         }
 
         // Case 3: en.faker.name.first_name -> try without faker prefix
-        if let Some(inner) = top.get(Value::String(locale.to_string())) {
-            if let Value::Mapping(inner_map) = inner {
-                let parts: Vec<&str> = key.split('.').collect();
-                if parts.len() >= 2 {
-                    let category = parts[0].to_lowercase();
-                    if let Some(cat_data) = inner_map.get(Value::String(category.clone())) {
-                        if let Value::Mapping(cat_map) = cat_data {
-                            let field = if parts.len() > 1 { parts[1] } else { "" };
-                            if let Some(field_data) = cat_map.get(Value::String(field.to_string()))
-                            {
-                                if let Value::Sequence(seq) = field_data {
-                                    return extract_strings_raw(seq);
-                                }
-                            }
-                        }
+        if let Some(inner) = top.get(locale)
+            && let Value::Object(inner_map) = inner
+        {
+            let parts: Vec<&str> = key.split('.').collect();
+            if parts.len() >= 2 {
+                let category = parts[0].to_lowercase();
+                if let Some(cat_data) = inner_map.get(category.as_str())
+                    && let Value::Object(cat_map) = cat_data
+                {
+                    let field = if parts.len() > 1 { parts[1] } else { "" };
+                    if let Some(field_data) = cat_map.get(field)
+                        && let Value::Array(seq) = field_data
+                    {
+                        return extract_strings_raw(seq);
                     }
                 }
             }
@@ -325,17 +345,16 @@ fn extract_nested_array(
         let part_str = part.to_string();
         let part_lower = part_str.to_lowercase();
         match current {
-            Value::Mapping(map) => {
+            Value::Object(map) => {
                 // Try exact match first, then case-insensitive
-                if let Some(next) = map.get(Value::String(part_str.clone())) {
-                    current = next;
-                } else if let Some(next) = map.get(Value::String(part_lower)) {
+                if let Some(next) = map.get(part_str.as_str()) {
                     current = next;
                 } else {
-                    return None;
+                    let next = map.get(part_lower.as_str())?;
+                    current = next;
                 }
             }
-            Value::Sequence(seq) => {
+            Value::Array(seq) => {
                 if i == parts.len() - 1 {
                     return extract_strings_from_seq(seq, context_category);
                 }
@@ -346,7 +365,7 @@ fn extract_nested_array(
     }
 
     match current {
-        Value::Sequence(seq) => extract_strings_from_seq(seq, context_category),
+        Value::Array(seq) => extract_strings_from_seq(seq, context_category),
         _ => None,
     }
 }
@@ -371,16 +390,15 @@ fn extract_nested_array_raw(data: &Value, key: &str) -> Option<Vec<String>> {
         let part_str = part.to_string();
         let part_lower = part_str.to_lowercase();
         match current {
-            Value::Mapping(map) => {
-                if let Some(next) = map.get(Value::String(part_str.clone())) {
-                    current = next;
-                } else if let Some(next) = map.get(Value::String(part_lower)) {
+            Value::Object(map) => {
+                if let Some(next) = map.get(part_str.as_str()) {
                     current = next;
                 } else {
-                    return None;
+                    let next = map.get(part_lower.as_str())?;
+                    current = next;
                 }
             }
-            Value::Sequence(seq) => {
+            Value::Array(seq) => {
                 if i == parts.len() - 1 {
                     return extract_strings_raw(seq);
                 }
@@ -391,7 +409,7 @@ fn extract_nested_array_raw(data: &Value, key: &str) -> Option<Vec<String>> {
     }
 
     match current {
-        Value::Sequence(seq) => extract_strings_raw(seq),
+        Value::Array(seq) => extract_strings_raw(seq),
         _ => None,
     }
 }
@@ -485,14 +503,14 @@ fn resolve_inner(inner: &str, context_category: Option<&str>, depth: usize) -> S
             let field = parts[1].to_lowercase();
 
             // Use fetch_locale_with_context to get proper context lookup
-            if let Some(result) = fetch_locale_with_context(&field, "en", Some(&cat)) {
-                if !result.is_empty() {
-                    use crate::config::FakerConfig;
-                    let config = FakerConfig::current();
-                    let idx = config.rand_usize(result.len());
-                    let v = result[idx].clone();
-                    return resolve_multiple(&v, context_category, depth + 1, 10);
-                }
+            if let Some(result) = fetch_locale_with_context(&field, "en", Some(&cat))
+                && !result.is_empty()
+            {
+                use crate::config::FakerConfig;
+                let config = FakerConfig::current();
+                let idx = config.rand_usize(result.len());
+                let v = result[idx].clone();
+                return resolve_multiple(&v, context_category, depth + 1, 10);
             }
         }
     } else {
@@ -505,14 +523,14 @@ fn resolve_inner(inner: &str, context_category: Option<&str>, depth: usize) -> S
         };
 
         for cat in contexts_to_try {
-            if let Some(result) = fetch_locale_with_context(inner, "en", Some(cat)) {
-                if !result.is_empty() {
-                    use crate::config::FakerConfig;
-                    let config = FakerConfig::current();
-                    let idx = config.rand_usize(result.len());
-                    let v = result[idx].clone();
-                    return resolve_multiple(&v, context_category, depth + 1, 10);
-                }
+            if let Some(result) = fetch_locale_with_context(inner, "en", Some(cat))
+                && !result.is_empty()
+            {
+                use crate::config::FakerConfig;
+                let config = FakerConfig::current();
+                let idx = config.rand_usize(result.len());
+                let v = result[idx].clone();
+                return resolve_multiple(&v, context_category, depth + 1, 10);
             }
         }
     }
@@ -543,10 +561,10 @@ fn resolve_simple(s: &str, context_category: Option<&str>) -> String {
 
             // Try en_name.yml, en_address.yml directly
             let en_cat_key = format!("en_{}", cat);
-            if let Some(subdata) = LOCALE_DATA.get(&en_cat_key) {
-                if let Some(v) = extract_direct_value(subdata, &field) {
-                    return v;
-                }
+            if let Some(subdata) = LOCALE_DATA.get(&en_cat_key)
+                && let Some(v) = extract_direct_value(subdata, &field)
+            {
+                return v;
             }
         }
     }
@@ -568,47 +586,37 @@ fn resolve_simple(s: &str, context_category: Option<&str>) -> String {
 }
 
 fn extract_direct_value(data: &Value, field: &str) -> Option<String> {
-    if let Value::Mapping(top) = data {
+    if let Value::Object(top) = data {
         // Try en.faker.category.field
-        if let Some(en) = top.get(Value::String("en".to_string())) {
-            if let Value::Mapping(en_map) = en {
-                if let Some(faker) = en_map.get(Value::String("faker".to_string())) {
-                    if let Value::Mapping(faker_m) = faker {
-                        for (_, cat_val) in faker_m.iter() {
-                            if let Value::Mapping(cat_m) = cat_val {
-                                if let Some(field_val) =
-                                    cat_m.get(Value::String(field.to_string()))
-                                {
-                                    if let Value::Sequence(seq) = field_val {
-                                        if let Some(first) = seq.first() {
-                                            if let Value::String(s) = first {
-                                                return Some(s.clone());
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
+        if let Some(en) = top.get("en")
+            && let Value::Object(en_map) = en
+            && let Some(faker) = en_map.get("faker")
+            && let Value::Object(faker_m) = faker
+        {
+            for (_, cat_val) in faker_m.iter() {
+                if let Value::Object(cat_m) = cat_val
+                    && let Some(field_val) = cat_m.get(field)
+                    && let Value::Array(seq) = field_val
+                    && let Some(first) = seq.first()
+                    && let Value::String(s) = first
+                {
+                    return Some(s.clone());
                 }
             }
         }
 
         // Try direct faker.category.field
-        if let Some(faker) = top.get(Value::String("faker".to_string())) {
-            if let Value::Mapping(faker_m) = faker {
-                for (_, cat_val) in faker_m.iter() {
-                    if let Value::Mapping(cat_m) = cat_val {
-                        if let Some(field_val) = cat_m.get(Value::String(field.to_string())) {
-                            if let Value::Sequence(seq) = field_val {
-                                if let Some(first) = seq.first() {
-                                    if let Value::String(s) = first {
-                                        return Some(s.clone());
-                                    }
-                                }
-                            }
-                        }
-                    }
+        if let Some(faker) = top.get("faker")
+            && let Value::Object(faker_m) = faker
+        {
+            for (_, cat_val) in faker_m.iter() {
+                if let Value::Object(cat_m) = cat_val
+                    && let Some(field_val) = cat_m.get(field)
+                    && let Value::Array(seq) = field_val
+                    && let Some(first) = seq.first()
+                    && let Value::String(s) = first
+                {
+                    return Some(s.clone());
                 }
             }
         }
@@ -693,71 +701,29 @@ fn resolve_single_placeholder(
         let field = parts[1].to_lowercase();
         let lookup_key = format!("{}_{}", cat, field);
 
-        if let Some(values) = fetch_locale_with_context(&lookup_key, "en", None) {
-            if let Some(v) = values.first() {
-                if depth < max_depth - 1 && v.contains("#{") {
-                    return resolve_placeholder_recursive(
-                        v,
-                        context_category,
-                        depth + 1,
-                        max_depth,
-                    );
-                }
-                return v.to_string();
+        if let Some(values) = fetch_locale_with_context(&lookup_key, "en", None)
+            && let Some(v) = values.first()
+        {
+            if depth < max_depth - 1 && v.contains("#{") {
+                return resolve_placeholder_recursive(v, context_category, depth + 1, max_depth);
             }
+            return v.to_string();
         }
 
         let en_cat_key = format!("en_{}", cat);
-        if let Some(subdata) = LOCALE_DATA.get(&en_cat_key) {
-            if let Some(v) = extract_nested_value_simple(subdata, &field) {
-                if depth < max_depth - 1 && v.contains("#{") {
-                    return resolve_placeholder_recursive(
-                        &v,
-                        context_category,
-                        depth + 1,
-                        max_depth,
-                    );
-                }
-                return v;
+        if let Some(subdata) = LOCALE_DATA.get(&en_cat_key)
+            && let Some(v) = extract_nested_value_simple(subdata, &field)
+        {
+            if depth < max_depth - 1 && v.contains("#{") {
+                return resolve_placeholder_recursive(&v, context_category, depth + 1, max_depth);
             }
+            return v;
         }
 
         let faker_lookup = format!("faker.{}.{}", cat, field);
-        if let Some(values) = fetch_locale(&faker_lookup, "en") {
-            if let Some(v) = values.first() {
-                if depth < max_depth - 1 && v.contains("#{") {
-                    return resolve_placeholder_recursive(
-                        v,
-                        context_category,
-                        depth + 1,
-                        max_depth,
-                    );
-                }
-                return v.to_string();
-            }
-        }
-    }
-
-    // Simple case like "first_name", "city_prefix"
-    if let Some(cat) = context_category {
-        let key = format!("{}_{}", cat, inner);
-        if let Some(values) = fetch_locale_with_context(&key, "en", Some(cat)) {
-            if let Some(v) = values.first() {
-                if depth < max_depth - 1 && v.contains("#{") {
-                    return resolve_placeholder_recursive(
-                        v,
-                        context_category,
-                        depth + 1,
-                        max_depth,
-                    );
-                }
-                return v.to_string();
-            }
-        }
-    }
-
-    if let Some(values) = fetch_locale_with_context(inner, "en", None) {
-        if let Some(v) = values.first() {
+        if let Some(values) = fetch_locale(&faker_lookup, "en")
+            && let Some(v) = values.first()
+        {
             if depth < max_depth - 1 && v.contains("#{") {
                 return resolve_placeholder_recursive(v, context_category, depth + 1, max_depth);
             }
@@ -765,53 +731,67 @@ fn resolve_single_placeholder(
         }
     }
 
+    // Simple case like "first_name", "city_prefix"
+    if let Some(cat) = context_category {
+        let key = format!("{}_{}", cat, inner);
+        if let Some(values) = fetch_locale_with_context(&key, "en", Some(cat))
+            && let Some(v) = values.first()
+        {
+            if depth < max_depth - 1 && v.contains("#{") {
+                return resolve_placeholder_recursive(v, context_category, depth + 1, max_depth);
+            }
+            return v.to_string();
+        }
+    }
+
+    if let Some(values) = fetch_locale_with_context(inner, "en", None)
+        && let Some(v) = values.first()
+    {
+        if depth < max_depth - 1 && v.contains("#{") {
+            return resolve_placeholder_recursive(v, context_category, depth + 1, max_depth);
+        }
+        return v.to_string();
+    }
+
     inner.to_string()
 }
 
 fn extract_nested_value_simple(data: &Value, field: &str) -> Option<String> {
-    if let Value::Mapping(top) = data {
+    if let Value::Object(top) = data {
         // Check for locale prefix (en)
-        if let Some(en) = top.get(Value::String("en".to_string())) {
-            if let Value::Mapping(en_map) = en {
-                // Check for faker
-                if let Some(faker) = en_map.get(Value::String("faker".to_string())) {
-                    if let Value::Mapping(faker_m) = faker {
-                        // Try each category
-                        for (_, cat_val) in faker_m.iter() {
-                            if let Value::Mapping(cat_m) = cat_val {
-                                if let Some(field_val) =
-                                    cat_m.get(Value::String(field.to_string()))
-                                {
-                                    if let Value::Sequence(seq) = field_val {
-                                        if let Some(first) = seq.first() {
-                                            if let Value::String(s) = first {
-                                                return Some(s.clone());
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
+        if let Some(en) = top.get("en")
+            && let Value::Object(en_map) = en
+        {
+            // Check for faker
+            if let Some(faker) = en_map.get("faker")
+                && let Value::Object(faker_m) = faker
+            {
+                // Try each category
+                for (_, cat_val) in faker_m.iter() {
+                    if let Value::Object(cat_m) = cat_val
+                        && let Some(field_val) = cat_m.get(field)
+                        && let Value::Array(seq) = field_val
+                        && let Some(first) = seq.first()
+                        && let Value::String(s) = first
+                    {
+                        return Some(s.clone());
                     }
                 }
             }
         }
 
         // Try direct faker key
-        if let Some(faker) = top.get(Value::String("faker".to_string())) {
-            if let Value::Mapping(faker_m) = faker {
-                for (_, cat_val) in faker_m.iter() {
-                    if let Value::Mapping(cat_m) = cat_val {
-                        if let Some(field_val) = cat_m.get(Value::String(field.to_string())) {
-                            if let Value::Sequence(seq) = field_val {
-                                if let Some(first) = seq.first() {
-                                    if let Value::String(s) = first {
-                                        return Some(s.clone());
-                                    }
-                                }
-                            }
-                        }
-                    }
+        if let Some(faker) = top.get("faker")
+            && let Value::Object(faker_m) = faker
+        {
+            for (_, cat_val) in faker_m.iter() {
+                if let Value::Object(cat_m) = cat_val
+                    && let Some(field_val) = cat_m.get(field)
+                    && let Value::Array(seq) = field_val
+                    && let Some(first) = seq.first()
+                    && let Value::String(s) = first
+                {
+                    return Some(s.clone());
                 }
             }
         }
@@ -830,13 +810,12 @@ fn extract_nested_value(
     for part in parts.iter() {
         let part_lower = part.to_lowercase();
         match current {
-            Value::Mapping(map) => {
-                if let Some(next) = map.get(Value::String(part_lower.clone())) {
-                    current = next;
-                } else if let Some(next) = map.get(Value::String(part.to_string())) {
+            Value::Object(map) => {
+                if let Some(next) = map.get(part_lower.as_str()) {
                     current = next;
                 } else {
-                    return None;
+                    let next = map.get(*part)?;
+                    current = next;
                 }
             }
             _ => return None,
@@ -845,7 +824,7 @@ fn extract_nested_value(
 
     match current {
         Value::String(s) => Some(s.clone()),
-        Value::Sequence(seq) if !seq.is_empty() => {
+        Value::Array(seq) if !seq.is_empty() => {
             if let Some(first) = seq.first() {
                 match first {
                     Value::String(s) => Some(s.clone()),
@@ -880,9 +859,9 @@ fn extract_array_from_value(data: &Value, key: &str) -> Option<Vec<String>> {
 
     // Try to get to the "faker" level first
     let faker_map = match data {
-        Value::Mapping(m) => {
+        Value::Object(m) => {
             // Look for "faker" key
-            if let Some(faker) = m.get(Value::String("faker".to_string())) {
+            if let Some(faker) = m.get("faker") {
                 faker
             } else {
                 // No "faker" key, use the data as-is
@@ -905,8 +884,8 @@ fn extract_array_from_value(data: &Value, key: &str) -> Option<Vec<String>> {
         if found_internet || start_idx > 0 {
             let part_str = part.to_string();
             current = match current {
-                Value::Mapping(map) => {
-                    if let Some(v) = map.get(Value::String(part_str.clone())) {
+                Value::Object(map) => {
+                    if let Some(v) = map.get(part_str.as_str()) {
                         v
                     } else {
                         // Try without "internet" prefix
@@ -919,7 +898,7 @@ fn extract_array_from_value(data: &Value, key: &str) -> Option<Vec<String>> {
     }
 
     match current {
-        Value::Sequence(seq) => {
+        Value::Array(seq) => {
             let arr: Vec<String> = seq
                 .iter()
                 .filter_map(|v| match v {
@@ -939,29 +918,27 @@ fn extract_array_simple(data: &Value, key: &str) -> Option<Vec<String>> {
     let last_key = parts.last().unwrap_or(&key);
 
     let faker_map = match data {
-        Value::Mapping(m) => m.get(Value::String("faker".to_string()))?,
+        Value::Object(m) => m.get("faker")?,
         _ => return None,
     };
 
     match faker_map {
-        Value::Mapping(faker_m) => {
+        Value::Object(faker_m) => {
             // Try each category in order until we find the key
             for category in ["internet", "name", "address", "company"] {
-                if let Some(cat) = faker_m.get(Value::String(category.to_string())) {
-                    if let Value::Mapping(cat_m) = cat {
-                        if let Some(result) = cat_m.get(Value::String(last_key.to_string())) {
-                            if let Value::Sequence(seq) = result {
-                                return Some(
-                                    seq.iter()
-                                        .filter_map(|v| match v {
-                                            Value::String(s) => Some(s.clone()),
-                                            _ => None,
-                                        })
-                                        .collect(),
-                                );
-                            }
-                        }
-                    }
+                if let Some(cat) = faker_m.get(category)
+                    && let Value::Object(cat_m) = cat
+                    && let Some(result) = cat_m.get(*last_key)
+                    && let Value::Array(seq) = result
+                {
+                    return Some(
+                        seq.iter()
+                            .filter_map(|v| match v {
+                                Value::String(s) => Some(s.clone()),
+                                _ => None,
+                            })
+                            .collect(),
+                    );
                 }
             }
             None
@@ -988,14 +965,14 @@ fn extract_array(data: &Value, key: &str) -> Option<Vec<String>> {
     // First, look for "faker" key in the data mapping
     // If not found (subdirectory files), just start from parts[0]
     let faker_map = match data {
-        Value::Mapping(m) => {
+        Value::Object(m) => {
             // Try to get faker first, if not, try the first part of the path
-            if let Some(faker) = m.get(Value::String("faker".to_string())) {
+            if let Some(faker) = m.get("faker") {
                 faker
-            } else if let Some(first) = m.get(Value::String(parts[start_idx].to_string())) {
+            } else if let Some(first) = m.get(parts[start_idx]) {
                 first
             } else {
-                m.get(Value::String(parts[0].to_string()))?
+                m.get(parts[0])?
             }
         }
         _ => return None,
@@ -1007,13 +984,13 @@ fn extract_array(data: &Value, key: &str) -> Option<Vec<String>> {
     for part in parts.iter().skip(start_idx) {
         let part_str = part.to_string();
         current = match current {
-            Value::Mapping(map) => map.get(Value::String(part_str))?,
+            Value::Object(map) => map.get(part_str.as_str())?,
             _ => return None,
         };
     }
 
     match current {
-        Value::Sequence(seq) => {
+        Value::Array(seq) => {
             let arr: Vec<String> = seq
                 .iter()
                 .filter_map(|v| match v {
@@ -1037,5 +1014,73 @@ mod tests {
         assert!(result.is_some());
         let names = result.unwrap();
         assert!(!names.is_empty());
+    }
+
+    // Characterization tests: pin the behavior of the YAML locale loader
+    // so the serde_yaml -> serde-saphyr swap is provably behavior-preserving.
+
+    #[test]
+    fn test_fetch_locale_subdir_file() {
+        // "name.first_name" resolves through the en_name.yml subdir file.
+        let result = fetch_locale("name.first_name", "en");
+        assert!(result.is_some());
+        assert!(!result.unwrap().is_empty());
+    }
+
+    #[test]
+    fn test_fetch_locale_with_context_category() {
+        let result = fetch_locale_with_context("first_name", "en", Some("name"));
+        assert!(result.is_some());
+        assert!(!result.unwrap().is_empty());
+    }
+
+    #[test]
+    fn test_fetch_locale_subdir_key_is_case_sensitive() {
+        // Pins current behavior: the subdir file key (e.g. "en_name") is built
+        // from the raw key segment, so a mixed-case segment misses.
+        assert!(fetch_locale("faker.Name.male_first_name", "en").is_none());
+    }
+
+    #[test]
+    fn test_fetch_locale_missing_returns_none() {
+        assert!(fetch_locale("definitely.not.a.real.key", "en").is_none());
+        assert!(fetch_locale_with_context("nope", "en", Some("nothing")).is_none());
+    }
+
+    #[test]
+    fn test_resolve_placeholder_expands() {
+        let resolved = resolve_placeholder("#{Name.first_name}", Some("name"));
+        assert!(
+            !resolved.contains("#{"),
+            "placeholder should be expanded, got: {resolved}"
+        );
+        assert!(
+            !resolved.starts_with("[UNRESOLVED"),
+            "placeholder should resolve, got: {resolved}"
+        );
+        assert!(!resolved.is_empty());
+    }
+
+    #[test]
+    fn test_sample_with_resolve() {
+        assert!(sample_with_resolve(&[], None).is_empty());
+        let picked = sample_with_resolve(&["alpha".to_string(), "beta".to_string()], None);
+        assert!(picked == "alpha" || picked == "beta");
+    }
+
+    #[test]
+    fn test_load_locale_data_keys_and_shape() {
+        // Pins the loader contract before the DRY refactor: top-level files are
+        // keyed by stem, subdirectory files by "<dir>_<stem>", values are maps.
+        let data = &*LOCALE_DATA;
+        assert!(data.contains_key("en"), "top-level locale file key missing");
+        assert!(
+            data.contains_key("en_name"),
+            "subdir locale file key missing"
+        );
+        assert!(
+            matches!(data.get("en_name"), Some(Value::Object(_))),
+            "en_name must parse as a mapping"
+        );
     }
 }
