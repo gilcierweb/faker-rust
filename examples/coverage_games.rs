@@ -67,6 +67,11 @@ fn main() {
         faker_rust::games::sonic_the_hedgehog::zone()
     );
 
+    println!("\nGENERIC GAME");
+    println!("  game title:    {:?}", faker_rust::games::game::title());
+    println!("  game genre:    {:?}", faker_rust::games::game::genre());
+    println!("  game platform: {:?}", faker_rust::games::game::platform());
+
     println!("\nSMASH BROS / WARHAMMER / WITCHER");
     println!(
         "  smash fighter:    {:?}",

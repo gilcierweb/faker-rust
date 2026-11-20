@@ -63,6 +63,54 @@ fn main() {
         "  umphreys mcgee:   {:?}",
         faker_rust::music::umphreys_mcgee::song()
     );
+    println!("  music band:       {:?}", faker_rust::music::music::band());
+    println!(
+        "  music album:      {:?}",
+        faker_rust::music::music::album()
+    );
+    println!(
+        "  music genre:      {:?}",
+        faker_rust::music::music::genre()
+    );
+
+    println!("\nAVATAR GENERATORS");
+    println!(
+        "  avatar character:   {:?}",
+        faker_rust::avatar::character()
+    );
+    println!("  avatar quote:       {:?}", faker_rust::avatar::quote());
+    println!(
+        "  avatar image:       {:?}",
+        faker_rust::avatar::image(None, None, None)
+    );
+    println!(
+        "  movie avatar hero:  {:?}",
+        faker_rust::movies::avatar::character()
+    );
+    println!(
+        "  movie avatar place: {:?}",
+        faker_rust::movies::avatar::location()
+    );
+    println!(
+        "  movie avatar beast: {:?}",
+        faker_rust::movies::avatar::creature()
+    );
+    println!(
+        "  movie avatar date:  {:?}",
+        faker_rust::movies::avatar::date()
+    );
+    println!(
+        "  movie avatar quote: {:?}",
+        faker_rust::movies::avatar::quote()
+    );
+    println!(
+        "  movie title:       {:?}",
+        faker_rust::movies::movie::title()
+    );
+    println!(
+        "  movie quote:       {:?}",
+        faker_rust::movies::movie::quote()
+    );
 
     println!("\nREGIONAL");
     println!(
