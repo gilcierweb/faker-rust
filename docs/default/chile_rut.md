@@ -1,23 +1,23 @@
 # faker_rust::chile_rut
 
 ```rust
-chilerut::full_rut(1, 99_999_999, false, true) //=> "30686957-4"
+chile_rut::full_rut(1, 99_999_999, false, true) //=> "30686957-4"
 
-chilerut::rut() //=> 11235813
+chile_rut::rut() //=> 11235813
 
-chilerut::rut() //=> 31853211
+chile_rut::rut() //=> 31853211
 
-chilerut::rut() //=> 23567131
-chilerut::last_rut() //=> 23567131
-chilerut::dv("12345678") //=> "k"
+chile_rut::rut() //=> 23567131
+chile_rut::last_rut() //=> 23567131
+chile_rut::dv("12345678") //=> "k"
 
-chilerut::rut() //=> 30528772
-chilerut::check_digit("12345678") //=> "5"
+chile_rut::rut() //=> 30528772
+chile_rut::check_digit("12345678") //=> "5"
 
-chilerut::full_rut(1, 99_999_999, false, true) //=> "30686957-4"
-chilerut::full_rut(1, 99_999_999, false, true) //=> "20890156-4"
-chilerut::full_rut(1, 99_999_999, false, true) //=> "20.890.156-4"
-chilerut::full_rut(1, 99_999_999, false, true) //=> "30686957-4"
+chile_rut::full_rut(1, 99_999_999, false, true) //=> "30686957-4"
+chile_rut::full_rut(1, 99_999_999, false, true) //=> "20890156-4"
+chile_rut::full_rut(1, 99_999_999, false, true) //=> "20.890.156-4"
+chile_rut::full_rut(1, 99_999_999, false, true) //=> "30686957-4"
 ```
 
 ## Verified Rust API examples

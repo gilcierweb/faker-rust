@@ -17,9 +17,9 @@ company::ein() //=> "34-8488813"
 
 company::duns_number() //=> "08-341-3736"
 
-company::logo() //=> "https://pigment::github::io/fake-logos/logos/medium/color/5.png"
+company::logo() //=> "https://pigment.github.io/fake-logos/logos/medium/color/5.png"
 
-company::type() //=> "privately held"
+company::r#type() //=> "privately held"
 
 company::profession() //=> "firefighter"
 

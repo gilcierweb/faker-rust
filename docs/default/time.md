@@ -3,12 +3,12 @@
 ```rust
 time::between(time::backward(1), time::forward(1)) //=> "2014-09-18 12:30:59 -0700"
 
-i18n::locale = 'en-us'
+// FakerConfig::set_locale("en-us");
 time::between(time::backward(1), time::forward(1)) //=> "tue, 16 oct 2018 10:48:27 am -05:00"
 time::between(time::backward(1), time::forward(1)) //=> "15 oct 10:48 am"
 time::between(time::backward(1), time::forward(1)) //=> "october 15, 2018 10:48 am"
 
-i18n::locale = 'ja'
+// FakerConfig::set_locale("ja");
 time::between(time::backward(1), time::forward(1)) //=> "2018/10/15 10:48:27"
 time::between(time::backward(1), time::forward(1)) //=> "18/10/15 10:48"
 time::between(time::backward(1), time::forward(1)) //=> "2018年10月16日(火) 10時48分27秒 -0500"

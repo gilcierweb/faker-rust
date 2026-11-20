@@ -15,8 +15,7 @@ dota::team() //=> "Evil Geniuses"
 // Random player
 dota::player() //=> "Dendi"
 
-// Random quote
-# by default if you don't pass the hero parameter, the quote method will set hero as 'abbadon'
-dota::quote() //=> "You have called death upon yourself."
-dota::quote() //=> "Better living through alchemy!"
+// Random quote for a given hero. Rust requires the hero name explicitly.
+dota::quote("abaddon") //=> "You have called death upon yourself."
+dota::quote("abaddon") //=> "Better living through alchemy!"
 ```

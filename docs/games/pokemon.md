@@ -7,5 +7,5 @@ pokemon::name() //=> "Pikachu"
 
 pokemon::location() //=> "Pallet Town"
 
-pokemon::move() //=> "Thunder Shock"
+pokemon::r#move() //=> "Thunder Shock"
 ```

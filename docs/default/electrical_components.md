@@ -3,9 +3,9 @@
 available since version 1.9.0.
 
 ```rust
-electricalcomponents::active() //=> "transistor"
+electrical_components::active() //=> "transistor"
 
-electricalcomponents::passive() //=> "resistor"
+electrical_components::passive() //=> "resistor"
 
-electricalcomponents::electromechanical() //=> "toggle switch"
+electrical_components::electromechanical() //=> "toggle switch"
 ```

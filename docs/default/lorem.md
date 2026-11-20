@@ -17,26 +17,26 @@ lorem::words(3) //=> ["nisi", "allatus", "consequatur", "aut"]
 lorem::words(3) //=> ["nisi", "allatus", "consequatur", "aut"]
 lorem::words(3) //=> ["nisi", "allatus", "consequatur", "aut"]
 
-lorem::characters() //=> "uw1ep04lhs0c4d931n1jmrspprf5wrj85fefue0y7y6m56b6omquh7br7dhqijwlawejpl765nb1716idmp3xnfo85v349pzy2o9rir23y2qhflwr71c1585fnynguiphkjm8p0vktwitcsm16lny7jzp9t4drwav3qmhz4yjq4k04x14gl6p148hulyqioo72tf8nwrxxcclfypz2lc58lsibgfe5w5p0xv95peafjjmm2frkhdc6duoky0aha"
-lorem::characters() //=> "ang9cbhoa8"
-lorem::characters() //=> "ang9cbhoa8"
-lorem::characters() //=> "ang9cbhoa8"
+lorem::characters(10) //=> "uw1ep04lhs0c4d931n1jmrspprf5wrj85fefue0y7y6m56b6omquh7br7dhqijwlawejpl765nb1716idmp3xnfo85v349pzy2o9rir23y2qhflwr71c1585fnynguiphkjm8p0vktwitcsm16lny7jzp9t4drwav3qmhz4yjq4k04x14gl6p148hulyqioo72tf8nwrxxcclfypz2lc58lsibgfe5w5p0xv95peafjjmm2frkhdc6duoky0aha"
+lorem::characters(10) //=> "ang9cbhoa8"
+lorem::characters(10) //=> "ang9cbhoa8"
+lorem::characters(10) //=> "ang9cbhoa8"
 
-lorem::sentence() //=> "quia illum libero magni."
-lorem::sentence() //=> "quaerat quam unde."
-lorem::sentence() //=> "vehemens velit cogo."
-lorem::sentence() //=> "aut voluptatem illum fugit ut sit."
-lorem::sentence() //=> "accusantium tantillus dolorem timor."
+lorem::sentence(None) //=> "quia illum libero magni."
+lorem::sentence(None) //=> "quaerat quam unde."
+lorem::sentence(None) //=> "vehemens velit cogo."
+lorem::sentence(None) //=> "aut voluptatem illum fugit ut sit."
+lorem::sentence(None) //=> "accusantium tantillus dolorem timor."
 
 lorem::sentences(None, None) //=> ["vero earum commodi soluta.", "quaerat fuga cumque et vero eveniet omnis ut.", "cumque sit dolor ut est consequuntur."]
 lorem::sentences(None, None) //=> ["ut perspiciatis explicabo possimus doloribus enim quia."]
 lorem::sentences(None, None) //=> ["quis capillus curo ager veritatis voro et ipsum."]
 
-lorem::paragraph() //=> "recusandae minima consequatur. expedita sequi blanditiis. ut fuga et."
-lorem::paragraph() //=> "ducimus mollitia deserunt. dicta et corporis."
-lorem::paragraph() //=> "strues amplitudo dignissimos. ver trucido charisma."
-lorem::paragraph() //=> "neque aut et nemo aut incidunt voluptates. dolore cum est sint est. vitae assumenda porro odio dolores fugiat. est voluptatum quia rerum."
-lorem::paragraph() //=> "vomito unde uxor annus. et patior utilis sursum."
+lorem::paragraph(None) //=> "recusandae minima consequatur. expedita sequi blanditiis. ut fuga et."
+lorem::paragraph(None) //=> "ducimus mollitia deserunt. dicta et corporis."
+lorem::paragraph(None) //=> "strues amplitudo dignissimos. ver trucido charisma."
+lorem::paragraph(None) //=> "neque aut et nemo aut incidunt voluptates. dolore cum est sint est. vitae assumenda porro odio dolores fugiat. est voluptatum quia rerum."
+lorem::paragraph(None) //=> "vomito unde uxor annus. et patior utilis sursum."
 
 lorem::paragraphs(None, None) //=> ["dolores quis quia ad quo voluptates. maxime delectus totam numquam. necessitatibus vel atque qui dolore.", "id neque nemo. dolores iusto facere est ad. accusamus ipsa dolor ut.", "et officiis ut hic. sunt asperiores minus distinctio debitis ipsa dolor. minima eos deleniti."]
 lorem::paragraphs(None, None) //=> ["labore voluptas sequi. ratione nulla eaque quia molestiae fugit. at quam laboriosam aut ut dignissimos."]

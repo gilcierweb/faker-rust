@@ -8,16 +8,8 @@ source::hello_world("rust") //=> "alert('hello world!');"
 
 source::print("hello", "rust") //=> "print 'some string'"
 source::print("hello", "rust") //=> "print 'cake'"
-source::print("hello", "rust") //=> "console::log('cake');"
+source::print("hello", "rust") //=> "console.log('cake');"
 
-source::print_1_to_10 <<-doc=> "
-  10.times do |i|
-    print i
-  end"
-doc
-source::print_1_to_10("rust") <<-doc=> "
-  for (let i=0; i<10; i++) {
-    console::log(i);
-  }"
-doc
+source::print_1_to_10("ruby") //=> "(1..10).each { |i| puts i }"
+source::print_1_to_10("javascript") //=> "for (let i=0; i<10; i++) {\n  console.log(i);\n}"
 ```

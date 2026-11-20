@@ -17,7 +17,7 @@ cannabis::health_benefit() //=> "relieves pain"
 
 cannabis::category() //=> "capsules"
 
-cannabis::type() //=> "hybrid"
+cannabis::r#type() //=> "hybrid"
 
 cannabis::buzzword() //=> "blunt wrap"
 

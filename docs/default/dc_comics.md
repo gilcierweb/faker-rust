@@ -3,13 +3,13 @@
 a fun collection of hundreds of your favorite dc comics heroes, heroines, villains, alter egos and side characters. have fun!
 
 ```rust
-dccomics::hero() //=> "batman"
+dc_comics::hero() //=> "batman"
 
-dccomics::heroine() //=> "supergirl"
+dc_comics::heroine() //=> "supergirl"
 
-dccomics::villain() //=> "the joker"
+dc_comics::villain() //=> "the joker"
 
-dccomics::name() //=> "clark kent"
+dc_comics::name() //=> "clark kent"
 
-dccomics::title() //=> "teen titans: the judas contract
+dc_comics::title() //=> "teen titans: the judas contract
 ```

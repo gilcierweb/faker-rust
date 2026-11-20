@@ -7,5 +7,5 @@ tea::variety // "earl grey"
 
 tea::variety() //=> "jasmine"
 
-tea::type() //=> "herbal"
+tea::r#type() //=> "herbal"
 ```

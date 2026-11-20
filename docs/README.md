@@ -58,9 +58,9 @@ Located in `docs/games/`:
 All generators follow the same pattern:
 
 ```rust
-use faker_rust::{module};
+use faker_rust::name;
 
-module::function() //=> "generated data"
+name::name() //=> "John Doe"
 ```
 
 ## CLI Documentation

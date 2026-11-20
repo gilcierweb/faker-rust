@@ -1,11 +1,11 @@
 # faker_rust::industry_segments
 
 ```rust
-industrysegments::industry() //=> "basic materials"
+industry_segments::industry() //=> "basic materials"
 
-industrysegments::super_sector() //=> "basic resources"
+industry_segments::super_sector() //=> "basic resources"
 
-industrysegments::sector() //=> "industrial metals & mining"
+industry_segments::sector() //=> "industrial metals & mining"
 
-industrysegments::sub_sector() //=> "nonferrous metals"
+industry_segments::sub_sector() //=> "nonferrous metals"
 ```

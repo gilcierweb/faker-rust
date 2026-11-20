@@ -23,9 +23,9 @@ number::between(1, 10) //=> 0.7844640543957383
 number::within(1.0..=10.0) //=> 7
 number::within(1.0..=10.0) //=> 0.7844640543957383
 
-number::positive() //=> 235.59238499107653
+number::positive(1.0, 10.0) //=> 235.59238499107653
 
-number::negative() //=> -4480.042585669558
+number::negative(-10.0, -1.0) //=> -4480.042585669558
 
 number::non_zero_digit() //=> 8
 

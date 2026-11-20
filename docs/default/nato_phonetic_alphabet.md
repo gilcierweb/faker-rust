@@ -3,5 +3,5 @@
 available since version 1.9.0.
 
 ```rust
-natophoneticalphabet::code_word() //=> "hotel"
+nato_phonetic_alphabet::code_word() //=> "hotel"
 ```

@@ -1,10 +1,10 @@
 # faker_rust::measurement
 
 ```rust
-measurement::height() //=> "6 inches"
-measurement::height() //=> "1.4 inches"
-measurement::height() //=> "inch"
-measurement::height() //=> "inches"
+measurement::height(5) //=> "6 inches"
+measurement::height(5) //=> "1.4 inches"
+measurement::height(5) //=> "inch"
+measurement::height(5) //=> "inches"
 
 measurement::length() //=> "1 yard"
 

@@ -3,7 +3,7 @@
 available since version 2.12.0.
 
 ```rust
-blood::type() //=> "ab"
+blood::r#type() //=> "ab"
 
 blood::rh_factor() //=> "-"
 

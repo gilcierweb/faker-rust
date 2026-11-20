@@ -3,21 +3,21 @@
 available since version 1.5.0.
 
 ```rust
-slackemoji::people() //=> ":sleepy:"
+slack_emoji::people() //=> ":sleepy:"
 
-slackemoji::nature() //=> ":chestnut:"
+slack_emoji::nature() //=> ":chestnut:"
 
-slackemoji::food_and_drink() //=> ":tangerine:"
+slack_emoji::food_and_drink() //=> ":tangerine:"
 
-slackemoji::celebration() //=> ":ribbon:"
+slack_emoji::celebration() //=> ":ribbon:"
 
-slackemoji::activity() //=> ":performing_arts:"
+slack_emoji::activity() //=> ":performing_arts:"
 
-slackemoji::travel_and_places() //=> ":truck:"
+slack_emoji::travel_and_places() //=> ":truck:"
 
-slackemoji::objects_and_symbols() //=> ":alarm_clock:"
+slack_emoji::objects_and_symbols() //=> ":alarm_clock:"
 
-slackemoji::custom() //=> ":suspect:"
+slack_emoji::custom() //=> ":suspect:"
 
-slackemoji::emoji() //=> ":last_quarter_moon:"
+slack_emoji::emoji() //=> ":last_quarter_moon:"
 ```

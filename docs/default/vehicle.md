@@ -9,8 +9,8 @@ vehicle::manufacturer() //=> "lamborghini"
 
 vehicle::make() //=> "honda"
 
-vehicle::model() //=> "a8"
-vehicle::model() //=> "prius"
+vehicle::model("Toyota") //=> "a8"
+vehicle::model("Toyota") //=> "prius"
 
 vehicle::make_and_model() //=> "dodge charger"
 
@@ -47,8 +47,8 @@ vehicle::mileage(10_000, 90_000) //=> 81557
 vehicle::mileage(10_000, 90_000) //=> 117503
 vehicle::kilometrage() //=> 22039
 
-vehicle::license_plate() //=> "dep-2483"
-vehicle::license_plate() //=> "977 unu"
+vehicle::license_plate("CA") //=> "dep-2483"
+vehicle::license_plate("CA") //=> "977 unu"
 
 vehicle::singapore_license_plate() //=> "slv1854m"
 ```

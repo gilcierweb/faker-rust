@@ -17,7 +17,7 @@ star_wars::droid() //=> "C-3PO"
 
 star_wars::planet() //=> "Tatooine"
 
-star_wars::quote() //=> "Aren't you a little short for a Stormtrooper?"
+star_wars::quote(None) //=> "Aren't you a little short for a Stormtrooper?"
 
 star_wars::specie() //=> "Gungan"
 

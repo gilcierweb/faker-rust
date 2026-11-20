@@ -3,7 +3,7 @@
 available since version 1.9.0.
 
 ```rust
-greekphilosophers::name() //=> "socrates"
+greek_philosophers::name() //=> "socrates"
 
-greekphilosophers::quote() //=> "only the educated are free."
+greek_philosophers::quote() //=> "only the educated are free."
 ```

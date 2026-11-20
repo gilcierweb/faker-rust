@@ -26,5 +26,5 @@ use some of the other handy faker classes for stripe charge amounts and email.
 ```rust
 number::between(1, 10) //=> 100
 
-internet::email() //=> "niesha@swaniawski-lynch::test"
+internet::email(None, None, None) //=> "niesha@swaniawski-lynch.test"
 ```

@@ -5,5 +5,5 @@ test purposes. for more details, see [nhs digital documentation about
 synthetic data]().
 
 ```rust
-nationalhealthservice::british_number() //=> "999 464 0232"
+national_health_service::british_number() //=> "999 464 0232"
 ```

@@ -2,7 +2,7 @@
 
 ```rust
 kamen_rider::kamen_rider(&["decade"]) //=> "Kamen Rider Revice"
-kamen_rider::user() //=> "Ikki Igarashi"
+kamen_rider::user(&["showa"]) //=> "Ikki Igarashi"
 kamen_rider::series() //=> "Kamen Rider Revice"
 ```
 
