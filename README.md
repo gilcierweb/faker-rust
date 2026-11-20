@@ -39,7 +39,7 @@
 - 🌍 **Locale-Aware**: Multi-language support with fallback mechanism
 - 🎲 **Reproducible**: Seedable RNG for deterministic data generation
 - 📦 **Complete Parity**: 100% API compatibility with Ruby Faker gem
-- 🧪 **Well Tested**: 549+ unit tests ensuring reliability
+- 🧪 **Well Tested**: 620+ unit tests ensuring reliability
 - 🏢 **100+ Modules**: Internet, Person, Location, Finance, and much more
 
 ## Getting Started
@@ -51,7 +51,7 @@ Add this to your `Cargo.toml`:
 faker-rust = "0.1.0"
 ```
 
-Then run `cargo build`.
+Then run `cargo build`. Faker-Rust requires Rust 1.89 or newer.
 
 ## Usage
 
