@@ -790,6 +790,36 @@ mod tests {
     }
 
     #[test]
+    fn test_locale_backed_keys_resolve() {
+        // Regression guard for keys known to have backing YAML data. Other
+        // fetch_locale call sites are fallback-only generators whose locale
+        // data is intentionally absent; those are covered by their own tests.
+        const LOCALE_BACKED_KEYS: &[&str] = &[
+            "faker.name.male_first_name",
+            "name.first_name",
+            "address.city",
+            "book.author",
+            "hacker.abbreviations",
+            "adjective.positives",
+            "restaurant.names",
+            "mountain.ranges",
+            "team.sports",
+            "creature.bird.plausible_common_names",
+            "star_wars.call_sign",
+            "crypto_coin.coin",
+            "lorem.words",
+            "stripe.valid_cards",
+            "bank.name",
+        ];
+        for key in LOCALE_BACKED_KEYS {
+            assert!(
+                fetch_locale(key, "en").is_some(),
+                "locale-backed key stopped resolving: {key}"
+            );
+        }
+    }
+
+    #[test]
     fn test_fetch_locale_named_map_value() {
         assert_eq!(
             fetch_locale_named("stripe.valid_cards", "visa", "en").as_deref(),
