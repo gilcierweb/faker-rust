@@ -5,16 +5,20 @@ use chrono::{Duration, NaiveDate, Utc};
 /// Generate a random date in the past
 pub fn backward(days: Option<i64>, _from: Option<&str>, _to: Option<&str>) -> String {
     let days_back = days.unwrap_or(365);
+    let config = crate::config::FakerConfig::current();
+    let offset = config.rand_range(0, days_back.max(0) as u32) as i64;
     let today = Utc::now().date_naive();
-    let target = today - Duration::try_days(days_back).unwrap();
+    let target = today - Duration::try_days(offset).unwrap_or_default();
     target.format("%Y-%m-%d").to_string()
 }
 
 /// Generate a random date in the future
 pub fn forward(days: Option<i64>, _from: Option<&str>, _to: Option<&str>) -> String {
     let days_forward = days.unwrap_or(365);
+    let config = crate::config::FakerConfig::current();
+    let offset = config.rand_range(0, days_forward.max(0) as u32) as i64;
     let today = Utc::now().date_naive();
-    let target = today + Duration::try_days(days_forward).unwrap();
+    let target = today + Duration::try_days(offset).unwrap_or_default();
     target.format("%Y-%m-%d").to_string()
 }
 
@@ -50,7 +54,7 @@ pub fn birthday(min_age: Option<i32>, max_age: Option<i32>) -> String {
     let day_of_year = config.rand_range(1, days_in_year as u32) as i64;
 
     let base_date = NaiveDate::from_ymd_opt(year, 1, 1).unwrap_or(today);
-    let target = base_date + Duration::try_days(day_of_year - 1).unwrap();
+    let target = base_date + Duration::try_days(day_of_year - 1).unwrap_or_default();
 
     target.format("%Y-%m-%d").to_string()
 }

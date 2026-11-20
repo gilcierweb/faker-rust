@@ -16,7 +16,7 @@ fn generate_ticker() -> String {
     let length = config.rand_range(2, 5);
     let mut ticker = String::new();
     for _ in 0..length {
-        let idx = config.rand_range(0, 26) as usize;
+        let idx = config.rand_u32(26) as usize;
         ticker.push(LETTERS[idx] as char);
     }
     ticker
@@ -33,20 +33,30 @@ pub fn market_index() -> String {
 pub fn currency_pair() -> String {
     let base = sample(FALLBACK_CURRENCIES);
     let quote = sample(FALLBACK_CURRENCIES);
-    format!("{}/{})", base, quote)
+    format!("{}/{}", base, quote)
 }
 
 // Fallback data
 const FALLBACK_INDICES: &[&str] = &[
-    "S&P 500", "Dow Jones", "NASDAQ", "Russell 2000", "FTSE 100",
-    "DAX", "Nikkei 225", "Hang Seng", "Shanghai Composite", "CAC 40",
-    "Euro Stoxx 50", "IBOVESPA", "ASX 200", "TSX Composite",
+    "S&P 500",
+    "Dow Jones",
+    "NASDAQ",
+    "Russell 2000",
+    "FTSE 100",
+    "DAX",
+    "Nikkei 225",
+    "Hang Seng",
+    "Shanghai Composite",
+    "CAC 40",
+    "Euro Stoxx 50",
+    "IBOVESPA",
+    "ASX 200",
+    "TSX Composite",
 ];
 
 const FALLBACK_CURRENCIES: &[&str] = &[
-    "USD", "EUR", "GBP", "JPY", "CHF", "CAD", "AUD", "NZD",
-    "CNY", "HKD", "SGD", "MXN", "BRL", "INR", "RUB", "ZAR",
-    "KRW", "SEK", "NOK", "DKK", "PLN", "TRY", "AED", "THB",
+    "USD", "EUR", "GBP", "JPY", "CHF", "CAD", "AUD", "NZD", "CNY", "HKD", "SGD", "MXN", "BRL",
+    "INR", "RUB", "ZAR", "KRW", "SEK", "NOK", "DKK", "PLN", "TRY", "AED", "THB",
 ];
 
 #[cfg(test)]

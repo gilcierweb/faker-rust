@@ -6,12 +6,14 @@ use crate::locale::fetch_locale;
 
 /// Generate a random phone number
 pub fn phone_number() -> String {
-    let formats = ["(###) ###-####",
+    let formats = [
+        "(###) ###-####",
         "###-###-####",
         "(###) ###-####",
         "###.###.####",
         "(###) ###-####",
-        "##########"];
+        "##########",
+    ];
     let config = FakerConfig::current();
     let format = formats[config.rand_usize(formats.len())];
     bothify(format)
@@ -34,11 +36,13 @@ pub fn area_code() -> String {
 
 /// Generate a random cell phone number
 pub fn cell_phone() -> String {
-    let formats = ["(###) ###-####",
+    let formats = [
+        "(###) ###-####",
         "###-###-####",
         "(###) ###-####",
         "##########",
-        "+1 (###) ###-####"];
+        "+1 (###) ###-####",
+    ];
     let config = FakerConfig::current();
     let format = formats[config.rand_usize(formats.len())];
     bothify(format)
@@ -46,10 +50,9 @@ pub fn cell_phone() -> String {
 
 /// Generate a random cell phone number in E164 format
 pub fn cell_phone_in_e164() -> String {
-    format!(
-        "+1{}",
-        cell_phone().replace(|c: char| !c.is_ascii_digit(), "")
-    )
+    let digits: String = cell_phone().chars().filter(|c| c.is_ascii_digit()).collect();
+    let digits = digits.strip_prefix('1').unwrap_or(&digits);
+    format!("+1{}", digits)
 }
 
 /// Generate a random cell phone with country code

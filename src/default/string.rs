@@ -1,12 +1,13 @@
 //! String generator
 
+use crate::config::FakerConfig;
 
 /// Generate a random string
 pub fn random(length: usize) -> String {
     let chars: Vec<char> = (0..length)
         .map(|_| {
             let alphabet = "abcdefghijklmnopqrstuvwxyz";
-            let idx = (rand::random::<u8>() as usize) % alphabet.len();
+            let idx = FakerConfig::current().rand_usize(alphabet.len());
             alphabet.chars().nth(idx).unwrap()
         })
         .collect();
@@ -28,7 +29,7 @@ pub fn alphanumeric(length: usize) -> String {
     let chars: Vec<char> = (0..length)
         .map(|_| {
             let alphabet = "abcdefghijklmnopqrstuvwxyz0123456789";
-            let idx = (rand::random::<u8>() as usize) % alphabet.len();
+            let idx = FakerConfig::current().rand_usize(alphabet.len());
             alphabet.chars().nth(idx).unwrap()
         })
         .collect();

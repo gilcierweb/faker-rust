@@ -450,7 +450,10 @@ pub fn base64(length: usize, padding: bool, urlsafe: bool) -> string::String {
     let mut result: string::String = (0..length).map(|_| config.sample(&charset)).collect();
 
     if padding {
-        while !result.len().is_multiple_of(4) {
+        let r = result.len() % 4;
+        if r == 2 {
+            result.push_str("==");
+        } else if r == 3 {
             result.push('=');
         }
     }
