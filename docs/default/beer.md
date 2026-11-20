@@ -21,3 +21,9 @@ beer::alcohol() //=> "6.3%"
 
 beer::blg() //=> "18.5°blg"
 ```
+
+## Verified Rust API examples
+
+```rust
+beer::brand() //=> "Budweiser"
+```

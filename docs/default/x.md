@@ -191,3 +191,11 @@ produces a random screen_name:
 ```rust
 x::screen_name() //=> "audreanne_hackett"
 ```
+
+## Verified Rust API examples
+
+`user()` returns a `serde_json::Value` (truncated for readability):
+
+```rust
+x::user() //=> {"data":[{"author_id":"9080487206869700545","id":"2855471213048884410","text":"Quos molestias qui consequuntur cumque deleniti ratione."}],"includes":{"users":[{"public_metrics":{...},"username":"@stackoverflow","name":"Stefan Harvey",...}]}}
+```

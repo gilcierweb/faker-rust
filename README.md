@@ -39,7 +39,7 @@
 - 🌍 **Locale-Aware**: Multi-language support with fallback mechanism
 - 🎲 **Reproducible**: Seedable RNG for deterministic data generation
 - 📦 **Complete Parity**: 100% API compatibility with Ruby Faker gem
-- 🧪 **Well Tested**: 920+ unit tests ensuring reliability
+- 🧪 **Well Tested**: 940+ unit tests ensuring reliability
 - 🏢 **100+ Modules**: Internet, Person, Location, Finance, and much more
 
 ## Getting Started

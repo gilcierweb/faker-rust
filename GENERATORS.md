@@ -430,6 +430,7 @@ Want to see a comprehensive list of all generators? Expand the sections below to
   - [faker_rust::JapaneseMedia::Doraemon](/docs/japanese_media/doraemon.md)
   - [faker_rust::JapaneseMedia::Conan](/docs/japanese_media/conan.md)
   - [faker_rust::JapaneseMedia::FullmetalAlchemistBrotherhood](/docs/japanese_media/fullmetal_alchemist_brotherhood.md)
+  - [faker_rust::JapaneseMedia::KamenRider](/docs/japanese_media/kamen_rider.md)
 </details>
 
 <details>

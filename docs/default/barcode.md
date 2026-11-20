@@ -25,3 +25,12 @@ barcode::ismn                                     => "9790527672897"
 
 barcode::issn                                     => "9775541703338"
 ```
+
+## Verified Rust API examples
+
+```rust
+barcode::ismn() //=> "9790751719962"
+barcode::issn() //=> "9779271103956"
+barcode::upc_a_with_composite_symbology() //=> "866654898628|GP37Io35"
+barcode::upc_e_with_composite_symbology() //=> "1567845|aVNylwpG"
+```

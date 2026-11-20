@@ -25,3 +25,9 @@ food::sushi() //=> "sea bream"
 
 food::vegetables() //=> "broccolini"
 ```
+
+## Verified Rust API examples
+
+```rust
+food::sushi() //=> "Whitespotted conger"
+```

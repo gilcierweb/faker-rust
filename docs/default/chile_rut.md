@@ -19,3 +19,13 @@ chilerut::full_rut() //=> "20890156-4"
 chilerut::full_rut() //=> "20.890.156-4"
 chilerut::full_rut() //=> "30686957-4"
 ```
+
+## Verified Rust API examples
+
+`last_rut()` exposes the body of the most recent `rut()` or `full_rut()` call,
+mirroring the gem's stateful reader:
+
+```rust
+// after a call to chile_rut::rut()
+chile_rut::last_rut() //=> Some(6823896)
+```

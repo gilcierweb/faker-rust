@@ -23,3 +23,9 @@ kamen_rider::eras = [:heisei, :reiwa]
 kamen_rider::series
 => "Kamen Rider Kiva"
 ```
+
+## Verified Rust API examples
+
+```rust
+kamen_rider::eras() //=> ["showa", "heisei", "reiwa"]
+```
