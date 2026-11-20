@@ -1,0 +1,93 @@
+en:
+  faker:
+    locations:
+      building_types:
+        - House
+        - Apartment
+        - Condo
+        - Townhouse
+        - Mansion
+        - Cottage
+        - Bungalow
+        - Duplex
+        - Loft
+        - Studio
+        - Penthouse
+        - Villa
+        - Office Building
+        - Warehouse
+        - Factory
+        - Store
+        - Restaurant
+      communities:
+        - City
+        - Town
+        - Village
+        - Hamlet
+        - Suburb
+        - District
+        - Borough
+        - County
+        - Province
+        - State
+        - Territory
+        - Region
+        - Zone
+        - Area
+      locales:
+        - en-US
+        - en-GB
+        - en-CA
+        - en-AU
+        - es-ES
+        - es-MX
+        - fr-FR
+        - de-DE
+        - it-IT
+        - pt-BR
+        - ru-RU
+        - ja-JP
+        - zh-CN
+        - ko-KR
+        - nl-NL
+        - pl-PL
+        - sv-SE
+        - tr-TR
+        - ar-SA
+        - hi-IN
+      neighborhoods:
+        - Downtown
+        - Uptown
+        - Midtown
+        - Eastside
+        - Westside
+        - North End
+        - South End
+        - Old Town
+        - Historic District
+        - Financial District
+        - Arts District
+        - Entertainment District
+        - Warehouse District
+      places:
+        - Park
+        - Museum
+        - Library
+        - School
+        - Hospital
+        - Church
+        - Temple
+        - Mosque
+        - Synagogue
+        - Theater
+        - Cinema
+        - Stadium
+        - Arena
+        - Zoo
+        - Aquarium
+        - Beach
+        - Mountain
+        - Forest
+        - Lake
+        - River
+        - Ocean

@@ -1,0 +1,41 @@
+en:
+  faker:
+    x:
+      hashtags:
+        - "#Rust"
+        - "#Programming"
+        - "#Tech"
+        - "#AI"
+        - "#MachineLearning"
+        - "#WebDev"
+        - "#OpenSource"
+        - "#Coding"
+        - "#DevOps"
+        - "#Cloud"
+        - "#CyberSecurity"
+        - "#DataScience"
+        - "#100DaysOfCode"
+        - "#TechNews"
+      screen_names:
+        - "@elonmusk"
+        - "@nasa"
+        - "@rustlang"
+        - "@github"
+        - "@stackoverflow"
+        - "@techcrunch"
+        - "@wired"
+        - "@verge"
+        - "@engadget"
+        - "@arstechnica"
+        - "@mozilla"
+        - "@google"
+        - "@apple"
+        - "@microsoft"
+        - "@amazon"
+      tweets:
+        - "Just shipped a new feature! 🚀"
+        - Learning Rust has been an amazing journey.
+        - Open source is the future of software.
+        - "Working on something exciting today! 💻"
+        - Code reviews are essential for quality.
+        - Debugging is like being a detective.

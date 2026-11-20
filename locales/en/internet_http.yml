@@ -1,0 +1,60 @@
+en:
+  faker:
+    internet_http:
+      content_types:
+        - application/json
+        - application/xml
+        - text/html
+        - text/plain
+        - text/css
+        - text/javascript
+        - application/pdf
+        - image/jpeg
+        - image/png
+        - image/gif
+        - application/octet-stream
+      headers:
+        - Accept
+        - Accept-Charset
+        - Accept-Encoding
+        - Accept-Language
+        - Authorization
+        - Cache-Control
+        - Connection
+        - Content-Length
+        - Content-Type
+        - Cookie
+        - Date
+        - Host
+        - If-Match
+        - If-Modified-Since
+        - If-None-Match
+        - Origin
+        - Referer
+        - User-Agent
+      methods:
+        - GET
+        - POST
+        - PUT
+        - DELETE
+        - PATCH
+        - HEAD
+        - OPTIONS
+        - CONNECT
+        - TRACE
+      status_codes:
+        - "200"
+        - "201"
+        - "204"
+        - "301"
+        - "302"
+        - "304"
+        - "400"
+        - "401"
+        - "403"
+        - "404"
+        - "405"
+        - "500"
+        - "502"
+        - "503"
+        - "504"

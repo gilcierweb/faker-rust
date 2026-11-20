@@ -77,3 +77,29 @@ en:
         - unmentionable
         - unnamable
         - unutterable
+      books:
+        - Necronomicon
+        - De Vermis Mysteriis
+        - Book of Eibon
+        - Cultes des Goules
+        - Unaussprechlichen Kulten
+        - Pnakotic Manuscripts
+        - Eltdown Shards
+      creatures:
+        - Cthulhu
+        - Azathoth
+        - Nyarlathotep
+        - Shub-Niggurath
+        - Yog-Sothoth
+        - Dagon
+        - Hastur
+        - Yithian
+        - Deep One
+        - Mi-Go
+        - Elder Thing
+        - Shoggoth
+        - Night-gaunt
+      quotes:
+        - "Ph'nglui mglw'nafh Cthulhu R'lyeh wgah'nagl fhtagn."
+        - "That is not dead which can eternal lie, and with strange aeons even death may die."
+        - "The oldest and strongest emotion of mankind is fear, and the oldest and strongest kind of fear is fear of the unknown."

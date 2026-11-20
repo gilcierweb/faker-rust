@@ -5,14 +5,14 @@ use crate::locale::fetch_locale;
 
 /// Generate a random Kingkiller Chronicle character
 pub fn character() -> String {
-    fetch_locale("kingkiller_chronicle.characters", "en")
+    fetch_locale("books.the_kingkiller_chronicle.characters", "en")
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_CHARACTERS).to_string())
 }
 
 /// Generate a random Kingkiller Chronicle location
 pub fn location() -> String {
-    fetch_locale("kingkiller_chronicle.locations", "en")
+    fetch_locale("books.the_kingkiller_chronicle.locations", "en")
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_LOCATIONS).to_string())
 }

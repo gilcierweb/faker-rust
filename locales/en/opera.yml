@@ -338,3 +338,33 @@ en:
           - Proserpine
           - Samson and Delilah
           - Le timbre d'argent
+      composers:
+        - Giuseppe Verdi
+        - Wolfgang Amadeus Mozart
+        - Giacomo Puccini
+        - Georges Bizet
+        - Richard Wagner
+        - Gioachino Rossini
+        - Ludwig van Beethoven
+        - Gaetano Donizetti
+      languages:
+        - Italian
+        - German
+        - French
+        - English
+        - Russian
+      names:
+        - La Traviata
+        - La Bohème
+        - Carmen
+        - The Marriage of Figaro
+        - Tosca
+        - Aida
+        - Madama Butterfly
+        - The Barber of Seville
+        - Rigoletto
+        - The Magic Flute
+        - Don Giovanni
+        - Turandot
+        - Nabucco
+        - Falstaff

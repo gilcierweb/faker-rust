@@ -5,21 +5,21 @@ use crate::locale::fetch_locale;
 
 /// Generate a random Hobbit character
 pub fn character() -> String {
-    fetch_locale("hobbit.characters", "en")
+    fetch_locale("tolkien.hobbit.character", "en")
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_CHARACTERS).to_string())
 }
 
 /// Generate a random Hobbit location
 pub fn location() -> String {
-    fetch_locale("hobbit.locations", "en")
+    fetch_locale("tolkien.hobbit.location", "en")
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_LOCATIONS).to_string())
 }
 
 /// Generate a random Hobbit quote
 pub fn quote() -> String {
-    fetch_locale("hobbit.quotes", "en")
+    fetch_locale("tolkien.hobbit.quote", "en")
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_QUOTES).to_string())
 }

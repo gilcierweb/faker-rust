@@ -93,3 +93,27 @@ en:
         - '1/2'
       shutter_speed_units:
         - 's'
+      categories:
+        - Consumer
+        - Professional
+        - Racing
+        - Toy
+        - Industrial
+        - Military
+        - Agricultural
+        - Delivery
+        - Surveillance
+        - Photography
+      manufacturers:
+        - DJI
+        - Parrot
+        - Autel Robotics
+        - Skydio
+        - Yuneec
+        - Holy Stone
+        - Ryze
+        - Hubsan
+        - Syma
+        - Potensic
+        - Snaptain
+        - DEERC

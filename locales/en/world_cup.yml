@@ -1166,3 +1166,45 @@ en:
             - Mbaye Niang
             - Diafra Sakho
             - Moussa Sow
+      hosts:
+        - Qatar
+        - Russia
+        - Brazil
+        - South Africa
+        - Germany
+        - Japan/Korea
+        - France
+        - USA
+        - Italy
+        - Mexico
+        - Argentina
+        - Spain
+      winners:
+        - Argentina
+        - France
+        - Germany
+        - Brazil
+        - Spain
+        - Italy
+        - England
+        - Uruguay
+        - France
+        - Argentina
+        - Germany
+      years:
+        - "2022"
+        - "2018"
+        - "2014"
+        - "2010"
+        - "2006"
+        - "2002"
+        - "1998"
+        - "1994"
+        - "1990"
+        - "1986"
+        - "1982"
+        - "1978"
+        - "1974"
+        - "1970"
+        - "1966"
+        - "1962"

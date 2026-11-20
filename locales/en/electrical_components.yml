@@ -50,3 +50,20 @@ en:
         - Circuit Breaker
         - Fuse
         - Printed Circuit Board
+      components:
+        - Resistor
+        - Capacitor
+        - Inductor
+        - Transistor
+        - Diode
+        - LED
+        - Microcontroller
+        - Integrated Circuit
+        - Transformer
+        - Relay
+        - Switch
+        - Fuse
+        - Circuit Breaker
+        - Potentiometer
+        - Oscillator
+        - Sensor

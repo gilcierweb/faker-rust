@@ -5,21 +5,21 @@ use crate::locale::fetch_locale;
 
 /// Generate a random Hitchhiker's Guide character
 pub fn character() -> String {
-    fetch_locale("hitchhikers_guide.characters", "en")
+    fetch_locale("hitchhikers_guide_to_the_galaxy.characters", "en")
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_CHARACTERS).to_string())
 }
 
 /// Generate a random Hitchhiker's Guide quote
 pub fn quote() -> String {
-    fetch_locale("hitchhikers_guide.quotes", "en")
+    fetch_locale("hitchhikers_guide_to_the_galaxy.quotes", "en")
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_QUOTES).to_string())
 }
 
 /// Generate a random Hitchhiker's Guide location
 pub fn location() -> String {
-    fetch_locale("hitchhikers_guide.locations", "en")
+    fetch_locale("hitchhikers_guide_to_the_galaxy.locations", "en")
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_LOCATIONS).to_string())
 }

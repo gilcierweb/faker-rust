@@ -21,6 +21,7 @@ Generate email addresses, passwords, domains, etc.
 - [faker_rust::Json](/docs/default/json.md)
 - [faker_rust::Hacker](/docs/default/hacker.md)
 - [faker_rust::Internet](/docs/default/internet.md)
+- [faker_rust::InternetHttp](/docs/default/internet_http.md)
 - [faker_rust::Markdown](/docs/default/markdown.md)
 - [faker_rust::ProgrammingLanguage](/docs/default/programming_language.md)
 - [faker_rust::Omniauth](/docs/default/omniauth.md)
@@ -82,6 +83,7 @@ Generate addresses, zip codes, street names, states, and countries.
 
 - [faker_rust::Address](/docs/default/address.md)
 - [faker_rust::Compass](/docs/default/compass.md)
+- [faker_rust::Locations](/docs/locations/locations.md)
 - [faker_rust::Locations::Australia](/docs/locations/australia.md)
 - [faker_rust::Nation](/docs/default/nation.md)
 - [faker_rust::University](/docs/default/university.md)
@@ -366,6 +368,7 @@ Want to see a comprehensive list of all generators? Expand the sections below to
 <details>
   <summary>Fantasy</summary>
 
+  - [faker_rust::Fantasy](/docs/fantasy/fantasy.md)
   - [faker_rust::Fantasy::Tolkien](/docs/fantasy/tolkien.md)
 </details>
 
@@ -470,15 +473,24 @@ Want to see a comprehensive list of all generators? Expand the sections below to
   <summary>Quotes</summary>
 
   - [faker_rust::Quote](/docs/quotes/quote.md)
+  - [faker_rust::Quotes](/docs/quotes/quotes.md)
   - [faker_rust::Quotes::Chiquito](/docs/quotes/chiquito.md)
   - [faker_rust::Quotes::Rajnikanth](/docs/quotes/rajnikanth.md)
   - [faker_rust::Quotes::Shakespeare](/docs/quotes/shakespeare.md)
 </details>
 
 <details>
+  <summary>Religion</summary>
+
+  - [faker_rust::Religion](/docs/religion/religion.md)
+  - [faker_rust::Religion::Bible](/docs/religion/bible.md)
+</details>
+
+<details>
   <summary>Sports</summary>
 
   - [faker_rust::Sport](/docs/sports/sport.md)
+  - [faker_rust::Sports::Baseball](/docs/sports/baseball.md)
   - [faker_rust::Sports::Basketball](/docs/sports/basketball.md)
   - [faker_rust::Sports::Chess](/docs/sports/chess.md)
   - [faker_rust::Sports::Football](/docs/sports/football.md)
@@ -502,6 +514,7 @@ Want to see a comprehensive list of all generators? Expand the sections below to
   - [faker_rust::TvShows::FamilyGuy](/docs/tv_shows/family_guy.md)
   - [faker_rust::TvShows::FinalSpace](/docs/tv_shows/final_space.md)
   - [faker_rust::TvShows::Friends](/docs/tv_shows/friends.md)
+  - [faker_rust::TvShows::Futurama](/docs/tv_shows/futurama.md)
   - [faker_rust::TvShows::GameOfThrones](/docs/tv_shows/game_of_thrones.md)
   - [faker_rust::TvShows::HeyArnold](/docs/tv_shows/hey_arnold.md)
   - [faker_rust::TvShows::HowIMetYourMother](/docs/tv_shows/how_i_met_your_mother.md)

@@ -1,0 +1,56 @@
+en:
+  faker:
+    baseball:
+      players:
+        - Babe Ruth
+        - Hank Aaron
+        - Jackie Robinson
+        - Derek Jeter
+        - Mike Trout
+        - Shohei Ohtani
+        - Aaron Judge
+        - Mookie Betts
+        - Freddie Freeman
+        - Juan Soto
+        - Ronald Acuña Jr.
+        - Fernando Tatis Jr.
+        - Bryce Harper
+        - Manny Machado
+      positions:
+        - Pitcher
+        - Catcher
+        - First Baseman
+        - Second Baseman
+        - Third Baseman
+        - Shortstop
+        - Left Fielder
+        - Center Fielder
+        - Right Fielder
+        - Designated Hitter
+      stadiums:
+        - Yankee Stadium
+        - Fenway Park
+        - Wrigley Field
+        - Dodger Stadium
+        - Oracle Park
+        - Busch Stadium
+        - Citi Field
+        - Truist Park
+        - Minute Maid Park
+        - T-Mobile Park
+      teams:
+        - New York Yankees
+        - Boston Red Sox
+        - Los Angeles Dodgers
+        - Chicago Cubs
+        - San Francisco Giants
+        - St. Louis Cardinals
+        - New York Mets
+        - Houston Astros
+        - Atlanta Braves
+        - Philadelphia Phillies
+        - Toronto Blue Jays
+        - Chicago White Sox
+        - Cleveland Guardians
+        - Detroit Tigers
+        - Texas Rangers

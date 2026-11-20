@@ -1,0 +1,85 @@
+en:
+  faker:
+    fantasy:
+      creatures:
+        - Dragon
+        - Phoenix
+        - Unicorn
+        - Griffin
+        - Kraken
+        - Basilisk
+        - Chimera
+        - Hydra
+        - Minotaur
+        - Pegasus
+        - Centaur
+        - Werewolf
+        - Vampire
+        - Fairy
+        - Giant
+        - Troll
+        - Ogre
+        - Goblin
+      locations:
+        - Mordor
+        - Rivendell
+        - The Shire
+        - Gondor
+        - Rohan
+        - Isengard
+        - "Helm's Deep"
+        - Minas Tirith
+        - Lothlórien
+        - Mirkwood
+        - The Misty Mountains
+        - Castle Dracula
+        - The Forbidden Forest
+        - Hogwarts
+        - Narnia
+      spells:
+        - Fireball
+        - Lightning Bolt
+        - Healing Touch
+        - Invisibility
+        - Teleport
+        - Frost Nova
+        - Chain Lightning
+        - Arcane Blast
+        - Shadow Bolt
+        - Holy Light
+        - Polymorph
+        - Time Stop
+        - Resurrection
+        - Summon Demon
+        - Shield of Light
+      tolkien_races:
+        - Elf
+        - Dwarf
+        - Human
+        - Hobbit
+        - Orc
+        - Ent
+        - Wizard
+        - Dragon
+        - Troll
+        - Goblin
+        - Uruk-hai
+        - Balrog
+        - Nazgûl
+      weapons:
+        - Excalibur
+        - Glamdring
+        - Orcrist
+        - Sting
+        - Narsil
+        - Andúril
+        - The Master Sword
+        - The Elder Wand
+        - Stormbringer
+        - Mjolnir
+        - Longbow
+        - Battle Axe
+        - War Hammer
+        - Dagger
+        - Spear
+        - Staff

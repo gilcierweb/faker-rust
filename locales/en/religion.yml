@@ -1,0 +1,82 @@
+en:
+  faker:
+    religion:
+      figures:
+        - Jesus Christ
+        - Muhammad
+        - Moses
+        - Abraham
+        - Buddha
+        - Krishna
+        - Lao Tzu
+        - Confucius
+        - Zoroaster
+        - Guru Nanak
+        - "Baha'u'llah"
+        - Dalai Lama
+        - Pope Francis
+        - Rumi
+        - Martin Luther
+        - Joan of Arc
+      holidays:
+        - Christmas
+        - Easter
+        - Ramadan
+        - Eid al-Fitr
+        - Yom Kippur
+        - Hanukkah
+        - Passover
+        - Diwali
+        - Holi
+        - Vesak
+        - Lunar New Year
+        - Day of the Dead
+        - "All Saints' Day"
+        - Winter Solstice
+        - Vernal Equinox
+      names:
+        - Christianity
+        - Islam
+        - Judaism
+        - Hinduism
+        - Buddhism
+        - Sikhism
+        - Taoism
+        - Confucianism
+        - Shinto
+        - Zoroastrianism
+        - Jainism
+        - "Bahá'í Faith"
+        - Rastafari
+        - Animism
+        - Paganism
+        - Wicca
+      practices:
+        - Prayer
+        - Meditation
+        - Fasting
+        - Pilgrimage
+        - Baptism
+        - Communion
+        - Circumcision
+        - Bar Mitzvah
+        - Confirmation
+        - Confession
+        - Tithing
+        - Charity
+        - Chanting
+        - Yoga
+        - Ritual Sacrifice
+        - Divination
+      texts:
+        - Bible
+        - Quran
+        - Torah
+        - Vedas
+        - Tripitaka
+        - Guru Granth Sahib
+        - Tao Te Ching
+        - Analects
+        - Avesta
+        - Book of Mormon
+        - Bhagavad Gita

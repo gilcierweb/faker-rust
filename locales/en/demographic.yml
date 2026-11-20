@@ -219,3 +219,7 @@ en:
         - Divorced
         - Separated
         - Never married
+      educational_status:
+        - "Bachelor's Degree"
+      height:
+        - "1.75"

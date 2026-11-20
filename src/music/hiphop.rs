@@ -5,21 +5,21 @@ use crate::locale::fetch_locale;
 
 /// Generate a random Hip-Hop artist
 pub fn artist() -> String {
-    fetch_locale("hiphop.artists", "en")
+    fetch_locale("music.hiphop.artist", "en")
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_ARTISTS).to_string())
 }
 
 /// Generate a random Hip-Hop group
 pub fn groups() -> String {
-    fetch_locale("hiphop.groups", "en")
+    fetch_locale("music.hiphop.groups", "en")
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_GROUPS).to_string())
 }
 
 /// Generate a random Hip-Hop subgenre
 pub fn subgenre() -> String {
-    fetch_locale("hiphop.subgenres", "en")
+    fetch_locale("music.hiphop.subgenres", "en")
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_SUBGENRES).to_string())
 }

@@ -595,3 +595,28 @@ en:
         - The Adventures of Tom Sawyer TYA
         - Roald Dahl's Willy Wonka TYA
         - A Year with Frog and Toad TYA
+      genres:
+        - Tragedy
+        - Comedy
+        - Drama
+        - Musical
+        - Opera
+        - Ballet
+        - Farce
+        - Satire
+        - Melodrama
+        - Historical
+        - Contemporary
+      names:
+        - The Globe Theatre
+        - Broadway Theatre
+        - West End Theatre
+        - Royal Shakespeare Theatre
+        - Lyceum Theatre
+        - Apollo Theatre
+        - Victoria Palace Theatre
+        - The Old Vic
+        - National Theatre
+        - Royal Opera House
+        - Carnegie Hall
+        - Sydney Opera House

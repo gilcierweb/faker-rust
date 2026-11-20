@@ -40,3 +40,14 @@ en:
         declineExpired:         "4000000000000069"  # Charge is declined with an expired_card code.
         declineProcessingError: "4000000000000119"  # Charge is declined with a processing_error code.
         declineIncorrectNumber: "4242424242424241"  # Charge is declined with an incorrect_number code as the card number fails the Luhn check.
+      products:
+        - SaaS Subscription
+        - API Access
+        - Premium Support
+        - Storage Plan
+        - Analytics Dashboard
+        - Custom Integration
+        - White Label Solution
+        - Data Export
+        - Advanced Reporting
+        - Team Collaboration

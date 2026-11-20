@@ -278,3 +278,56 @@ en:
           - Secaucus Junction
           - South Station
           - Washington Union Station
+      cities:
+        - New York
+        - London
+        - Paris
+        - Tokyo
+        - Berlin
+        - Munich
+        - Milan
+        - Rome
+        - São Paulo
+        - Rio de Janeiro
+        - Toronto
+        - Sydney
+        - Mumbai
+        - Moscow
+        - Beijing
+        - Seoul
+        - Madrid
+        - Barcelona
+        - Amsterdam
+        - Vienna
+      lines:
+        - High-Speed Rail
+        - Commuter Rail
+        - Metro/Subway
+        - Light Rail
+        - Tram
+        - Monorail
+        - Maglev
+        - Regional Express
+        - Intercity
+        - Freight Line
+      names:
+        - Grand Central Terminal
+        - Penn Station
+        - Waterloo Station
+        - "King's Cross Station"
+        - Gare du Nord
+        - Tokyo Station
+        - Shinjuku Station
+        - Shibuya Station
+        - Berlin Hauptbahnhof
+        - München Hauptbahnhof
+        - Milano Centrale
+        - Roma Termini
+        - São Paulo - Luz
+        - Rio de Janeiro - Central
+        - Toronto Union Station
+        - Sydney Central Station
+        - Chhatrapati Shivaji Terminus
+        - Moscow Kazansky
+        - Beijing Railway Station
+        - Seoul Station

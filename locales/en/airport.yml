@@ -379,3 +379,29 @@ en:
             - CTA
             - LIN
             - NAP
+      cities:
+        - New York
+        - Los Angeles
+        - London
+        - Paris
+        - Tokyo
+        - Dubai
+        - Singapore
+        - Frankfurt
+        - Amsterdam
+        - Sydney
+        - Toronto
+        - São Paulo
+      names:
+        - John F. Kennedy International Airport
+        - Los Angeles International Airport
+        - Heathrow Airport
+        - Charles de Gaulle Airport
+        - Tokyo Haneda Airport
+        - Dubai International Airport
+        - Singapore Changi Airport
+        - Frankfurt Airport
+        - Amsterdam Schiphol Airport
+        - Sydney Kingsford Smith Airport
+        - Toronto Pearson International Airport
+        - São Paulo/Guarulhos International Airport

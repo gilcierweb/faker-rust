@@ -60,7 +60,7 @@ pub fn color() -> String {
 
 /// Generate a random material
 pub fn material() -> String {
-    fetch_locale("commerce.material", "en")
+    fetch_locale("commerce.product_name.material", "en")
         .map(|v| sample(&v))
         .unwrap_or_else(|| "Plastic".to_string())
 }

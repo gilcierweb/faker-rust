@@ -189,3 +189,18 @@ en:
         - Electronic Office Equipment
         - Semiconductors
         - Telecommunications Equipment
+      subsectors:
+        - Software
+        - Hardware
+        - Services
+        - Consulting
+        - Research
+        - Development
+        - Sales
+        - Marketing
+        - Operations
+        - Logistics
+        - Support
+        - Maintenance
+        - Quality Assurance
+        - Compliance

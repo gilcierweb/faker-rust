@@ -12,16 +12,12 @@ pub fn name() -> String {
 
 /// Generate a random IATA airport code (3 letters)
 pub fn iata_code() -> String {
-    fetch_locale("airport.iata_codes", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(generate_iata_code)
+    generate_iata_code()
 }
 
 /// Generate a random ICAO airport code (4 letters)
 pub fn icao_code() -> String {
-    fetch_locale("airport.icao_codes", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(generate_icao_code)
+    generate_icao_code()
 }
 
 /// Generate a random city with airport

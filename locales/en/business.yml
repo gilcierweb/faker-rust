@@ -19,3 +19,5 @@ en:
         - maestro
         - forbrugsforeningen
         - laser
+      credit_card_expiry_dates:
+        - 2028-12-31

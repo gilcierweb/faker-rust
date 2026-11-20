@@ -187,3 +187,18 @@ en:
         - ASX
         - JSE
         - BOVESPA
+      market_indices:
+        - "S&P 500"
+        - Dow Jones
+        - NASDAQ
+        - Russell 2000
+        - FTSE 100
+        - DAX
+        - Nikkei 225
+        - Hang Seng
+        - Shanghai Composite
+        - CAC 40
+        - Euro Stoxx 50
+        - IBOVESPA
+        - ASX 200
+        - TSX Composite

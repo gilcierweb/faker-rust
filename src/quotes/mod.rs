@@ -5,7 +5,7 @@ use crate::locale::fetch_locale;
 
 /// Generate a random famous quote
 pub fn famous_last_words() -> String {
-    fetch_locale("quotes.famous_last_words", "en")
+    fetch_locale("quote.famous_last_words", "en")
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_FAMOUS_LAST_WORDS).to_string())
 }

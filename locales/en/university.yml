@@ -21,3 +21,5 @@ en:
         - "#{University.prefix} #{Name.last_name} #{University.suffix}"
         - "#{University.prefix} #{Name.last_name}"
         - "#{University.prefix} #{Address.state} #{University.suffix}"
+      greek_alphabet:
+        - Alpha

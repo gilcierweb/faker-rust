@@ -211,8 +211,19 @@ pub fn fetch_locale_with_context(
             return Some(result);
         }
 
-        // 2. Try subdirectory files (en_name.yml, en_address.yml, etc.)
         let parts: Vec<&str> = key.split('.').collect();
+
+        // 2. An explicit context category outranks the category inferred from
+        //    the key. They differ for keys such as `locations.australia.*`,
+        //    where the `locations` subdir also holds unrelated arrays that a
+        //    last-segment fallback could otherwise return.
+        if let Some(cat) = context_category
+            && let Some(result) = try_subdir(loc, cat, key, context_category)
+        {
+            return Some(result);
+        }
+
+        // 3. Try subdirectory files (en_name.yml, en_address.yml, etc.)
         if parts.len() >= 2 {
             let category = parts[0];
             let subdir_key = format!("{}_{}", loc, category);
@@ -233,13 +244,6 @@ pub fn fetch_locale_with_context(
                     return Some(result);
                 }
             }
-        }
-
-        // 3. If we have a context_category, try using it as the subdir directly.
-        if let Some(cat) = context_category
-            && let Some(result) = try_subdir(loc, cat, key, context_category)
-        {
-            return Some(result);
         }
 
         // 4. Try fallback subdir with second part of key
@@ -265,6 +269,18 @@ pub fn fetch_locale_with_context(
                 if let Some(result) = try_extract(locale_data, loc, &full_key, context_category) {
                     return Some(result);
                 }
+            }
+        }
+
+        // 5. Ruby-style flat namespace: look for the exact key path in every
+        //    bundled locale file. The gem's `fetch` is not tied to a filename,
+        //    so `games.clash_of_clans.troops` lives in `clash_of_clan.yml`.
+        for (_, locale_data) in LOCALE_DATA
+            .iter()
+            .filter(|(name, _)| name.starts_with(loc.as_str()))
+        {
+            if let Some(result) = extract_exact_array(locale_data, loc, key) {
+                return Some(result);
             }
         }
     }
@@ -454,6 +470,26 @@ fn extract_nested_array_raw(data: &Value, key: &str) -> Option<Vec<String>> {
     }
 }
 
+/// Resolve an exact key path in any bundled locale document.
+///
+/// Unlike `try_extract`, this never flattens an object into its children, so a
+/// missing path cannot accidentally resolve to an unrelated sibling list.
+fn extract_exact_array(locale_data: &Value, locale: &str, key: &str) -> Option<Vec<String>> {
+    let top = locale_data.as_object()?;
+    let mut current = top.get(locale).unwrap_or(locale_data);
+    if let Some(faker) = current.get("faker") {
+        current = faker;
+    }
+    for part in clean_key_for_extraction(key).split('.') {
+        current = current.get(part)?;
+    }
+    match current {
+        Value::Array(seq) => extract_strings_raw(seq),
+        Value::String(s) => Some(vec![s.clone()]),
+        _ => None,
+    }
+}
+
 fn extract_strings_raw(seq: &[Value]) -> Option<Vec<String>> {
     let arr: Vec<String> = seq
         .iter()
@@ -462,7 +498,45 @@ fn extract_strings_raw(seq: &[Value]) -> Option<Vec<String>> {
             _ => None,
         })
         .collect();
-    if arr.is_empty() { None } else { Some(arr) }
+    if !arr.is_empty() {
+        return Some(arr);
+    }
+
+    // The Ruby gem stores a few fields in shapes that differ from a plain
+    // string list: `company.bs`/`company.buzzwords` are lists of word lists
+    // (Ruby samples one word from each), and `nation.flag` is a list of UTF-8
+    // byte arrays (Ruby calls `pack('C*')`). Normalise both to strings so the
+    // bundled data stays byte-for-byte identical to the gem.
+    let mut decoded = Vec::new();
+    for value in seq {
+        let Value::Array(inner) = value else {
+            continue;
+        };
+        if inner.iter().all(|item| item.is_string()) {
+            decoded.extend(
+                inner
+                    .iter()
+                    .filter_map(|item| item.as_str().map(str::to_string)),
+            );
+        } else if !inner.is_empty()
+            && inner
+                .iter()
+                .all(|item| item.as_u64().is_some_and(|byte| byte <= u8::MAX as u64))
+        {
+            let bytes: Vec<u8> = inner
+                .iter()
+                .map(|item| item.as_u64().expect("checked above") as u8)
+                .collect();
+            if let Ok(text) = String::from_utf8(bytes) {
+                decoded.push(text);
+            }
+        }
+    }
+    if decoded.is_empty() {
+        None
+    } else {
+        Some(decoded)
+    }
 }
 
 fn resolve_placeholder(s: &str, context_category: Option<&str>) -> String {
@@ -693,6 +767,59 @@ fn extract_direct_value(data: &Value, field: &str) -> Option<String> {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    // Negative tests that deliberately assert `fetch_locale` returns `None`.
+    const INTENTIONALLY_MISSING_KEYS: &[&str] =
+        &["definitely.not.a.real.key", "faker.Name.male_first_name"];
+
+    fn collect_fetch_locale_keys(
+        dir: &std::path::Path,
+        out: &mut std::collections::BTreeSet<String>,
+    ) {
+        const NEEDLE: &str = "fetch_locale(\"";
+        for entry in std::fs::read_dir(dir).expect("read src directory") {
+            let path = entry.expect("directory entry").path();
+            if path.is_dir() {
+                collect_fetch_locale_keys(&path, out);
+                continue;
+            }
+            if path.extension().and_then(|ext| ext.to_str()) != Some("rs") {
+                continue;
+            }
+            let source = std::fs::read_to_string(&path).expect("read Rust source");
+            let mut rest = source.as_str();
+            while let Some(pos) = rest.find(NEEDLE) {
+                rest = &rest[pos + NEEDLE.len()..];
+                if let Some(end) = rest.find('"') {
+                    out.insert(rest[..end].to_string());
+                    rest = &rest[end + 1..];
+                }
+            }
+        }
+    }
+
+    #[test]
+    fn all_themed_locale_keys_resolve() {
+        let mut keys = std::collections::BTreeSet::new();
+        collect_fetch_locale_keys(
+            &std::path::Path::new(env!("CARGO_MANIFEST_DIR")).join("src"),
+            &mut keys,
+        );
+        for key in INTENTIONALLY_MISSING_KEYS {
+            keys.remove(*key);
+        }
+        assert!(!keys.is_empty(), "locale key scanner found no keys");
+
+        let missing: Vec<_> = keys
+            .iter()
+            .filter(|key| fetch_locale(key, "en").is_none())
+            .collect();
+        assert!(
+            missing.is_empty(),
+            "{} fetch_locale keys have no backing data: {missing:?}",
+            missing.len()
+        );
+    }
 
     #[test]
     fn test_fetch_locale() {

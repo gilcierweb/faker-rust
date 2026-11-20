@@ -22,7 +22,7 @@ pub fn invalid_card(reason: &str) -> String {
 
 /// Generate a random Stripe plan
 pub fn plan() -> String {
-    fetch_locale("stripe.plans", "en")
+    fetch_locale("subscription.plans", "en")
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_PLANS).to_string())
 }
@@ -36,7 +36,7 @@ pub fn product() -> String {
 
 /// Generate a random Stripe subscription status
 pub fn subscription_status() -> String {
-    fetch_locale("stripe.subscription_statuses", "en")
+    fetch_locale("subscription.statuses", "en")
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_STATUSES).to_string())
 }

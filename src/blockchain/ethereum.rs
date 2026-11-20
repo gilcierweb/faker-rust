@@ -1,13 +1,8 @@
 //! Ethereum blockchain generator
 
-use crate::base::sample;
-use crate::locale::fetch_locale;
-
 /// Generate a random Ethereum address
 pub fn address() -> String {
-    fetch_locale("ethereum.addresses", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(generate_ethereum_address)
+    generate_ethereum_address()
 }
 
 fn generate_ethereum_address() -> String {

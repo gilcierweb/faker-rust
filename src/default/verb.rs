@@ -12,14 +12,14 @@ pub fn verb() -> String {
 
 /// Generate a random past tense verb
 pub fn past() -> String {
-    fetch_locale("verb.pasts", "en")
+    fetch_locale("verbs.past", "en")
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_PASTS).to_string())
 }
 
 /// Generate a random present participle
 pub fn ing_form() -> String {
-    fetch_locale("verb.ing_forms", "en")
+    fetch_locale("verbs.ing_form", "en")
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_ING).to_string())
 }
