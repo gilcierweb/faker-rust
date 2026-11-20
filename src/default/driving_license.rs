@@ -55,6 +55,14 @@ pub fn new_york() -> String {
 pub fn texas() -> String {
     usa("texas")
 }
+// --- gem parity generators (dynamic locale keys) ---
+/// Gem-compatible generator: US driving licence number for a state.
+pub fn usa_driving_licence(state: &str) -> String {
+    let normalized = state.trim().to_lowercase().replace(' ', "_");
+    crate::locale::fetch_locale(&format!("driving_licence.usa.{normalized}"), "en")
+        .map(|v| crate::base::bothify(&crate::base::sample(&v)))
+        .unwrap_or_default()
+}
 
 #[cfg(test)]
 mod tests {

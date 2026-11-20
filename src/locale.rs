@@ -191,6 +191,59 @@ pub fn fetch_locale_named(key: &str, name: &str, locale: &str) -> Option<String>
     None
 }
 
+/// Return the immediate child keys of a map-shaped locale entry.
+///
+/// Several gem generators choose a random source from a map of named values
+/// (for example `dune.sayings` or `relationship.familial`). This helper exposes
+/// those names so Rust generators can mirror the Ruby behaviour.
+pub fn fetch_locale_keys(key: &str, locale: &str) -> Vec<String> {
+    let locales_to_try: Vec<&str> = if locale.contains('_') || locale.contains('-') {
+        vec![locale, locale.split(['-', '_']).next().unwrap()]
+    } else {
+        vec![locale]
+    };
+
+    for loc in &locales_to_try {
+        let category = key.split('.').next().unwrap_or(key);
+        let mut sources = vec![format!("{loc}_{category}"), (*loc).to_string()];
+        sources.dedup();
+
+        for source in sources {
+            let Some(data) = LOCALE_DATA.get(&source) else {
+                continue;
+            };
+            let Some(top) = data.as_object() else {
+                continue;
+            };
+            let Some(mut current) = top.get(*loc).or_else(|| top.get("faker")) else {
+                continue;
+            };
+            if let Some(faker) = current.get("faker") {
+                current = faker;
+            }
+            for part in clean_key_for_extraction(key).split('.') {
+                current = match current {
+                    Value::Object(map) => match lookup_segment(map, part) {
+                        Some(value) => value,
+                        None => break,
+                    },
+                    _ => break,
+                };
+            }
+            if let Value::Object(map) = current {
+                let mut keys: Vec<String> = map.keys().cloned().collect();
+                keys.sort();
+                return keys;
+            }
+        }
+    }
+
+    if locale != "en" {
+        return fetch_locale_keys(key, "en");
+    }
+    Vec::new()
+}
+
 pub fn fetch_locale_with_context(
     key: &str,
     locale: &str,
@@ -1014,6 +1067,13 @@ mod tests {
             "English locale data missing under {}",
             path.display()
         );
+    }
+
+    #[test]
+    fn test_fetch_locale_keys_exposes_map_children() {
+        let keys = fetch_locale_keys("dune.sayings", "en");
+        assert!(keys.contains(&"bene_gesserit".to_string()));
+        assert!(keys.contains(&"fremen".to_string()));
     }
 
     #[test]

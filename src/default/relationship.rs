@@ -44,6 +44,18 @@ pub fn sibling() -> String {
         .map(|v| sample(&v))
         .unwrap_or_else(|| "Sister".to_string())
 }
+// --- gem parity generators (dynamic locale keys) ---
+/// Gem-compatible generator: familial relationship from a named group.
+pub fn familial(connection: Option<&str>) -> String {
+    let groups = crate::locale::fetch_locale_keys("relationship.familial", "en");
+    let selected = match connection {
+        Some(name) => name.to_lowercase(),
+        None => crate::base::sample(&groups),
+    };
+    crate::locale::fetch_locale(&format!("relationship.familial.{selected}"), "en")
+        .map(|v| crate::base::sample(&v))
+        .unwrap_or_default()
+}
 
 #[cfg(test)]
 mod tests {

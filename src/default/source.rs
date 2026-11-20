@@ -75,6 +75,25 @@ pub fn directory() -> String {
     ];
     sample(&dirs).to_string()
 }
+// --- gem parity generators (dynamic locale keys) ---
+/// Gem-compatible generator: hello world source code in a language.
+pub fn hello_world(lang: &str) -> String {
+    crate::locale::fetch_locale(&format!("source.hello_world.{lang}"), "en")
+        .map(|v| crate::base::sample(&v))
+        .unwrap_or_default()
+}
+/// Gem-compatible generator: print statement source code in a language.
+pub fn print(text: &str, lang: &str) -> String {
+    crate::locale::fetch_locale(&format!("source.print.{lang}"), "en")
+        .map(|v| crate::base::sample(&v).replace("faker_string_to_print", text))
+        .unwrap_or_default()
+}
+/// Gem-compatible generator: source code printing 1 through 10.
+pub fn print_1_to_10(lang: &str) -> String {
+    crate::locale::fetch_locale(&format!("source.print_1_to_10.{lang}"), "en")
+        .map(|v| crate::base::sample(&v))
+        .unwrap_or_default()
+}
 
 #[cfg(test)]
 mod tests {

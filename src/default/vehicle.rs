@@ -100,6 +100,29 @@ pub fn standard_specs() -> String {
 pub fn version() -> String {
     parity_pick("vehicle.version")
 }
+// --- gem parity generators (dynamic locale keys) ---
+/// Gem-compatible generator: licence plate, optionally for a state code.
+pub fn license_plate(state_abbreviation: &str) -> String {
+    let key = if state_abbreviation.is_empty() {
+        "vehicle.license_plate".to_string()
+    } else {
+        format!("vehicle.license_plate_by_state.{state_abbreviation}")
+    };
+    crate::locale::fetch_locale(&key, "en")
+        .map(|v| crate::base::bothify(&crate::base::sample(&v)))
+        .unwrap_or_default()
+}
+/// Gem-compatible generator: model for a vehicle make.
+pub fn model(make_of_model: &str) -> String {
+    let key = if make_of_model.is_empty() {
+        "vehicle.models_by_make".to_string()
+    } else {
+        format!("vehicle.models_by_make.{make_of_model}")
+    };
+    crate::locale::fetch_locale(&key, "en")
+        .map(|v| crate::base::sample(&v))
+        .unwrap_or_default()
+}
 
 #[cfg(test)]
 mod tests {

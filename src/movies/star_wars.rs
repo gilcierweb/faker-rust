@@ -77,6 +77,18 @@ pub fn wookiee_sentence() -> String {
     }
     sentence
 }
+// --- gem parity generators (dynamic locale keys) ---
+/// Gem-compatible generator: Star Wars quote, optionally from a character.
+pub fn quote(character: Option<&str>) -> String {
+    let characters = crate::locale::fetch_locale_keys("star_wars.quotes", "en");
+    let selected = match character {
+        Some(name) => name.to_lowercase(),
+        None => crate::base::sample(&characters),
+    };
+    crate::locale::fetch_locale(&format!("star_wars.quotes.{selected}"), "en")
+        .map(|v| crate::base::sample(&v))
+        .unwrap_or_default()
+}
 
 #[cfg(test)]
 mod tests {

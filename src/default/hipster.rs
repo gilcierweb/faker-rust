@@ -135,6 +135,26 @@ const FALLBACK_WORDS: &[&str] = &[
     "yolo",
     "yr",
 ];
+// --- gem parity generators (dynamic locale keys) ---
+/// Gem-compatible generator: a list of hipster words.
+pub fn words(number: usize, supplemental: bool, spaces_allowed: bool) -> Vec<String> {
+    let mut pool = crate::locale::fetch_locale("hipster.words", "en")
+        .unwrap_or_else(|| vec!["hipster".to_string()]);
+    if supplemental {
+        pool.extend(crate::locale::fetch_locale("lorem.words", "en").unwrap_or_default());
+    }
+    let config = crate::config::FakerConfig::current();
+    (0..number)
+        .map(|_| {
+            let mut word = crate::base::sample(&pool);
+            if !spaces_allowed {
+                word = word.replace(' ', "");
+            }
+            let _ = &config;
+            word
+        })
+        .collect()
+}
 
 #[cfg(test)]
 mod tests {

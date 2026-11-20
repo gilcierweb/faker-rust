@@ -158,6 +158,28 @@ const FALLBACK_FORMS: &[&str] = &[
     "Ultimate Vice",
     "Geats IX",
 ];
+// --- gem parity generators (dynamic locale keys) ---
+fn from_eras(eras: &[&str], field: &str) -> String {
+    let all = ["showa", "heisei", "reiwa"];
+    let selected: Vec<&str> = if eras.is_empty() {
+        all.to_vec()
+    } else {
+        all.iter().copied().filter(|e| eras.contains(e)).collect()
+    };
+    let era = crate::base::sample(&selected);
+    crate::locale::fetch_locale(&format!("kamen_rider.{era}.{field}"), "en")
+        .map(|v| crate::base::sample(&v))
+        .unwrap_or_default()
+}
+
+/// Gem-compatible generator: Kamen Rider name from the given eras.
+pub fn kamen_rider(eras: &[&str]) -> String {
+    from_eras(eras, "kamen_riders")
+}
+/// Gem-compatible generator: Kamen Rider user from the given eras.
+pub fn user(eras: &[&str]) -> String {
+    from_eras(eras, "users")
+}
 
 #[cfg(test)]
 mod tests {

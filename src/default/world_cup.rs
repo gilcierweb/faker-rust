@@ -111,6 +111,19 @@ fn parity_pick(key: &str) -> String {
 pub fn city() -> String {
     parity_pick("world_cup.cities")
 }
+// --- gem parity generators (dynamic locale keys) ---
+/// Gem-compatible generator: teams in a World Cup group.
+pub fn group(group: &str) -> String {
+    crate::locale::fetch_locale(&format!("world_cup.groups.{group}"), "en")
+        .map(|v| crate::base::sample(&v))
+        .unwrap_or_default()
+}
+/// Gem-compatible generator: member of a national team roster.
+pub fn roster(country: &str, kind: &str) -> String {
+    crate::locale::fetch_locale(&format!("world_cup.rosters.{country}.{kind}"), "en")
+        .map(|v| crate::base::sample(&v))
+        .unwrap_or_default()
+}
 
 #[cfg(test)]
 mod tests {

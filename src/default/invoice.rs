@@ -40,6 +40,29 @@ pub fn line_item() -> String {
 }
 
 use crate::base::sample;
+// --- gem parity generators (algorithmic) ---
+/// Gem-compatible generator: creditor reference with an IBAN check digit.
+pub fn creditor_reference(ref_value: &str) -> String {
+    let reference = if ref_value.is_empty() {
+        reference()
+    } else {
+        ref_value.to_string()
+    };
+    let digits: String = format!("{reference}RF00")
+        .to_uppercase()
+        .chars()
+        .map(|c| {
+            if c.is_ascii_alphabetic() {
+                (c as u32 - 55).to_string()
+            } else {
+                c.to_string()
+            }
+        })
+        .collect();
+    let number: u128 = digits.parse().unwrap_or(0);
+    let checksum = (1 + 97 - number % 97) % 97;
+    format!("RF{checksum:02}{reference}")
+}
 
 #[cfg(test)]
 mod tests {

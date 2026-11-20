@@ -34,6 +34,35 @@ const FALLBACK_SCIENTISTS: &[&str] = &[
     "Charles Darwin",
     "Nikola Tesla",
 ];
+// --- gem parity generators (dynamic locale keys) ---
+/// Gem-compatible generator: state of matter of a chemical element.
+pub fn element_state() -> String {
+    crate::locale::fetch_locale("science.element_state", "en")
+        .map(|v| crate::base::sample(&v))
+        .unwrap_or_default()
+}
+/// Gem-compatible generator: element subcategory.
+pub fn element_subcategory() -> String {
+    crate::locale::fetch_locale("science.element_subcategory", "en")
+        .map(|v| crate::base::sample(&v))
+        .unwrap_or_default()
+}
+/// Gem-compatible generator: scientific modifier word.
+pub fn modifier() -> String {
+    crate::locale::fetch_locale("science.modifier", "en")
+        .map(|v| crate::base::sample(&v))
+        .unwrap_or_default()
+}
+/// Gem-compatible generator: scientific tool, optionally without a modifier.
+pub fn tool(simple: bool) -> String {
+    let base = crate::locale::fetch_locale("science.tool", "en")
+        .map(|v| crate::base::sample(&v))
+        .unwrap_or_default();
+    if simple {
+        return base;
+    }
+    format!("{} {}", modifier(), base)
+}
 
 #[cfg(test)]
 mod tests {

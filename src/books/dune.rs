@@ -92,6 +92,18 @@ fn parity_pick(key: &str) -> String {
 pub fn city() -> String {
     parity_pick("dune.cities")
 }
+// --- gem parity generators (dynamic locale keys) ---
+/// Gem-compatible generator: a saying from a Dune source.
+pub fn saying(source: Option<&str>) -> String {
+    let sources = crate::locale::fetch_locale_keys("dune.sayings", "en");
+    let selected = match source {
+        Some(name) => name.to_lowercase(),
+        None => crate::base::sample(&sources),
+    };
+    crate::locale::fetch_locale(&format!("dune.sayings.{selected}"), "en")
+        .map(|v| crate::base::sample(&v))
+        .unwrap_or_default()
+}
 
 #[cfg(test)]
 mod tests {

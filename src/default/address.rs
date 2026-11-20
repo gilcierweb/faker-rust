@@ -228,6 +228,19 @@ pub fn state_abbr() -> String {
 pub fn street_suffix() -> String {
     parity_pick("address.street_suffix")
 }
+// --- gem parity generators (dynamic locale keys) ---
+/// Gem-compatible generator: country name for an ISO code.
+pub fn country_by_code(code: &str) -> String {
+    crate::locale::fetch_locale(&format!("address.country_by_code.{code}"), "en")
+        .map(|v| crate::base::sample(&v))
+        .unwrap_or_default()
+}
+/// Gem-compatible generator: ISO code for a country name.
+pub fn country_name_to_code(name: &str) -> String {
+    crate::locale::fetch_locale(&format!("address.country_by_name.{name}"), "en")
+        .map(|v| crate::base::sample(&v))
+        .unwrap_or_default()
+}
 
 #[cfg(test)]
 mod tests {

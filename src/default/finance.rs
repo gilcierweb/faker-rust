@@ -68,6 +68,39 @@ fn parity_pick(key: &str) -> String {
 pub fn stock_market() -> String {
     parity_pick("finance.stock_market")
 }
+// --- gem parity generators (dynamic locale keys) ---
+/// Gem-compatible generator: credit card number for the given card types.
+pub fn credit_card(types: &[&str]) -> String {
+    let default_types = ["visa", "mastercard", "american_express", "discover"];
+    let selected = if types.is_empty() {
+        &default_types[..]
+    } else {
+        types
+    };
+    let card_type = crate::base::sample(selected);
+    crate::locale::fetch_locale(&format!("finance.credit_card.{card_type}"), "en")
+        .map(|v| crate::base::numerify(crate::base::sample(&v).trim_matches('/')))
+        .unwrap_or_default()
+}
+/// Gem-compatible generator: stock ticker from the given markets.
+pub fn ticker(markets: &[&str]) -> String {
+    let default_markets = ["NYSE", "NASDAQ"];
+    let selected = if markets.is_empty() {
+        &default_markets[..]
+    } else {
+        markets
+    };
+    let market = crate::base::sample(selected);
+    crate::locale::fetch_locale(&format!("finance.ticker.{market}"), "en")
+        .map(|v| crate::base::sample(&v))
+        .unwrap_or_default()
+}
+/// Gem-compatible generator: VAT number for a country code.
+pub fn vat_number(country: &str) -> String {
+    crate::locale::fetch_locale_named("finance.vat_number", country, "en")
+        .map(|template| crate::base::numerify(&template))
+        .unwrap_or_default()
+}
 
 #[cfg(test)]
 mod tests {

@@ -75,6 +75,31 @@ pub fn imperial_weight() -> String {
     let lbs = config.rand_range(100, 250);
     format!("{} lbs", lbs)
 }
+// --- gem parity generators (dynamic locale keys) ---
+fn measurement(amount: usize, key: &str) -> String {
+    let unit = crate::locale::fetch_locale(&format!("measurement.{key}"), "en")
+        .map(|v| crate::base::sample(&v))
+        .unwrap_or_default();
+    let unit = if amount == 1 {
+        unit
+    } else {
+        format!("{unit}s")
+    };
+    format!("{amount} {unit}")
+}
+
+/// Gem-compatible generator: imperial height measurement.
+pub fn height(amount: usize) -> String {
+    measurement(amount, "height")
+}
+/// Gem-compatible generator: metric length measurement.
+pub fn metric_length(amount: usize) -> String {
+    measurement(amount, "metric_length")
+}
+/// Gem-compatible generator: metric volume measurement.
+pub fn metric_volume(amount: usize) -> String {
+    measurement(amount, "metric_volume")
+}
 
 #[cfg(test)]
 mod tests {
