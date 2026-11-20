@@ -20,6 +20,7 @@ Generate email addresses, passwords, domains, etc.
 - [faker_rust::File](/docs/default/file.md)
 - [faker_rust::Json](/docs/default/json.md)
 - [faker_rust::Hacker](/docs/default/hacker.md)
+- [faker_rust::HTML](/docs/default/html.md)
 - [faker_rust::Internet](/docs/default/internet.md)
 - [faker_rust::InternetHttp](/docs/internet/http.md)
 - [faker_rust::Markdown](/docs/default/markdown.md)
@@ -64,6 +65,7 @@ Generate names, genders, bios, job titles, and more.
 
 Generate random numbers and strings.
 
+- [faker_rust::Adjective](/docs/default/adjective.md)
 - [faker_rust::Alphanumeric](/docs/default/alphanumeric.md)
 - [faker_rust::Barcode](/docs/default/barcode.md)
 - [faker_rust::Code](/docs/default/code.md)
@@ -167,6 +169,7 @@ Generate movies titles, quotes, characters, etc.
 - [faker_rust::Movies::LordOfTheRings](/docs/movies/lord_of_the_rings.md)
 - [faker_rust::Movies::PrincessBride](/docs/movies/princess_bride.md)
 - [faker_rust::Movies::StarWars](/docs/movies/star_wars.md)
+- [faker_rust::Movies::TheRoom](/docs/movies/the_room.md)
 - [faker_rust::Movies::TRON](/docs/movies/tron.md)
 - [faker_rust::Movies::VForVendetta](/docs/movies/v_for_vendetta.md)
 
@@ -237,6 +240,7 @@ Generate titles, characters, quotes and more from a variety of TV shows.
 - [faker_rust::TvShows::TheExpanse](/docs/tv_shows/the_expanse.md)
 - [faker_rust::TvShows::TheFreshPrinceOfBelAir](/docs/tv_shows/the_fresh_prince_of_bel_air.md)
 - [faker_rust::TvShows::TheITCrowd](/docs/tv_shows/the_it_crowd.md)
+- [faker_rust::TvShows::TheOffice](/docs/tv_shows/the_office.md)
 - [faker_rust::TvShows::TheThickOfIt](/docs/tv_shows/the_thick_of_it.md)
 - [faker_rust::TvShows::TwinPeaks](/docs/tv_shows/twin_peaks.md)
 - [faker_rust::TvShows::VentureBros](/docs/tv_shows/venture_bros.md)
@@ -249,6 +253,7 @@ Want to see a comprehensive list of all generators? Expand the sections below to
   <summary>Default</summary>
 
   - [faker_rust::Address](/docs/default/address.md)
+  - [faker_rust::Adjective](/docs/default/adjective.md)
   - [faker_rust::Alphanumeric](/docs/default/alphanumeric.md)
   - [faker_rust::Ancient](/docs/default/ancient.md)
   - [faker_rust::App](/docs/default/app.md)
@@ -296,6 +301,7 @@ Want to see a comprehensive list of all generators? Expand the sections below to
   - [faker_rust::Gender](/docs/default/gender.md)
   - [faker_rust::GreekPhilosophers](/docs/default/greek_philosophers.md)
   - [faker_rust::Hacker](/docs/default/hacker.md)
+  - [faker_rust::HTML](/docs/default/html.md)
   - [faker_rust::Hipster](/docs/default/hipster.md)
   - [faker_rust::Hobby](/docs/default/hobby.md)
   - [faker_rust::House](/docs/default/house.md)
@@ -449,6 +455,7 @@ Want to see a comprehensive list of all generators? Expand the sections below to
   - [faker_rust::Movies::LordOfTheRings](/docs/movies/lord_of_the_rings.md)
   - [faker_rust::Movies::PrincessBride](/docs/movies/princess_bride.md)
   - [faker_rust::Movies::StarWars](/docs/movies/star_wars.md)
+  - [faker_rust::Movies::TheRoom](/docs/movies/the_room.md)
   - [faker_rust::Movies::TRON](/docs/movies/tron.md)
   - [faker_rust::Movies::VForVendetta](/docs/movies/v_for_vendetta.md)
 </details>
@@ -537,6 +544,7 @@ Want to see a comprehensive list of all generators? Expand the sections below to
   - [faker_rust::TvShows::TheExpanse](/docs/tv_shows/the_expanse.md)
   - [faker_rust::TvShows::TheFreshPrinceOfBelAir](/docs/tv_shows/the_fresh_prince_of_bel_air.md)
   - [faker_rust::TvShows::TheITCrowd](/docs/tv_shows/the_it_crowd.md)
+  - [faker_rust::TvShows::TheOffice](/docs/tv_shows/the_office.md)
   - [faker_rust::TvShows::TheThickOfIt](/docs/tv_shows/the_thick_of_it.md)
   - [faker_rust::TvShows::TwinPeaks](/docs/tv_shows/twin_peaks.md)
   - [faker_rust::TvShows::VentureBros](/docs/tv_shows/venture_bros.md)
