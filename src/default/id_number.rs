@@ -2,13 +2,22 @@
 
 use crate::config::FakerConfig;
 
+/// Letters used by the Spanish DNI check-digit scheme, indexed by number % 23.
+const DNI_LETTERS: [char; 23] = [
+    'T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H',
+    'L', 'C', 'K', 'E',
+];
+
+/// Compute the DNI check letter for a given number.
+fn spanish_letter(number: u32) -> char {
+    DNI_LETTERS[(number % 23) as usize]
+}
+
 /// Generate a random Spanish DNI (Documento Nacional de Identidad)
 pub fn spanish() -> String {
     let config = FakerConfig::current();
     let number = config.rand_range(10000000, 99999999);
-    let letters = ['T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E'];
-    let letter = letters[(number % 23) as usize];
-    format!("{}{}", number, letter)
+    format!("{}{}", number, spanish_letter(number))
 }
 
 /// Generate a random US Social Security Number
@@ -61,5 +70,10 @@ mod tests {
     #[test]
     fn test_invalid() {
         assert!(!invalid().is_empty());
+    }
+
+    #[test]
+    fn test_spanish_dni_letter_vector() {
+        assert_eq!(spanish_letter(12_345_678), 'Z');
     }
 }

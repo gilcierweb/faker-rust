@@ -15,7 +15,7 @@ fn calculate_dv(number: u32) -> char {
     let mut sum = 0;
     let mut multiplier = 2;
     let mut n = number;
-    
+
     while n > 0 {
         sum += (n % 10) * multiplier;
         n /= 10;
@@ -24,10 +24,10 @@ fn calculate_dv(number: u32) -> char {
             multiplier = 2;
         }
     }
-    
+
     let remainder = sum % 11;
     let dv = 11 - remainder;
-    
+
     match dv {
         11 => '0',
         10 => 'K',
@@ -45,5 +45,10 @@ mod tests {
         assert!(rut_num.contains('-'));
         let parts: Vec<&str> = rut_num.split('-').collect();
         assert_eq!(parts.len(), 2);
+    }
+
+    #[test]
+    fn test_calculate_dv_known_vector() {
+        assert_eq!(calculate_dv(12_345_678), '5');
     }
 }

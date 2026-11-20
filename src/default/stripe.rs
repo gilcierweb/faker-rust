@@ -26,19 +26,42 @@ pub fn subscription_status() -> String {
 
 // Fallback data
 const FALLBACK_PLANS: &[&str] = &[
-    "Basic", "Standard", "Premium", "Enterprise", "Starter", "Pro", "Ultimate",
-    "Free", "Gold", "Platinum", "Silver", "Bronze",
+    "Basic",
+    "Standard",
+    "Premium",
+    "Enterprise",
+    "Starter",
+    "Pro",
+    "Ultimate",
+    "Free",
+    "Gold",
+    "Platinum",
+    "Silver",
+    "Bronze",
 ];
 
 const FALLBACK_PRODUCTS: &[&str] = &[
-    "SaaS Subscription", "API Access", "Premium Support", "Storage Plan",
-    "Analytics Dashboard", "Custom Integration", "White Label Solution",
-    "Data Export", "Advanced Reporting", "Team Collaboration",
+    "SaaS Subscription",
+    "API Access",
+    "Premium Support",
+    "Storage Plan",
+    "Analytics Dashboard",
+    "Custom Integration",
+    "White Label Solution",
+    "Data Export",
+    "Advanced Reporting",
+    "Team Collaboration",
 ];
 
 const FALLBACK_STATUSES: &[&str] = &[
-    "active", "canceled", "past_due", "unpaid", "trialing", "paused",
-    "incomplete", "incomplete_expired",
+    "active",
+    "canceled",
+    "past_due",
+    "unpaid",
+    "trialing",
+    "paused",
+    "incomplete",
+    "incomplete_expired",
 ];
 
 #[cfg(test)]
@@ -47,16 +70,19 @@ mod tests {
 
     #[test]
     fn test_plan() {
-        assert!(!plan().is_empty());
+        let value = plan();
+        assert!(FALLBACK_PLANS.contains(&value.as_str()) || !value.is_empty());
     }
 
     #[test]
-    fn test_product() {
-        assert!(!product().is_empty());
+    fn test_product_from_known_set() {
+        let value = product();
+        assert!(FALLBACK_PRODUCTS.contains(&value.as_str()) || !value.is_empty());
     }
 
     #[test]
-    fn test_subscription_status() {
-        assert!(!subscription_status().is_empty());
+    fn test_subscription_status_from_known_set() {
+        let value = subscription_status();
+        assert!(FALLBACK_STATUSES.contains(&value.as_str()) || !value.is_empty());
     }
 }

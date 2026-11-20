@@ -237,4 +237,25 @@ mod tests {
         let result = rand_in_range(1, 10);
         assert!((1..=10).contains(&result));
     }
+
+    #[test]
+    fn test_empty_templates() {
+        assert_eq!(numerify(""), "");
+        assert_eq!(letterify(""), "");
+        assert_eq!(bothify(""), "");
+        assert_eq!(numerify("abc"), "abc");
+    }
+
+    #[test]
+    #[should_panic(expected = "Cannot sample from empty slice")]
+    fn test_sample_empty_panics() {
+        let empty: Vec<u32> = vec![];
+        let _ = sample(&empty);
+    }
+
+    #[test]
+    fn test_sample_many_respects_count() {
+        let items = vec![1, 2, 3];
+        assert_eq!(sample_many(&items, 5).len(), 5);
+    }
 }
