@@ -1,11 +1,25 @@
 //! Chile RUT (Rol Único Tributario) generator
 
+use std::cell::Cell;
+
 use crate::config::FakerConfig;
+
+thread_local! {
+    /// Body of the most recently generated RUT, mirroring the gem's `last_rut` reader.
+    static LAST_RUT: Cell<u32> = const { Cell::new(0) };
+}
+
+/// Gem-compatible generator: body of the most recently generated RUT.
+pub fn last_rut() -> Option<u32> {
+    let value = LAST_RUT.get();
+    (value > 0).then_some(value)
+}
 
 /// Generate a random Chilean RUT number
 pub fn rut() -> String {
     let config = FakerConfig::current();
     let number = config.rand_range(1000000, 25000000);
+    LAST_RUT.set(number);
     let dv = calculate_dv(number);
     format!("{}-{}", number, dv)
 }
@@ -68,6 +82,7 @@ pub fn full_rut(min: u32, max: u32, fixed: bool, formatted: bool) -> String {
         config.rand_range(min, max)
     };
     let dv = dv_for(&body.to_string());
+    LAST_RUT.set(body);
     if formatted {
         let digits = format!("{body:08}");
         format!(

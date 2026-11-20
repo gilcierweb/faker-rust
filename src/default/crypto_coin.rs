@@ -38,6 +38,18 @@ pub fn url_logo() -> String {
     coin_fields().get(2).cloned().unwrap_or_default()
 }
 
+/// Gem-compatible generator: a single crypto coin record as an object.
+pub fn coin_hash() -> serde_json::Value {
+    let fields = coin_fields();
+    let value =
+        |index: usize| serde_json::Value::String(fields.get(index).cloned().unwrap_or_default());
+    let mut record = serde_json::Map::new();
+    record.insert("name".into(), value(0));
+    record.insert("acronym".into(), value(1));
+    record.insert("url_logo".into(), value(2));
+    serde_json::Value::Object(record)
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

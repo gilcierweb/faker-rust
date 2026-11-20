@@ -31,6 +31,14 @@ pub fn form() -> String {
         .unwrap_or_else(|| sample(FALLBACK_FORMS).to_string())
 }
 
+/// Gem-compatible generator: the eras available for series selection.
+pub fn eras() -> Vec<String> {
+    ["showa", "heisei", "reiwa"]
+        .iter()
+        .map(|era| (*era).to_string())
+        .collect()
+}
+
 // Fallback data
 const FALLBACK_SERIES: &[&str] = &[
     "Kamen Rider",
