@@ -22,7 +22,7 @@ impl Default for FakerConfig {
     fn default() -> Self {
         Self {
             locale: "en".to_string(),
-            rng: Rc::new(RefCell::new(StdRng::from_entropy())),
+            rng: Rc::new(RefCell::new(StdRng::from_os_rng())),
         }
     }
 }
@@ -55,13 +55,13 @@ impl FakerConfig {
     /// Generate a random number using the configured RNG
     pub fn rand_u32(&self, max: u32) -> u32 {
         use rand::Rng;
-        self.rng.borrow_mut().gen_range(0..max)
+        self.rng.borrow_mut().random_range(0..max)
     }
 
     /// Generate a random usize
     pub fn rand_usize(&self, max: usize) -> usize {
         use rand::Rng;
-        self.rng.borrow_mut().gen_range(0..max)
+        self.rng.borrow_mut().random_range(0..max)
     }
 
     /// Generate a random number between min and max (inclusive)
@@ -71,7 +71,7 @@ impl FakerConfig {
         }
         use rand::Rng;
         let mut rng = self.rng.borrow_mut();
-        rng.gen_range(min..=max)
+        rng.random_range(min..=max)
     }
 
     /// Generate a random i64 between min and max (inclusive)
@@ -81,14 +81,14 @@ impl FakerConfig {
         }
         use rand::Rng;
         let mut rng = self.rng.borrow_mut();
-        rng.gen_range(min..=max)
+        rng.random_range(min..=max)
     }
 
     /// Generate a random f64 between 0.0 and 1.0
     pub fn rand_f64(&self) -> f64 {
         use rand::Rng;
         let mut rng = self.rng.borrow_mut();
-        let a: u32 = rng.gen_range(0..1000000);
+        let a: u32 = rng.random_range(0..1000000);
         (a as f64) / 1000000.0
     }
 
@@ -96,7 +96,7 @@ impl FakerConfig {
     pub fn rand_bool(&self) -> bool {
         use rand::Rng;
         let mut rng = self.rng.borrow_mut();
-        rng.gen_range(0..2) == 1
+        rng.random_range(0..2) == 1
     }
 
     /// Generate a random char
