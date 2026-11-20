@@ -29,6 +29,18 @@ fn generate_bitcoin_address() -> String {
 
     address
 }
+// --- gem parity generators (algorithmic) ---
+/// Gem-compatible generator: Bitcoin testnet address (m/n/2 prefix).
+pub fn testnet_address() -> String {
+    let prefix = crate::base::sample(&["m", "n", "2"]);
+    let mut out = prefix.to_string();
+    const CHARS: &[u8] = b"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    let config = crate::config::FakerConfig::current();
+    for _ in 0..33 {
+        out.push(CHARS[config.rand_usize(CHARS.len())] as char);
+    }
+    out
+}
 
 #[cfg(test)]
 mod tests {

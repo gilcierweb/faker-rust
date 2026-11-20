@@ -146,7 +146,7 @@ pub fn fix_umlauts(string: &str) -> String {
 }
 
 /// Generate a random domain word
-fn domain_word() -> String {
+pub fn domain_word() -> String {
     let company_name = company::name();
     company_name
         .split_whitespace()
@@ -486,6 +486,27 @@ const FALLBACK_BOT_AGENTS: &[&str] = &[
     "Mozilla/5.0 (compatible; Baiduspider/2.0; +http://www.baidu.com/search/spider.html)",
     "Mozilla/5.0 (compatible; YandexBot/3.0; +http://yandex.com/bots)",
 ];
+// --- gem parity generators (algorithmic) ---
+/// Gem-compatible generator: IPv4 address outside reserved private ranges.
+pub fn public_ip_v4_address() -> String {
+    let config = crate::config::FakerConfig::current();
+    loop {
+        let first: u8 = match config.rand_u32(223) {
+            10 | 127 => continue,
+            n => (n + 1) as u8,
+        };
+        let second = config.rand_u32(256) as u8;
+        if first == 172 && (16..=31).contains(&second) {
+            continue;
+        }
+        if first == 192 && second == 168 {
+            continue;
+        }
+        let third = config.rand_u32(256) as u8;
+        let fourth = 1 + config.rand_u32(255) as u8;
+        return format!("{first}.{second}.{third}.{fourth}");
+    }
+}
 
 #[cfg(test)]
 mod tests {

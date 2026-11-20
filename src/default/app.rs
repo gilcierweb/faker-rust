@@ -27,6 +27,17 @@ pub fn author() -> String {
 // Fallback data
 const FALLBACK_NAMES: &[&str] = &["Redhold", "Treeflex", "Tri-tip", "Greenlam"];
 const FALLBACK_VERSIONS: &[&str] = &["0.1.0", "1.0.0", "2.1.3", "0.9.9"];
+// --- gem parity generators (algorithmic) ---
+/// Gem-compatible generator: semantic version string.
+pub fn semantic_version() -> String {
+    let config = crate::config::FakerConfig::current();
+    format!(
+        "{}.{}.{}",
+        config.rand_range(0, 10),
+        config.rand_range(0, 10),
+        config.rand_range(1, 10)
+    )
+}
 
 #[cfg(test)]
 mod tests {

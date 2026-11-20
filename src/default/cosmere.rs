@@ -132,6 +132,13 @@ pub fn spren() -> String {
 pub fn surge() -> String {
     parity_pick("cosmere.surges")
 }
+// --- gem parity generators (locale-backed) ---
+/// Gem-compatible generator: Knight Radiant order.
+pub fn knight_radiant() -> String {
+    crate::locale::fetch_locale("cosmere.knights_radiant", "en")
+        .map(|v| crate::base::sample(&v))
+        .unwrap_or_default()
+}
 
 #[cfg(test)]
 mod tests {

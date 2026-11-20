@@ -58,6 +58,18 @@ fn parity_pick(key: &str) -> String {
 pub fn color_name() -> String {
     parity_pick("color.name")
 }
+// --- gem parity generators (algorithmic) ---
+/// Gem-compatible generator: CSS `hsla()` colour string.
+pub fn hsla_color() -> String {
+    let config = crate::config::FakerConfig::current();
+    format!(
+        "hsla({}, {}%, {}%, {:.2})",
+        config.rand_range(0, 361),
+        config.rand_range(0, 101),
+        config.rand_range(0, 101),
+        config.rand_f64()
+    )
+}
 
 #[cfg(test)]
 mod tests {

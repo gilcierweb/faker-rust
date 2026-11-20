@@ -33,6 +33,15 @@ pub fn serial() -> String {
         "SN12345678".to_string(),
     ])
 }
+// --- gem parity generators (algorithmic) ---
+/// Gem-compatible generator: build number between 1 and 500.
+pub fn build_number() -> u32 {
+    crate::config::FakerConfig::current().rand_range(1, 501)
+}
+/// Gem-compatible generator: version number between 1 and 1000.
+pub fn version() -> u32 {
+    crate::config::FakerConfig::current().rand_range(1, 1001)
+}
 
 #[cfg(test)]
 mod tests {

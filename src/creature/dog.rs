@@ -51,6 +51,11 @@ pub fn size() -> String {
         .map(|v| sample(&v))
         .unwrap_or_else(|| "medium".to_string())
 }
+// --- gem parity generators (algorithmic) ---
+/// Gem-compatible generator: dog gender.
+pub fn gender() -> String {
+    crate::base::sample(&["Male", "Female"]).to_string()
+}
 
 #[cfg(test)]
 mod tests {

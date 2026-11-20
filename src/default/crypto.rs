@@ -47,6 +47,30 @@ const FALLBACK_SYMBOLS: &[&str] = &[
     "BTC", "ETH", "XRP", "LTC", "ADA", "DOT", "XLM", "LINK", "DOGE", "UNI", "SOL", "AVAX", "MATIC",
     "BNB", "LUNA", "ATOM", "ALGO", "VET",
 ];
+// --- gem parity generators (algorithmic) ---
+fn random_hex(length: usize) -> String {
+    let config = crate::config::FakerConfig::current();
+    (0..length)
+        .map(|_| config.rand_char(&crate::base::HEX_LOWER))
+        .collect()
+}
+
+/// Gem-compatible generator: random MD5-shaped hex digest.
+pub fn md5() -> String {
+    random_hex(32)
+}
+/// Gem-compatible generator: random SHA1-shaped hex digest.
+pub fn sha1() -> String {
+    random_hex(40)
+}
+/// Gem-compatible generator: random SHA256-shaped hex digest.
+pub fn sha256() -> String {
+    random_hex(64)
+}
+/// Gem-compatible generator: random SHA512-shaped hex digest.
+pub fn sha512() -> String {
+    random_hex(128)
+}
 
 #[cfg(test)]
 mod tests {

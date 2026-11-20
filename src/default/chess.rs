@@ -30,6 +30,15 @@ pub fn title() -> String {
         .map(|v| sample(&v))
         .unwrap_or_else(|| "Grandmaster".to_string())
 }
+// --- gem parity generators (algorithmic) ---
+/// Gem-compatible generator: FIDE federation country code.
+pub fn federation() -> String {
+    crate::address::country_code_long()
+}
+/// Gem-compatible generator: chess rating between `from` and `to` (inclusive).
+pub fn rating(from: u32, to: u32) -> u32 {
+    crate::config::FakerConfig::current().rand_range(from, to + 1)
+}
 
 #[cfg(test)]
 mod tests {

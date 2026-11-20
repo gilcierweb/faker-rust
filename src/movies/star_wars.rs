@@ -61,6 +61,22 @@ pub fn specie() -> String {
 pub fn vehicle() -> String {
     parity_pick("star_wars.vehicles")
 }
+// --- gem parity generators (locale-backed) ---
+/// Gem-compatible generator: Wookiee sentence.
+pub fn wookiee_sentence() -> String {
+    let words = crate::locale::fetch_locale("star_wars.wookiee_words", "en")
+        .unwrap_or_else(|| vec!["wyaaaaaa".to_string()]);
+    let config = crate::config::FakerConfig::current();
+    let mut sentence = crate::base::sample(&words);
+    if let Some(first) = sentence.get_mut(0..1) {
+        first.make_ascii_uppercase();
+    }
+    for _ in 0..config.rand_u32(11) {
+        sentence.push(' ');
+        sentence.push_str(&crate::base::sample(&words));
+    }
+    sentence
+}
 
 #[cfg(test)]
 mod tests {

@@ -106,6 +106,15 @@ pub fn winter_olympics_sport() -> String {
 pub fn winter_paralympics_sport() -> String {
     parity_pick("sport.winter_paralympics")
 }
+// --- gem parity generators (algorithmic) ---
+/// Gem-compatible generator: sport name with optional ancient/unusual sources.
+pub fn sport() -> String {
+    crate::base::sample(&[
+        crate::sports::sport::summer_olympics_sport(),
+        crate::sports::sport::winter_olympics_sport(),
+    ])
+    .to_string()
+}
 
 #[cfg(test)]
 mod tests {

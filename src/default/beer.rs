@@ -62,6 +62,24 @@ fn parity_pick(key: &str) -> String {
 pub fn malts() -> String {
     parity_pick("beer.malt")
 }
+// --- gem parity generators (algorithmic) ---
+/// Gem-compatible generator: alcohol percentage.
+pub fn alcohol() -> String {
+    let v = crate::config::FakerConfig::current().rand_range_i64(20, 101) as f64 / 10.0;
+    format!("{v:.1}%")
+}
+/// Gem-compatible generator: Plato scale value.
+pub fn blg() -> String {
+    let v = 5.0 + crate::config::FakerConfig::current().rand_f64() * 15.0;
+    format!("{v:.1}°Blg")
+}
+/// Gem-compatible generator: international bitterness units.
+pub fn ibu() -> String {
+    format!(
+        "{} IBU",
+        crate::config::FakerConfig::current().rand_range(10, 101)
+    )
+}
 
 #[cfg(test)]
 mod tests {

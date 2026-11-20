@@ -79,6 +79,19 @@ pub fn tagline() -> String {
 pub fn vehicle() -> String {
     parity_pick("tron.vehicles")
 }
+// --- gem parity generators (locale-backed) ---
+/// Gem-compatible generator: Tron program name.
+pub fn program() -> String {
+    crate::locale::fetch_locale("tron.characters.programs", "en")
+        .map(|v| crate::base::sample(&v))
+        .unwrap_or_default()
+}
+/// Gem-compatible generator: Tron user name.
+pub fn user() -> String {
+    crate::locale::fetch_locale("tron.characters.users", "en")
+        .map(|v| crate::base::sample(&v))
+        .unwrap_or_default()
+}
 
 #[cfg(test)]
 mod tests {

@@ -80,6 +80,28 @@ const FALLBACK_STATUSES: &[&str] = &[
     "incomplete",
     "incomplete_expired",
 ];
+// --- gem parity generators (algorithmic) ---
+/// Gem-compatible generator: two-digit expiry month.
+pub fn month() -> String {
+    format!(
+        "{:02}",
+        crate::config::FakerConfig::current().rand_range(1, 13)
+    )
+}
+/// Gem-compatible generator: four-digit future year.
+pub fn year() -> String {
+    let start = time::OffsetDateTime::now_utc().year() + 1;
+    (start + crate::config::FakerConfig::current().rand_range(0, 6) as i32).to_string()
+}
+/// Gem-compatible generator: card security code (4 digits for Amex).
+pub fn ccv(card_type: &str) -> String {
+    let config = crate::config::FakerConfig::current();
+    if card_type.eq_ignore_ascii_case("amex") {
+        config.rand_range(1000, 10000).to_string()
+    } else {
+        config.rand_range(100, 1000).to_string()
+    }
+}
 
 #[cfg(test)]
 mod tests {

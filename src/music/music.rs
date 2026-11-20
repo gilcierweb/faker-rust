@@ -57,6 +57,25 @@ fn parity_pick(key: &str) -> String {
 pub fn mambo_no_5() -> String {
     parity_pick("music.mambo_no_5")
 }
+// --- gem parity generators (algorithmic) ---
+const NOTE_LETTERS: &[&str] = &["C", "D", "E", "F", "G", "A", "B"];
+const ACCIDENTAL_SIGNS: &[&str] = &["b", "#", ""];
+const CHORD_TYPES: &[&str] = &[
+    "", "maj", "6", "maj7", "m", "m7", "-7", "7", "dom7", "dim", "dim7", "m7b5",
+];
+
+/// Gem-compatible generator: musical key using letter notation.
+pub fn key() -> String {
+    format!(
+        "{}{}",
+        crate::base::sample(NOTE_LETTERS),
+        crate::base::sample(ACCIDENTAL_SIGNS)
+    )
+}
+/// Gem-compatible generator: chord built from a musical key.
+pub fn chord() -> String {
+    format!("{}{}", key(), crate::base::sample(CHORD_TYPES))
+}
 
 #[cfg(test)]
 mod tests {
