@@ -91,7 +91,13 @@ pub fn letterify(template: &str) -> String {
     let config = FakerConfig::current();
     template
         .chars()
-        .map(|c| if c == '?' { config.rand_char(&LETTERS) } else { c })
+        .map(|c| {
+            if c == '?' {
+                config.rand_char(&LETTERS)
+            } else {
+                c
+            }
+        })
         .collect()
 }
 
@@ -170,14 +176,17 @@ mod tests {
         let mut saw_zero_mid = false;
         for _ in 0..200 {
             let s = numerify("#####");
-            if let Some(c) = s.chars().nth(1) {
-                if c == '0' {
-                    saw_zero_mid = true;
-                    break;
-                }
+            if let Some(c) = s.chars().nth(1)
+                && c == '0'
+            {
+                saw_zero_mid = true;
+                break;
             }
         }
-        assert!(saw_zero_mid, "digit 0 must be reachable in non-leading positions");
+        assert!(
+            saw_zero_mid,
+            "digit 0 must be reachable in non-leading positions"
+        );
     }
 
     #[test]
