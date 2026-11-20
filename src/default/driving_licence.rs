@@ -8,13 +8,13 @@ pub fn uk() -> String {
     let config = FakerConfig::current();
     let surname_part = sample(&["SMITH", "JONES", "BROWN", "TAYLOR", "WILSON"]);
     let year = config.rand_range(1950, 2005);
-    let month = config.rand_range(1, 13);
+    let month = config.rand_range(1, 12);
     let day = config.rand_range(1, 29);
     let initials = sample(&["AB", "CD", "EF", "GH", "IJ"]);
     let _numbers = format!("{:02}{:02}{:02}", 
-        config.rand_range(0, 100),
-        config.rand_range(0, 100),
-        config.rand_range(0, 100)
+        config.rand_u32(100),
+        config.rand_u32(100),
+        config.rand_u32(100)
     );
     
     format!("{}{:02}{:02}{:02}{}9AA", 

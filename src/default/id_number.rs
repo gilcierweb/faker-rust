@@ -14,9 +14,9 @@ pub fn spanish() -> String {
 /// Generate a random US Social Security Number
 pub fn ssn() -> String {
     let config = FakerConfig::current();
-    let area = config.rand_range(1, 900);
-    let group = config.rand_range(1, 100);
-    let serial = config.rand_range(1, 10000);
+    let area = config.rand_range(1, 899);
+    let group = config.rand_range(1, 99);
+    let serial = config.rand_range(1, 9999);
     format!("{:03}-{:02}-{:04}", area, group, serial)
 }
 
@@ -45,9 +45,12 @@ mod tests {
 
     #[test]
     fn test_ssn() {
-        let ssn_num = ssn();
-        assert_eq!(ssn_num.len(), 11);
-        assert!(ssn_num.contains('-'));
+        // Repeat to catch boundary values that overflow fixed-width fields.
+        for _ in 0..1000 {
+            let ssn_num = ssn();
+            assert_eq!(ssn_num.len(), 11, "bad ssn: {ssn_num}");
+            assert!(ssn_num.contains('-'));
+        }
     }
 
     #[test]

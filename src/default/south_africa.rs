@@ -7,18 +7,18 @@ use crate::config::FakerConfig;
 pub fn id_number() -> String {
     let config = FakerConfig::current();
     // YYMMDD format for date of birth
-    let year = config.rand_range(50, 100); // 1950-1999
-    let month = config.rand_range(1, 13);
-    let day = config.rand_range(1, 29);
+    let year = config.rand_range(50, 99); // 1950-1999
+    let month = config.rand_range(1, 12);
+    let day = config.rand_range(1, 28);
     
     // Gender: 0000-4999 for female, 5000-9999 for male
-    let gender_seq = config.rand_range(0, 10000);
+    let gender_seq = config.rand_u32(10000);
     
     // Citizenship: 0 for SA citizen, 1 for permanent resident
-    let citizenship = config.rand_range(0, 2);
+    let citizenship = config.rand_u32(2);
     
     // Check digit (simplified - usually needs Luhn algorithm)
-    let check = config.rand_range(0, 10);
+    let check = config.rand_u32(10);
     
     format!("{:02}{:02}{:02}{:04}{}{}", year, month, day, gender_seq, citizenship, check)
 }
@@ -55,7 +55,7 @@ pub fn license_plate() -> String {
     let numbers: String = (0..3)
         .map(|_| config.rand_char(&['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']))
         .collect();
-    format!("{} {}{}-{}", code, letters, config.rand_range(0, 10), numbers)
+    format!("{} {}{}-{}", code, letters, config.rand_u32(10), numbers)
 }
 
 #[cfg(test)]
@@ -64,9 +64,12 @@ mod tests {
 
     #[test]
     fn test_id_number() {
-        let id = id_number();
-        assert_eq!(id.len(), 12);
-        assert!(id.chars().all(|c| c.is_ascii_digit()));
+        // Repeat to catch boundary values that overflow fixed-width fields.
+        for _ in 0..1000 {
+            let id = id_number();
+            assert_eq!(id.len(), 12, "bad id: {id}");
+            assert!(id.chars().all(|c| c.is_ascii_digit()), "bad id: {id}");
+        }
     }
 
     #[test]
