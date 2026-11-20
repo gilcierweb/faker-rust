@@ -238,7 +238,9 @@ fn try_extract(
             && let Some(faker) = inner_map.get("faker")
         {
             let clean_key = clean_key_for_extraction(key);
-            return extract_nested_array_raw(faker, &clean_key);
+            if let Some(result) = extract_nested_array_raw(faker, &clean_key) {
+                return Some(result);
+            }
         }
 
         // Case 2: { "faker": {...} } (subdirectory files like en_name.yml)
