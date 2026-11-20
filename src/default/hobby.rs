@@ -5,7 +5,7 @@ use crate::locale::fetch_locale;
 
 /// Generate a random hobby activity
 pub fn activity() -> String {
-    fetch_locale("hobby.activity", "en")
+    fetch_locale("hobby.activity", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "Reading".to_string())
 }

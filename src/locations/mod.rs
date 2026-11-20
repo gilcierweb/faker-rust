@@ -7,35 +7,44 @@ use crate::locale::fetch_locale;
 
 /// Generate a random community type
 pub fn community() -> String {
-    fetch_locale("locations.communities", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_COMMUNITIES).to_string())
+    fetch_locale(
+        "locations.communities",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_COMMUNITIES).to_string())
 }
 
 /// Generate a random neighborhood name
 pub fn neighborhood() -> String {
-    fetch_locale("locations.neighborhoods", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_NEIGHBORHOODS).to_string())
+    fetch_locale(
+        "locations.neighborhoods",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_NEIGHBORHOODS).to_string())
 }
 
 /// Generate a random building type
 pub fn building_type() -> String {
-    fetch_locale("locations.building_types", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_BUILDING_TYPES).to_string())
+    fetch_locale(
+        "locations.building_types",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_BUILDING_TYPES).to_string())
 }
 
 /// Generate a random place
 pub fn place() -> String {
-    fetch_locale("locations.places", "en")
+    fetch_locale("locations.places", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_PLACES).to_string())
 }
 
 /// Generate a random locale
 pub fn locale() -> String {
-    fetch_locale("locations.locales", "en")
+    fetch_locale("locations.locales", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_LOCALES).to_string())
 }

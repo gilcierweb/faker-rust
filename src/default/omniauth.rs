@@ -6,7 +6,7 @@ use crate::locale::fetch_locale;
 
 /// Generate a random OmniAuth provider
 pub fn provider() -> String {
-    fetch_locale("omniauth.providers", "en")
+    fetch_locale("omniauth.providers", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_PROVIDERS).to_string())
 }
@@ -424,7 +424,7 @@ pub fn linkedin(name: Option<&str>, email: Option<&str>, uid: Option<&str>) -> s
 }
 
 fn parity_department() -> String {
-    crate::locale::fetch_locale("company.department", "en")
+    crate::locale::fetch_locale("company.department", &crate::config::FakerConfig::locale())
         .map(|values| crate::base::sample(&values))
         .unwrap_or_else(|| "Engineering".to_string())
 }

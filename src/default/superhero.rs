@@ -5,37 +5,40 @@ use crate::locale::fetch_locale;
 
 /// Generate a random superhero name
 pub fn name() -> String {
-    fetch_locale("superhero.name", "en")
+    fetch_locale("superhero.name", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_NAMES).to_string())
 }
 
 /// Generate a random superhero power
 pub fn power() -> String {
-    fetch_locale("superhero.power", "en")
+    fetch_locale("superhero.power", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_POWERS).to_string())
 }
 
 /// Generate a random superhero prefix
 pub fn prefix() -> String {
-    fetch_locale("superhero.prefix", "en")
+    fetch_locale("superhero.prefix", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_PREFIXES).to_string())
 }
 
 /// Generate a random superhero suffix
 pub fn suffix() -> String {
-    fetch_locale("superhero.suffix", "en")
+    fetch_locale("superhero.suffix", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_SUFFIXES).to_string())
 }
 
 /// Generate a random superhero descriptor
 pub fn descriptor() -> String {
-    fetch_locale("superhero.descriptor", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_DESCRIPTORS).to_string())
+    fetch_locale(
+        "superhero.descriptor",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_DESCRIPTORS).to_string())
 }
 
 // Fallback data

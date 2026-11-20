@@ -5,14 +5,14 @@ use crate::locale::fetch_locale;
 
 /// Generate a random HTML tag
 pub fn tag() -> String {
-    fetch_locale("html.tags", "en")
+    fetch_locale("html.tags", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_TAGS).to_string())
 }
 
 /// Generate a random HTML attribute
 pub fn attribute() -> String {
-    fetch_locale("html.attributes", "en")
+    fetch_locale("html.attributes", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_ATTRIBUTES).to_string())
 }
@@ -28,7 +28,7 @@ pub fn color() -> String {
 
 /// Generate a random HTML entity
 pub fn entity() -> String {
-    fetch_locale("html.entities", "en")
+    fetch_locale("html.entities", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_ENTITIES).to_string())
 }

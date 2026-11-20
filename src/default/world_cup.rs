@@ -5,28 +5,28 @@ use crate::locale::fetch_locale;
 
 /// Generate a random FIFA World Cup year
 pub fn year() -> String {
-    fetch_locale("world_cup.years", "en")
+    fetch_locale("world_cup.years", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_YEARS).to_string())
 }
 
 /// Generate a random World Cup host
 pub fn host() -> String {
-    fetch_locale("world_cup.hosts", "en")
+    fetch_locale("world_cup.hosts", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_HOSTS).to_string())
 }
 
 /// Generate a random World Cup winner
 pub fn winner() -> String {
-    fetch_locale("world_cup.winners", "en")
+    fetch_locale("world_cup.winners", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_WINNERS).to_string())
 }
 
 /// Generate a random World Cup stadium
 pub fn stadium() -> String {
-    fetch_locale("world_cup.stadiums", "en")
+    fetch_locale("world_cup.stadiums", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_STADIUMS).to_string())
 }
@@ -102,7 +102,7 @@ const FALLBACK_STADIUMS: &[&str] = &[
 
 // --- gem parity generators (automated, locale-backed) ---
 fn parity_pick(key: &str) -> String {
-    crate::locale::fetch_locale(key, "en")
+    crate::locale::fetch_locale(key, &crate::config::FakerConfig::locale())
         .map(|v| crate::base::sample(&v))
         .unwrap_or_default()
 }
@@ -114,15 +114,21 @@ pub fn city() -> String {
 // --- gem parity generators (dynamic locale keys) ---
 /// Gem-compatible generator: teams in a World Cup group.
 pub fn group(group: &str) -> String {
-    crate::locale::fetch_locale(&format!("world_cup.groups.{group}"), "en")
-        .map(|v| crate::base::sample(&v))
-        .unwrap_or_default()
+    crate::locale::fetch_locale(
+        &format!("world_cup.groups.{group}"),
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| crate::base::sample(&v))
+    .unwrap_or_default()
 }
 /// Gem-compatible generator: member of a national team roster.
 pub fn roster(country: &str, kind: &str) -> String {
-    crate::locale::fetch_locale(&format!("world_cup.rosters.{country}.{kind}"), "en")
-        .map(|v| crate::base::sample(&v))
-        .unwrap_or_default()
+    crate::locale::fetch_locale(
+        &format!("world_cup.rosters.{country}.{kind}"),
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| crate::base::sample(&v))
+    .unwrap_or_default()
 }
 
 #[cfg(test)]

@@ -5,23 +5,26 @@ use crate::locale::fetch_locale;
 
 /// Generate a random volleyball team
 pub fn team() -> String {
-    fetch_locale("volleyball.team", "en")
+    fetch_locale("volleyball.team", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_TEAMS).to_string())
 }
 
 /// Generate a random volleyball player
 pub fn player() -> String {
-    fetch_locale("volleyball.player", "en")
+    fetch_locale("volleyball.player", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_PLAYERS).to_string())
 }
 
 /// Generate a random volleyball position
 pub fn position() -> String {
-    fetch_locale("volleyball.positions", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_POSITIONS).to_string())
+    fetch_locale(
+        "volleyball.positions",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_POSITIONS).to_string())
 }
 
 // Fallback data
@@ -70,7 +73,7 @@ const FALLBACK_POSITIONS: &[&str] = &[
 
 // --- gem parity generators (automated, locale-backed) ---
 fn parity_pick(key: &str) -> String {
-    crate::locale::fetch_locale(key, "en")
+    crate::locale::fetch_locale(key, &crate::config::FakerConfig::locale())
         .map(|v| crate::base::sample(&v))
         .unwrap_or_default()
 }

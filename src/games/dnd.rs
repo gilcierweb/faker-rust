@@ -5,70 +5,70 @@ use crate::locale::fetch_locale;
 
 /// Generate a random D&D alignment
 pub fn alignment() -> String {
-    fetch_locale("dnd.alignment", "en")
+    fetch_locale("dnd.alignment", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "Lawful Good".to_string())
 }
 
 /// Generate a random D&D background
 pub fn background() -> String {
-    fetch_locale("dnd.background", "en")
+    fetch_locale("dnd.background", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "Acolyte".to_string())
 }
 
 /// Generate a random D&D city
 pub fn city() -> String {
-    fetch_locale("dnd.cities", "en")
+    fetch_locale("dnd.cities", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "Waterdeep".to_string())
 }
 
 /// Generate a random D&D class (using 'klass' to avoid keyword conflict)
 pub fn klass() -> String {
-    fetch_locale("dnd.klasses", "en")
+    fetch_locale("dnd.klasses", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "Fighter".to_string())
 }
 
 /// Generate a random D&D language
 pub fn language() -> String {
-    fetch_locale("dnd.languages", "en")
+    fetch_locale("dnd.languages", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "Common".to_string())
 }
 
 /// Generate a random D&D monster
 pub fn monster() -> String {
-    fetch_locale("dnd.monsters", "en")
+    fetch_locale("dnd.monsters", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "Beholder".to_string())
 }
 
 /// Generate a random D&D race
 pub fn race() -> String {
-    fetch_locale("dnd.races", "en")
+    fetch_locale("dnd.races", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "Human".to_string())
 }
 
 /// Generate a random D&D melee weapon
 pub fn melee_weapon() -> String {
-    fetch_locale("dnd.melee_weapons", "en")
+    fetch_locale("dnd.melee_weapons", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "Longsword".to_string())
 }
 
 /// Generate a random D&D ranged weapon
 pub fn ranged_weapon() -> String {
-    fetch_locale("dnd.ranged_weapons", "en")
+    fetch_locale("dnd.ranged_weapons", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "Longbow".to_string())
 }
 
 // --- gem parity generators (automated, locale-backed) ---
 fn parity_pick(key: &str) -> String {
-    crate::locale::fetch_locale(key, "en")
+    crate::locale::fetch_locale(key, &crate::config::FakerConfig::locale())
         .map(|v| crate::base::sample(&v))
         .unwrap_or_default()
 }

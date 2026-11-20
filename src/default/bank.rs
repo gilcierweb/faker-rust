@@ -5,7 +5,7 @@ use crate::locale::fetch_locale;
 
 /// Generate a random bank name
 pub fn name() -> String {
-    fetch_locale("bank.name", "en")
+    fetch_locale("bank.name", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "Chase Bank".to_string())
 }
@@ -46,9 +46,12 @@ pub fn iban() -> String {
 
 /// Get a random IBAN country code
 pub fn iban_country_code() -> String {
-    fetch_locale("bank.iban_country_code", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| "GB".to_string())
+    fetch_locale(
+        "bank.iban_country_code",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| "GB".to_string())
 }
 
 /// Generate a random SWIFT/BIC code

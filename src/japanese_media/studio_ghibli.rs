@@ -5,23 +5,32 @@ use crate::locale::fetch_locale;
 
 /// Generate a random Studio Ghibli movie
 pub fn movie() -> String {
-    fetch_locale("studio_ghibli.movies", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_MOVIES).to_string())
+    fetch_locale(
+        "studio_ghibli.movies",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_MOVIES).to_string())
 }
 
 /// Generate a random Studio Ghibli character
 pub fn character() -> String {
-    fetch_locale("studio_ghibli.characters", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_CHARACTERS).to_string())
+    fetch_locale(
+        "studio_ghibli.characters",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_CHARACTERS).to_string())
 }
 
 /// Generate a random Studio Ghibli quote
 pub fn quote() -> String {
-    fetch_locale("studio_ghibli.quotes", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_QUOTES).to_string())
+    fetch_locale(
+        "studio_ghibli.quotes",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_QUOTES).to_string())
 }
 
 // Fallback data

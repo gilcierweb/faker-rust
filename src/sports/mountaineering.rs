@@ -5,7 +5,10 @@ use crate::locale::fetch_locale;
 
 /// Generate a random mountaineer name.
 pub fn mountaineer() -> String {
-    fetch_locale("mountaineering.mountaineer", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_default()
+    fetch_locale(
+        "mountaineering.mountaineer",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_default()
 }

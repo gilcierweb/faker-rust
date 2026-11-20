@@ -5,30 +5,46 @@ use crate::locale::{fetch_locale_with_context, sample_with_resolve};
 
 /// Generate a random book title
 pub fn title() -> String {
-    fetch_locale_with_context("book.title", "en", Some("book"))
-        .map(|v| sample_with_resolve(&v, Some("book")))
-        .unwrap_or_else(|| sample(FALLBACK_TITLES).to_string())
+    fetch_locale_with_context(
+        "book.title",
+        &crate::config::FakerConfig::locale(),
+        Some("book"),
+    )
+    .map(|v| sample_with_resolve(&v, Some("book")))
+    .unwrap_or_else(|| sample(FALLBACK_TITLES).to_string())
 }
 
 /// Generate a random book author
 pub fn author() -> String {
-    fetch_locale_with_context("book.author", "en", Some("book"))
-        .map(|v| sample_with_resolve(&v, Some("book")))
-        .unwrap_or_else(crate::name::name)
+    fetch_locale_with_context(
+        "book.author",
+        &crate::config::FakerConfig::locale(),
+        Some("book"),
+    )
+    .map(|v| sample_with_resolve(&v, Some("book")))
+    .unwrap_or_else(crate::name::name)
 }
 
 /// Generate a random book genre
 pub fn genre() -> String {
-    fetch_locale_with_context("book.genre", "en", Some("book"))
-        .map(|v| sample_with_resolve(&v, Some("book")))
-        .unwrap_or_else(|| sample(FALLBACK_GENRES).to_string())
+    fetch_locale_with_context(
+        "book.genre",
+        &crate::config::FakerConfig::locale(),
+        Some("book"),
+    )
+    .map(|v| sample_with_resolve(&v, Some("book")))
+    .unwrap_or_else(|| sample(FALLBACK_GENRES).to_string())
 }
 
 /// Generate a random book publisher
 pub fn publisher() -> String {
-    fetch_locale_with_context("book.publisher", "en", Some("book"))
-        .map(|v| sample_with_resolve(&v, Some("book")))
-        .unwrap_or_else(|| sample(FALLBACK_PUBLISHERS).to_string())
+    fetch_locale_with_context(
+        "book.publisher",
+        &crate::config::FakerConfig::locale(),
+        Some("book"),
+    )
+    .map(|v| sample_with_resolve(&v, Some("book")))
+    .unwrap_or_else(|| sample(FALLBACK_PUBLISHERS).to_string())
 }
 
 // Fallback data

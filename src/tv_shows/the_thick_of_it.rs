@@ -5,23 +5,32 @@ use crate::locale::fetch_locale;
 
 /// Generate a random The Thick of It character
 pub fn character() -> String {
-    fetch_locale("the_thick_of_it.characters", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_CHARACTERS).to_string())
+    fetch_locale(
+        "the_thick_of_it.characters",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_CHARACTERS).to_string())
 }
 
 /// Generate a random The Thick of It quote/swearing
 pub fn quote() -> String {
-    fetch_locale("the_thick_of_it.quotes", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_QUOTES).to_string())
+    fetch_locale(
+        "the_thick_of_it.quotes",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_QUOTES).to_string())
 }
 
 /// Generate a random Malcolm Tucker insult
 pub fn malcolm_tucker() -> String {
-    fetch_locale("the_thick_of_it.malcolm_tucker", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_TUCKER).to_string())
+    fetch_locale(
+        "the_thick_of_it.malcolm_tucker",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_TUCKER).to_string())
 }
 
 // Fallback data
@@ -60,7 +69,7 @@ const FALLBACK_TUCKER: &[&str] = &[
 
 // --- gem parity generators (automated, locale-backed) ---
 fn parity_pick(key: &str) -> String {
-    crate::locale::fetch_locale(key, "en")
+    crate::locale::fetch_locale(key, &crate::config::FakerConfig::locale())
         .map(|v| crate::base::sample(&v))
         .unwrap_or_default()
 }

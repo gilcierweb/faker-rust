@@ -5,21 +5,21 @@ use crate::locale::fetch_locale;
 
 /// Generate a random TRON character
 pub fn character() -> String {
-    fetch_locale("tron.characters", "en")
+    fetch_locale("tron.characters", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_CHARACTERS).to_string())
 }
 
 /// Generate a random TRON location
 pub fn location() -> String {
-    fetch_locale("tron.locations", "en")
+    fetch_locale("tron.locations", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_LOCATIONS).to_string())
 }
 
 /// Generate a random TRON quote
 pub fn quote() -> String {
-    fetch_locale("tron.quotes", "en")
+    fetch_locale("tron.quotes", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_QUOTES).to_string())
 }
@@ -60,14 +60,14 @@ const FALLBACK_QUOTES: &[&str] = &[
 
 // --- gem parity generators (automated, locale-backed) ---
 fn parity_pick(key: &str) -> String {
-    crate::locale::fetch_locale(key, "en")
+    crate::locale::fetch_locale(key, &crate::config::FakerConfig::locale())
         .map(|v| crate::base::sample(&v))
         .unwrap_or_default()
 }
 
 // --- gem parity `fetch_all` equivalents (all locale values) ---
 fn parity_all(key: &str) -> Vec<String> {
-    fetch_locale(key, "en").unwrap_or_default()
+    fetch_locale(key, &crate::config::FakerConfig::locale()).unwrap_or_default()
 }
 
 /// Gem-compatible generator: all TRON characters (programs and users).
@@ -124,15 +124,21 @@ pub fn vehicle() -> String {
 // --- gem parity generators (locale-backed) ---
 /// Gem-compatible generator: Tron program name.
 pub fn program() -> String {
-    crate::locale::fetch_locale("tron.characters.programs", "en")
-        .map(|v| crate::base::sample(&v))
-        .unwrap_or_default()
+    crate::locale::fetch_locale(
+        "tron.characters.programs",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| crate::base::sample(&v))
+    .unwrap_or_default()
 }
 /// Gem-compatible generator: Tron user name.
 pub fn user() -> String {
-    crate::locale::fetch_locale("tron.characters.users", "en")
-        .map(|v| crate::base::sample(&v))
-        .unwrap_or_default()
+    crate::locale::fetch_locale(
+        "tron.characters.users",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| crate::base::sample(&v))
+    .unwrap_or_default()
 }
 
 #[cfg(test)]

@@ -133,13 +133,19 @@ pub fn domain_name(subdomain: bool, domain: Option<&str>) -> String {
 /// Generate a random domain suffix
 pub fn domain_suffix(safe: bool) -> String {
     if safe {
-        fetch_locale("internet.safe_domain_suffix", "en")
-            .map(|v| sample(&v))
-            .unwrap_or_else(|| sample(FALLBACK_SAFE_DOMAIN_SUFFIXES).to_string())
+        fetch_locale(
+            "internet.safe_domain_suffix",
+            &crate::config::FakerConfig::locale(),
+        )
+        .map(|v| sample(&v))
+        .unwrap_or_else(|| sample(FALLBACK_SAFE_DOMAIN_SUFFIXES).to_string())
     } else {
-        fetch_locale("internet.domain_suffix", "en")
-            .map(|v| sample(&v))
-            .unwrap_or_else(|| sample(FALLBACK_DOMAIN_SUFFIXES).to_string())
+        fetch_locale(
+            "internet.domain_suffix",
+            &crate::config::FakerConfig::locale(),
+        )
+        .map(|v| sample(&v))
+        .unwrap_or_else(|| sample(FALLBACK_DOMAIN_SUFFIXES).to_string())
     }
 }
 
@@ -356,8 +362,11 @@ pub fn user_agent(vendor: Option<&str>) -> String {
     // Try to get agents from locale - handle both key formats
     let path = format!("user_agent.{}", selected_vendor);
 
-    let result =
-        fetch_locale(&format!("internet.{}", path), "en").or_else(|| fetch_locale(&path, "en"));
+    let result = fetch_locale(
+        &format!("internet.{}", path),
+        &crate::config::FakerConfig::locale(),
+    )
+    .or_else(|| fetch_locale(&path, &crate::config::FakerConfig::locale()));
 
     result
         .map(|agents| sample(&agents))
@@ -404,8 +413,11 @@ pub fn bot_user_agent(vendor: Option<&str>) -> String {
     let path = format!("bot_user_agent.{}", selected_vendor);
 
     // Try with 'internet.' prefix first
-    let result =
-        fetch_locale(&format!("internet.{}", path), "en").or_else(|| fetch_locale(&path, "en"));
+    let result = fetch_locale(
+        &format!("internet.{}", path),
+        &crate::config::FakerConfig::locale(),
+    )
+    .or_else(|| fetch_locale(&path, &crate::config::FakerConfig::locale()));
 
     result
         .map(|agents| sample(&agents))

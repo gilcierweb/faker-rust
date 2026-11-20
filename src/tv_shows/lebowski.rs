@@ -5,21 +5,21 @@ use crate::locale::fetch_locale;
 
 /// Generate a random Lebowski actor
 pub fn actor() -> String {
-    fetch_locale("lebowski.actors", "en")
+    fetch_locale("lebowski.actors", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "Jeff Bridges".to_string())
 }
 
 /// Generate a random Lebowski character
 pub fn character() -> String {
-    fetch_locale("lebowski.characters", "en")
+    fetch_locale("lebowski.characters", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "The Dude".to_string())
 }
 
 /// Generate a random Lebowski quote
 pub fn quote() -> String {
-    fetch_locale("lebowski.quotes", "en")
+    fetch_locale("lebowski.quotes", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "The Dude abides.".to_string())
 }

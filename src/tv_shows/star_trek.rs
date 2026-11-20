@@ -5,28 +5,31 @@ use crate::locale::fetch_locale;
 
 /// Generate a random Star Trek character
 pub fn character() -> String {
-    fetch_locale("star_trek.characters", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_CHARACTERS).to_string())
+    fetch_locale(
+        "star_trek.characters",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_CHARACTERS).to_string())
 }
 
 /// Generate a random Star Trek location
 pub fn location() -> String {
-    fetch_locale("star_trek.locations", "en")
+    fetch_locale("star_trek.locations", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_LOCATIONS).to_string())
 }
 
 /// Generate a random Star Trek species
 pub fn species() -> String {
-    fetch_locale("star_trek.specie", "en")
+    fetch_locale("star_trek.specie", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_SPECIES).to_string())
 }
 
 /// Generate a random Star Trek quote
 pub fn quote() -> String {
-    fetch_locale("star_trek.quotes", "en")
+    fetch_locale("star_trek.quotes", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_QUOTES).to_string())
 }
@@ -94,7 +97,7 @@ const FALLBACK_QUOTES: &[&str] = &[
 
 // --- gem parity generators (automated, locale-backed) ---
 fn parity_pick(key: &str) -> String {
-    crate::locale::fetch_locale(key, "en")
+    crate::locale::fetch_locale(key, &crate::config::FakerConfig::locale())
         .map(|v| crate::base::sample(&v))
         .unwrap_or_default()
 }

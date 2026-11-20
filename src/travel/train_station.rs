@@ -5,21 +5,24 @@ use crate::locale::fetch_locale;
 
 /// Generate a random train station name
 pub fn name() -> String {
-    fetch_locale("train_station.names", "en")
+    fetch_locale("train_station.names", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_NAMES).to_string())
 }
 
 /// Generate a random train station city
 pub fn city() -> String {
-    fetch_locale("train_station.cities", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_CITIES).to_string())
+    fetch_locale(
+        "train_station.cities",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_CITIES).to_string())
 }
 
 /// Generate a random railway line
 pub fn line() -> String {
-    fetch_locale("train_station.lines", "en")
+    fetch_locale("train_station.lines", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_LINES).to_string())
 }

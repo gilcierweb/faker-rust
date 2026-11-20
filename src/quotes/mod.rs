@@ -9,35 +9,41 @@ use crate::locale::fetch_locale;
 
 /// Generate a random famous quote
 pub fn famous_last_words() -> String {
-    fetch_locale("quote.famous_last_words", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_FAMOUS_LAST_WORDS).to_string())
+    fetch_locale(
+        "quote.famous_last_words",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_FAMOUS_LAST_WORDS).to_string())
 }
 
 /// Generate a random motivational quote
 pub fn motivational() -> String {
-    fetch_locale("quotes.motivational", "en")
+    fetch_locale("quotes.motivational", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_MOTIVATIONAL).to_string())
 }
 
 /// Generate a random philosophical quote
 pub fn philosophical() -> String {
-    fetch_locale("quotes.philosophical", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_PHILOSOPHICAL).to_string())
+    fetch_locale(
+        "quotes.philosophical",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_PHILOSOPHICAL).to_string())
 }
 
 /// Generate a random Shakespeare quote
 pub fn shakespeare() -> String {
-    fetch_locale("quotes.shakespeare", "en")
+    fetch_locale("quotes.shakespeare", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_SHAKESPEARE).to_string())
 }
 
 /// Generate a random movie quote
 pub fn movie() -> String {
-    fetch_locale("quotes.movies", "en")
+    fetch_locale("quotes.movies", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_MOVIES).to_string())
 }

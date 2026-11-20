@@ -5,28 +5,28 @@ use crate::locale::fetch_locale;
 
 /// Generate a random Naruto character
 pub fn character() -> String {
-    fetch_locale("naruto.characters", "en")
+    fetch_locale("naruto.characters", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_CHARACTERS).to_string())
 }
 
 /// Generate a random Naruto village
 pub fn village() -> String {
-    fetch_locale("naruto.villages", "en")
+    fetch_locale("naruto.villages", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_VILLAGES).to_string())
 }
 
 /// Generate a random Naruto jutsu/technique
 pub fn jutsu() -> String {
-    fetch_locale("naruto.jutsus", "en")
+    fetch_locale("naruto.jutsus", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_JUTSUS).to_string())
 }
 
 /// Generate a random Naruto eye technique
 pub fn eye() -> String {
-    fetch_locale("naruto.eyes", "en")
+    fetch_locale("naruto.eyes", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_EYES).to_string())
 }
@@ -93,7 +93,7 @@ const FALLBACK_EYES: &[&str] = &[
 
 // --- gem parity generators (automated, locale-backed) ---
 fn parity_pick(key: &str) -> String {
-    crate::locale::fetch_locale(key, "en")
+    crate::locale::fetch_locale(key, &crate::config::FakerConfig::locale())
         .map(|v| crate::base::sample(&v))
         .unwrap_or_default()
 }

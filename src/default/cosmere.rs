@@ -5,21 +5,21 @@ use crate::locale::fetch_locale;
 
 /// Generate a random Cosmere character
 pub fn character() -> String {
-    fetch_locale("cosmere.characters", "en")
+    fetch_locale("cosmere.characters", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_CHARACTERS).to_string())
 }
 
 /// Generate a random Cosmere location/world
 pub fn location() -> String {
-    fetch_locale("cosmere.locations", "en")
+    fetch_locale("cosmere.locations", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_LOCATIONS).to_string())
 }
 
 /// Generate a random Cosmere book
 pub fn book() -> String {
-    fetch_locale("cosmere.books", "en")
+    fetch_locale("cosmere.books", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_BOOKS).to_string())
 }
@@ -83,7 +83,7 @@ const FALLBACK_BOOKS: &[&str] = &[
 
 // --- gem parity generators (automated, locale-backed) ---
 fn parity_pick(key: &str) -> String {
-    crate::locale::fetch_locale(key, "en")
+    crate::locale::fetch_locale(key, &crate::config::FakerConfig::locale())
         .map(|v| crate::base::sample(&v))
         .unwrap_or_default()
 }
@@ -135,9 +135,12 @@ pub fn surge() -> String {
 // --- gem parity generators (locale-backed) ---
 /// Gem-compatible generator: Knight Radiant order.
 pub fn knight_radiant() -> String {
-    crate::locale::fetch_locale("cosmere.knights_radiant", "en")
-        .map(|v| crate::base::sample(&v))
-        .unwrap_or_default()
+    crate::locale::fetch_locale(
+        "cosmere.knights_radiant",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| crate::base::sample(&v))
+    .unwrap_or_default()
 }
 
 #[cfg(test)]

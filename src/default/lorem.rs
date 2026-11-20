@@ -5,7 +5,7 @@ use crate::locale::fetch_locale;
 
 /// Generate a random word
 pub fn word() -> String {
-    fetch_locale("lorem.words", "en")
+    fetch_locale("lorem.words", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "lorem".to_string())
 }
@@ -77,7 +77,7 @@ pub fn characters(num: usize) -> String {
 
 // --- gem parity generators (automated, locale-backed) ---
 fn parity_pick(key: &str) -> String {
-    crate::locale::fetch_locale(key, "en")
+    crate::locale::fetch_locale(key, &crate::config::FakerConfig::locale())
         .map(|v| crate::base::sample(&v))
         .unwrap_or_default()
 }
@@ -122,9 +122,12 @@ pub fn question(
     if let Some(first) = text.get_mut(0..1) {
         first.make_ascii_uppercase();
     }
-    let mark = crate::locale::fetch_locale("lorem.punctuation.question_mark", "en")
-        .map(|v| crate::base::sample(&v))
-        .unwrap_or_else(|| "?".to_string());
+    let mark = crate::locale::fetch_locale(
+        "lorem.punctuation.question_mark",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| crate::base::sample(&v))
+    .unwrap_or_else(|| "?".to_string());
     format!("{text}{mark}")
 }
 

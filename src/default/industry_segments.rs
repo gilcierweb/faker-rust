@@ -5,23 +5,32 @@ use crate::locale::fetch_locale;
 
 /// Generate a random industry
 pub fn industry() -> String {
-    fetch_locale("industry_segments.industries", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_INDUSTRIES).to_string())
+    fetch_locale(
+        "industry_segments.industries",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_INDUSTRIES).to_string())
 }
 
 /// Generate a random sector
 pub fn sector() -> String {
-    fetch_locale("industry_segments.sectors", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_SECTORS).to_string())
+    fetch_locale(
+        "industry_segments.sectors",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_SECTORS).to_string())
 }
 
 /// Generate a random subsector
 pub fn subsector() -> String {
-    fetch_locale("industry_segments.subsectors", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_SUBSECTORS).to_string())
+    fetch_locale(
+        "industry_segments.subsectors",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_SUBSECTORS).to_string())
 }
 
 // Fallback data
@@ -78,7 +87,7 @@ const FALLBACK_SUBSECTORS: &[&str] = &[
 
 // --- gem parity generators (automated, locale-backed) ---
 fn parity_pick(key: &str) -> String {
-    crate::locale::fetch_locale(key, "en")
+    crate::locale::fetch_locale(key, &crate::config::FakerConfig::locale())
         .map(|v| crate::base::sample(&v))
         .unwrap_or_default()
 }

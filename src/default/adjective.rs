@@ -5,21 +5,24 @@ use crate::locale::fetch_locale;
 
 /// Generate a random adjective
 pub fn adjective() -> String {
-    fetch_locale("adjective.adjectives", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_ADJECTIVES).to_string())
+    fetch_locale(
+        "adjective.adjectives",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_ADJECTIVES).to_string())
 }
 
 /// Generate a positive adjective
 pub fn positive() -> String {
-    fetch_locale("adjective.positives", "en")
+    fetch_locale("adjective.positives", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_POSITIVE).to_string())
 }
 
 /// Generate a negative adjective
 pub fn negative() -> String {
-    fetch_locale("adjective.negatives", "en")
+    fetch_locale("adjective.negatives", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_NEGATIVE).to_string())
 }

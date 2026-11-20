@@ -5,44 +5,62 @@ use crate::locale::fetch_locale;
 
 /// Generate a random Hitchhiker's Guide character
 pub fn character() -> String {
-    fetch_locale("hitchhikers_guide_to_the_galaxy.characters", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_CHARACTERS).to_string())
+    fetch_locale(
+        "hitchhikers_guide_to_the_galaxy.characters",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_CHARACTERS).to_string())
 }
 
 /// Generate a random Hitchhiker's Guide quote
 pub fn quote() -> String {
-    fetch_locale("hitchhikers_guide_to_the_galaxy.quotes", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_QUOTES).to_string())
+    fetch_locale(
+        "hitchhikers_guide_to_the_galaxy.quotes",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_QUOTES).to_string())
 }
 
 /// Generate a random Hitchhiker's Guide location
 pub fn location() -> String {
-    fetch_locale("hitchhikers_guide_to_the_galaxy.locations", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_LOCATIONS).to_string())
+    fetch_locale(
+        "hitchhikers_guide_to_the_galaxy.locations",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_LOCATIONS).to_string())
 }
 
 /// Generate a random Hitchhiker's Guide species
 pub fn species() -> String {
-    fetch_locale("hitchhikers_guide_to_the_galaxy.species", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_SPECIES).to_string())
+    fetch_locale(
+        "hitchhikers_guide_to_the_galaxy.species",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_SPECIES).to_string())
 }
 
 /// Generate a random Hitchhiker's Guide starship
 pub fn starship() -> String {
-    fetch_locale("hitchhikers_guide_to_the_galaxy.starships", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_STARSHIPS).to_string())
+    fetch_locale(
+        "hitchhikers_guide_to_the_galaxy.starships",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_STARSHIPS).to_string())
 }
 
 /// Generate a random Hitchhiker's Guide planet
 pub fn planet() -> String {
-    fetch_locale("hitchhikers_guide_to_the_galaxy.planets", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_PLANETS).to_string())
+    fetch_locale(
+        "hitchhikers_guide_to_the_galaxy.planets",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_PLANETS).to_string())
 }
 
 // Fallback data
@@ -118,7 +136,7 @@ const FALLBACK_PLANETS: &[&str] = &[
 
 // --- gem parity generators (automated, locale-backed) ---
 fn parity_pick(key: &str) -> String {
-    crate::locale::fetch_locale(key, "en")
+    crate::locale::fetch_locale(key, &crate::config::FakerConfig::locale())
         .map(|v| crate::base::sample(&v))
         .unwrap_or_default()
 }

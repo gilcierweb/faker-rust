@@ -5,30 +5,46 @@ use crate::locale::{fetch_locale_with_context, sample_with_resolve};
 
 /// Generate a random coffee blend name
 pub fn blend_name() -> String {
-    fetch_locale_with_context("coffee.blend_name", "en", Some("coffee"))
-        .map(|v| sample_with_resolve(&v, Some("coffee")))
-        .unwrap_or_else(|| sample(FALLBACK_BLEND_NAMES).to_string())
+    fetch_locale_with_context(
+        "coffee.blend_name",
+        &crate::config::FakerConfig::locale(),
+        Some("coffee"),
+    )
+    .map(|v| sample_with_resolve(&v, Some("coffee")))
+    .unwrap_or_else(|| sample(FALLBACK_BLEND_NAMES).to_string())
 }
 
 /// Generate a random coffee country of origin
 pub fn country() -> String {
-    fetch_locale_with_context("coffee.country", "en", Some("coffee"))
-        .map(|v| sample_with_resolve(&v, Some("coffee")))
-        .unwrap_or_else(|| sample(FALLBACK_COUNTRIES).to_string())
+    fetch_locale_with_context(
+        "coffee.country",
+        &crate::config::FakerConfig::locale(),
+        Some("coffee"),
+    )
+    .map(|v| sample_with_resolve(&v, Some("coffee")))
+    .unwrap_or_else(|| sample(FALLBACK_COUNTRIES).to_string())
 }
 
 /// Generate a random coffee variety
 pub fn variety() -> String {
-    fetch_locale_with_context("coffee.variety", "en", Some("coffee"))
-        .map(|v| sample_with_resolve(&v, Some("coffee")))
-        .unwrap_or_else(|| sample(FALLBACK_VARIETIES).to_string())
+    fetch_locale_with_context(
+        "coffee.variety",
+        &crate::config::FakerConfig::locale(),
+        Some("coffee"),
+    )
+    .map(|v| sample_with_resolve(&v, Some("coffee")))
+    .unwrap_or_else(|| sample(FALLBACK_VARIETIES).to_string())
 }
 
 /// Generate a random coffee note
 pub fn notes() -> String {
-    fetch_locale_with_context("coffee.notes", "en", Some("coffee"))
-        .map(|v| sample_with_resolve(&v, Some("coffee")))
-        .unwrap_or_else(|| sample(FALLBACK_NOTES).to_string())
+    fetch_locale_with_context(
+        "coffee.notes",
+        &crate::config::FakerConfig::locale(),
+        Some("coffee"),
+    )
+    .map(|v| sample_with_resolve(&v, Some("coffee")))
+    .unwrap_or_else(|| sample(FALLBACK_NOTES).to_string())
 }
 
 // Fallback data
@@ -39,7 +55,7 @@ const FALLBACK_NOTES: &[&str] = &["fruity", "chocolatey", "nutty", "caramel", "a
 
 // --- gem parity generators (automated, locale-backed) ---
 fn parity_pick(key: &str) -> String {
-    crate::locale::fetch_locale(key, "en")
+    crate::locale::fetch_locale(key, &crate::config::FakerConfig::locale())
         .map(|v| crate::base::sample(&v))
         .unwrap_or_default()
 }

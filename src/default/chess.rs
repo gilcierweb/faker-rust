@@ -5,28 +5,28 @@ use crate::locale::fetch_locale;
 
 /// Generate a random chess player name
 pub fn player() -> String {
-    fetch_locale("chess.players", "en")
+    fetch_locale("chess.players", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "Magnus Carlsen".to_string())
 }
 
 /// Generate a random chess tournament name
 pub fn tournament() -> String {
-    fetch_locale("chess.tournaments", "en")
+    fetch_locale("chess.tournaments", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "Candidates Tournament".to_string())
 }
 
 /// Generate a random chess opening name
 pub fn opening() -> String {
-    fetch_locale("chess.openings", "en")
+    fetch_locale("chess.openings", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "Sicilian Defense".to_string())
 }
 
 /// Generate a random chess title (GM, IM, etc.)
 pub fn title() -> String {
-    fetch_locale("chess.titles", "en")
+    fetch_locale("chess.titles", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "Grandmaster".to_string())
 }

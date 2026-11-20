@@ -5,14 +5,14 @@ use crate::locale::fetch_locale;
 
 /// Generate a random emotional adjective
 pub fn adjective() -> String {
-    fetch_locale("emotion.adjective", "en")
+    fetch_locale("emotion.adjective", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "happy".to_string())
 }
 
 /// Generate a random emotional noun
 pub fn noun() -> String {
-    fetch_locale("emotion.noun", "en")
+    fetch_locale("emotion.noun", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "joy".to_string())
 }

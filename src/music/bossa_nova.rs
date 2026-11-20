@@ -5,14 +5,14 @@ use crate::locale::fetch_locale;
 
 /// Generate a random Bossa Nova artist
 pub fn artist() -> String {
-    fetch_locale("bossa_nova.artists", "en")
+    fetch_locale("bossa_nova.artists", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_ARTISTS).to_string())
 }
 
 /// Generate a random Bossa Nova song
 pub fn song() -> String {
-    fetch_locale("bossa_nova.songs", "en")
+    fetch_locale("bossa_nova.songs", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_SONGS).to_string())
 }

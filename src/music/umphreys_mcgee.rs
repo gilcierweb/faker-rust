@@ -5,16 +5,22 @@ use crate::locale::fetch_locale;
 
 /// Generate a random Umphrey's McGee song
 pub fn song() -> String {
-    fetch_locale("umphreys_mcgee.songs", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_SONGS).to_string())
+    fetch_locale(
+        "umphreys_mcgee.songs",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_SONGS).to_string())
 }
 
 /// Generate a random Umphrey's McGee member
 pub fn member() -> String {
-    fetch_locale("umphreys_mcgee.members", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_MEMBERS).to_string())
+    fetch_locale(
+        "umphreys_mcgee.members",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_MEMBERS).to_string())
 }
 
 // Fallback data

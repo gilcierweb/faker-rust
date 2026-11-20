@@ -20,7 +20,7 @@ pub fn winner() -> String {
 
 /// Generate a random FIFA World Cup stadium
 pub fn stadium() -> String {
-    fetch_locale("world_cup.stadiums", "en")
+    fetch_locale("world_cup.stadiums", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_STADIUMS).to_string())
 }

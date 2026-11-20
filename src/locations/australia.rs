@@ -6,7 +6,11 @@ use crate::locale::fetch_locale_with_context;
 const CONTEXT: &str = "australia";
 
 fn values(key: &str) -> Option<Vec<String>> {
-    fetch_locale_with_context(&format!("locations.australia.{key}"), "en", Some(CONTEXT))
+    fetch_locale_with_context(
+        &format!("locations.australia.{key}"),
+        &crate::config::FakerConfig::locale(),
+        Some(CONTEXT),
+    )
 }
 
 /// A random Australian location.

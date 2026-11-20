@@ -10,7 +10,7 @@ pub fn group() -> String {
 
 /// Generate a random K-pop solo artist
 pub fn solo() -> String {
-    fetch_locale("kpop.solo", "en")
+    fetch_locale("kpop.solo", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_SOLOS).to_string())
 }
@@ -114,7 +114,7 @@ const FALLBACK_SONGS: &[&str] = &[
 
 // --- gem parity generators (automated, locale-backed) ---
 fn parity_pick(key: &str) -> String {
-    crate::locale::fetch_locale(key, "en")
+    crate::locale::fetch_locale(key, &crate::config::FakerConfig::locale())
         .map(|v| crate::base::sample(&v))
         .unwrap_or_default()
 }

@@ -5,16 +5,22 @@ use crate::locale::fetch_locale;
 
 /// Generate a random Princess Bride character
 pub fn character() -> String {
-    fetch_locale("princess_bride.characters", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_CHARACTERS).to_string())
+    fetch_locale(
+        "princess_bride.characters",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_CHARACTERS).to_string())
 }
 
 /// Generate a random Princess Bride quote
 pub fn quote() -> String {
-    fetch_locale("princess_bride.quotes", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_QUOTES).to_string())
+    fetch_locale(
+        "princess_bride.quotes",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_QUOTES).to_string())
 }
 
 // Fallback data

@@ -5,14 +5,14 @@ use crate::locale::fetch_locale;
 
 /// Generate a random New Girl character
 pub fn character() -> String {
-    fetch_locale("new_girl.characters", "en")
+    fetch_locale("new_girl.characters", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_CHARACTERS).to_string())
 }
 
 /// Generate a random New Girl quote
 pub fn quote() -> String {
-    fetch_locale("new_girl.quotes", "en")
+    fetch_locale("new_girl.quotes", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_QUOTES).to_string())
 }

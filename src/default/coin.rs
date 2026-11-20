@@ -5,7 +5,7 @@ use crate::locale::fetch_locale;
 
 /// Flip a coin (Heads or Tails)
 pub fn flip() -> String {
-    fetch_locale("coin.flip", "en")
+    fetch_locale("coin.flip", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "Heads".to_string())
 }

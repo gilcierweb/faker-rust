@@ -5,30 +5,33 @@ use crate::locale::fetch_locale;
 
 /// Generate a random football team
 pub fn team() -> String {
-    fetch_locale("football.teams", "en")
+    fetch_locale("football.teams", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_TEAMS).to_string())
 }
 
 /// Generate a random football player
 pub fn player() -> String {
-    fetch_locale("football.players", "en")
+    fetch_locale("football.players", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_PLAYERS).to_string())
 }
 
 /// Generate a random football position
 pub fn position() -> String {
-    fetch_locale("football.positions", "en")
+    fetch_locale("football.positions", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_POSITIONS).to_string())
 }
 
 /// Generate a random football competition/league
 pub fn competition() -> String {
-    fetch_locale("football.competitions", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_COMPETITIONS).to_string())
+    fetch_locale(
+        "football.competitions",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_COMPETITIONS).to_string())
 }
 
 // Fallback data
@@ -98,7 +101,7 @@ const FALLBACK_COMPETITIONS: &[&str] = &[
 
 // --- gem parity generators (automated, locale-backed) ---
 fn parity_pick(key: &str) -> String {
-    crate::locale::fetch_locale(key, "en")
+    crate::locale::fetch_locale(key, &crate::config::FakerConfig::locale())
         .map(|v| crate::base::sample(&v))
         .unwrap_or_default()
 }

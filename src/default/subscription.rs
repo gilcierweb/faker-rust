@@ -5,23 +5,29 @@ use crate::locale::fetch_locale;
 
 /// Generate a random subscription plan
 pub fn plan() -> String {
-    fetch_locale("subscription.plans", "en")
+    fetch_locale("subscription.plans", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_PLANS).to_string())
 }
 
 /// Generate a random subscription status
 pub fn status() -> String {
-    fetch_locale("subscription.statuses", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_STATUSES).to_string())
+    fetch_locale(
+        "subscription.statuses",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_STATUSES).to_string())
 }
 
 /// Generate a random payment method
 pub fn payment_method() -> String {
-    fetch_locale("subscription.payment_methods", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_PAYMENT_METHODS).to_string())
+    fetch_locale(
+        "subscription.payment_methods",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_PAYMENT_METHODS).to_string())
 }
 
 // Fallback data
@@ -65,7 +71,7 @@ const FALLBACK_PAYMENT_METHODS: &[&str] = &[
 
 // --- gem parity generators (automated, locale-backed) ---
 fn parity_pick(key: &str) -> String {
-    crate::locale::fetch_locale(key, "en")
+    crate::locale::fetch_locale(key, &crate::config::FakerConfig::locale())
         .map(|v| crate::base::sample(&v))
         .unwrap_or_default()
 }

@@ -5,7 +5,7 @@ use crate::locale::fetch_locale;
 
 /// Generate a random department name
 pub fn department() -> String {
-    fetch_locale("commerce.department", "en")
+    fetch_locale("commerce.department", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "Electronics".to_string())
 }
@@ -23,9 +23,12 @@ pub fn product_name() -> String {
         "Slim".to_string(),
         "Compact".to_string(),
     ]);
-    let product = fetch_locale("commerce.product_name.product", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| "Table".to_string());
+    let product = fetch_locale(
+        "commerce.product_name.product",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| "Table".to_string());
     let dept = department();
 
     match choice {
@@ -37,7 +40,7 @@ pub fn product_name() -> String {
 
 /// Generate a random brand name
 pub fn brand() -> String {
-    fetch_locale("commerce.brand", "en")
+    fetch_locale("commerce.brand", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "Nike".to_string())
 }
@@ -60,9 +63,12 @@ pub fn color() -> String {
 
 /// Generate a random material
 pub fn material() -> String {
-    fetch_locale("commerce.product_name.material", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| "Plastic".to_string())
+    fetch_locale(
+        "commerce.product_name.material",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| "Plastic".to_string())
 }
 
 /// Generate a random price
@@ -88,7 +94,7 @@ pub fn promotion_code() -> String {
 
 /// Generate a random vendor name
 pub fn vendor() -> String {
-    fetch_locale("commerce.vendor", "en")
+    fetch_locale("commerce.vendor", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "Acme Corp".to_string())
 }

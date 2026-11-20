@@ -5,21 +5,21 @@ use crate::locale::fetch_locale;
 
 /// Generate a random drone manufacturer
 pub fn manufacturer() -> String {
-    fetch_locale("drone.manufacturers", "en")
+    fetch_locale("drone.manufacturers", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_MANUFACTURERS).to_string())
 }
 
 /// Generate a random drone name
 pub fn name() -> String {
-    fetch_locale("drone.names", "en")
+    fetch_locale("drone.names", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_NAMES).to_string())
 }
 
 /// Generate a random drone category
 pub fn category() -> String {
-    fetch_locale("drone.categories", "en")
+    fetch_locale("drone.categories", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_CATEGORIES).to_string())
 }
@@ -71,7 +71,7 @@ const FALLBACK_CATEGORIES: &[&str] = &[
 // --- gem parity generators (locale-backed) ---
 
 fn pick(key: &str) -> String {
-    fetch_locale(key, "en")
+    fetch_locale(key, &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_default()
 }

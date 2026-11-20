@@ -5,16 +5,22 @@ use crate::locale::fetch_locale;
 
 /// Generate a random Big Bang Theory character
 pub fn character() -> String {
-    fetch_locale("big_bang_theory.characters", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_CHARACTERS).to_string())
+    fetch_locale(
+        "big_bang_theory.characters",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_CHARACTERS).to_string())
 }
 
 /// Generate a random Big Bang Theory quote
 pub fn quote() -> String {
-    fetch_locale("big_bang_theory.quotes", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_QUOTES).to_string())
+    fetch_locale(
+        "big_bang_theory.quotes",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_QUOTES).to_string())
 }
 
 /// Generate a random Big Bang Theory item/gadget

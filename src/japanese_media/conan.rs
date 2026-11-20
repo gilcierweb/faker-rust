@@ -5,21 +5,21 @@ use crate::locale::fetch_locale;
 
 /// Generate a random Detective Conan character
 pub fn character() -> String {
-    fetch_locale("conan.characters", "en")
+    fetch_locale("conan.characters", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_CHARACTERS).to_string())
 }
 
 /// Generate a random Detective Conan gadget
 pub fn gadget() -> String {
-    fetch_locale("conan.gadgets", "en")
+    fetch_locale("conan.gadgets", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_GADGETS).to_string())
 }
 
 /// Generate a random Detective Conan location
 pub fn location() -> String {
-    fetch_locale("conan.locations", "en")
+    fetch_locale("conan.locations", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_LOCATIONS).to_string())
 }
@@ -76,7 +76,7 @@ const FALLBACK_LOCATIONS: &[&str] = &[
 
 // --- gem parity generators (automated, locale-backed) ---
 fn parity_pick(key: &str) -> String {
-    crate::locale::fetch_locale(key, "en")
+    crate::locale::fetch_locale(key, &crate::config::FakerConfig::locale())
         .map(|v| crate::base::sample(&v))
         .unwrap_or_default()
 }

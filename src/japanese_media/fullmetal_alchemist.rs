@@ -11,37 +11,55 @@ const KEY: &str = "fullmetal_alchemist_brotherhood";
 
 /// Generate a random Fullmetal Alchemist character
 pub fn character() -> String {
-    fetch_locale_with_context(&format!("{KEY}.characters"), "en", Some(CONTEXT))
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_CHARACTERS).to_string())
+    fetch_locale_with_context(
+        &format!("{KEY}.characters"),
+        &crate::config::FakerConfig::locale(),
+        Some(CONTEXT),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_CHARACTERS).to_string())
 }
 
 /// Generate a random city from the Fullmetal Alchemist world
 pub fn city() -> String {
-    fetch_locale_with_context(&format!("{KEY}.cities"), "en", Some(CONTEXT))
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| "Central City".to_string())
+    fetch_locale_with_context(
+        &format!("{KEY}.cities"),
+        &crate::config::FakerConfig::locale(),
+        Some(CONTEXT),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| "Central City".to_string())
 }
 
 /// Generate a random country from the Fullmetal Alchemist world
 pub fn country() -> String {
-    fetch_locale_with_context(&format!("{KEY}.countries"), "en", Some(CONTEXT))
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| "Amestris".to_string())
+    fetch_locale_with_context(
+        &format!("{KEY}.countries"),
+        &crate::config::FakerConfig::locale(),
+        Some(CONTEXT),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| "Amestris".to_string())
 }
 
 /// Generate a random Fullmetal Alchemist quote
 pub fn quote() -> String {
-    fetch_locale("fullmetal_alchemist.quotes", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_QUOTES).to_string())
+    fetch_locale(
+        "fullmetal_alchemist.quotes",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_QUOTES).to_string())
 }
 
 /// Generate a random alchemical ability
 pub fn ability() -> String {
-    fetch_locale("fullmetal_alchemist.abilities", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_ABILITIES).to_string())
+    fetch_locale(
+        "fullmetal_alchemist.abilities",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_ABILITIES).to_string())
 }
 
 // Fallback data

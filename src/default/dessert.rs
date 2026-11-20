@@ -5,21 +5,21 @@ use crate::locale::fetch_locale;
 
 /// Generate a random dessert variety
 pub fn variety() -> String {
-    fetch_locale("dessert.varieties", "en")
+    fetch_locale("dessert.varieties", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_VARIETIES).to_string())
 }
 
 /// Generate a random dessert topping
 pub fn topping() -> String {
-    fetch_locale("dessert.toppings", "en")
+    fetch_locale("dessert.toppings", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_TOPPINGS).to_string())
 }
 
 /// Generate a random dessert flavor
 pub fn flavor() -> String {
-    fetch_locale("dessert.flavors", "en")
+    fetch_locale("dessert.flavors", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_FLAVORS).to_string())
 }

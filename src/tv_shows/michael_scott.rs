@@ -5,9 +5,12 @@ use crate::locale::fetch_locale;
 
 /// Generate a random Michael Scott quote
 pub fn quote() -> String {
-    fetch_locale("michael_scott.quotes", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_QUOTES).to_string())
+    fetch_locale(
+        "michael_scott.quotes",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_QUOTES).to_string())
 }
 
 /// Generate a random Michael Scott business idea

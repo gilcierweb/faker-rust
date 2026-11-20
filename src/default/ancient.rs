@@ -5,42 +5,42 @@ use crate::locale::fetch_locale;
 
 /// Generate a random ancient god
 pub fn god() -> String {
-    fetch_locale("ancient.god", "en")
+    fetch_locale("ancient.god", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "Zeus".to_string())
 }
 
 /// Generate a random primordial deity
 pub fn primordial() -> String {
-    fetch_locale("ancient.primordial", "en")
+    fetch_locale("ancient.primordial", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "Chaos".to_string())
 }
 
 /// Generate a random titan
 pub fn titan() -> String {
-    fetch_locale("ancient.titan", "en")
+    fetch_locale("ancient.titan", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "Atlas".to_string())
 }
 
 /// Generate a random ancient hero
 pub fn hero() -> String {
-    fetch_locale("ancient.hero", "en")
+    fetch_locale("ancient.hero", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "Hercules".to_string())
 }
 
 /// Generate a random ancient location
 pub fn location() -> String {
-    fetch_locale("ancient.location", "en")
+    fetch_locale("ancient.location", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "Mount Olympus".to_string())
 }
 
 /// Generate a random ancient monster
 pub fn monster() -> String {
-    fetch_locale("ancient.monster", "en")
+    fetch_locale("ancient.monster", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "Medusa".to_string())
 }

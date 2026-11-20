@@ -7,35 +7,38 @@ use crate::locale::fetch_locale;
 
 /// Generate a random Tolkien race
 pub fn tolkien_race() -> String {
-    fetch_locale("fantasy.tolkien_races", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_TOLKIEN_RACES).to_string())
+    fetch_locale(
+        "fantasy.tolkien_races",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_TOLKIEN_RACES).to_string())
 }
 
 /// Generate a random fantasy creature
 pub fn creature() -> String {
-    fetch_locale("fantasy.creatures", "en")
+    fetch_locale("fantasy.creatures", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_CREATURES).to_string())
 }
 
 /// Generate a random fantasy location
 pub fn location() -> String {
-    fetch_locale("fantasy.locations", "en")
+    fetch_locale("fantasy.locations", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_LOCATIONS).to_string())
 }
 
 /// Generate a random fantasy weapon
 pub fn weapon() -> String {
-    fetch_locale("fantasy.weapons", "en")
+    fetch_locale("fantasy.weapons", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_WEAPONS).to_string())
 }
 
 /// Generate a random fantasy spell
 pub fn spell() -> String {
-    fetch_locale("fantasy.spells", "en")
+    fetch_locale("fantasy.spells", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_SPELLS).to_string())
 }

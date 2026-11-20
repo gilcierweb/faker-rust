@@ -5,21 +5,21 @@ use crate::locale::fetch_locale;
 
 /// Generate a random Prince song
 pub fn song() -> String {
-    fetch_locale("prince.song", "en")
+    fetch_locale("prince.song", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_SONGS).to_string())
 }
 
 /// Generate a random Prince album
 pub fn album() -> String {
-    fetch_locale("prince.album", "en")
+    fetch_locale("prince.album", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_ALBUMS).to_string())
 }
 
 /// Generate a random Prince side project/band
 pub fn band() -> String {
-    fetch_locale("prince.band", "en")
+    fetch_locale("prince.band", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_BANDS).to_string())
 }
@@ -57,7 +57,7 @@ const FALLBACK_BANDS: &[&str] = &["The Revolution", "The New Power Generation", 
 
 // --- gem parity generators (automated, locale-backed) ---
 fn parity_pick(key: &str) -> String {
-    crate::locale::fetch_locale(key, "en")
+    crate::locale::fetch_locale(key, &crate::config::FakerConfig::locale())
         .map(|v| crate::base::sample(&v))
         .unwrap_or_default()
 }

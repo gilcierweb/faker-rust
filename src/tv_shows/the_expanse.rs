@@ -5,23 +5,29 @@ use crate::locale::fetch_locale;
 
 /// Generate a random The Expanse character
 pub fn character() -> String {
-    fetch_locale("the_expanse.characters", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_CHARACTERS).to_string())
+    fetch_locale(
+        "the_expanse.characters",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_CHARACTERS).to_string())
 }
 
 /// Generate a random The Expanse quote
 pub fn quote() -> String {
-    fetch_locale("the_expanse.quotes", "en")
+    fetch_locale("the_expanse.quotes", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_QUOTES).to_string())
 }
 
 /// Generate a random The Expanse location
 pub fn location() -> String {
-    fetch_locale("the_expanse.locations", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_LOCATIONS).to_string())
+    fetch_locale(
+        "the_expanse.locations",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_LOCATIONS).to_string())
 }
 
 // Fallback data
@@ -67,7 +73,7 @@ const FALLBACK_LOCATIONS: &[&str] = &[
 
 // --- gem parity generators (automated, locale-backed) ---
 fn parity_pick(key: &str) -> String {
-    crate::locale::fetch_locale(key, "en")
+    crate::locale::fetch_locale(key, &crate::config::FakerConfig::locale())
         .map(|v| crate::base::sample(&v))
         .unwrap_or_default()
 }

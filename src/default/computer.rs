@@ -5,35 +5,38 @@ use crate::locale::fetch_locale;
 
 /// Generate a random computer type
 pub fn type_name() -> String {
-    fetch_locale("computer.type", "en")
+    fetch_locale("computer.type", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "Laptop".to_string())
 }
 
 /// Generate a random computer platform
 pub fn platform() -> String {
-    fetch_locale("computer.platform", "en")
+    fetch_locale("computer.platform", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "Linux".to_string())
 }
 
 /// Generate a random linux processor
 pub fn linux_processor() -> String {
-    fetch_locale("computer.linux_processor", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| "x86_64".to_string())
+    fetch_locale(
+        "computer.linux_processor",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| "x86_64".to_string())
 }
 
 /// Generate a random operating system
 pub fn os() -> String {
-    fetch_locale("computer.os", "en")
+    fetch_locale("computer.os", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "Ubuntu".to_string())
 }
 
 // --- gem parity generators (automated, locale-backed) ---
 fn parity_pick(key: &str) -> String {
-    crate::locale::fetch_locale(key, "en")
+    crate::locale::fetch_locale(key, &crate::config::FakerConfig::locale())
         .map(|v| crate::base::sample(&v))
         .unwrap_or_default()
 }

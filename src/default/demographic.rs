@@ -5,49 +5,55 @@ use crate::locale::fetch_locale;
 
 /// Generate a random race
 pub fn race() -> String {
-    fetch_locale("demographic.race", "en")
+    fetch_locale("demographic.race", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "Caucasian".to_string())
 }
 
 /// Generate a random educational status
 pub fn educational_status() -> String {
-    fetch_locale("demographic.educational_status", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| "Bachelor's Degree".to_string())
+    fetch_locale(
+        "demographic.educational_status",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| "Bachelor's Degree".to_string())
 }
 
 /// Generate a random demonym
 pub fn demonym() -> String {
-    fetch_locale("demographic.demonym", "en")
+    fetch_locale("demographic.demonym", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "Brazilian".to_string())
 }
 
 /// Generate a random marital status
 pub fn marital_status() -> String {
-    fetch_locale("demographic.marital_status", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| "Single".to_string())
+    fetch_locale(
+        "demographic.marital_status",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| "Single".to_string())
 }
 
 /// Generate a random sex
 pub fn sex() -> String {
-    fetch_locale("demographic.sex", "en")
+    fetch_locale("demographic.sex", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "Male".to_string())
 }
 
 /// Generate a random height (e.g., in meters)
 pub fn height() -> String {
-    fetch_locale("demographic.height", "en")
+    fetch_locale("demographic.height", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "1.75".to_string())
 }
 
 // --- gem parity generators (automated, locale-backed) ---
 fn parity_pick(key: &str) -> String {
-    crate::locale::fetch_locale(key, "en")
+    crate::locale::fetch_locale(key, &crate::config::FakerConfig::locale())
         .map(|v| crate::base::sample(&v))
         .unwrap_or_default()
 }

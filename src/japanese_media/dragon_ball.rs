@@ -5,30 +5,36 @@ use crate::locale::fetch_locale;
 
 /// Generate a random Dragon Ball character
 pub fn character() -> String {
-    fetch_locale("dragon_ball.characters", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_CHARACTERS).to_string())
+    fetch_locale(
+        "dragon_ball.characters",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_CHARACTERS).to_string())
 }
 
 /// Generate a random Dragon Ball race
 pub fn race() -> String {
-    fetch_locale("dragon_ball.races", "en")
+    fetch_locale("dragon_ball.races", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_RACES).to_string())
 }
 
 /// Generate a random Dragon Ball planet
 pub fn planet() -> String {
-    fetch_locale("dragon_ball.planets", "en")
+    fetch_locale("dragon_ball.planets", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_PLANETS).to_string())
 }
 
 /// Generate a random Dragon Ball transformation
 pub fn transformation() -> String {
-    fetch_locale("dragon_ball.transformations", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_TRANSFORMATIONS).to_string())
+    fetch_locale(
+        "dragon_ball.transformations",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_TRANSFORMATIONS).to_string())
 }
 
 // Fallback data

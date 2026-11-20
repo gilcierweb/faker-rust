@@ -4,7 +4,7 @@ use crate::base::sample;
 use crate::locale::fetch_locale;
 
 fn pick(key: &str) -> String {
-    fetch_locale(key, "en")
+    fetch_locale(key, &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_default()
 }

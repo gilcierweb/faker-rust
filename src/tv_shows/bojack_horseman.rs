@@ -5,23 +5,32 @@ use crate::locale::fetch_locale;
 
 /// Generate a random BoJack Horseman character
 pub fn character() -> String {
-    fetch_locale("bojack_horseman.characters", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_CHARACTERS).to_string())
+    fetch_locale(
+        "bojack_horseman.characters",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_CHARACTERS).to_string())
 }
 
 /// Generate a random BoJack Horseman quote
 pub fn quote() -> String {
-    fetch_locale("bojack_horseman.quotes", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_QUOTES).to_string())
+    fetch_locale(
+        "bojack_horseman.quotes",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_QUOTES).to_string())
 }
 
 /// Generate a random Hollywoo location
 pub fn location() -> String {
-    fetch_locale("bojack_horseman.locations", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_LOCATIONS).to_string())
+    fetch_locale(
+        "bojack_horseman.locations",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_LOCATIONS).to_string())
 }
 
 // Fallback data
@@ -69,7 +78,7 @@ const FALLBACK_LOCATIONS: &[&str] = &[
 
 // --- gem parity generators (automated, locale-backed) ---
 fn parity_pick(key: &str) -> String {
-    crate::locale::fetch_locale(key, "en")
+    crate::locale::fetch_locale(key, &crate::config::FakerConfig::locale())
         .map(|v| crate::base::sample(&v))
         .unwrap_or_default()
 }

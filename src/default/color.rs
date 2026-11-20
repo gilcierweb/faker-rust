@@ -12,7 +12,7 @@ pub use self::rgb as rgb_color;
 
 /// Generate a random color name
 pub fn name() -> String {
-    fetch_locale("color.name", "en")
+    fetch_locale("color.name", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "red".to_string())
 }
@@ -61,7 +61,7 @@ pub fn hsla() -> (u32, u32, u32, f32) {
 
 // --- gem parity generators (automated, locale-backed) ---
 fn parity_pick(key: &str) -> String {
-    crate::locale::fetch_locale(key, "en")
+    crate::locale::fetch_locale(key, &crate::config::FakerConfig::locale())
         .map(|v| crate::base::sample(&v))
         .unwrap_or_default()
 }

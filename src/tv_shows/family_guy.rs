@@ -5,23 +5,29 @@ use crate::locale::fetch_locale;
 
 /// Generate a random Family Guy character
 pub fn character() -> String {
-    fetch_locale("family_guy.characters", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_CHARACTERS).to_string())
+    fetch_locale(
+        "family_guy.characters",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_CHARACTERS).to_string())
 }
 
 /// Generate a random Family Guy quote
 pub fn quote() -> String {
-    fetch_locale("family_guy.quotes", "en")
+    fetch_locale("family_guy.quotes", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_QUOTES).to_string())
 }
 
 /// Generate a random Family Guy location
 pub fn location() -> String {
-    fetch_locale("family_guy.locations", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_LOCATIONS).to_string())
+    fetch_locale(
+        "family_guy.locations",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_LOCATIONS).to_string())
 }
 
 // Fallback data

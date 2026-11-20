@@ -5,21 +5,24 @@ use crate::locale::fetch_locale;
 
 /// Generate a random Cowboy Bebop character
 pub fn character() -> String {
-    fetch_locale("cowboy_bebop.characters", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_CHARACTERS).to_string())
+    fetch_locale(
+        "cowboy_bebop.characters",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_CHARACTERS).to_string())
 }
 
 /// Generate a random Cowboy Bebop quote
 pub fn quote() -> String {
-    fetch_locale("cowboy_bebop.quotes", "en")
+    fetch_locale("cowboy_bebop.quotes", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_QUOTES).to_string())
 }
 
 /// Generate a random Cowboy Bebop spaceship
 pub fn ship() -> String {
-    fetch_locale("cowboy_bebop.ships", "en")
+    fetch_locale("cowboy_bebop.ships", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_SHIPS).to_string())
 }
@@ -58,7 +61,7 @@ const FALLBACK_SHIPS: &[&str] = &[
 
 // --- gem parity generators (automated, locale-backed) ---
 fn parity_pick(key: &str) -> String {
-    crate::locale::fetch_locale(key, "en")
+    crate::locale::fetch_locale(key, &crate::config::FakerConfig::locale())
         .map(|v| crate::base::sample(&v))
         .unwrap_or_default()
 }

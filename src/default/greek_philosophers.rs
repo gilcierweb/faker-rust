@@ -5,23 +5,32 @@ use crate::locale::fetch_locale;
 
 /// Generate a random Greek philosopher name
 pub fn name() -> String {
-    fetch_locale("greek_philosophers.names", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_NAMES).to_string())
+    fetch_locale(
+        "greek_philosophers.names",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_NAMES).to_string())
 }
 
 /// Generate a random philosophical quote
 pub fn quote() -> String {
-    fetch_locale("greek_philosophers.quotes", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_QUOTES).to_string())
+    fetch_locale(
+        "greek_philosophers.quotes",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_QUOTES).to_string())
 }
 
 /// Generate a random philosophical school
 pub fn school() -> String {
-    fetch_locale("greek_philosophers.schools", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_SCHOOLS).to_string())
+    fetch_locale(
+        "greek_philosophers.schools",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_SCHOOLS).to_string())
 }
 
 // Fallback data

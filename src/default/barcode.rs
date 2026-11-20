@@ -5,7 +5,7 @@ use crate::locale::fetch_locale;
 
 /// Generate a random EAN-8 barcode
 pub fn ean_8() -> String {
-    let pattern = fetch_locale("barcode.ean_8", "en")
+    let pattern = fetch_locale("barcode.ean_8", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "#######".to_string());
 
@@ -16,7 +16,7 @@ pub fn ean_8() -> String {
 
 /// Generate a random EAN-13 barcode
 pub fn ean_13() -> String {
-    let pattern = fetch_locale("barcode.ean_13", "en")
+    let pattern = fetch_locale("barcode.ean_13", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "############".to_string());
 
@@ -27,7 +27,7 @@ pub fn ean_13() -> String {
 
 /// Generate a random UPC-A barcode
 pub fn upc_a() -> String {
-    let pattern = fetch_locale("barcode.upc_a", "en")
+    let pattern = fetch_locale("barcode.upc_a", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "###########".to_string());
 
@@ -38,14 +38,14 @@ pub fn upc_a() -> String {
 
 /// Generate a random UPC-E barcode
 pub fn upc_e() -> String {
-    fetch_locale("barcode.upc_e", "en")
+    fetch_locale("barcode.upc_e", &crate::config::FakerConfig::locale())
         .map(|v| bothify(&sample(&v)))
         .unwrap_or_else(|| bothify("0######"))
 }
 
 /// Generate a random ISBN barcode
 pub fn isbn() -> String {
-    fetch_locale("barcode.isbn", "en")
+    fetch_locale("barcode.isbn", &crate::config::FakerConfig::locale())
         .map(|v| bothify(&sample(&v)))
         .unwrap_or_else(|| bothify("978#########"))
 }
@@ -90,7 +90,7 @@ fn check_digit(body: &str) -> u32 {
 /// Gem-compatible generator: EAN barcode of length 8 or 13.
 pub fn ean(length: usize) -> String {
     let key = format!("barcode.ean_{length}");
-    let template = crate::locale::fetch_locale(&key, "en")
+    let template = crate::locale::fetch_locale(&key, &crate::config::FakerConfig::locale())
         .map(|v| crate::base::sample(&v))
         .unwrap_or_else(|| "0".repeat(length.saturating_sub(1)));
     let body = crate::base::numerify(&template);
@@ -99,15 +99,18 @@ pub fn ean(length: usize) -> String {
 
 /// Gem-compatible generator: EAN barcode with composite symbology.
 pub fn ean_with_composite_symbology(length: usize) -> String {
-    let composite = crate::locale::fetch_locale("barcode.composite_symbol", "en")
-        .map(|v| crate::base::bothify(&crate::base::sample(&v)))
-        .unwrap_or_default();
+    let composite = crate::locale::fetch_locale(
+        "barcode.composite_symbol",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| crate::base::bothify(&crate::base::sample(&v)))
+    .unwrap_or_default();
     format!("{}|{composite}", ean(length))
 }
 
 /// Render a locale barcode template and append its EAN check digit.
 fn generated_barcode(key: &str) -> String {
-    let pattern = fetch_locale(key, "en")
+    let pattern = fetch_locale(key, &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_default();
     let body = crate::base::numerify(&pattern);
@@ -125,9 +128,12 @@ pub fn issn() -> String {
 }
 
 fn composite_symbology() -> String {
-    fetch_locale("barcode.composite_symbol", "en")
-        .map(|v| crate::base::bothify(&sample(&v)))
-        .unwrap_or_default()
+    fetch_locale(
+        "barcode.composite_symbol",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| crate::base::bothify(&sample(&v)))
+    .unwrap_or_default()
 }
 
 /// Gem-compatible generator: a UPC-A barcode with composite symbology.

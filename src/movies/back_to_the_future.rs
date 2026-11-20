@@ -5,23 +5,32 @@ use crate::locale::fetch_locale;
 
 /// Generate a random Back to the Future character
 pub fn character() -> String {
-    fetch_locale("back_to_the_future.characters", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_CHARACTERS).to_string())
+    fetch_locale(
+        "back_to_the_future.characters",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_CHARACTERS).to_string())
 }
 
 /// Generate a random Back to the Future date
 pub fn date() -> String {
-    fetch_locale("back_to_the_future.dates", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_DATES).to_string())
+    fetch_locale(
+        "back_to_the_future.dates",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_DATES).to_string())
 }
 
 /// Generate a random Back to the Future quote
 pub fn quote() -> String {
-    fetch_locale("back_to_the_future.quotes", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_QUOTES).to_string())
+    fetch_locale(
+        "back_to_the_future.quotes",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_QUOTES).to_string())
 }
 
 // Fallback data

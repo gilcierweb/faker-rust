@@ -5,35 +5,38 @@ use crate::locale::fetch_locale;
 
 /// Generate a random hacker abbreviation
 pub fn abbreviation() -> String {
-    fetch_locale("hacker.abbreviations", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_ABBREVIATIONS).to_string())
+    fetch_locale(
+        "hacker.abbreviations",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_ABBREVIATIONS).to_string())
 }
 
 /// Generate a random hacker adjective
 pub fn adjective() -> String {
-    fetch_locale("hacker.adjectives", "en")
+    fetch_locale("hacker.adjectives", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_ADJECTIVES).to_string())
 }
 
 /// Generate a random hacker noun
 pub fn noun() -> String {
-    fetch_locale("hacker.nouns", "en")
+    fetch_locale("hacker.nouns", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_NOUNS).to_string())
 }
 
 /// Generate a random hacker verb
 pub fn verb() -> String {
-    fetch_locale("hacker.verbs", "en")
+    fetch_locale("hacker.verbs", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_VERBS).to_string())
 }
 
 /// Generate a random hacker phrase
 pub fn ingverb() -> String {
-    fetch_locale("hacker.ingverbs", "en")
+    fetch_locale("hacker.ingverbs", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_INGVERBS).to_string())
 }
@@ -182,7 +185,7 @@ const FALLBACK_INGVERBS: &[&str] = &[
 
 // --- gem parity generators (automated, locale-backed) ---
 fn parity_pick(key: &str) -> String {
-    crate::locale::fetch_locale(key, "en")
+    crate::locale::fetch_locale(key, &crate::config::FakerConfig::locale())
         .map(|v| crate::base::sample(&v))
         .unwrap_or_default()
 }

@@ -5,16 +5,24 @@ use crate::locale::{fetch_locale_with_context, sample_with_resolve};
 
 /// Generate a random Avatar character (from the movie)
 pub fn character() -> String {
-    fetch_locale_with_context("avatar.characters", "en", Some("avatar"))
-        .map(|v| sample_with_resolve(&v, Some("avatar")))
-        .unwrap_or_else(|| sample(FALLBACK_CHARACTERS).to_string())
+    fetch_locale_with_context(
+        "avatar.characters",
+        &crate::config::FakerConfig::locale(),
+        Some("avatar"),
+    )
+    .map(|v| sample_with_resolve(&v, Some("avatar")))
+    .unwrap_or_else(|| sample(FALLBACK_CHARACTERS).to_string())
 }
 
 /// Generate a random Avatar quote
 pub fn quote() -> String {
-    fetch_locale_with_context("avatar.quotes", "en", Some("avatar"))
-        .map(|v| sample_with_resolve(&v, Some("avatar")))
-        .unwrap_or_else(|| sample(FALLBACK_QUOTES).to_string())
+    fetch_locale_with_context(
+        "avatar.quotes",
+        &crate::config::FakerConfig::locale(),
+        Some("avatar"),
+    )
+    .map(|v| sample_with_resolve(&v, Some("avatar")))
+    .unwrap_or_else(|| sample(FALLBACK_QUOTES).to_string())
 }
 
 /// Generate a random avatar image URL using RoboHash

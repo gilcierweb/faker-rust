@@ -5,44 +5,50 @@ use crate::locale::fetch_locale;
 
 /// Generate a random One Piece character
 pub fn character() -> String {
-    fetch_locale("one_piece.characters", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| "Monkey D. Luffy".to_string())
+    fetch_locale(
+        "one_piece.characters",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| "Monkey D. Luffy".to_string())
 }
 
 /// Generate a random One Piece sea
 pub fn sea() -> String {
-    fetch_locale("one_piece.seas", "en")
+    fetch_locale("one_piece.seas", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "East Blue".to_string())
 }
 
 /// Generate a random One Piece island
 pub fn island() -> String {
-    fetch_locale("one_piece.islands", "en")
+    fetch_locale("one_piece.islands", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "Dawn Island".to_string())
 }
 
 /// Generate a random One Piece location
 pub fn location() -> String {
-    fetch_locale("one_piece.locations", "en")
+    fetch_locale("one_piece.locations", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "Foosha Village".to_string())
 }
 
 /// Generate a random One Piece quote
 pub fn quote() -> String {
-    fetch_locale("one_piece.quotes", "en")
+    fetch_locale("one_piece.quotes", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "I'm gonna be the King of the Pirates!".to_string())
 }
 
 /// Generate a random One Piece Akuma no Mi (Devil Fruit)
 pub fn akuma_no_mi() -> String {
-    fetch_locale("one_piece.akuma_no_mi", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| "Gomu Gomu no Mi".to_string())
+    fetch_locale(
+        "one_piece.akuma_no_mi",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| "Gomu Gomu no Mi".to_string())
 }
 
 #[cfg(test)]

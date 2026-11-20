@@ -5,28 +5,34 @@ use crate::locale::fetch_locale;
 
 /// Generate a random Zelda game title
 pub fn game() -> String {
-    fetch_locale("games.zelda.games", "en")
+    fetch_locale("games.zelda.games", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "The Legend of Zelda: Breath of the Wild".to_string())
 }
 
 /// Generate a random Zelda character
 pub fn character() -> String {
-    fetch_locale("games.zelda.characters", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| "Link".to_string())
+    fetch_locale(
+        "games.zelda.characters",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| "Link".to_string())
 }
 
 /// Generate a random Zelda location
 pub fn location() -> String {
-    fetch_locale("games.zelda.locations", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| "Hyrule".to_string())
+    fetch_locale(
+        "games.zelda.locations",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| "Hyrule".to_string())
 }
 
 /// Generate a random Zelda item
 pub fn item() -> String {
-    fetch_locale("games.zelda.items", "en")
+    fetch_locale("games.zelda.items", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "Master Sword".to_string())
 }

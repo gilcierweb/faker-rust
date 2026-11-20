@@ -5,35 +5,47 @@ use crate::locale::fetch_locale;
 
 /// Generate a random Street Fighter character
 pub fn character() -> String {
-    fetch_locale("games.street_fighter.characters", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| "Ryu".to_string())
+    fetch_locale(
+        "games.street_fighter.characters",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| "Ryu".to_string())
 }
 
 /// Generate a random Street Fighter stage
 pub fn stage() -> String {
-    fetch_locale("games.street_fighter.stages", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| "Suzaku Castle".to_string())
+    fetch_locale(
+        "games.street_fighter.stages",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| "Suzaku Castle".to_string())
 }
 
 /// Generate a random Street Fighter quote
 pub fn quote() -> String {
-    fetch_locale("games.street_fighter.quotes", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| "You must defeat Sheng Long to stand a chance.".to_string())
+    fetch_locale(
+        "games.street_fighter.quotes",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| "You must defeat Sheng Long to stand a chance.".to_string())
 }
 
 /// Generate a random Street Fighter move
 pub fn move_name() -> String {
-    fetch_locale("games.street_fighter.moves", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| "Hadoken".to_string())
+    fetch_locale(
+        "games.street_fighter.moves",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| "Hadoken".to_string())
 }
 
 // --- gem parity generators (automated, locale-backed) ---
 fn parity_pick(key: &str) -> String {
-    crate::locale::fetch_locale(key, "en")
+    crate::locale::fetch_locale(key, &crate::config::FakerConfig::locale())
         .map(|v| crate::base::sample(&v))
         .unwrap_or_default()
 }

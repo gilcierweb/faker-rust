@@ -5,28 +5,31 @@ use crate::locale::fetch_locale;
 
 /// Generate a random Kamen Rider series
 pub fn series() -> String {
-    fetch_locale("kamen_rider.series", "en")
+    fetch_locale("kamen_rider.series", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_SERIES).to_string())
 }
 
 /// Generate a random Kamen Rider character
 pub fn character() -> String {
-    fetch_locale("kamen_rider.characters", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_CHARACTERS).to_string())
+    fetch_locale(
+        "kamen_rider.characters",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_CHARACTERS).to_string())
 }
 
 /// Generate a random Kamen Rider transformation device
 pub fn device() -> String {
-    fetch_locale("kamen_rider.devices", "en")
+    fetch_locale("kamen_rider.devices", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_DEVICES).to_string())
 }
 
 /// Generate a random Kamen Rider form
 pub fn form() -> String {
-    fetch_locale("kamen_rider.forms", "en")
+    fetch_locale("kamen_rider.forms", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_FORMS).to_string())
 }
@@ -183,9 +186,12 @@ fn from_eras_filtered(eras: &[&str], field: &str, exclude_showa: bool) -> String
         return String::new();
     }
     let era = crate::base::sample(&selected);
-    crate::locale::fetch_locale(&format!("kamen_rider.{era}.{field}"), "en")
-        .map(|v| crate::base::sample(&v))
-        .unwrap_or_default()
+    crate::locale::fetch_locale(
+        &format!("kamen_rider.{era}.{field}"),
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| crate::base::sample(&v))
+    .unwrap_or_default()
 }
 
 /// Gem-compatible generator: a collectible device from the given eras.

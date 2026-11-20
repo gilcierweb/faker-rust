@@ -5,14 +5,17 @@ use crate::locale::fetch_locale;
 
 /// Generate a random The Office character
 pub fn character() -> String {
-    fetch_locale("the_office.characters", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_CHARACTERS).to_string())
+    fetch_locale(
+        "the_office.characters",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_CHARACTERS).to_string())
 }
 
 /// Generate a random The Office quote
 pub fn quote() -> String {
-    fetch_locale("the_office.quotes", "en")
+    fetch_locale("the_office.quotes", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_QUOTES).to_string())
 }

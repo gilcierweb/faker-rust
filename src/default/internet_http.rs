@@ -5,30 +5,42 @@ use crate::locale::fetch_locale;
 
 /// Generate a random HTTP method
 pub fn method() -> String {
-    fetch_locale("internet_http.methods", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_METHODS).to_string())
+    fetch_locale(
+        "internet_http.methods",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_METHODS).to_string())
 }
 
 /// Generate a random HTTP status code
 pub fn status_code() -> String {
-    fetch_locale("internet_http.status_codes", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_STATUS_CODES).to_string())
+    fetch_locale(
+        "internet_http.status_codes",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_STATUS_CODES).to_string())
 }
 
 /// Generate a random HTTP header
 pub fn header() -> String {
-    fetch_locale("internet_http.headers", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_HEADERS).to_string())
+    fetch_locale(
+        "internet_http.headers",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_HEADERS).to_string())
 }
 
 /// Generate a random HTTP content type
 pub fn content_type() -> String {
-    fetch_locale("internet_http.content_types", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_CONTENT_TYPES).to_string())
+    fetch_locale(
+        "internet_http.content_types",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_CONTENT_TYPES).to_string())
 }
 
 // Fallback data

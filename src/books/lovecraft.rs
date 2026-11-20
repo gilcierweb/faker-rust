@@ -8,28 +8,28 @@ pub use self::book as tome;
 
 /// Generate a random Lovecraft creature/deity
 pub fn creature() -> String {
-    fetch_locale("lovecraft.creatures", "en")
+    fetch_locale("lovecraft.creatures", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_CREATURES).to_string())
 }
 
 /// Generate a random Lovecraft location
 pub fn location() -> String {
-    fetch_locale("lovecraft.locations", "en")
+    fetch_locale("lovecraft.locations", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_LOCATIONS).to_string())
 }
 
 /// Generate a random Lovecraft book/tome
 pub fn book() -> String {
-    fetch_locale("lovecraft.books", "en")
+    fetch_locale("lovecraft.books", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_BOOKS).to_string())
 }
 
 /// Generate a random Lovecraft quote
 pub fn quote() -> String {
-    fetch_locale("lovecraft.quotes", "en")
+    fetch_locale("lovecraft.quotes", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_QUOTES).to_string())
 }
@@ -81,7 +81,7 @@ const FALLBACK_QUOTES: &[&str] = &[
 
 // --- gem parity generators (automated, locale-backed) ---
 fn parity_pick(key: &str) -> String {
-    crate::locale::fetch_locale(key, "en")
+    crate::locale::fetch_locale(key, &crate::config::FakerConfig::locale())
         .map(|v| crate::base::sample(&v))
         .unwrap_or_default()
 }
@@ -98,7 +98,7 @@ pub fn word() -> String {
 
 // --- gem parity generators (algorithmic) ---
 fn lovecraft_words() -> Vec<String> {
-    crate::locale::fetch_locale("lovecraft.words", "en")
+    crate::locale::fetch_locale("lovecraft.words", &crate::config::FakerConfig::locale())
         .unwrap_or_else(|| vec!["eldritch".to_string()])
 }
 

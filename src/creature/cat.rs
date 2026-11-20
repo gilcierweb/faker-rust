@@ -5,23 +5,26 @@ use crate::locale::fetch_locale;
 
 /// Generate a random cat name
 pub fn name() -> String {
-    fetch_locale("creature.cat.name", "en")
+    fetch_locale("creature.cat.name", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "Felix".to_string())
 }
 
 /// Generate a random cat breed
 pub fn breed() -> String {
-    fetch_locale("creature.cat.breed", "en")
+    fetch_locale("creature.cat.breed", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "Abyssinian".to_string())
 }
 
 /// Generate a random cat registry
 pub fn registry() -> String {
-    fetch_locale("creature.cat.registry", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| "TICA".to_string())
+    fetch_locale(
+        "creature.cat.registry",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| "TICA".to_string())
 }
 
 #[cfg(test)]

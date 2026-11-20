@@ -5,23 +5,32 @@ use crate::locale::fetch_locale;
 
 /// Generate a random How to Train Your Dragon character
 pub fn character() -> String {
-    fetch_locale("how_to_train_your_dragon.characters", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_CHARACTERS).to_string())
+    fetch_locale(
+        "how_to_train_your_dragon.characters",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_CHARACTERS).to_string())
 }
 
 /// Generate a random How to Train Your Dragon dragon
 pub fn dragon() -> String {
-    fetch_locale("how_to_train_your_dragon.dragons", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_DRAGONS).to_string())
+    fetch_locale(
+        "how_to_train_your_dragon.dragons",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_DRAGONS).to_string())
 }
 
 /// Generate a random How to Train Your Dragon location
 pub fn location() -> String {
-    fetch_locale("how_to_train_your_dragon.locations", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_LOCATIONS).to_string())
+    fetch_locale(
+        "how_to_train_your_dragon.locations",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_LOCATIONS).to_string())
 }
 
 // Fallback data

@@ -5,7 +5,7 @@ use crate::locale::fetch_locale;
 
 /// Generate a random hipster word
 pub fn word() -> String {
-    fetch_locale("hipster.words", "en")
+    fetch_locale("hipster.words", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_WORDS).to_string())
 }
@@ -138,10 +138,14 @@ const FALLBACK_WORDS: &[&str] = &[
 // --- gem parity generators (dynamic locale keys) ---
 /// Gem-compatible generator: a list of hipster words.
 pub fn words(number: usize, supplemental: bool, spaces_allowed: bool) -> Vec<String> {
-    let mut pool = crate::locale::fetch_locale("hipster.words", "en")
-        .unwrap_or_else(|| vec!["hipster".to_string()]);
+    let mut pool =
+        crate::locale::fetch_locale("hipster.words", &crate::config::FakerConfig::locale())
+            .unwrap_or_else(|| vec!["hipster".to_string()]);
     if supplemental {
-        pool.extend(crate::locale::fetch_locale("lorem.words", "en").unwrap_or_default());
+        pool.extend(
+            crate::locale::fetch_locale("lorem.words", &crate::config::FakerConfig::locale())
+                .unwrap_or_default(),
+        );
     }
     let config = crate::config::FakerConfig::current();
     (0..number)

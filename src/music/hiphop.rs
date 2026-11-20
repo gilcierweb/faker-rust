@@ -5,23 +5,26 @@ use crate::locale::fetch_locale;
 
 /// Generate a random Hip-Hop artist
 pub fn artist() -> String {
-    fetch_locale("music.hiphop.artist", "en")
+    fetch_locale("music.hiphop.artist", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_ARTISTS).to_string())
 }
 
 /// Generate a random Hip-Hop group
 pub fn groups() -> String {
-    fetch_locale("music.hiphop.groups", "en")
+    fetch_locale("music.hiphop.groups", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_GROUPS).to_string())
 }
 
 /// Generate a random Hip-Hop subgenre
 pub fn subgenre() -> String {
-    fetch_locale("music.hiphop.subgenres", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_SUBGENRES).to_string())
+    fetch_locale(
+        "music.hiphop.subgenres",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_SUBGENRES).to_string())
 }
 
 // Fallback data
@@ -69,7 +72,7 @@ const FALLBACK_SUBGENRES: &[&str] = &[
 
 // --- gem parity generators (automated, locale-backed) ---
 fn parity_pick(key: &str) -> String {
-    crate::locale::fetch_locale(key, "en")
+    crate::locale::fetch_locale(key, &crate::config::FakerConfig::locale())
         .map(|v| crate::base::sample(&v))
         .unwrap_or_default()
 }

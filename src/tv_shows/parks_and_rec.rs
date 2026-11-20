@@ -5,16 +5,22 @@ use crate::locale::fetch_locale;
 
 /// Generate a random Parks and Recreation character
 pub fn character() -> String {
-    fetch_locale("parks_and_rec.characters", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| "Leslie Knope".to_string())
+    fetch_locale(
+        "parks_and_rec.characters",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| "Leslie Knope".to_string())
 }
 
 /// Generate a random Parks and Recreation city
 pub fn city() -> String {
-    fetch_locale("parks_and_rec.cities", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| "Pawnee".to_string())
+    fetch_locale(
+        "parks_and_rec.cities",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| "Pawnee".to_string())
 }
 
 #[cfg(test)]

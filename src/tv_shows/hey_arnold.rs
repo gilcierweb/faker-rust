@@ -5,23 +5,29 @@ use crate::locale::fetch_locale;
 
 /// Generate a random Hey Arnold character
 pub fn character() -> String {
-    fetch_locale("hey_arnold.characters", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_CHARACTERS).to_string())
+    fetch_locale(
+        "hey_arnold.characters",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_CHARACTERS).to_string())
 }
 
 /// Generate a random Hey Arnold quote
 pub fn quote() -> String {
-    fetch_locale("hey_arnold.quotes", "en")
+    fetch_locale("hey_arnold.quotes", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_QUOTES).to_string())
 }
 
 /// Generate a random Hey Arnold location
 pub fn location() -> String {
-    fetch_locale("hey_arnold.locations", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_LOCATIONS).to_string())
+    fetch_locale(
+        "hey_arnold.locations",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_LOCATIONS).to_string())
 }
 
 // Fallback data

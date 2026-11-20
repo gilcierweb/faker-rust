@@ -5,7 +5,7 @@ use crate::locale::fetch_locale;
 
 /// Generate a random rock band name
 pub fn name() -> String {
-    fetch_locale("rock_band.name", "en")
+    fetch_locale("rock_band.name", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_NAMES).to_string())
 }
@@ -36,7 +36,7 @@ const FALLBACK_NAMES: &[&str] = &[
 
 // --- gem parity generators (automated, locale-backed) ---
 fn parity_pick(key: &str) -> String {
-    crate::locale::fetch_locale(key, "en")
+    crate::locale::fetch_locale(key, &crate::config::FakerConfig::locale())
         .map(|v| crate::base::sample(&v))
         .unwrap_or_default()
 }

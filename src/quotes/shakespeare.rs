@@ -13,7 +13,7 @@ pub use self::king_richard_iii_quote as king_richard_iii;
 pub use self::romeo_and_juliet_quote as romeo_and_juliet;
 
 fn pick(key: &str) -> String {
-    fetch_locale(key, "en")
+    fetch_locale(key, &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_default()
 }

@@ -5,23 +5,29 @@ use crate::locale::fetch_locale;
 
 /// Generate a random sport name
 pub fn name() -> String {
-    fetch_locale("sport.names", "en")
+    fetch_locale("sport.names", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_SPORTS).to_string())
 }
 
 /// Generate a random summer olympic sport
 pub fn summer_olympics() -> String {
-    fetch_locale("sport.summer_olympics", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_SUMMER_OLYMPICS).to_string())
+    fetch_locale(
+        "sport.summer_olympics",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_SUMMER_OLYMPICS).to_string())
 }
 
 /// Generate a random winter olympic sport
 pub fn winter_olympics() -> String {
-    fetch_locale("sport.winter_olympics", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_WINTER_OLYMPICS).to_string())
+    fetch_locale(
+        "sport.winter_olympics",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_WINTER_OLYMPICS).to_string())
 }
 
 // Fallback data
@@ -72,7 +78,7 @@ const FALLBACK_WINTER_OLYMPICS: &[&str] = &[
 
 // --- gem parity generators (automated, locale-backed) ---
 fn parity_pick(key: &str) -> String {
-    crate::locale::fetch_locale(key, "en")
+    crate::locale::fetch_locale(key, &crate::config::FakerConfig::locale())
         .map(|v| crate::base::sample(&v))
         .unwrap_or_default()
 }

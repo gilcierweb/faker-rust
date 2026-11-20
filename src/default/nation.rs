@@ -5,35 +5,35 @@ use crate::locale::fetch_locale;
 
 /// Generate a random nation nationality
 pub fn nationality() -> String {
-    fetch_locale("nation.nationality", "en")
+    fetch_locale("nation.nationality", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "Brazilian".to_string())
 }
 
 /// Generate a random nation language
 pub fn language() -> String {
-    fetch_locale("nation.language", "en")
+    fetch_locale("nation.language", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "Portuguese".to_string())
 }
 
 /// Generate a random nation capital city
 pub fn capital_city() -> String {
-    fetch_locale("nation.capital_city", "en")
+    fetch_locale("nation.capital_city", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "Brasilia".to_string())
 }
 
 /// Generate a random nation flag emoji
 pub fn flag() -> String {
-    fetch_locale("nation.flag", "en")
+    fetch_locale("nation.flag", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "🇧🇷".to_string())
 }
 
 // --- gem parity generators (automated, locale-backed) ---
 fn parity_pick(key: &str) -> String {
-    crate::locale::fetch_locale(key, "en")
+    crate::locale::fetch_locale(key, &crate::config::FakerConfig::locale())
         .map(|v| crate::base::sample(&v))
         .unwrap_or_default()
 }

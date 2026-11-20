@@ -5,28 +5,37 @@ use crate::locale::fetch_locale;
 
 /// Generate a random Culture Series book title
 pub fn book() -> String {
-    fetch_locale("culture_series.books", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_BOOKS).to_string())
+    fetch_locale(
+        "culture_series.books",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_BOOKS).to_string())
 }
 
 /// Generate a random Culture Series ship name
 pub fn ship() -> String {
-    fetch_locale("culture_series.culture_ships", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_SHIPS).to_string())
+    fetch_locale(
+        "culture_series.culture_ships",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_SHIPS).to_string())
 }
 
 /// Generate a random Culture Series character
 pub fn character() -> String {
-    fetch_locale("culture_series.characters", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_CHARACTERS).to_string())
+    fetch_locale(
+        "culture_series.characters",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_CHARACTERS).to_string())
 }
 
 /// Generate a random Culture Series civilization
 pub fn civ() -> String {
-    fetch_locale("culture_series.civs", "en")
+    fetch_locale("culture_series.civs", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_CIVS).to_string())
 }
@@ -80,7 +89,7 @@ const FALLBACK_CIVS: &[&str] = &[
 
 // --- gem parity generators (automated, locale-backed) ---
 fn parity_pick(key: &str) -> String {
-    crate::locale::fetch_locale(key, "en")
+    crate::locale::fetch_locale(key, &crate::config::FakerConfig::locale())
         .map(|v| crate::base::sample(&v))
         .unwrap_or_default()
 }

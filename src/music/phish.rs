@@ -5,14 +5,14 @@ use crate::locale::fetch_locale;
 
 /// Generate a random Phish song
 pub fn song() -> String {
-    fetch_locale("phish.songs", "en")
+    fetch_locale("phish.songs", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_SONGS).to_string())
 }
 
 /// Generate a random Phish member
 pub fn member() -> String {
-    fetch_locale("phish.members", "en")
+    fetch_locale("phish.members", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_MEMBERS).to_string())
 }
@@ -43,7 +43,7 @@ const FALLBACK_MEMBERS: &[&str] = &[
 
 // --- gem parity generators (automated, locale-backed) ---
 fn parity_pick(key: &str) -> String {
-    crate::locale::fetch_locale(key, "en")
+    crate::locale::fetch_locale(key, &crate::config::FakerConfig::locale())
         .map(|v| crate::base::sample(&v))
         .unwrap_or_default()
 }

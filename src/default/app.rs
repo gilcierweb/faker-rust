@@ -5,23 +5,35 @@ use crate::locale::{fetch_locale_with_context, sample_with_resolve};
 
 /// Generate a random app name
 pub fn name() -> String {
-    fetch_locale_with_context("app.name", "en", Some("app"))
-        .map(|v| sample_with_resolve(&v, Some("app")))
-        .unwrap_or_else(|| sample(FALLBACK_NAMES).to_string())
+    fetch_locale_with_context(
+        "app.name",
+        &crate::config::FakerConfig::locale(),
+        Some("app"),
+    )
+    .map(|v| sample_with_resolve(&v, Some("app")))
+    .unwrap_or_else(|| sample(FALLBACK_NAMES).to_string())
 }
 
 /// Generate a random app version
 pub fn version() -> String {
-    fetch_locale_with_context("app.version", "en", Some("app"))
-        .map(|v| sample_with_resolve(&v, Some("app")))
-        .unwrap_or_else(|| sample(FALLBACK_VERSIONS).to_string())
+    fetch_locale_with_context(
+        "app.version",
+        &crate::config::FakerConfig::locale(),
+        Some("app"),
+    )
+    .map(|v| sample_with_resolve(&v, Some("app")))
+    .unwrap_or_else(|| sample(FALLBACK_VERSIONS).to_string())
 }
 
 /// Generate a random app author
 pub fn author() -> String {
-    fetch_locale_with_context("app.author", "en", Some("app"))
-        .map(|v| sample_with_resolve(&v, Some("app")))
-        .unwrap_or_else(crate::name::name)
+    fetch_locale_with_context(
+        "app.author",
+        &crate::config::FakerConfig::locale(),
+        Some("app"),
+    )
+    .map(|v| sample_with_resolve(&v, Some("app")))
+    .unwrap_or_else(crate::name::name)
 }
 
 // Fallback data

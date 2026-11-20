@@ -5,21 +5,21 @@ use crate::locale::fetch_locale;
 
 /// Generate a random Tarkov location/raid
 pub fn location() -> String {
-    fetch_locale("tarkov.locations", "en")
+    fetch_locale("tarkov.locations", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_LOCATIONS).to_string())
 }
 
 /// Generate a random Tarkov trader
 pub fn trader() -> String {
-    fetch_locale("tarkov.traders", "en")
+    fetch_locale("tarkov.traders", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_TRADERS).to_string())
 }
 
 /// Generate a random Tarkov item/weapon
 pub fn item() -> String {
-    fetch_locale("tarkov.items", "en")
+    fetch_locale("tarkov.items", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_ITEMS).to_string())
 }
@@ -31,14 +31,14 @@ pub fn ammo() -> String {
 
 /// Generate a random Tarkov faction
 pub fn faction() -> String {
-    fetch_locale("tarkov.factions", "en")
+    fetch_locale("tarkov.factions", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_FACTIONS).to_string())
 }
 
 // --- gem parity generators (locale-backed) ---
 fn pick(key: &str) -> String {
-    fetch_locale(key, "en")
+    fetch_locale(key, &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_default()
 }

@@ -5,30 +5,46 @@ use crate::locale::{fetch_locale_with_context, sample_with_resolve};
 
 /// Generate a random planet
 pub fn planet() -> String {
-    fetch_locale_with_context("space.planet", "en", Some("space"))
-        .map(|v| sample_with_resolve(&v, Some("space")))
-        .unwrap_or_else(|| sample(FALLBACK_PLANETS).to_string())
+    fetch_locale_with_context(
+        "space.planet",
+        &crate::config::FakerConfig::locale(),
+        Some("space"),
+    )
+    .map(|v| sample_with_resolve(&v, Some("space")))
+    .unwrap_or_else(|| sample(FALLBACK_PLANETS).to_string())
 }
 
 /// Generate a random moon
 pub fn moon() -> String {
-    fetch_locale_with_context("space.moon", "en", Some("space"))
-        .map(|v| sample_with_resolve(&v, Some("space")))
-        .unwrap_or_else(|| sample(FALLBACK_MOONS).to_string())
+    fetch_locale_with_context(
+        "space.moon",
+        &crate::config::FakerConfig::locale(),
+        Some("space"),
+    )
+    .map(|v| sample_with_resolve(&v, Some("space")))
+    .unwrap_or_else(|| sample(FALLBACK_MOONS).to_string())
 }
 
 /// Generate a random galaxy
 pub fn galaxy() -> String {
-    fetch_locale_with_context("space.galaxy", "en", Some("space"))
-        .map(|v| sample_with_resolve(&v, Some("space")))
-        .unwrap_or_else(|| sample(FALLBACK_GALAXIES).to_string())
+    fetch_locale_with_context(
+        "space.galaxy",
+        &crate::config::FakerConfig::locale(),
+        Some("space"),
+    )
+    .map(|v| sample_with_resolve(&v, Some("space")))
+    .unwrap_or_else(|| sample(FALLBACK_GALAXIES).to_string())
 }
 
 /// Generate a random constellation
 pub fn constellation() -> String {
-    fetch_locale_with_context("space.constellation", "en", Some("space"))
-        .map(|v| sample_with_resolve(&v, Some("space")))
-        .unwrap_or_else(|| sample(FALLBACK_CONSTELLATIONS).to_string())
+    fetch_locale_with_context(
+        "space.constellation",
+        &crate::config::FakerConfig::locale(),
+        Some("space"),
+    )
+    .map(|v| sample_with_resolve(&v, Some("space")))
+    .unwrap_or_else(|| sample(FALLBACK_CONSTELLATIONS).to_string())
 }
 
 // Fallback data
@@ -49,7 +65,7 @@ const FALLBACK_CONSTELLATIONS: &[&str] = &[
 
 // --- gem parity generators (automated, locale-backed) ---
 fn parity_pick(key: &str) -> String {
-    crate::locale::fetch_locale(key, "en")
+    crate::locale::fetch_locale(key, &crate::config::FakerConfig::locale())
         .map(|v| crate::base::sample(&v))
         .unwrap_or_default()
 }

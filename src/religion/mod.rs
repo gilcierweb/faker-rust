@@ -7,35 +7,35 @@ use crate::locale::fetch_locale;
 
 /// Generate a random religion name
 pub fn name() -> String {
-    fetch_locale("religion.names", "en")
+    fetch_locale("religion.names", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_NAMES).to_string())
 }
 
 /// Generate a random religious figure
 pub fn figure() -> String {
-    fetch_locale("religion.figures", "en")
+    fetch_locale("religion.figures", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_FIGURES).to_string())
 }
 
 /// Generate a random religious text
 pub fn text() -> String {
-    fetch_locale("religion.texts", "en")
+    fetch_locale("religion.texts", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_TEXTS).to_string())
 }
 
 /// Generate a random religious practice
 pub fn practice() -> String {
-    fetch_locale("religion.practices", "en")
+    fetch_locale("religion.practices", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_PRACTICES).to_string())
 }
 
 /// Generate a random religious holiday
 pub fn holiday() -> String {
-    fetch_locale("religion.holidays", "en")
+    fetch_locale("religion.holidays", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_HOLIDAYS).to_string())
 }

@@ -5,23 +5,26 @@ use crate::locale::fetch_locale;
 
 /// Generate a random marketing buzzword
 pub fn buzzword() -> String {
-    fetch_locale("marketing.buzzwords", "en")
+    fetch_locale("marketing.buzzwords", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_BUZZWORDS).to_string())
 }
 
 /// Generate a random marketing term
 pub fn term() -> String {
-    fetch_locale("marketing.terms", "en")
+    fetch_locale("marketing.terms", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_TERMS).to_string())
 }
 
 /// Generate a random marketing strategy
 pub fn strategy() -> String {
-    fetch_locale("marketing.strategies", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_STRATEGIES).to_string())
+    fetch_locale(
+        "marketing.strategies",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_STRATEGIES).to_string())
 }
 
 // Fallback data
@@ -82,7 +85,7 @@ const FALLBACK_STRATEGIES: &[&str] = &[
 
 // --- gem parity generators (automated, locale-backed) ---
 fn parity_pick(key: &str) -> String {
-    crate::locale::fetch_locale(key, "en")
+    crate::locale::fetch_locale(key, &crate::config::FakerConfig::locale())
         .map(|v| crate::base::sample(&v))
         .unwrap_or_default()
 }

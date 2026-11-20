@@ -5,16 +5,19 @@ use crate::locale::fetch_locale;
 
 /// Generate a random Grateful Dead song
 pub fn song() -> String {
-    fetch_locale("grateful_dead.songs", "en")
+    fetch_locale("grateful_dead.songs", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_SONGS).to_string())
 }
 
 /// Generate a random Grateful Dead member
 pub fn member() -> String {
-    fetch_locale("grateful_dead.members", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_MEMBERS).to_string())
+    fetch_locale(
+        "grateful_dead.members",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_MEMBERS).to_string())
 }
 
 // Fallback data
@@ -48,7 +51,7 @@ const FALLBACK_MEMBERS: &[&str] = &[
 
 // --- gem parity generators (automated, locale-backed) ---
 fn parity_pick(key: &str) -> String {
-    crate::locale::fetch_locale(key, "en")
+    crate::locale::fetch_locale(key, &crate::config::FakerConfig::locale())
         .map(|v| crate::base::sample(&v))
         .unwrap_or_default()
 }

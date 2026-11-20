@@ -5,37 +5,52 @@ use crate::locale::fetch_locale;
 
 /// Generate a random Witcher character
 pub fn character() -> String {
-    fetch_locale("games.witcher.characters", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_CHARACTERS).to_string())
+    fetch_locale(
+        "games.witcher.characters",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_CHARACTERS).to_string())
 }
 
 /// Generate a random Witcher location
 pub fn location() -> String {
-    fetch_locale("games.witcher.locations", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_LOCATIONS).to_string())
+    fetch_locale(
+        "games.witcher.locations",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_LOCATIONS).to_string())
 }
 
 /// Generate a random Witcher monster
 pub fn monster() -> String {
-    fetch_locale("games.witcher.monsters", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_MONSTERS).to_string())
+    fetch_locale(
+        "games.witcher.monsters",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_MONSTERS).to_string())
 }
 
 /// Generate a random Witcher school
 pub fn school() -> String {
-    fetch_locale("games.witcher.schools", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_SCHOOLS).to_string())
+    fetch_locale(
+        "games.witcher.schools",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_SCHOOLS).to_string())
 }
 
 /// Generate a random Witcher quote
 pub fn quote() -> String {
-    fetch_locale("games.witcher.quotes", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_QUOTES).to_string())
+    fetch_locale(
+        "games.witcher.quotes",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_QUOTES).to_string())
 }
 
 // Fallback data
@@ -175,7 +190,7 @@ const FALLBACK_QUOTES: &[&str] = &[
 
 // --- gem parity generators (automated, locale-backed) ---
 fn parity_pick(key: &str) -> String {
-    crate::locale::fetch_locale(key, "en")
+    crate::locale::fetch_locale(key, &crate::config::FakerConfig::locale())
         .map(|v| crate::base::sample(&v))
         .unwrap_or_default()
 }

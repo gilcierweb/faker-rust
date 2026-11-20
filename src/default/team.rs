@@ -5,28 +5,28 @@ use crate::locale::fetch_locale;
 
 /// Generate a random team name
 pub fn name() -> String {
-    fetch_locale("team.names", "en")
+    fetch_locale("team.names", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_NAMES).to_string())
 }
 
 /// Generate a random team mascot
 pub fn mascot() -> String {
-    fetch_locale("team.mascots", "en")
+    fetch_locale("team.mascots", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_MASCOTS).to_string())
 }
 
 /// Generate a random team sport
 pub fn sport() -> String {
-    fetch_locale("team.sports", "en")
+    fetch_locale("team.sports", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_SPORTS).to_string())
 }
 
 /// Generate a random team state
 pub fn state() -> String {
-    fetch_locale("team.states", "en")
+    fetch_locale("team.states", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_STATES).to_string())
 }
@@ -95,7 +95,7 @@ const FALLBACK_STATES: &[&str] = &[
 
 // --- gem parity generators (automated, locale-backed) ---
 fn parity_pick(key: &str) -> String {
-    crate::locale::fetch_locale(key, "en")
+    crate::locale::fetch_locale(key, &crate::config::FakerConfig::locale())
         .map(|v| crate::base::sample(&v))
         .unwrap_or_default()
 }

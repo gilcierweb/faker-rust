@@ -5,21 +5,21 @@ use crate::locale::fetch_locale;
 
 /// Generate a random tea type
 pub fn r#type() -> String {
-    fetch_locale("tea.types", "en")
+    fetch_locale("tea.types", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_TYPES).to_string())
 }
 
 /// Generate a random tea variety
 pub fn variety() -> String {
-    fetch_locale("tea.varieties", "en")
+    fetch_locale("tea.varieties", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_VARIETIES).to_string())
 }
 
 /// Generate a random tea origin
 pub fn origin() -> String {
-    fetch_locale("tea.origins", "en")
+    fetch_locale("tea.origins", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_ORIGINS).to_string())
 }

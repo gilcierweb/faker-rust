@@ -5,16 +5,22 @@ use crate::locale::fetch_locale;
 
 /// Generate a random programming language name
 pub fn name() -> String {
-    fetch_locale("programming_language.names", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_NAMES).to_string())
+    fetch_locale(
+        "programming_language.names",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_NAMES).to_string())
 }
 
 /// Generate a random programming language creator
 pub fn creator() -> String {
-    fetch_locale("programming_language.creators", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_CREATORS).to_string())
+    fetch_locale(
+        "programming_language.creators",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_CREATORS).to_string())
 }
 
 // Fallback data

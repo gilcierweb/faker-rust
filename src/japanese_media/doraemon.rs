@@ -5,21 +5,21 @@ use crate::locale::fetch_locale;
 
 /// Generate a random Doraemon character
 pub fn character() -> String {
-    fetch_locale("doraemon.characters", "en")
+    fetch_locale("doraemon.characters", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_CHARACTERS).to_string())
 }
 
 /// Generate a random Doraemon gadget
 pub fn gadget() -> String {
-    fetch_locale("doraemon.gadgets", "en")
+    fetch_locale("doraemon.gadgets", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_GADGETS).to_string())
 }
 
 /// Generate a random Doraemon location
 pub fn location() -> String {
-    fetch_locale("doraemon.locations", "en")
+    fetch_locale("doraemon.locations", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_LOCATIONS).to_string())
 }

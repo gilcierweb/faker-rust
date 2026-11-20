@@ -10,42 +10,57 @@ pub use self::colors as color;
 
 /// Generate a random bird anatomy part
 pub fn anatomy() -> String {
-    fetch_locale("creature.bird.anatomy", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| "beak".to_string())
+    fetch_locale(
+        "creature.bird.anatomy",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| "beak".to_string())
 }
 
 /// Generate a random bird color
 pub fn colors() -> String {
-    fetch_locale("creature.bird.colors", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| "black".to_string())
+    fetch_locale(
+        "creature.bird.colors",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| "black".to_string())
 }
 
 /// Generate a random bird adjective
 pub fn adjectives() -> String {
-    fetch_locale("creature.bird.adjectives", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| "common".to_string())
+    fetch_locale(
+        "creature.bird.adjectives",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| "common".to_string())
 }
 
 /// Generate a random bird common family name
 pub fn common_family_name() -> String {
-    fetch_locale("creature.bird.common_family_name", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| "Hawk".to_string())
+    fetch_locale(
+        "creature.bird.common_family_name",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| "Hawk".to_string())
 }
 
 /// Generate a plausible bird common name
 pub fn common_name() -> String {
-    fetch_locale("creature.bird.plausible_common_names", "en")
-        .map(|v| sample_with_resolve(&v, Some("creature.bird")))
-        .unwrap_or_else(|| "Common Black Hawk".to_string())
+    fetch_locale(
+        "creature.bird.plausible_common_names",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample_with_resolve(&v, Some("creature.bird")))
+    .unwrap_or_else(|| "Common Black Hawk".to_string())
 }
 
 // --- gem parity generators (automated, locale-backed) ---
 fn parity_pick(key: &str) -> String {
-    crate::locale::fetch_locale(key, "en")
+    crate::locale::fetch_locale(key, &crate::config::FakerConfig::locale())
         .map(|v| crate::base::sample(&v))
         .unwrap_or_default()
 }
@@ -74,27 +89,35 @@ pub fn silly_adjective() -> String {
 pub fn order() -> String {
     crate::base::sample(&crate::locale::fetch_locale_keys(
         "creature.bird.order_common_map",
-        "en",
+        &crate::config::FakerConfig::locale(),
     ))
 }
 /// Gem-compatible generator: a plausible bird common name.
 pub fn plausible_common_name() -> String {
-    crate::locale::fetch_locale("creature.bird.plausible_common_names", "en")
-        .map(|v| crate::locale::sample_with_resolve(&v, Some("creature.bird")))
-        .unwrap_or_default()
+    crate::locale::fetch_locale(
+        "creature.bird.plausible_common_names",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| crate::locale::sample_with_resolve(&v, Some("creature.bird")))
+    .unwrap_or_default()
 }
 /// Gem-compatible generator: an implausible bird common name.
 pub fn implausible_common_name() -> String {
-    crate::locale::fetch_locale("creature.bird.implausible_common_names", "en")
-        .map(|v| crate::locale::sample_with_resolve(&v, Some("creature.bird")))
-        .unwrap_or_default()
+    crate::locale::fetch_locale(
+        "creature.bird.implausible_common_names",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| crate::locale::sample_with_resolve(&v, Some("creature.bird")))
+    .unwrap_or_default()
 }
 /// Gem-compatible generator: an order paired with one of its common names.
 pub fn order_with_common_name(tax_order: Option<&str>) -> (String, String) {
     let selected = tax_order.map(str::to_string).unwrap_or_else(order);
-    let names =
-        crate::locale::fetch_locale(&format!("creature.bird.order_common_map.{selected}"), "en")
-            .unwrap_or_default();
+    let names = crate::locale::fetch_locale(
+        &format!("creature.bird.order_common_map.{selected}"),
+        &crate::config::FakerConfig::locale(),
+    )
+    .unwrap_or_default();
     (selected, crate::base::sample(&names))
 }
 

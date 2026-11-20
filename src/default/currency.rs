@@ -5,23 +5,35 @@ use crate::locale::{fetch_locale_with_context, sample_with_resolve};
 
 /// Generate a random currency name
 pub fn name() -> String {
-    fetch_locale_with_context("currency.name", "en", Some("currency"))
-        .map(|v| sample_with_resolve(&v, Some("currency")))
-        .unwrap_or_else(|| sample(FALLBACK_NAMES).to_string())
+    fetch_locale_with_context(
+        "currency.name",
+        &crate::config::FakerConfig::locale(),
+        Some("currency"),
+    )
+    .map(|v| sample_with_resolve(&v, Some("currency")))
+    .unwrap_or_else(|| sample(FALLBACK_NAMES).to_string())
 }
 
 /// Generate a random currency code
 pub fn code() -> String {
-    fetch_locale_with_context("currency.code", "en", Some("currency"))
-        .map(|v| sample_with_resolve(&v, Some("currency")))
-        .unwrap_or_else(|| sample(FALLBACK_CODES).to_string())
+    fetch_locale_with_context(
+        "currency.code",
+        &crate::config::FakerConfig::locale(),
+        Some("currency"),
+    )
+    .map(|v| sample_with_resolve(&v, Some("currency")))
+    .unwrap_or_else(|| sample(FALLBACK_CODES).to_string())
 }
 
 /// Generate a random currency symbol
 pub fn symbol() -> String {
-    fetch_locale_with_context("currency.symbol", "en", Some("currency"))
-        .map(|v| sample_with_resolve(&v, Some("currency")))
-        .unwrap_or_else(|| sample(FALLBACK_SYMBOLS).to_string())
+    fetch_locale_with_context(
+        "currency.symbol",
+        &crate::config::FakerConfig::locale(),
+        Some("currency"),
+    )
+    .map(|v| sample_with_resolve(&v, Some("currency")))
+    .unwrap_or_else(|| sample(FALLBACK_SYMBOLS).to_string())
 }
 
 // Fallback data

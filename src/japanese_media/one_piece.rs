@@ -5,35 +5,41 @@ use crate::locale::fetch_locale;
 
 /// Generate a random One Piece character
 pub fn character() -> String {
-    fetch_locale("one_piece.characters", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_CHARACTERS).to_string())
+    fetch_locale(
+        "one_piece.characters",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_CHARACTERS).to_string())
 }
 
 /// Generate a random One Piece devil fruit
 pub fn devil_fruit() -> String {
-    fetch_locale("one_piece.akuma_no_mi", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_DEVIL_FRUITS).to_string())
+    fetch_locale(
+        "one_piece.akuma_no_mi",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_DEVIL_FRUITS).to_string())
 }
 
 /// Generate a random One Piece location/island
 pub fn location() -> String {
-    fetch_locale("one_piece.locations", "en")
+    fetch_locale("one_piece.locations", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_LOCATIONS).to_string())
 }
 
 /// Generate a random One Piece quote
 pub fn quote() -> String {
-    fetch_locale("one_piece.quotes", "en")
+    fetch_locale("one_piece.quotes", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_QUOTES).to_string())
 }
 
 /// Generate a random One Piece sea
 pub fn sea() -> String {
-    fetch_locale("one_piece.seas", "en")
+    fetch_locale("one_piece.seas", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_SEAS).to_string())
 }
@@ -148,7 +154,7 @@ const FALLBACK_SEAS: &[&str] = &[
 
 // --- gem parity generators (automated, locale-backed) ---
 fn parity_pick(key: &str) -> String {
-    crate::locale::fetch_locale(key, "en")
+    crate::locale::fetch_locale(key, &crate::config::FakerConfig::locale())
         .map(|v| crate::base::sample(&v))
         .unwrap_or_default()
 }

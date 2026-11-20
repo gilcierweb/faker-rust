@@ -5,21 +5,21 @@ use crate::locale::fetch_locale;
 
 /// Generate a random Avatar character
 pub fn character() -> String {
-    fetch_locale("avatar.characters", "en")
+    fetch_locale("avatar.characters", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_CHARACTERS).to_string())
 }
 
 /// Generate a random Avatar location
 pub fn location() -> String {
-    fetch_locale("avatar.locations", "en")
+    fetch_locale("avatar.locations", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_LOCATIONS).to_string())
 }
 
 /// Generate a random Avatar creature
 pub fn creature() -> String {
-    fetch_locale("avatar.creatures", "en")
+    fetch_locale("avatar.creatures", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_CREATURES).to_string())
 }
@@ -56,7 +56,7 @@ const FALLBACK_CREATURES: &[&str] = &[
 
 // --- gem parity generators (automated, locale-backed) ---
 fn parity_pick(key: &str) -> String {
-    crate::locale::fetch_locale(key, "en")
+    crate::locale::fetch_locale(key, &crate::config::FakerConfig::locale())
         .map(|v| crate::base::sample(&v))
         .unwrap_or_default()
 }

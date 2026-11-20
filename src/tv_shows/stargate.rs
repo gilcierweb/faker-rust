@@ -5,21 +5,21 @@ use crate::locale::fetch_locale;
 
 /// Generate a random Stargate character
 pub fn character() -> String {
-    fetch_locale("stargate.characters", "en")
+    fetch_locale("stargate.characters", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "Jack O'Neill".to_string())
 }
 
 /// Generate a random Stargate planet
 pub fn planet() -> String {
-    fetch_locale("stargate.planets", "en")
+    fetch_locale("stargate.planets", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "Abydos".to_string())
 }
 
 /// Generate a random Stargate quote
 pub fn quote() -> String {
-    fetch_locale("stargate.quotes", "en")
+    fetch_locale("stargate.quotes", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "Chevron seven is locked.".to_string())
 }

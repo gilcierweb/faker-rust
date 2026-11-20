@@ -5,28 +5,28 @@ use crate::locale::fetch_locale;
 
 /// Generate a random RuPaul's Drag Race queen
 pub fn queen() -> String {
-    fetch_locale("rupaul.queens", "en")
+    fetch_locale("rupaul.queens", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "RuPaul".to_string())
 }
 
 /// Generate a random RuPaul quote
 pub fn quote() -> String {
-    fetch_locale("rupaul.quotes", "en")
+    fetch_locale("rupaul.quotes", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_QUOTES).to_string())
 }
 
 /// Generate a random RuPaul contestant
 pub fn contestant() -> String {
-    fetch_locale("rupaul.contestants", "en")
+    fetch_locale("rupaul.contestants", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_CONTESTANTS).to_string())
 }
 
 /// Generate a random RuPaul challenge
 pub fn challenge() -> String {
-    fetch_locale("rupaul.challenges", "en")
+    fetch_locale("rupaul.challenges", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_CHALLENGES).to_string())
 }

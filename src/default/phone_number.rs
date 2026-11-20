@@ -19,17 +19,23 @@ pub fn phone_number() -> String {
 
 /// Generate a random phone number with country code
 pub fn phone_number_with_country_code() -> String {
-    let country_code = fetch_locale("phone_number.country_code", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| "1".to_string());
+    let country_code = fetch_locale(
+        "phone_number.country_code",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| "1".to_string());
     format!("{} {}", country_code, phone_number())
 }
 
 /// Generate a random area code
 pub fn area_code() -> String {
-    fetch_locale("phone_number.area_code", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| "212".to_string())
+    fetch_locale(
+        "phone_number.area_code",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| "212".to_string())
 }
 
 /// Generate a random cell phone number
@@ -68,17 +74,23 @@ pub fn cell_phone_in_e164() -> String {
 
 /// Generate a random cell phone with country code
 pub fn cell_phone_with_country_code() -> String {
-    let country_code = fetch_locale("phone_number.country_code", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| "1".to_string());
+    let country_code = fetch_locale(
+        "phone_number.country_code",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| "1".to_string());
     format!("+{} {}", country_code, cell_phone())
 }
 
 /// Generate a random country code
 pub fn country_code() -> String {
-    fetch_locale("phone_number.country_code", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| "1".to_string())
+    fetch_locale(
+        "phone_number.country_code",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| "1".to_string())
 }
 
 /// Generate a random extension

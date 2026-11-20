@@ -5,23 +5,35 @@ use crate::locale::{fetch_locale_with_context, sample_with_resolve};
 
 /// Generate a random Pokemon name
 pub fn name() -> String {
-    fetch_locale_with_context("games.pokemon.names", "en", Some("games.pokemon"))
-        .map(|v| sample_with_resolve(&v, Some("games.pokemon")))
-        .unwrap_or_else(|| sample(FALLBACK_POKEMON_NAMES).to_string())
+    fetch_locale_with_context(
+        "games.pokemon.names",
+        &crate::config::FakerConfig::locale(),
+        Some("games.pokemon"),
+    )
+    .map(|v| sample_with_resolve(&v, Some("games.pokemon")))
+    .unwrap_or_else(|| sample(FALLBACK_POKEMON_NAMES).to_string())
 }
 
 /// Generate a random Pokemon location
 pub fn location() -> String {
-    fetch_locale_with_context("games.pokemon.locations", "en", Some("games.pokemon"))
-        .map(|v| sample_with_resolve(&v, Some("games.pokemon")))
-        .unwrap_or_else(|| sample(&["Pallet Town", "Pewter City", "Cerulean City"]).to_string())
+    fetch_locale_with_context(
+        "games.pokemon.locations",
+        &crate::config::FakerConfig::locale(),
+        Some("games.pokemon"),
+    )
+    .map(|v| sample_with_resolve(&v, Some("games.pokemon")))
+    .unwrap_or_else(|| sample(&["Pallet Town", "Pewter City", "Cerulean City"]).to_string())
 }
 
 /// Generate a random Pokemon move
 pub fn move_name() -> String {
-    fetch_locale_with_context("games.pokemon.moves", "en", Some("games.pokemon"))
-        .map(|v| sample_with_resolve(&v, Some("games.pokemon")))
-        .unwrap_or_else(|| sample(&["Tackle", "Thunderbolt", "Hyper Beam"]).to_string())
+    fetch_locale_with_context(
+        "games.pokemon.moves",
+        &crate::config::FakerConfig::locale(),
+        Some("games.pokemon"),
+    )
+    .map(|v| sample_with_resolve(&v, Some("games.pokemon")))
+    .unwrap_or_else(|| sample(&["Tackle", "Thunderbolt", "Hyper Beam"]).to_string())
 }
 
 const FALLBACK_POKEMON_NAMES: &[&str] =
@@ -29,7 +41,7 @@ const FALLBACK_POKEMON_NAMES: &[&str] =
 
 // --- gem parity generators (automated, locale-backed) ---
 fn parity_pick(key: &str) -> String {
-    crate::locale::fetch_locale(key, "en")
+    crate::locale::fetch_locale(key, &crate::config::FakerConfig::locale())
         .map(|v| crate::base::sample(&v))
         .unwrap_or_default()
 }

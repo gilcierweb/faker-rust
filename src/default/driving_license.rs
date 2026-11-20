@@ -26,7 +26,7 @@ pub fn uk() -> String {
 /// Generate a random USA driving license number for a specific state
 pub fn usa(state: &str) -> String {
     let key = format!("driving_licence.usa.{}", state);
-    fetch_locale(&key, "en")
+    fetch_locale(&key, &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "123456789".to_string())
 }
@@ -59,9 +59,12 @@ pub fn texas() -> String {
 /// Gem-compatible generator: US driving licence number for a state.
 pub fn usa_driving_licence(state: &str) -> String {
     let normalized = state.trim().to_lowercase().replace(' ', "_");
-    crate::locale::fetch_locale(&format!("driving_licence.usa.{normalized}"), "en")
-        .map(|v| crate::base::bothify(&crate::base::sample(&v)))
-        .unwrap_or_default()
+    crate::locale::fetch_locale(
+        &format!("driving_licence.usa.{normalized}"),
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| crate::base::bothify(&crate::base::sample(&v)))
+    .unwrap_or_default()
 }
 // --- gem parity generators (algorithmic) ---
 fn pad_uppercase(value: &str, len: usize) -> String {

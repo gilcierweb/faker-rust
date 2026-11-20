@@ -5,21 +5,21 @@ use crate::locale::fetch_locale;
 
 /// Generate a random opera name
 pub fn name() -> String {
-    fetch_locale("opera.names", "en")
+    fetch_locale("opera.names", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_NAMES).to_string())
 }
 
 /// Generate a random opera composer
 pub fn composer() -> String {
-    fetch_locale("opera.composers", "en")
+    fetch_locale("opera.composers", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_COMPOSERS).to_string())
 }
 
 /// Generate a random opera language
 pub fn language() -> String {
-    fetch_locale("opera.languages", "en")
+    fetch_locale("opera.languages", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_LANGUAGES).to_string())
 }
@@ -57,7 +57,7 @@ const FALLBACK_LANGUAGES: &[&str] = &["Italian", "German", "French", "English", 
 
 // --- gem parity generators (automated, locale-backed) ---
 fn parity_pick(key: &str) -> String {
-    crate::locale::fetch_locale(key, "en")
+    crate::locale::fetch_locale(key, &crate::config::FakerConfig::locale())
         .map(|v| crate::base::sample(&v))
         .unwrap_or_default()
 }

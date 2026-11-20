@@ -5,21 +5,21 @@ use crate::locale::fetch_locale;
 
 /// Generate a random DC Comics character
 pub fn hero() -> String {
-    fetch_locale("dc_comics.heroes", "en")
+    fetch_locale("dc_comics.heroes", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_HEROES).to_string())
 }
 
 /// Generate a random DC Comics villain
 pub fn villain() -> String {
-    fetch_locale("dc_comics.villains", "en")
+    fetch_locale("dc_comics.villains", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_VILLAINS).to_string())
 }
 
 /// Generate a random DC Comics title
 pub fn title() -> String {
-    fetch_locale("dc_comics.titles", "en")
+    fetch_locale("dc_comics.titles", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_TITLES).to_string())
 }
@@ -92,7 +92,7 @@ const FALLBACK_TITLES: &[&str] = &[
 
 // --- gem parity generators (automated, locale-backed) ---
 fn parity_pick(key: &str) -> String {
-    crate::locale::fetch_locale(key, "en")
+    crate::locale::fetch_locale(key, &crate::config::FakerConfig::locale())
         .map(|v| crate::base::sample(&v))
         .unwrap_or_default()
 }

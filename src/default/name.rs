@@ -14,30 +14,46 @@ pub fn name() -> String {
 
 /// Generate a random first name
 pub fn first_name() -> String {
-    fetch_locale_with_context("name.first_name", "en", Some("name"))
-        .map(|v| sample_with_resolve(&v, Some("name")))
-        .unwrap_or_else(|| sample(FALLBACK_FIRST_NAMES).to_string())
+    fetch_locale_with_context(
+        "name.first_name",
+        &crate::config::FakerConfig::locale(),
+        Some("name"),
+    )
+    .map(|v| sample_with_resolve(&v, Some("name")))
+    .unwrap_or_else(|| sample(FALLBACK_FIRST_NAMES).to_string())
 }
 
 /// Generate a random last name
 pub fn last_name() -> String {
-    fetch_locale_with_context("name.last_name", "en", Some("name"))
-        .map(|v| sample_with_resolve(&v, Some("name")))
-        .unwrap_or_else(|| sample(FALLBACK_LAST_NAMES).to_string())
+    fetch_locale_with_context(
+        "name.last_name",
+        &crate::config::FakerConfig::locale(),
+        Some("name"),
+    )
+    .map(|v| sample_with_resolve(&v, Some("name")))
+    .unwrap_or_else(|| sample(FALLBACK_LAST_NAMES).to_string())
 }
 
 /// Generate a random name prefix (Mr., Mrs., Ms., Dr., etc.)
 pub fn prefix() -> String {
-    fetch_locale_with_context("name.prefix", "en", Some("name"))
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_PREFIXES).to_string())
+    fetch_locale_with_context(
+        "name.prefix",
+        &crate::config::FakerConfig::locale(),
+        Some("name"),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_PREFIXES).to_string())
 }
 
 /// Generate a random name suffix (Jr., Sr., I, II, III, IV, etc.)
 pub fn suffix() -> String {
-    fetch_locale_with_context("name.suffix", "en", Some("name"))
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_SUFFIXES).to_string())
+    fetch_locale_with_context(
+        "name.suffix",
+        &crate::config::FakerConfig::locale(),
+        Some("name"),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_SUFFIXES).to_string())
 }
 
 /// Generate random initials
@@ -55,23 +71,35 @@ pub fn name_with_middle() -> String {
 
 /// Generate a random male first name
 pub fn male_first_name() -> String {
-    fetch_locale_with_context("name.male_first_name", "en", Some("name"))
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_MALE_FIRST_NAMES).to_string())
+    fetch_locale_with_context(
+        "name.male_first_name",
+        &crate::config::FakerConfig::locale(),
+        Some("name"),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_MALE_FIRST_NAMES).to_string())
 }
 
 /// Generate a random female first name
 pub fn female_first_name() -> String {
-    fetch_locale_with_context("name.female_first_name", "en", Some("name"))
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_FEMALE_FIRST_NAMES).to_string())
+    fetch_locale_with_context(
+        "name.female_first_name",
+        &crate::config::FakerConfig::locale(),
+        Some("name"),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_FEMALE_FIRST_NAMES).to_string())
 }
 
 /// Generate a random gender-neutral first name
 pub fn neutral_first_name() -> String {
-    fetch_locale_with_context("name.neutral_first_name", "en", Some("name"))
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_NEUTRAL_FIRST_NAMES).to_string())
+    fetch_locale_with_context(
+        "name.neutral_first_name",
+        &crate::config::FakerConfig::locale(),
+        Some("name"),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_NEUTRAL_FIRST_NAMES).to_string())
 }
 
 // Static fallback data - used when locale files are not available

@@ -9,18 +9,24 @@ use crate::locale::fetch_locale;
 /// Supported regions are `united_states` and `european_union`; sizes are
 /// `large`, `medium` and `small` (the EU locale has no `small` bucket).
 pub fn name(size: &str, region: &str) -> String {
-    fetch_locale(&format!("airport.{region}.{size}"), "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_NAMES).to_string())
+    fetch_locale(
+        &format!("airport.{region}.{size}"),
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_NAMES).to_string())
 }
 
 /// Gem-compatible generator: IATA code for `region` and `size`.
 ///
 /// Both arguments are required in `Faker::Travel::Airport.iata(size:, region:)`.
 pub fn iata(size: &str, region: &str) -> String {
-    fetch_locale(&format!("airport.{region}.iata_code.{size}"), "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(generate_iata_code)
+    fetch_locale(
+        &format!("airport.{region}.iata_code.{size}"),
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(generate_iata_code)
 }
 
 /// Generate a random airport name from the aggregate list.
@@ -28,7 +34,7 @@ pub fn iata(size: &str, region: &str) -> String {
 /// This is a Rust convenience helper; the gem only exposes [`name`] with
 /// explicit `size` and `region` arguments.
 pub fn name_any() -> String {
-    fetch_locale("airport.names", "en")
+    fetch_locale("airport.names", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_NAMES).to_string())
 }
@@ -48,7 +54,7 @@ pub fn icao_code() -> String {
 
 /// Generate a random city with airport
 pub fn city() -> String {
-    fetch_locale("airport.cities", "en")
+    fetch_locale("airport.cities", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_CITIES).to_string())
 }

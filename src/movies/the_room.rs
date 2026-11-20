@@ -5,14 +5,14 @@ use crate::locale::fetch_locale;
 
 /// Generate a random Room character
 pub fn character() -> String {
-    fetch_locale("the_room.characters", "en")
+    fetch_locale("the_room.characters", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_CHARACTERS).to_string())
 }
 
 /// Generate a random Room quote
 pub fn quote() -> String {
-    fetch_locale("the_room.quotes", "en")
+    fetch_locale("the_room.quotes", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_QUOTES).to_string())
 }
@@ -45,7 +45,7 @@ const FALLBACK_QUOTES: &[&str] = &[
 
 // --- gem parity generators (automated, locale-backed) ---
 fn parity_pick(key: &str) -> String {
-    crate::locale::fetch_locale(key, "en")
+    crate::locale::fetch_locale(key, &crate::config::FakerConfig::locale())
         .map(|v| crate::base::sample(&v))
         .unwrap_or_default()
 }

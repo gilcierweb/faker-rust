@@ -5,30 +5,42 @@ use crate::locale::fetch_locale;
 
 /// Generate a random FFXIV character
 pub fn character() -> String {
-    fetch_locale("games.final_fantasy_xiv.characters", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_CHARACTERS).to_string())
+    fetch_locale(
+        "games.final_fantasy_xiv.characters",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_CHARACTERS).to_string())
 }
 
 /// Generate a random FFXIV job/class
 pub fn job() -> String {
-    fetch_locale("games.final_fantasy_xiv.jobs", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_JOBS).to_string())
+    fetch_locale(
+        "games.final_fantasy_xiv.jobs",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_JOBS).to_string())
 }
 
 /// Generate a random FFXIV race
 pub fn race() -> String {
-    fetch_locale("games.final_fantasy_xiv.races", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_RACES).to_string())
+    fetch_locale(
+        "games.final_fantasy_xiv.races",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_RACES).to_string())
 }
 
 /// Generate a random FFXIV location
 pub fn location() -> String {
-    fetch_locale("games.final_fantasy_xiv.zones", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_LOCATIONS).to_string())
+    fetch_locale(
+        "games.final_fantasy_xiv.zones",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_LOCATIONS).to_string())
 }
 
 // Fallback data
@@ -100,7 +112,7 @@ const FALLBACK_LOCATIONS: &[&str] = &[
 
 // --- gem parity generators (automated, locale-backed) ---
 fn parity_pick(key: &str) -> String {
-    crate::locale::fetch_locale(key, "en")
+    crate::locale::fetch_locale(key, &crate::config::FakerConfig::locale())
         .map(|v| crate::base::sample(&v))
         .unwrap_or_default()
 }

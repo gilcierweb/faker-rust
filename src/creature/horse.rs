@@ -5,16 +5,19 @@ use crate::locale::fetch_locale;
 
 /// Generate a random horse name
 pub fn name() -> String {
-    fetch_locale("creature.horse.name", "en")
+    fetch_locale("creature.horse.name", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "Noir".to_string())
 }
 
 /// Generate a random horse breed
 pub fn breed() -> String {
-    fetch_locale("creature.horse.breed", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| "Arabian".to_string())
+    fetch_locale(
+        "creature.horse.breed",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| "Arabian".to_string())
 }
 
 #[cfg(test)]

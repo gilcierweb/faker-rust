@@ -77,9 +77,12 @@ pub fn imperial_weight() -> String {
 }
 // --- gem parity generators (dynamic locale keys) ---
 fn measurement(amount: usize, key: &str) -> String {
-    let unit = crate::locale::fetch_locale(&format!("measurement.{key}"), "en")
-        .map(|v| crate::base::sample(&v))
-        .unwrap_or_default();
+    let unit = crate::locale::fetch_locale(
+        &format!("measurement.{key}"),
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| crate::base::sample(&v))
+    .unwrap_or_default();
     let unit = if amount == 1 {
         unit
     } else {

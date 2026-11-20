@@ -5,30 +5,42 @@ use crate::locale::fetch_locale;
 
 /// Generate a random Sword Art Online character
 pub fn character() -> String {
-    fetch_locale("sword_art_online.characters", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_CHARACTERS).to_string())
+    fetch_locale(
+        "sword_art_online.characters",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_CHARACTERS).to_string())
 }
 
 /// Generate a random Sword Art Online game/world
 pub fn game() -> String {
-    fetch_locale("sword_art_online.games", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_GAMES).to_string())
+    fetch_locale(
+        "sword_art_online.games",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_GAMES).to_string())
 }
 
 /// Generate a random Sword Art Online location
 pub fn location() -> String {
-    fetch_locale("sword_art_online.locations", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_LOCATIONS).to_string())
+    fetch_locale(
+        "sword_art_online.locations",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_LOCATIONS).to_string())
 }
 
 /// Generate a random Sword Art Online sword skill
 pub fn skill() -> String {
-    fetch_locale("sword_art_online.skills", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_SKILLS).to_string())
+    fetch_locale(
+        "sword_art_online.skills",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_SKILLS).to_string())
 }
 
 // Fallback data
@@ -90,7 +102,7 @@ const FALLBACK_SKILLS: &[&str] = &[
 
 // --- gem parity generators (automated, locale-backed) ---
 fn parity_pick(key: &str) -> String {
-    crate::locale::fetch_locale(key, "en")
+    crate::locale::fetch_locale(key, &crate::config::FakerConfig::locale())
         .map(|v| crate::base::sample(&v))
         .unwrap_or_default()
 }

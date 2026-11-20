@@ -5,16 +5,22 @@ use crate::locale::fetch_locale;
 
 /// Generate a random Aqua Teen Hunger Force character
 pub fn character() -> String {
-    fetch_locale("aqua_teen_hunger_force.characters", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_CHARACTERS).to_string())
+    fetch_locale(
+        "aqua_teen_hunger_force.characters",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_CHARACTERS).to_string())
 }
 
 /// Generate a random Aqua Teen Hunger Force quote
 pub fn quote() -> String {
-    fetch_locale("aqua_teen_hunger_force.quotes", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_QUOTES).to_string())
+    fetch_locale(
+        "aqua_teen_hunger_force.quotes",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_QUOTES).to_string())
 }
 
 // Fallback data

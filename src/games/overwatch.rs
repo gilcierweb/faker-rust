@@ -5,23 +5,32 @@ use crate::locale::fetch_locale;
 
 /// Generate a random Overwatch hero
 pub fn hero() -> String {
-    fetch_locale("games.overwatch.heroes", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| "Tracer".to_string())
+    fetch_locale(
+        "games.overwatch.heroes",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| "Tracer".to_string())
 }
 
 /// Generate a random Overwatch location
 pub fn location() -> String {
-    fetch_locale("games.overwatch.locations", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| "Hanamura".to_string())
+    fetch_locale(
+        "games.overwatch.locations",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| "Hanamura".to_string())
 }
 
 /// Generate a random Overwatch quote
 pub fn quote() -> String {
-    fetch_locale("games.overwatch.quotes", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| "Cheers, love! The cavalry's here!".to_string())
+    fetch_locale(
+        "games.overwatch.quotes",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| "Cheers, love! The cavalry's here!".to_string())
 }
 
 #[cfg(test)]

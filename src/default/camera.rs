@@ -5,23 +5,26 @@ use crate::locale::fetch_locale;
 
 /// Generate a random camera brand
 pub fn brand() -> String {
-    fetch_locale("camera.brand", "en")
+    fetch_locale("camera.brand", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "Canon".to_string())
 }
 
 /// Generate a random camera model
 pub fn model() -> String {
-    fetch_locale("camera.model", "en")
+    fetch_locale("camera.model", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "EOS 5D Mark IV".to_string())
 }
 
 /// Generate a random camera brand with model
 pub fn brand_with_model() -> String {
-    fetch_locale("camera.brand_with_model", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| format!("{} {}", brand(), model()))
+    fetch_locale(
+        "camera.brand_with_model",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| format!("{} {}", brand(), model()))
 }
 
 #[cfg(test)]

@@ -6,7 +6,11 @@ use crate::locale::fetch_locale_with_context;
 const CONTEXT: &str = "tolkien";
 
 fn values(key: &str) -> Option<Vec<String>> {
-    fetch_locale_with_context(&format!("tolkien.{key}"), "en", Some(CONTEXT))
+    fetch_locale_with_context(
+        &format!("tolkien.{key}"),
+        &crate::config::FakerConfig::locale(),
+        Some(CONTEXT),
+    )
 }
 
 /// A random Tolkien race (Elves, Dwarves, Hobbits, ...).

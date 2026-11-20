@@ -5,44 +5,50 @@ use crate::locale::fetch_locale;
 
 /// Generate a random verb
 pub fn verb() -> String {
-    fetch_locale("verb.verbs", "en")
+    fetch_locale("verb.verbs", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_VERBS).to_string())
 }
 
 /// Generate a random past tense verb
 pub fn past() -> String {
-    fetch_locale("verbs.past", "en")
+    fetch_locale("verbs.past", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_PASTS).to_string())
 }
 
 /// Generate a random present participle
 pub fn ing_form() -> String {
-    fetch_locale("verbs.ing_form", "en")
+    fetch_locale("verbs.ing_form", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_ING).to_string())
 }
 
 /// Gem-compatible generator: the base form of a random verb.
 pub fn base() -> String {
-    fetch_locale("verbs.base", "en")
+    fetch_locale("verbs.base", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_VERBS).to_string())
 }
 
 /// Gem-compatible generator: the past participle of a random verb.
 pub fn past_participle() -> String {
-    fetch_locale("verbs.past_participle", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_PASTS).to_string())
+    fetch_locale(
+        "verbs.past_participle",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_PASTS).to_string())
 }
 
 /// Gem-compatible generator: the simple present of a random verb.
 pub fn simple_present() -> String {
-    fetch_locale("verbs.simple_present", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_ING).to_string())
+    fetch_locale(
+        "verbs.simple_present",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_ING).to_string())
 }
 
 // Fallback data

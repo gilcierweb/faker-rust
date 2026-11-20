@@ -71,7 +71,8 @@ pub fn rust() -> String {
 // --- gem parity generators (algorithmic) ---
 
 fn lorem_pool() -> Vec<String> {
-    crate::locale::fetch_locale("lorem.words", "en").unwrap_or_else(|| vec!["lorem".to_string()])
+    crate::locale::fetch_locale("lorem.words", &crate::config::FakerConfig::locale())
+        .unwrap_or_else(|| vec!["lorem".to_string()])
 }
 
 fn unique_words(count: usize) -> Vec<String> {

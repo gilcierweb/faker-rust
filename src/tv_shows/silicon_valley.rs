@@ -5,58 +5,76 @@ use crate::locale::fetch_locale;
 
 /// Generate a random Silicon Valley character
 pub fn character() -> String {
-    fetch_locale("silicon_valley.characters", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| "Richard Hendricks".to_string())
+    fetch_locale(
+        "silicon_valley.characters",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| "Richard Hendricks".to_string())
 }
 
 /// Generate a random Silicon Valley company
 pub fn company() -> String {
-    fetch_locale("silicon_valley.companies", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| "Pied Piper".to_string())
+    fetch_locale(
+        "silicon_valley.companies",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| "Pied Piper".to_string())
 }
 
 /// Generate a random Silicon Valley quote
 pub fn quote() -> String {
-    fetch_locale("silicon_valley.quotes", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| "I'm a pivot!".to_string())
+    fetch_locale(
+        "silicon_valley.quotes",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| "I'm a pivot!".to_string())
 }
 
 /// Generate a random Silicon Valley app
 pub fn app() -> String {
-    fetch_locale("silicon_valley.apps", "en")
+    fetch_locale("silicon_valley.apps", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "Not Hotdog".to_string())
 }
 
 /// Generate a random Silicon Valley invention
 pub fn invention() -> String {
-    fetch_locale("silicon_valley.inventions", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| "The Box".to_string())
+    fetch_locale(
+        "silicon_valley.inventions",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| "The Box".to_string())
 }
 
 /// Generate a random Silicon Valley motto
 pub fn motto() -> String {
-    fetch_locale("silicon_valley.mottos", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| "Making the world a better place".to_string())
+    fetch_locale(
+        "silicon_valley.mottos",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| "Making the world a better place".to_string())
 }
 
 /// Generate a random Silicon Valley URL
 pub fn url() -> String {
-    fetch_locale("silicon_valley.urls", "en")
+    fetch_locale("silicon_valley.urls", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "http://www.piedpiper.com".to_string())
 }
 
 /// Generate a random Silicon Valley email
 pub fn email() -> String {
-    fetch_locale("silicon_valley.email", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| "richard@piedpiper.com".to_string())
+    fetch_locale(
+        "silicon_valley.email",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| "richard@piedpiper.com".to_string())
 }
 
 #[cfg(test)]

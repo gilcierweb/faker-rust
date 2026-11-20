@@ -5,21 +5,24 @@ use crate::locale::fetch_locale;
 
 /// Generate a random The IT Crowd character
 pub fn character() -> String {
-    fetch_locale("the_it_crowd.characters", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_CHARACTERS).to_string())
+    fetch_locale(
+        "the_it_crowd.characters",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_CHARACTERS).to_string())
 }
 
 /// Generate a random The IT Crowd quote
 pub fn quote() -> String {
-    fetch_locale("the_it_crowd.quotes", "en")
+    fetch_locale("the_it_crowd.quotes", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_QUOTES).to_string())
 }
 
 /// Generate a random The IT Crowd email
 pub fn email() -> String {
-    fetch_locale("the_it_crowd.emails", "en")
+    fetch_locale("the_it_crowd.emails", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_EMAILS).to_string())
 }
@@ -57,7 +60,7 @@ const FALLBACK_EMAILS: &[&str] = &[
 
 // --- gem parity generators (automated, locale-backed) ---
 fn parity_pick(key: &str) -> String {
-    crate::locale::fetch_locale(key, "en")
+    crate::locale::fetch_locale(key, &crate::config::FakerConfig::locale())
         .map(|v| crate::base::sample(&v))
         .unwrap_or_default()
 }

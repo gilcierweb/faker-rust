@@ -5,21 +5,21 @@ use crate::locale::fetch_locale;
 
 /// Generate a random Friends character
 pub fn character() -> String {
-    fetch_locale("friends.characters", "en")
+    fetch_locale("friends.characters", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_CHARACTERS).to_string())
 }
 
 /// Generate a random Friends quote
 pub fn quote() -> String {
-    fetch_locale("friends.quotes", "en")
+    fetch_locale("friends.quotes", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_QUOTES).to_string())
 }
 
 /// Generate a random Friends location
 pub fn location() -> String {
-    fetch_locale("friends.locations", "en")
+    fetch_locale("friends.locations", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_LOCATIONS).to_string())
 }

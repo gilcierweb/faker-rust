@@ -5,30 +5,42 @@ use crate::locale::fetch_locale;
 
 /// Generate a random World of Warcraft hero
 pub fn hero() -> String {
-    fetch_locale("games.world_of_warcraft.heros", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| "Thrall".to_string())
+    fetch_locale(
+        "games.world_of_warcraft.heros",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| "Thrall".to_string())
 }
 
 /// Generate a random World of Warcraft quote
 pub fn quote() -> String {
-    fetch_locale("games.world_of_warcraft.quotes", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| "For the Horde!".to_string())
+    fetch_locale(
+        "games.world_of_warcraft.quotes",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| "For the Horde!".to_string())
 }
 
 /// Generate a random World of Warcraft class name
 pub fn class_name() -> String {
-    fetch_locale("games.world_of_warcraft.class_names", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| "Paladin".to_string())
+    fetch_locale(
+        "games.world_of_warcraft.class_names",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| "Paladin".to_string())
 }
 
 /// Generate a random World of Warcraft race
 pub fn race() -> String {
-    fetch_locale("games.world_of_warcraft.races", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| "Orc".to_string())
+    fetch_locale(
+        "games.world_of_warcraft.races",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| "Orc".to_string())
 }
 
 #[cfg(test)]

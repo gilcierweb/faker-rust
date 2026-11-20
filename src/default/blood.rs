@@ -5,14 +5,14 @@ use crate::locale::fetch_locale;
 
 /// Generate a random blood type (A, B, AB, O)
 pub fn type_name() -> String {
-    fetch_locale("blood.type", "en")
+    fetch_locale("blood.type", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "O".to_string())
 }
 
 /// Generate a random Rh factor (+, -)
 pub fn rh_factor() -> String {
-    fetch_locale("blood.rh_factor", "en")
+    fetch_locale("blood.rh_factor", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "+".to_string())
 }
@@ -24,7 +24,7 @@ pub fn group() -> String {
 
 // --- gem parity generators (automated, locale-backed) ---
 fn parity_pick(key: &str) -> String {
-    crate::locale::fetch_locale(key, "en")
+    crate::locale::fetch_locale(key, &crate::config::FakerConfig::locale())
         .map(|v| crate::base::sample(&v))
         .unwrap_or_default()
 }

@@ -9,16 +9,24 @@ const CONTEXT: &str = "stranger_thing";
 
 /// Generate a random Stranger Things character
 pub fn character() -> String {
-    fetch_locale_with_context("stranger_things.character", "en", Some(CONTEXT))
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| "Eleven".to_string())
+    fetch_locale_with_context(
+        "stranger_things.character",
+        &crate::config::FakerConfig::locale(),
+        Some(CONTEXT),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| "Eleven".to_string())
 }
 
 /// Generate a random Stranger Things quote
 pub fn quote() -> String {
-    fetch_locale_with_context("stranger_things.quote", "en", Some(CONTEXT))
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| "Friends don't lie.".to_string())
+    fetch_locale_with_context(
+        "stranger_things.quote",
+        &crate::config::FakerConfig::locale(),
+        Some(CONTEXT),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| "Friends don't lie.".to_string())
 }
 
 #[cfg(test)]

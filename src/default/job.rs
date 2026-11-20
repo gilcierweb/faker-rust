@@ -5,21 +5,21 @@ use crate::locale::fetch_locale;
 
 /// Generate a random job field
 pub fn field() -> String {
-    fetch_locale("job.field", "en")
+    fetch_locale("job.field", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "Technology".to_string())
 }
 
 /// Generate a random job seniority level
 pub fn seniority() -> String {
-    fetch_locale("job.seniority", "en")
+    fetch_locale("job.seniority", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "Senior".to_string())
 }
 
 /// Generate a random job position
 pub fn position() -> String {
-    fetch_locale("job.position", "en")
+    fetch_locale("job.position", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "Manager".to_string())
 }
@@ -38,21 +38,21 @@ pub fn title() -> String {
 
 /// Generate a random key skill
 pub fn key_skill() -> String {
-    fetch_locale("job.key_skill", "en")
+    fetch_locale("job.key_skill", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "Communication".to_string())
 }
 
 /// Gem-compatible generator: an education level from the locale data.
 pub fn education_level() -> String {
-    fetch_locale("job.education_level", "en")
+    fetch_locale("job.education_level", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_default()
 }
 
 /// Gem-compatible generator: an employment type from the locale data.
 pub fn employment_type() -> String {
-    fetch_locale("job.employment_type", "en")
+    fetch_locale("job.employment_type", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_default()
 }

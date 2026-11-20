@@ -5,14 +5,14 @@ use crate::locale::fetch_locale;
 
 /// Generate a random house furniture
 pub fn furniture() -> String {
-    fetch_locale("house.furniture", "en")
+    fetch_locale("house.furniture", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_FURNITURE).to_string())
 }
 
 /// Generate a random house room
 pub fn room() -> String {
-    fetch_locale("house.rooms", "en")
+    fetch_locale("house.rooms", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_ROOMS).to_string())
 }

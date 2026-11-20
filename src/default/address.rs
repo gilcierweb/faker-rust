@@ -10,35 +10,55 @@ pub use self::zip_code as zip;
 
 /// Generate a random city name
 pub fn city() -> String {
-    fetch_locale_with_context("address.city", "en", Some("address"))
-        .map(|v| sample_with_resolve(&v, Some("address")))
-        .unwrap_or_else(|| sample(FALLBACK_CITIES).to_string())
+    fetch_locale_with_context(
+        "address.city",
+        &crate::config::FakerConfig::locale(),
+        Some("address"),
+    )
+    .map(|v| sample_with_resolve(&v, Some("address")))
+    .unwrap_or_else(|| sample(FALLBACK_CITIES).to_string())
 }
 
 /// Generate a random street name
 pub fn street_name() -> String {
-    let prefix = fetch_locale_with_context("address.street_prefix", "en", Some("address"))
-        .map(|v| sample_with_resolve(&v, Some("address")))
-        .unwrap_or_else(|| sample(FALLBACK_STREET_PREFIXES).to_string());
-    let suffix = fetch_locale_with_context("address.street_suffix", "en", Some("address"))
-        .map(|v| sample_with_resolve(&v, Some("address")))
-        .unwrap_or_else(|| sample(FALLBACK_STREET_SUFFIXES).to_string());
+    let prefix = fetch_locale_with_context(
+        "address.street_prefix",
+        &crate::config::FakerConfig::locale(),
+        Some("address"),
+    )
+    .map(|v| sample_with_resolve(&v, Some("address")))
+    .unwrap_or_else(|| sample(FALLBACK_STREET_PREFIXES).to_string());
+    let suffix = fetch_locale_with_context(
+        "address.street_suffix",
+        &crate::config::FakerConfig::locale(),
+        Some("address"),
+    )
+    .map(|v| sample_with_resolve(&v, Some("address")))
+    .unwrap_or_else(|| sample(FALLBACK_STREET_SUFFIXES).to_string());
     format!("{} {}", prefix, suffix)
 }
 
 /// Generate a random street address
 pub fn street_address() -> String {
-    let num = fetch_locale_with_context("address.street_number", "en", Some("address"))
-        .map(|v| sample_with_resolve(&v, Some("address")))
-        .unwrap_or_else(|| sample(FALLBACK_STREET_NUMBERS).to_string());
+    let num = fetch_locale_with_context(
+        "address.street_number",
+        &crate::config::FakerConfig::locale(),
+        Some("address"),
+    )
+    .map(|v| sample_with_resolve(&v, Some("address")))
+    .unwrap_or_else(|| sample(FALLBACK_STREET_NUMBERS).to_string());
     format!("{} {}", num, street_name())
 }
 
 /// Generate a random secondary address
 pub fn secondary_address() -> String {
-    let pattern = fetch_locale_with_context("address.secondary_address", "en", Some("address"))
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| "Apt. ###".to_string());
+    let pattern = fetch_locale_with_context(
+        "address.secondary_address",
+        &crate::config::FakerConfig::locale(),
+        Some("address"),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| "Apt. ###".to_string());
     bothify(&pattern)
 }
 
@@ -54,9 +74,13 @@ pub fn zip_code_with_extension() -> String {
 
 /// Generate a random country name
 pub fn country() -> String {
-    fetch_locale_with_context("address.country", "en", Some("address"))
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_COUNTRIES).to_string())
+    fetch_locale_with_context(
+        "address.country",
+        &crate::config::FakerConfig::locale(),
+        Some("address"),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_COUNTRIES).to_string())
 }
 
 /// Generate a random country code
@@ -83,9 +107,13 @@ pub fn full_address() -> String {
 
 fn city_state_zip() -> String {
     let city_val = city();
-    let state = fetch_locale_with_context("address.state", "en", Some("address"))
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| "CA".to_string());
+    let state = fetch_locale_with_context(
+        "address.state",
+        &crate::config::FakerConfig::locale(),
+        Some("address"),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| "CA".to_string());
     format!("{}, {} {}", city_val, state, zip_code())
 }
 
@@ -184,7 +212,7 @@ const FALLBACK_TIME_ZONES: &[&str] = &[
 
 // --- gem parity generators (automated, locale-backed) ---
 fn parity_pick(key: &str) -> String {
-    crate::locale::fetch_locale(key, "en")
+    crate::locale::fetch_locale(key, &crate::config::FakerConfig::locale())
         .map(|v| crate::base::sample(&v))
         .unwrap_or_default()
 }
@@ -236,15 +264,21 @@ pub fn street_suffix() -> String {
 // --- gem parity generators (dynamic locale keys) ---
 /// Gem-compatible generator: country name for an ISO code.
 pub fn country_by_code(code: &str) -> String {
-    crate::locale::fetch_locale(&format!("address.country_by_code.{code}"), "en")
-        .map(|v| crate::base::sample(&v))
-        .unwrap_or_default()
+    crate::locale::fetch_locale(
+        &format!("address.country_by_code.{code}"),
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| crate::base::sample(&v))
+    .unwrap_or_default()
 }
 /// Gem-compatible generator: ISO code for a country name.
 pub fn country_name_to_code(name: &str) -> String {
-    crate::locale::fetch_locale(&format!("address.country_by_name.{name}"), "en")
-        .map(|v| crate::base::sample(&v))
-        .unwrap_or_default()
+    crate::locale::fetch_locale(
+        &format!("address.country_by_name.{name}"),
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| crate::base::sample(&v))
+    .unwrap_or_default()
 }
 /// Gem-compatible generator: address parts keyed by their attribute names.
 ///

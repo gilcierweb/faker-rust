@@ -10,25 +10,37 @@ const KEY: &str = "the_fresh_prince_of_bel_air";
 
 /// Generate a random Fresh Prince character
 pub fn character() -> String {
-    fetch_locale_with_context(&format!("{KEY}.characters"), "en", Some(CONTEXT))
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| "Will Smith".to_string())
+    fetch_locale_with_context(
+        &format!("{KEY}.characters"),
+        &crate::config::FakerConfig::locale(),
+        Some(CONTEXT),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| "Will Smith".to_string())
 }
 
 /// Generate a random Fresh Prince actor
 pub fn actor() -> String {
-    fetch_locale_with_context(&format!("{KEY}.actors"), "en", Some(CONTEXT))
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| "Will Smith".to_string())
+    fetch_locale_with_context(
+        &format!("{KEY}.actors"),
+        &crate::config::FakerConfig::locale(),
+        Some(CONTEXT),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| "Will Smith".to_string())
 }
 
 /// Generate a random Fresh Prince quote
 pub fn quote() -> String {
-    fetch_locale_with_context(&format!("{KEY}.quotes"), "en", Some(CONTEXT))
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| {
-            "Now this is a story all about how my life got flipped-turned upside down.".to_string()
-        })
+    fetch_locale_with_context(
+        &format!("{KEY}.quotes"),
+        &crate::config::FakerConfig::locale(),
+        Some(CONTEXT),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| {
+        "Now this is a story all about how my life got flipped-turned upside down.".to_string()
+    })
 }
 
 #[cfg(test)]

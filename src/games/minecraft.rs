@@ -5,23 +5,35 @@ use crate::locale::{fetch_locale_with_context, sample_with_resolve};
 
 /// Generate a random Minecraft item
 pub fn item() -> String {
-    fetch_locale_with_context("games.minecraft.items", "en", Some("games.minecraft"))
-        .map(|v| sample_with_resolve(&v, Some("games.minecraft")))
-        .unwrap_or_else(|| sample(FALLBACK_MINECRAFT_ITEMS).to_string())
+    fetch_locale_with_context(
+        "games.minecraft.items",
+        &crate::config::FakerConfig::locale(),
+        Some("games.minecraft"),
+    )
+    .map(|v| sample_with_resolve(&v, Some("games.minecraft")))
+    .unwrap_or_else(|| sample(FALLBACK_MINECRAFT_ITEMS).to_string())
 }
 
 /// Generate a random Minecraft block
 pub fn block() -> String {
-    fetch_locale_with_context("games.minecraft.blocks", "en", Some("games.minecraft"))
-        .map(|v| sample_with_resolve(&v, Some("games.minecraft")))
-        .unwrap_or_else(|| sample(&["Stone", "Dirt", "Grass Block"]).to_string())
+    fetch_locale_with_context(
+        "games.minecraft.blocks",
+        &crate::config::FakerConfig::locale(),
+        Some("games.minecraft"),
+    )
+    .map(|v| sample_with_resolve(&v, Some("games.minecraft")))
+    .unwrap_or_else(|| sample(&["Stone", "Dirt", "Grass Block"]).to_string())
 }
 
 /// Generate a random Minecraft biome
 pub fn biome() -> String {
-    fetch_locale_with_context("games.minecraft.biome", "en", Some("games.minecraft"))
-        .map(|v| sample_with_resolve(&v, Some("games.minecraft")))
-        .unwrap_or_else(|| sample(&["Plains", "Forest", "Desert"]).to_string())
+    fetch_locale_with_context(
+        "games.minecraft.biome",
+        &crate::config::FakerConfig::locale(),
+        Some("games.minecraft"),
+    )
+    .map(|v| sample_with_resolve(&v, Some("games.minecraft")))
+    .unwrap_or_else(|| sample(&["Plains", "Forest", "Desert"]).to_string())
 }
 
 const FALLBACK_MINECRAFT_ITEMS: &[&str] = &[
@@ -34,7 +46,7 @@ const FALLBACK_MINECRAFT_ITEMS: &[&str] = &[
 
 // --- gem parity generators (automated, locale-backed) ---
 fn parity_pick(key: &str) -> String {
-    crate::locale::fetch_locale(key, "en")
+    crate::locale::fetch_locale(key, &crate::config::FakerConfig::locale())
         .map(|v| crate::base::sample(&v))
         .unwrap_or_default()
 }

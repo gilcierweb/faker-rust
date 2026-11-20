@@ -5,51 +5,72 @@ use crate::locale::fetch_locale;
 
 /// Generate a random Elder Scrolls race
 pub fn race() -> String {
-    fetch_locale("games.elder_scrolls.race", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| "Nord".to_string())
+    fetch_locale(
+        "games.elder_scrolls.race",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| "Nord".to_string())
 }
 
 /// Generate a random Elder Scrolls creature
 pub fn creature() -> String {
-    fetch_locale("games.elder_scrolls.creature", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| "Mudcrab".to_string())
+    fetch_locale(
+        "games.elder_scrolls.creature",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| "Mudcrab".to_string())
 }
 
 /// Generate a random Elder Scrolls region
 pub fn region() -> String {
-    fetch_locale("games.elder_scrolls.region", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| "Skyrim".to_string())
+    fetch_locale(
+        "games.elder_scrolls.region",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| "Skyrim".to_string())
 }
 
 /// Generate a random Elder Scrolls dragon
 pub fn dragon() -> String {
-    fetch_locale("games.elder_scrolls.dragon", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| "Alduin".to_string())
+    fetch_locale(
+        "games.elder_scrolls.dragon",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| "Alduin".to_string())
 }
 
 /// Generate a random Elder Scrolls city
 pub fn city() -> String {
-    fetch_locale("games.elder_scrolls.city", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| "Whiterun".to_string())
+    fetch_locale(
+        "games.elder_scrolls.city",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| "Whiterun".to_string())
 }
 
 /// Generate a random Elder Scrolls first name
 pub fn first_name() -> String {
-    fetch_locale("games.elder_scrolls.first_name", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| "Ulfric".to_string())
+    fetch_locale(
+        "games.elder_scrolls.first_name",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| "Ulfric".to_string())
 }
 
 /// Generate a random Elder Scrolls last name
 pub fn last_name() -> String {
-    fetch_locale("games.elder_scrolls.last_name", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| "Stormcloak".to_string())
+    fetch_locale(
+        "games.elder_scrolls.last_name",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| "Stormcloak".to_string())
 }
 
 /// Generate a random Elder Scrolls full name
@@ -59,16 +80,22 @@ pub fn name() -> String {
 
 /// Generate a random Elder Scrolls weapon
 pub fn weapon() -> String {
-    fetch_locale("games.elder_scrolls.weapon", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| "Iron Sword".to_string())
+    fetch_locale(
+        "games.elder_scrolls.weapon",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| "Iron Sword".to_string())
 }
 
 /// Generate a random Elder Scrolls jewelry
 pub fn jewelry() -> String {
-    fetch_locale("games.elder_scrolls.jewelry", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| "Amulet of Mara".to_string())
+    fetch_locale(
+        "games.elder_scrolls.jewelry",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| "Amulet of Mara".to_string())
 }
 
 #[cfg(test)]

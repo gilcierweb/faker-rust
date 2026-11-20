@@ -5,9 +5,13 @@ use crate::locale::{fetch_locale_with_context, sample_with_resolve};
 
 /// Generate a random cryptocurrency coin (e.g. "Bitcoin")
 pub fn coin() -> String {
-    fetch_locale_with_context("crypto_coin.coin", "en", Some("crypto_coin"))
-        .map(|v| sample_with_resolve(&v, Some("crypto_coin")))
-        .unwrap_or_else(|| sample(FALLBACK_COINS).to_string())
+    fetch_locale_with_context(
+        "crypto_coin.coin",
+        &crate::config::FakerConfig::locale(),
+        Some("crypto_coin"),
+    )
+    .map(|v| sample_with_resolve(&v, Some("crypto_coin")))
+    .unwrap_or_else(|| sample(FALLBACK_COINS).to_string())
 }
 
 /// Generate a random cryptocurrency name (e.g. "Bitcoin")
@@ -17,9 +21,13 @@ pub fn name() -> String {
 
 /// Generate a random cryptocurrency symbol (e.g. "BTC")
 pub fn symbol() -> String {
-    fetch_locale_with_context("crypto_coin.symbol", "en", Some("crypto_coin"))
-        .map(|v| sample_with_resolve(&v, Some("crypto_coin")))
-        .unwrap_or_else(|| sample(FALLBACK_SYMBOLS).to_string())
+    fetch_locale_with_context(
+        "crypto_coin.symbol",
+        &crate::config::FakerConfig::locale(),
+        Some("crypto_coin"),
+    )
+    .map(|v| sample_with_resolve(&v, Some("crypto_coin")))
+    .unwrap_or_else(|| sample(FALLBACK_SYMBOLS).to_string())
 }
 
 // Fallback data (shared with the `crypto_coin` compatibility module)

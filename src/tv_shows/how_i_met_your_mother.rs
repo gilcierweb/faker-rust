@@ -5,23 +5,32 @@ use crate::locale::fetch_locale;
 
 /// Generate a random HIMYM character
 pub fn character() -> String {
-    fetch_locale("how_i_met_your_mother.characters", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_CHARACTERS).to_string())
+    fetch_locale(
+        "how_i_met_your_mother.characters",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_CHARACTERS).to_string())
 }
 
 /// Generate a random HIMYM catchphrase
 pub fn catch_phrase() -> String {
-    fetch_locale("how_i_met_your_mother.catch_phrases", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_CATCH_PHRASES).to_string())
+    fetch_locale(
+        "how_i_met_your_mother.catch_phrases",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_CATCH_PHRASES).to_string())
 }
 
 /// Generate a random HIMYM quote
 pub fn high_five() -> String {
-    fetch_locale("how_i_met_your_mother.high_fives", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_HIGH_FIVES).to_string())
+    fetch_locale(
+        "how_i_met_your_mother.high_fives",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_HIGH_FIVES).to_string())
 }
 
 // Fallback data
@@ -66,7 +75,7 @@ const FALLBACK_HIGH_FIVES: &[&str] = &[
 
 // --- gem parity generators (automated, locale-backed) ---
 fn parity_pick(key: &str) -> String {
-    crate::locale::fetch_locale(key, "en")
+    crate::locale::fetch_locale(key, &crate::config::FakerConfig::locale())
         .map(|v| crate::base::sample(&v))
         .unwrap_or_default()
 }

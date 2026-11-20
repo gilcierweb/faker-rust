@@ -5,35 +5,35 @@ use crate::locale::fetch_locale;
 
 /// Generate a random esports player
 pub fn player() -> String {
-    fetch_locale("esport.players", "en")
+    fetch_locale("esport.players", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_PLAYERS).to_string())
 }
 
 /// Generate a random esports team
 pub fn team() -> String {
-    fetch_locale("esport.teams", "en")
+    fetch_locale("esport.teams", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_TEAMS).to_string())
 }
 
 /// Generate a random esports event
 pub fn event() -> String {
-    fetch_locale("esport.events", "en")
+    fetch_locale("esport.events", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_EVENTS).to_string())
 }
 
 /// Generate a random esports league
 pub fn league() -> String {
-    fetch_locale("esport.leagues", "en")
+    fetch_locale("esport.leagues", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_LEAGUES).to_string())
 }
 
 /// Generate a random esports game
 pub fn game() -> String {
-    fetch_locale("esport.games", "en")
+    fetch_locale("esport.games", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_GAMES).to_string())
 }

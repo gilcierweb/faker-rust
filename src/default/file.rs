@@ -5,16 +5,24 @@ use crate::locale::{fetch_locale_with_context, sample_with_resolve};
 
 /// Generate a random file extension (e.g. "pdf")
 pub fn extension() -> String {
-    fetch_locale_with_context("file.extension", "en", Some("file"))
-        .map(|v| sample_with_resolve(&v, Some("file")))
-        .unwrap_or_else(|| sample(FALLBACK_EXTENSIONS).to_string())
+    fetch_locale_with_context(
+        "file.extension",
+        &crate::config::FakerConfig::locale(),
+        Some("file"),
+    )
+    .map(|v| sample_with_resolve(&v, Some("file")))
+    .unwrap_or_else(|| sample(FALLBACK_EXTENSIONS).to_string())
 }
 
 /// Generate a random mime type (e.g. "application/pdf")
 pub fn mime_type() -> String {
-    fetch_locale_with_context("file.mime_type", "en", Some("file"))
-        .map(|v| sample_with_resolve(&v, Some("file")))
-        .unwrap_or_else(|| sample(FALLBACK_MIME_TYPES).to_string())
+    fetch_locale_with_context(
+        "file.mime_type",
+        &crate::config::FakerConfig::locale(),
+        Some("file"),
+    )
+    .map(|v| sample_with_resolve(&v, Some("file")))
+    .unwrap_or_else(|| sample(FALLBACK_MIME_TYPES).to_string())
 }
 
 /// Generate a random file name

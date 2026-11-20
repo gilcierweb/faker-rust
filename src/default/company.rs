@@ -7,7 +7,7 @@ use crate::locale::{fetch_locale, sample_with_resolve};
 
 /// Generate a random company name
 pub fn name() -> String {
-    let prefix = fetch_locale("company.name", "en")
+    let prefix = fetch_locale("company.name", &crate::config::FakerConfig::locale())
         .map(|v| sample_with_resolve(&v, Some("company")))
         .unwrap_or_else(|| {
             format!(
@@ -21,7 +21,7 @@ pub fn name() -> String {
     if prefix.contains(' ') || prefix.len() > 20 {
         prefix
     } else {
-        let suffix = fetch_locale("company.suffix", "en")
+        let suffix = fetch_locale("company.suffix", &crate::config::FakerConfig::locale())
             .map(|v| sample_with_resolve(&v, Some("company")))
             .unwrap_or_else(|| "Inc".to_string());
         format!("{} {}", prefix, suffix)
@@ -30,14 +30,14 @@ pub fn name() -> String {
 
 /// Generate a random company suffix (Inc, LLC, etc.)
 pub fn suffix() -> String {
-    fetch_locale("company.suffix", "en")
+    fetch_locale("company.suffix", &crate::config::FakerConfig::locale())
         .map(|v| sample_with_resolve(&v, Some("company")))
         .unwrap_or_else(|| "Inc".to_string())
 }
 
 /// Generate a random company industry
 pub fn industry() -> String {
-    fetch_locale("company.industry", "en")
+    fetch_locale("company.industry", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "Technology".to_string())
 }
@@ -46,7 +46,7 @@ pub fn industry() -> String {
 pub fn catch_phrase() -> String {
     let config = FakerConfig::current();
 
-    fetch_locale("company.buzzwords", "en")
+    fetch_locale("company.buzzwords", &crate::config::FakerConfig::locale())
         .map(|v| {
             let all: Vec<String> = v
                 .iter()
@@ -78,7 +78,7 @@ pub fn catch_phrase() -> String {
 
 /// Generate a single random buzzword
 pub fn buzzword() -> String {
-    fetch_locale("company.buzzwords", "en")
+    fetch_locale("company.buzzwords", &crate::config::FakerConfig::locale())
         .map(|v| {
             let all: Vec<String> = v
                 .iter()
@@ -91,7 +91,7 @@ pub fn buzzword() -> String {
 
 /// Generate company BS (three random words)
 pub fn bs() -> String {
-    fetch_locale("company.bs", "en")
+    fetch_locale("company.bs", &crate::config::FakerConfig::locale())
         .map(|v| {
             let parts: Vec<String> = v
                 .iter()
@@ -151,21 +151,21 @@ pub fn logo() -> String {
 
 /// Generate a company type
 pub fn company_type() -> String {
-    fetch_locale("company.type", "en")
+    fetch_locale("company.type", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_COMPANY_TYPES).to_string())
 }
 
 /// Generate a company profession
 pub fn profession() -> String {
-    fetch_locale("company.profession", "en")
+    fetch_locale("company.profession", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_PROFESSIONS).to_string())
 }
 
 /// Generate a company department
 pub fn department() -> String {
-    fetch_locale("company.department", "en")
+    fetch_locale("company.department", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_DEPARTMENTS).to_string())
 }
@@ -317,7 +317,7 @@ const FALLBACK_BUZZWORDS: &[&str] = &[
 
 // --- gem parity generators (automated, locale-backed) ---
 fn parity_pick(key: &str) -> String {
-    crate::locale::fetch_locale(key, "en")
+    crate::locale::fetch_locale(key, &crate::config::FakerConfig::locale())
         .map(|v| crate::base::sample(&v))
         .unwrap_or_default()
 }

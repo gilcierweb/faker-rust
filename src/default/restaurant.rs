@@ -5,21 +5,21 @@ use crate::locale::fetch_locale;
 
 /// Generate a random restaurant name
 pub fn name() -> String {
-    fetch_locale("restaurant.names", "en")
+    fetch_locale("restaurant.names", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_NAMES).to_string())
 }
 
 /// Generate a random restaurant type/cuisine
 pub fn r#type() -> String {
-    fetch_locale("restaurant.types", "en")
+    fetch_locale("restaurant.types", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_TYPES).to_string())
 }
 
 /// Generate a random restaurant review
 pub fn review() -> String {
-    fetch_locale("restaurant.reviews", "en")
+    fetch_locale("restaurant.reviews", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_REVIEWS).to_string())
 }
@@ -72,7 +72,7 @@ const FALLBACK_REVIEWS: &[&str] = &[
 
 // --- gem parity generators (automated, locale-backed) ---
 fn parity_pick(key: &str) -> String {
-    crate::locale::fetch_locale(key, "en")
+    crate::locale::fetch_locale(key, &crate::config::FakerConfig::locale())
         .map(|v| crate::base::sample(&v))
         .unwrap_or_default()
 }

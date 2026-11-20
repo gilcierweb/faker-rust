@@ -5,37 +5,52 @@ use crate::locale::fetch_locale;
 
 /// Generate a random Warhammer Fantasy hero
 pub fn hero() -> String {
-    fetch_locale("games.warhammer_fantasy.heros", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| "Karl Franz".to_string())
+    fetch_locale(
+        "games.warhammer_fantasy.heros",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| "Karl Franz".to_string())
 }
 
 /// Generate a random Warhammer Fantasy quote
 pub fn quote() -> String {
-    fetch_locale("games.warhammer_fantasy.quotes", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| "For the Empire!".to_string())
+    fetch_locale(
+        "games.warhammer_fantasy.quotes",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| "For the Empire!".to_string())
 }
 
 /// Generate a random Warhammer Fantasy location
 pub fn location() -> String {
-    fetch_locale("games.warhammer_fantasy.locations", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| "Altdorf".to_string())
+    fetch_locale(
+        "games.warhammer_fantasy.locations",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| "Altdorf".to_string())
 }
 
 /// Generate a random Warhammer Fantasy faction
 pub fn faction() -> String {
-    fetch_locale("games.warhammer_fantasy.factions", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| "The Empire".to_string())
+    fetch_locale(
+        "games.warhammer_fantasy.factions",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| "The Empire".to_string())
 }
 
 /// Generate a random Warhammer Fantasy creature
 pub fn creature() -> String {
-    fetch_locale("games.warhammer_fantasy.creatures", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| "Griffon".to_string())
+    fetch_locale(
+        "games.warhammer_fantasy.creatures",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| "Griffon".to_string())
 }
 
 #[cfg(test)]

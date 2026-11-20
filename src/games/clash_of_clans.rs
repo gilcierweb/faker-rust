@@ -5,9 +5,12 @@ use crate::locale::fetch_locale;
 
 /// Generate a random troop name
 pub fn troop() -> String {
-    fetch_locale("games.clash_of_clans.troops", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| "Barbarian".to_string())
+    fetch_locale(
+        "games.clash_of_clans.troops",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| "Barbarian".to_string())
 }
 
 /// Generate a random spell name
@@ -22,7 +25,7 @@ pub fn building() -> String {
 
 // --- gem parity generators (automated, locale-backed) ---
 fn parity_pick(key: &str) -> String {
-    crate::locale::fetch_locale(key, "en")
+    crate::locale::fetch_locale(key, &crate::config::FakerConfig::locale())
         .map(|v| crate::base::sample(&v))
         .unwrap_or_default()
 }

@@ -5,35 +5,41 @@ use crate::locale::fetch_locale;
 
 /// Generate a random Myst game title
 pub fn game() -> String {
-    fetch_locale("games.myst.games", "en")
+    fetch_locale("games.myst.games", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "Myst".to_string())
 }
 
 /// Generate a random Myst creature
 pub fn creature() -> String {
-    fetch_locale("games.myst.creatures", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| "Achenar".to_string())
+    fetch_locale(
+        "games.myst.creatures",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| "Achenar".to_string())
 }
 
 /// Generate a random Myst character
 pub fn character() -> String {
-    fetch_locale("games.myst.characters", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| "Atrus".to_string())
+    fetch_locale(
+        "games.myst.characters",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| "Atrus".to_string())
 }
 
 /// Generate a random Myst Age
 pub fn age() -> String {
-    fetch_locale("games.myst.ages", "en")
+    fetch_locale("games.myst.ages", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "Selenitic Age".to_string())
 }
 
 /// Generate a random Myst quote
 pub fn quote() -> String {
-    fetch_locale("games.myst.quotes", "en")
+    fetch_locale("games.myst.quotes", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "I realized, is that they do not truly exist".to_string())
 }

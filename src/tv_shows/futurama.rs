@@ -5,37 +5,43 @@ use crate::locale::fetch_locale;
 
 /// Generate a random Futurama character
 pub fn character() -> String {
-    fetch_locale("futurama.characters", "en")
+    fetch_locale("futurama.characters", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_CHARACTERS).to_string())
 }
 
 /// Generate a random Futurama quote
 pub fn quote() -> String {
-    fetch_locale("futurama.quotes", "en")
+    fetch_locale("futurama.quotes", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_QUOTES).to_string())
 }
 
 /// Generate a random Futurama location
 pub fn location() -> String {
-    fetch_locale("futurama.locations", "en")
+    fetch_locale("futurama.locations", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_LOCATIONS).to_string())
 }
 
 /// Generate a random Futurama catchphrase
 pub fn catchphrase() -> String {
-    fetch_locale("futurama.catchphrases", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_CATCHPHRASES).to_string())
+    fetch_locale(
+        "futurama.catchphrases",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_CATCHPHRASES).to_string())
 }
 
 /// Gem-compatible generator: a Hermes Conrad catchphrase.
 pub fn hermes_catchphrase() -> String {
-    fetch_locale("futurama.hermes_catchphrases", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_default()
+    fetch_locale(
+        "futurama.hermes_catchphrases",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_default()
 }
 
 // Fallback data

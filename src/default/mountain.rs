@@ -5,14 +5,14 @@ use crate::locale::fetch_locale;
 
 /// Generate a random mountain name
 pub fn name() -> String {
-    fetch_locale("mountain.names", "en")
+    fetch_locale("mountain.names", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_NAMES).to_string())
 }
 
 /// Generate a random mountain range
 pub fn range() -> String {
-    fetch_locale("mountain.ranges", "en")
+    fetch_locale("mountain.ranges", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_RANGES).to_string())
 }

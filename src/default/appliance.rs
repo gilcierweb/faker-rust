@@ -5,14 +5,14 @@ use crate::locale::fetch_locale;
 
 /// Generate a random appliance brand
 pub fn brand() -> String {
-    fetch_locale("appliance.brand", "en")
+    fetch_locale("appliance.brand", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "Bosch".to_string())
 }
 
 /// Generate a random appliance equipment
 pub fn equipment() -> String {
-    fetch_locale("appliance.equipment", "en")
+    fetch_locale("appliance.equipment", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "Refrigerator".to_string())
 }

@@ -5,28 +5,31 @@ use crate::locale::fetch_locale;
 
 /// Generate a random basketball team
 pub fn team() -> String {
-    fetch_locale("basketball.teams", "en")
+    fetch_locale("basketball.teams", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_TEAMS).to_string())
 }
 
 /// Generate a random basketball player
 pub fn player() -> String {
-    fetch_locale("basketball.players", "en")
+    fetch_locale("basketball.players", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_PLAYERS).to_string())
 }
 
 /// Generate a random basketball position
 pub fn position() -> String {
-    fetch_locale("basketball.positions", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_POSITIONS).to_string())
+    fetch_locale(
+        "basketball.positions",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_POSITIONS).to_string())
 }
 
 /// Generate a random basketball coach
 pub fn coach() -> String {
-    fetch_locale("basketball.coaches", "en")
+    fetch_locale("basketball.coaches", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_COACHES).to_string())
 }

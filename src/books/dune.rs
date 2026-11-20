@@ -5,28 +5,28 @@ use crate::locale::fetch_locale;
 
 /// Generate a random Dune character
 pub fn character() -> String {
-    fetch_locale("dune.characters", "en")
+    fetch_locale("dune.characters", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_CHARACTERS).to_string())
 }
 
 /// Generate a random Dune planet
 pub fn planet() -> String {
-    fetch_locale("dune.planets", "en")
+    fetch_locale("dune.planets", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_PLANETS).to_string())
 }
 
 /// Generate a random Dune quote
 pub fn quote() -> String {
-    fetch_locale("dune.quotes", "en")
+    fetch_locale("dune.quotes", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_QUOTES).to_string())
 }
 
 /// Generate a random Dune title
 pub fn title() -> String {
-    fetch_locale("dune.titles", "en")
+    fetch_locale("dune.titles", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_TITLES).to_string())
 }
@@ -83,7 +83,7 @@ const FALLBACK_TITLES: &[&str] = &[
 
 // --- gem parity generators (automated, locale-backed) ---
 fn parity_pick(key: &str) -> String {
-    crate::locale::fetch_locale(key, "en")
+    crate::locale::fetch_locale(key, &crate::config::FakerConfig::locale())
         .map(|v| crate::base::sample(&v))
         .unwrap_or_default()
 }
@@ -95,14 +95,18 @@ pub fn city() -> String {
 // --- gem parity generators (dynamic locale keys) ---
 /// Gem-compatible generator: a saying from a Dune source.
 pub fn saying(source: Option<&str>) -> String {
-    let sources = crate::locale::fetch_locale_keys("dune.sayings", "en");
+    let sources =
+        crate::locale::fetch_locale_keys("dune.sayings", &crate::config::FakerConfig::locale());
     let selected = match source {
         Some(name) => name.to_lowercase(),
         None => crate::base::sample(&sources),
     };
-    crate::locale::fetch_locale(&format!("dune.sayings.{selected}"), "en")
-        .map(|v| crate::base::sample(&v))
-        .unwrap_or_default()
+    crate::locale::fetch_locale(
+        &format!("dune.sayings.{selected}"),
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| crate::base::sample(&v))
+    .unwrap_or_default()
 }
 
 #[cfg(test)]

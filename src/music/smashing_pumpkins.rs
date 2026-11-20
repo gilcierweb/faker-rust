@@ -5,23 +5,32 @@ use crate::locale::fetch_locale;
 
 /// Generate a random Smashing Pumpkins song
 pub fn song() -> String {
-    fetch_locale("smashing_pumpkins.songs", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_SONGS).to_string())
+    fetch_locale(
+        "smashing_pumpkins.songs",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_SONGS).to_string())
 }
 
 /// Generate a random Smashing Pumpkins album
 pub fn album() -> String {
-    fetch_locale("smashing_pumpkins.albums", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_ALBUMS).to_string())
+    fetch_locale(
+        "smashing_pumpkins.albums",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_ALBUMS).to_string())
 }
 
 /// Generate a random Smashing Pumpkins member
 pub fn member() -> String {
-    fetch_locale("smashing_pumpkins.members", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_MEMBERS).to_string())
+    fetch_locale(
+        "smashing_pumpkins.members",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_MEMBERS).to_string())
 }
 
 // Fallback data
@@ -60,7 +69,7 @@ const FALLBACK_MEMBERS: &[&str] = &[
 
 // --- gem parity generators (automated, locale-backed) ---
 fn parity_pick(key: &str) -> String {
-    crate::locale::fetch_locale(key, "en")
+    crate::locale::fetch_locale(key, &crate::config::FakerConfig::locale())
         .map(|v| crate::base::sample(&v))
         .unwrap_or_default()
 }

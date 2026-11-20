@@ -22,9 +22,12 @@ fn generate_ticker() -> String {
 
 /// Generate a random market index
 pub fn market_index() -> String {
-    fetch_locale("finance.market_indices", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_INDICES).to_string())
+    fetch_locale(
+        "finance.market_indices",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_INDICES).to_string())
 }
 
 /// Generate a random currency pair
@@ -59,7 +62,7 @@ const FALLBACK_CURRENCIES: &[&str] = &[
 
 // --- gem parity generators (automated, locale-backed) ---
 fn parity_pick(key: &str) -> String {
-    crate::locale::fetch_locale(key, "en")
+    crate::locale::fetch_locale(key, &crate::config::FakerConfig::locale())
         .map(|v| crate::base::sample(&v))
         .unwrap_or_default()
 }
@@ -78,9 +81,12 @@ pub fn credit_card(types: &[&str]) -> String {
         types
     };
     let card_type = crate::base::sample(selected);
-    crate::locale::fetch_locale(&format!("finance.credit_card.{card_type}"), "en")
-        .map(|v| crate::base::numerify(crate::base::sample(&v).trim_matches('/')))
-        .unwrap_or_default()
+    crate::locale::fetch_locale(
+        &format!("finance.credit_card.{card_type}"),
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| crate::base::numerify(crate::base::sample(&v).trim_matches('/')))
+    .unwrap_or_default()
 }
 /// Gem-compatible generator: stock ticker from the given markets.
 pub fn ticker(markets: &[&str]) -> String {
@@ -91,27 +97,38 @@ pub fn ticker(markets: &[&str]) -> String {
         markets
     };
     let market = crate::base::sample(selected);
-    crate::locale::fetch_locale(&format!("finance.ticker.{market}"), "en")
-        .map(|v| crate::base::sample(&v))
-        .unwrap_or_default()
+    crate::locale::fetch_locale(
+        &format!("finance.ticker.{market}"),
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| crate::base::sample(&v))
+    .unwrap_or_default()
 }
 /// Gem-compatible generator: VAT number for a country code.
 pub fn vat_number(country: &str) -> String {
-    crate::locale::fetch_locale_named("finance.vat_number", country, "en")
-        .map(|template| crate::base::numerify(&template))
-        .unwrap_or_default()
+    crate::locale::fetch_locale_named(
+        "finance.vat_number",
+        country,
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|template| crate::base::numerify(&template))
+    .unwrap_or_default()
 }
 
 /// Gem-compatible generator: all country codes with a VAT number template.
 pub fn vat_number_keys() -> Vec<String> {
-    crate::locale::fetch_locale_keys("finance.vat_number", "en")
+    crate::locale::fetch_locale_keys("finance.vat_number", &crate::config::FakerConfig::locale())
 }
 
 /// Gem-compatible generator: Italian condominium fiscal code for `country`.
 pub fn condominium_fiscal_code(country: &str) -> String {
-    crate::locale::fetch_locale_named("finance.condominium_fiscal_code", country, "en")
-        .map(|template| crate::base::numerify(&template))
-        .unwrap_or_default()
+    crate::locale::fetch_locale_named(
+        "finance.condominium_fiscal_code",
+        country,
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|template| crate::base::numerify(&template))
+    .unwrap_or_default()
 }
 
 #[cfg(test)]

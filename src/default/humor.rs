@@ -5,7 +5,7 @@ use crate::locale::fetch_locale;
 
 /// Generate a random funny name
 pub fn name() -> String {
-    fetch_locale("funny_name.name", "en")
+    fetch_locale("funny_name.name", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "Anita Bath".to_string())
 }

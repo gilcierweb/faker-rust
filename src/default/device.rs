@@ -5,21 +5,21 @@ use crate::locale::fetch_locale;
 
 /// Generate a random device model name
 pub fn model_name() -> String {
-    fetch_locale("device.model_name", "en")
+    fetch_locale("device.model_name", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "iPhone X".to_string())
 }
 
 /// Generate a random device platform
 pub fn platform() -> String {
-    fetch_locale("device.platform", "en")
+    fetch_locale("device.platform", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "iOS".to_string())
 }
 
 /// Generate a random device manufacturer
 pub fn manufacturer() -> String {
-    fetch_locale("device.manufacturer", "en")
+    fetch_locale("device.manufacturer", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "Apple".to_string())
 }

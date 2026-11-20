@@ -5,23 +5,29 @@ use crate::locale::fetch_locale;
 
 /// Generate a random Ghostbusters character
 pub fn character() -> String {
-    fetch_locale("ghostbusters.characters", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_CHARACTERS).to_string())
+    fetch_locale(
+        "ghostbusters.characters",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_CHARACTERS).to_string())
 }
 
 /// Generate a random Ghostbusters quote
 pub fn quote() -> String {
-    fetch_locale("ghostbusters.quotes", "en")
+    fetch_locale("ghostbusters.quotes", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_QUOTES).to_string())
 }
 
 /// Generate a random ghost or creature name
 pub fn creature() -> String {
-    fetch_locale("ghostbusters.creatures", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_CREATURES).to_string())
+    fetch_locale(
+        "ghostbusters.creatures",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_CREATURES).to_string())
 }
 
 // Fallback data
@@ -58,7 +64,7 @@ const FALLBACK_CREATURES: &[&str] = &[
 
 // --- gem parity generators (automated, locale-backed) ---
 fn parity_pick(key: &str) -> String {
-    crate::locale::fetch_locale(key, "en")
+    crate::locale::fetch_locale(key, &crate::config::FakerConfig::locale())
         .map(|v| crate::base::sample(&v))
         .unwrap_or_default()
 }

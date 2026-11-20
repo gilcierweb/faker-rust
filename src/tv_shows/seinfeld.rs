@@ -5,21 +5,21 @@ use crate::locale::fetch_locale;
 
 /// Generate a random Seinfeld character
 pub fn character() -> String {
-    fetch_locale("seinfeld.characters", "en")
+    fetch_locale("seinfeld.characters", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_CHARACTERS).to_string())
 }
 
 /// Generate a random Seinfeld quote
 pub fn quote() -> String {
-    fetch_locale("seinfeld.quotes", "en")
+    fetch_locale("seinfeld.quotes", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_QUOTES).to_string())
 }
 
 /// Generate a random Seinfeld location
 pub fn location() -> String {
-    fetch_locale("seinfeld.locations", "en")
+    fetch_locale("seinfeld.locations", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_LOCATIONS).to_string())
 }
@@ -66,7 +66,7 @@ const FALLBACK_LOCATIONS: &[&str] = &[
 
 // --- gem parity generators (automated, locale-backed) ---
 fn parity_pick(key: &str) -> String {
-    crate::locale::fetch_locale(key, "en")
+    crate::locale::fetch_locale(key, &crate::config::FakerConfig::locale())
         .map(|v| crate::base::sample(&v))
         .unwrap_or_default()
 }

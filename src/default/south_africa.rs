@@ -94,9 +94,12 @@ pub fn invalid_id_number() -> String {
 
 /// Gem-compatible generator: South African VAT number.
 pub fn vat_number() -> String {
-    crate::locale::fetch_locale("finance.vat_number.ZA", "en")
-        .map(|templates| crate::base::numerify(&crate::base::sample(&templates)))
-        .unwrap_or_else(|| format!("ZA{:09}", FakerConfig::current().rand_u32(1_000_000_000)))
+    crate::locale::fetch_locale(
+        "finance.vat_number.ZA",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|templates| crate::base::numerify(&crate::base::sample(&templates)))
+    .unwrap_or_else(|| format!("ZA{:09}", FakerConfig::current().rand_u32(1_000_000_000)))
 }
 
 /// Gem-compatible generator: South African private company registration number.

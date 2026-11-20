@@ -5,23 +5,32 @@ use crate::locale::fetch_locale;
 
 /// Generate a random Lord of the Rings character
 pub fn character() -> String {
-    fetch_locale("tolkien.lord_of_the_rings.characters", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_CHARACTERS).to_string())
+    fetch_locale(
+        "tolkien.lord_of_the_rings.characters",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_CHARACTERS).to_string())
 }
 
 /// Generate a random Lord of the Rings location
 pub fn location() -> String {
-    fetch_locale("tolkien.lord_of_the_rings.locations", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_LOCATIONS).to_string())
+    fetch_locale(
+        "tolkien.lord_of_the_rings.locations",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_LOCATIONS).to_string())
 }
 
 /// Generate a random Lord of the Rings quote
 pub fn quote() -> String {
-    fetch_locale("tolkien.lord_of_the_rings.quotes", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_QUOTES).to_string())
+    fetch_locale(
+        "tolkien.lord_of_the_rings.quotes",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_QUOTES).to_string())
 }
 
 // Fallback data

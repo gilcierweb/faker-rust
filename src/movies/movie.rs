@@ -5,16 +5,24 @@ use crate::locale::{fetch_locale_with_context, sample_with_resolve};
 
 /// Generate a random movie title
 pub fn title() -> String {
-    fetch_locale_with_context("movie.title", "en", Some("movie"))
-        .map(|v| sample_with_resolve(&v, Some("movie")))
-        .unwrap_or_else(|| sample(FALLBACK_TITLES).to_string())
+    fetch_locale_with_context(
+        "movie.title",
+        &crate::config::FakerConfig::locale(),
+        Some("movie"),
+    )
+    .map(|v| sample_with_resolve(&v, Some("movie")))
+    .unwrap_or_else(|| sample(FALLBACK_TITLES).to_string())
 }
 
 /// Generate a random movie quote
 pub fn quote() -> String {
-    fetch_locale_with_context("movie.quote", "en", Some("movie"))
-        .map(|v| sample_with_resolve(&v, Some("movie")))
-        .unwrap_or_else(|| sample(FALLBACK_QUOTES).to_string())
+    fetch_locale_with_context(
+        "movie.quote",
+        &crate::config::FakerConfig::locale(),
+        Some("movie"),
+    )
+    .map(|v| sample_with_resolve(&v, Some("movie")))
+    .unwrap_or_else(|| sample(FALLBACK_QUOTES).to_string())
 }
 
 // Fallback data

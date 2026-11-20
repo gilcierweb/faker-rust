@@ -5,30 +5,33 @@ use crate::locale::fetch_locale;
 
 /// Generate a random Simpsons character
 pub fn character() -> String {
-    fetch_locale("simpsons.characters", "en")
+    fetch_locale("simpsons.characters", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "Homer Simpson".to_string())
 }
 
 /// Generate a random Simpsons location
 pub fn location() -> String {
-    fetch_locale("simpsons.locations", "en")
+    fetch_locale("simpsons.locations", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "Springfield".to_string())
 }
 
 /// Generate a random Simpsons quote
 pub fn quote() -> String {
-    fetch_locale("simpsons.quotes", "en")
+    fetch_locale("simpsons.quotes", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "D'oh!".to_string())
 }
 
 /// Generate a random Simpsons episode title
 pub fn episode_title() -> String {
-    fetch_locale("simpsons.episode_titles", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| "Simpsons Roasting on an Open Fire".to_string())
+    fetch_locale(
+        "simpsons.episode_titles",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| "Simpsons Roasting on an Open Fire".to_string())
 }
 
 #[cfg(test)]

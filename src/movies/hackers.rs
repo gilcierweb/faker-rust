@@ -5,21 +5,21 @@ use crate::locale::fetch_locale;
 
 /// Generate a random Hackers character
 pub fn character() -> String {
-    fetch_locale("hackers.characters", "en")
+    fetch_locale("hackers.characters", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_CHARACTERS).to_string())
 }
 
 /// Generate a random Hackers quote
 pub fn quote() -> String {
-    fetch_locale("hackers.quotes", "en")
+    fetch_locale("hackers.quotes", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_QUOTES).to_string())
 }
 
 /// Generate a random Hackers handle/nickname
 pub fn handle() -> String {
-    fetch_locale("hackers.handles", "en")
+    fetch_locale("hackers.handles", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_HANDLES).to_string())
 }

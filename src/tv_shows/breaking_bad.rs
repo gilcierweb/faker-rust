@@ -5,23 +5,29 @@ use crate::locale::fetch_locale;
 
 /// Generate a random Breaking Bad character
 pub fn character() -> String {
-    fetch_locale("breaking_bad.characters", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_CHARACTERS).to_string())
+    fetch_locale(
+        "breaking_bad.characters",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_CHARACTERS).to_string())
 }
 
 /// Generate a random Breaking Bad quote
 pub fn quote() -> String {
-    fetch_locale("breaking_bad.quotes", "en")
+    fetch_locale("breaking_bad.quotes", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_QUOTES).to_string())
 }
 
 /// Generate a random Breaking Bad episode
 pub fn episode() -> String {
-    fetch_locale("breaking_bad.episodes", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_EPISODES).to_string())
+    fetch_locale(
+        "breaking_bad.episodes",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_EPISODES).to_string())
 }
 
 // Fallback data

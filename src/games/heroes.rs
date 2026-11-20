@@ -5,28 +5,28 @@ use crate::locale::fetch_locale;
 
 /// Generate a random hero name from Heroes of Might and Magic
 pub fn name() -> String {
-    fetch_locale("heroes.names", "en")
+    fetch_locale("heroes.names", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "Catherine Ironfist".to_string())
 }
 
 /// Generate a random hero specialty
 pub fn specialty() -> String {
-    fetch_locale("heroes.specialties", "en")
+    fetch_locale("heroes.specialties", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "Archery".to_string())
 }
 
 /// Generate a random hero class (using 'klass' to avoid keyword conflict)
 pub fn klass() -> String {
-    fetch_locale("heroes.klasses", "en")
+    fetch_locale("heroes.klasses", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "Knight".to_string())
 }
 
 /// Generate a random artifact name
 pub fn artifact() -> String {
-    fetch_locale("heroes.artifacts", "en")
+    fetch_locale("heroes.artifacts", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "Orb of Inhibition".to_string())
 }

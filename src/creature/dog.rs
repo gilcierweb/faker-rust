@@ -5,49 +5,55 @@ use crate::locale::fetch_locale;
 
 /// Generate a random dog name
 pub fn name() -> String {
-    fetch_locale("creature.dog.name", "en")
+    fetch_locale("creature.dog.name", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "Buddy".to_string())
 }
 
 /// Generate a random dog breed
 pub fn breed() -> String {
-    fetch_locale("creature.dog.breed", "en")
+    fetch_locale("creature.dog.breed", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "Golden Retriever".to_string())
 }
 
 /// Generate a random dog sound
 pub fn sound() -> String {
-    fetch_locale("creature.dog.sound", "en")
+    fetch_locale("creature.dog.sound", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "woof".to_string())
 }
 
 /// Generate a random dog meme phrase
 pub fn meme_phrase() -> String {
-    fetch_locale("creature.dog.meme_phrase", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| "wow such doge".to_string())
+    fetch_locale(
+        "creature.dog.meme_phrase",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| "wow such doge".to_string())
 }
 
 /// Generate a random dog age
 pub fn age() -> String {
-    fetch_locale("creature.dog.age", "en")
+    fetch_locale("creature.dog.age", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "adult".to_string())
 }
 
 /// Generate a random dog coat length
 pub fn coat_length() -> String {
-    fetch_locale("creature.dog.coat_length", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| "short".to_string())
+    fetch_locale(
+        "creature.dog.coat_length",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| "short".to_string())
 }
 
 /// Generate a random dog size
 pub fn size() -> String {
-    fetch_locale("creature.dog.size", "en")
+    fetch_locale("creature.dog.size", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| "medium".to_string())
 }

@@ -5,21 +5,21 @@ use crate::locale::fetch_locale;
 
 /// Generate a random X/Twitter username
 pub fn screen_name() -> String {
-    fetch_locale("x.screen_names", "en")
+    fetch_locale("x.screen_names", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_SCREEN_NAMES).to_string())
 }
 
 /// Generate a random X/Twitter hashtag
 pub fn hashtag() -> String {
-    fetch_locale("x.hashtags", "en")
+    fetch_locale("x.hashtags", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_HASHTAGS).to_string())
 }
 
 /// Generate a random X/Twitter tweet text
 pub fn tweet() -> String {
-    fetch_locale("x.tweets", "en")
+    fetch_locale("x.tweets", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_TWEETS).to_string())
 }

@@ -5,40 +5,56 @@ use crate::locale::{fetch_locale, fetch_locale_named};
 
 /// A valid test card number for the requested brand (e.g. "visa", "mc", "amex").
 pub fn valid_card(brand: &str) -> String {
-    fetch_locale_named("stripe.valid_cards", brand, "en")
-        .unwrap_or_else(|| "4242424242424242".to_string())
+    fetch_locale_named(
+        "stripe.valid_cards",
+        brand,
+        &crate::config::FakerConfig::locale(),
+    )
+    .unwrap_or_else(|| "4242424242424242".to_string())
 }
 
 /// A valid test token for the requested brand (e.g. "visa", "mc", "amex").
 pub fn valid_token(brand: &str) -> String {
-    fetch_locale_named("stripe.valid_tokens", brand, "en").unwrap_or_else(|| "tok_visa".to_string())
+    fetch_locale_named(
+        "stripe.valid_tokens",
+        brand,
+        &crate::config::FakerConfig::locale(),
+    )
+    .unwrap_or_else(|| "tok_visa".to_string())
 }
 
 /// An invalid test card number for a given failure reason (e.g. "addressZipFail").
 pub fn invalid_card(reason: &str) -> String {
-    fetch_locale_named("stripe.invalid_cards", reason, "en")
-        .unwrap_or_else(|| "4000000000000002".to_string())
+    fetch_locale_named(
+        "stripe.invalid_cards",
+        reason,
+        &crate::config::FakerConfig::locale(),
+    )
+    .unwrap_or_else(|| "4000000000000002".to_string())
 }
 
 /// Generate a random Stripe plan
 pub fn plan() -> String {
-    fetch_locale("subscription.plans", "en")
+    fetch_locale("subscription.plans", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_PLANS).to_string())
 }
 
 /// Generate a random Stripe product
 pub fn product() -> String {
-    fetch_locale("stripe.products", "en")
+    fetch_locale("stripe.products", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_PRODUCTS).to_string())
 }
 
 /// Generate a random Stripe subscription status
 pub fn subscription_status() -> String {
-    fetch_locale("subscription.statuses", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_STATUSES).to_string())
+    fetch_locale(
+        "subscription.statuses",
+        &crate::config::FakerConfig::locale(),
+    )
+    .map(|v| sample(&v))
+    .unwrap_or_else(|| sample(FALLBACK_STATUSES).to_string())
 }
 
 // Fallback data

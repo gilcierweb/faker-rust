@@ -5,28 +5,28 @@ use crate::locale::fetch_locale;
 
 /// Generate a random baseball team
 pub fn team() -> String {
-    fetch_locale("baseball.teams", "en")
+    fetch_locale("baseball.teams", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_TEAMS).to_string())
 }
 
 /// Generate a random baseball player
 pub fn player() -> String {
-    fetch_locale("baseball.players", "en")
+    fetch_locale("baseball.players", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_PLAYERS).to_string())
 }
 
 /// Generate a random baseball position
 pub fn position() -> String {
-    fetch_locale("baseball.positions", "en")
+    fetch_locale("baseball.positions", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_POSITIONS).to_string())
 }
 
 /// Generate a random baseball stadium
 pub fn stadium() -> String {
-    fetch_locale("baseball.stadiums", "en")
+    fetch_locale("baseball.stadiums", &crate::config::FakerConfig::locale())
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_STADIUMS).to_string())
 }
