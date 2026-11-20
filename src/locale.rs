@@ -1110,4 +1110,49 @@ mod tests {
             "en_name must parse as a mapping"
         );
     }
+
+    #[test]
+    fn every_locale_file_is_loaded_by_the_rust_parser() {
+        // The loader skips unparseable files silently. Comparing the on-disk
+        // file list with the loaded keys makes a YAML regression visible.
+        let data = &*LOCALE_DATA;
+        let locales_path = get_locales_path();
+        let mut expected = Vec::new();
+
+        if let Ok(entries) = fs::read_dir(&locales_path) {
+            for entry in entries.flatten() {
+                let path = entry.path();
+                if path.is_file()
+                    && path.extension().is_some_and(|ext| ext == "yml")
+                    && let Some(stem) = path.file_stem()
+                {
+                    expected.push(stem.to_string_lossy().to_string());
+                } else if path.is_dir()
+                    && let Ok(children) = fs::read_dir(&path)
+                    && let Some(dir_name) = path.file_name()
+                {
+                    let dir_name = dir_name.to_string_lossy().to_string();
+                    for child in children.flatten() {
+                        let child_path = child.path();
+                        if child_path.is_file()
+                            && child_path.extension().is_some_and(|ext| ext == "yml")
+                            && let Some(stem) = child_path.file_stem()
+                        {
+                            expected.push(format!("{}_{}", dir_name, stem.to_string_lossy()));
+                        }
+                    }
+                }
+            }
+        }
+
+        assert!(!expected.is_empty(), "no locale files were discovered");
+        let missing: Vec<String> = expected
+            .into_iter()
+            .filter(|key| !data.contains_key(key))
+            .collect();
+        assert!(
+            missing.is_empty(),
+            "locale files failed to load: {missing:?}"
+        );
+    }
 }
