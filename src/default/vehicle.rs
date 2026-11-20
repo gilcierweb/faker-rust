@@ -123,6 +123,27 @@ pub fn model(make_of_model: &str) -> String {
         .map(|v| crate::base::sample(&v))
         .unwrap_or_default()
 }
+// --- gem parity generators (algorithmic) ---
+/// Gem-compatible generator: vehicle VIN with a valid transliteration alphabet.
+pub fn vin() -> String {
+    const CHARS: &[u8] = b"ABCDEFGHJKLMNPRSTUVWXYZ0123456789";
+    let config = crate::config::FakerConfig::current();
+    (0..17)
+        .map(|_| CHARS[config.rand_usize(CHARS.len())] as char)
+        .collect()
+}
+
+/// Gem-compatible generator: recent vehicle model year.
+pub fn year() -> i32 {
+    let current = time::OffsetDateTime::now_utc().year();
+    let config = crate::config::FakerConfig::current();
+    current - (1 + config.rand_range(0, 15) as i32)
+}
+
+/// Gem-compatible generator: vehicle mileage within a range.
+pub fn mileage(min: u32, max: u32) -> u32 {
+    crate::config::FakerConfig::current().rand_range(min, max + 1)
+}
 
 #[cfg(test)]
 mod tests {

@@ -20,6 +20,23 @@ fn parity_pick(key: &str) -> String {
 pub fn coin_array() -> String {
     parity_pick("crypto_coin.coin")
 }
+// --- gem parity generators (gem record fields) ---
+fn coin_fields() -> Vec<String> {
+    coin_array()
+        .split(',')
+        .map(|part| part.trim().to_string())
+        .collect()
+}
+
+/// Gem-compatible generator: crypto coin name.
+pub fn coin_name() -> String {
+    coin_fields().first().cloned().unwrap_or_default()
+}
+
+/// Gem-compatible generator: crypto coin logo URL.
+pub fn url_logo() -> String {
+    coin_fields().get(2).cloned().unwrap_or_default()
+}
 
 #[cfg(test)]
 mod tests {

@@ -64,6 +64,34 @@ pub fn geo() -> String {
 pub fn silly_adjective() -> String {
     parity_pick("creature.bird.silly_adjectives")
 }
+// --- gem parity generators (dynamic locale keys) ---
+/// Gem-compatible generator: a random bird taxonomic order.
+pub fn order() -> String {
+    crate::base::sample(&crate::locale::fetch_locale_keys(
+        "creature.bird.order_common_map",
+        "en",
+    ))
+}
+/// Gem-compatible generator: a plausible bird common name.
+pub fn plausible_common_name() -> String {
+    crate::locale::fetch_locale("creature.bird.plausible_common_names", "en")
+        .map(|v| crate::locale::sample_with_resolve(&v, Some("creature.bird")))
+        .unwrap_or_default()
+}
+/// Gem-compatible generator: an implausible bird common name.
+pub fn implausible_common_name() -> String {
+    crate::locale::fetch_locale("creature.bird.implausible_common_names", "en")
+        .map(|v| crate::locale::sample_with_resolve(&v, Some("creature.bird")))
+        .unwrap_or_default()
+}
+/// Gem-compatible generator: an order paired with one of its common names.
+pub fn order_with_common_name(tax_order: Option<&str>) -> (String, String) {
+    let selected = tax_order.map(str::to_string).unwrap_or_else(order);
+    let names =
+        crate::locale::fetch_locale(&format!("creature.bird.order_common_map.{selected}"), "en")
+            .unwrap_or_default();
+    (selected, crate::base::sample(&names))
+}
 
 #[cfg(test)]
 mod tests {

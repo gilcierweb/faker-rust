@@ -204,9 +204,13 @@ pub fn fetch_locale_keys(key: &str, locale: &str) -> Vec<String> {
     };
 
     for loc in &locales_to_try {
-        let category = key.split('.').next().unwrap_or(key);
-        let mut sources = vec![format!("{loc}_{category}"), (*loc).to_string()];
-        sources.dedup();
+        let prefix = format!("{loc}_");
+        let mut sources: Vec<String> = LOCALE_DATA
+            .keys()
+            .filter(|name| name.as_str() == *loc || name.starts_with(&prefix))
+            .cloned()
+            .collect();
+        sources.sort();
 
         for source in sources {
             let Some(data) = LOCALE_DATA.get(&source) else {
@@ -221,16 +225,23 @@ pub fn fetch_locale_keys(key: &str, locale: &str) -> Vec<String> {
             if let Some(faker) = current.get("faker") {
                 current = faker;
             }
+            let mut resolved = true;
             for part in clean_key_for_extraction(key).split('.') {
                 current = match current {
                     Value::Object(map) => match lookup_segment(map, part) {
                         Some(value) => value,
-                        None => break,
+                        None => {
+                            resolved = false;
+                            break;
+                        }
                     },
-                    _ => break,
+                    _ => {
+                        resolved = false;
+                        break;
+                    }
                 };
             }
-            if let Value::Object(map) = current {
+            if resolved && let Value::Object(map) = current {
                 let mut keys: Vec<String> = map.keys().cloned().collect();
                 keys.sort();
                 return keys;
@@ -1068,7 +1079,6 @@ mod tests {
             path.display()
         );
     }
-
     #[test]
     fn test_fetch_locale_keys_exposes_map_children() {
         let keys = fetch_locale_keys("dune.sayings", "en");

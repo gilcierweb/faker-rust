@@ -155,6 +155,49 @@ pub fn words(number: usize, supplemental: bool, spaces_allowed: bool) -> Vec<Str
         })
         .collect()
 }
+// --- gem parity generators (algorithmic) ---
+/// Gem-compatible generator: list of hipster sentences.
+pub fn sentences(number: usize, supplemental: bool) -> Vec<String> {
+    (0..number)
+        .map(|_| {
+            let mut sentence = sentence();
+            if supplemental {
+                sentence.push(' ');
+                sentence.push_str(&crate::lorem::sentence(None));
+            }
+            sentence
+        })
+        .collect()
+}
+
+/// Gem-compatible generator: list of hipster paragraphs.
+pub fn paragraphs(number: usize, supplemental: bool) -> Vec<String> {
+    (0..number)
+        .map(|_| {
+            let mut paragraph = paragraph();
+            if supplemental {
+                paragraph.push(' ');
+                paragraph.push_str(&crate::lorem::paragraph(None));
+            }
+            paragraph
+        })
+        .collect()
+}
+
+/// Gem-compatible generator: hipster paragraph truncated to a character count.
+pub fn paragraph_by_chars(characters: usize, supplemental: bool) -> String {
+    let mut text = paragraph();
+    while text.len() < characters {
+        text.push(' ');
+        text.push_str(&paragraph());
+    }
+    if supplemental {
+        text.push(' ');
+        text.push_str(&crate::lorem::paragraph(None));
+    }
+    let end = characters.saturating_sub(1).min(text.len());
+    format!("{}.", &text[..end])
+}
 
 #[cfg(test)]
 mod tests {

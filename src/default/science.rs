@@ -63,6 +63,22 @@ pub fn tool(simple: bool) -> String {
     }
     format!("{} {}", modifier(), base)
 }
+// --- gem parity generators (dynamic locale keys) ---
+/// Gem-compatible generator: science branch name, optionally filtered.
+pub fn science(branches: &[&str]) -> String {
+    let all = crate::locale::fetch_locale_keys("science.branch", "en");
+    let selected: Vec<&String> = if branches.is_empty() {
+        all.iter().collect()
+    } else {
+        all.iter()
+            .filter(|k| branches.contains(&k.as_str()))
+            .collect()
+    };
+    let source = crate::base::sample(&selected);
+    crate::locale::fetch_locale(&format!("science.branch.{source}"), "en")
+        .map(|v| crate::base::sample(&v))
+        .unwrap_or_default()
+}
 
 #[cfg(test)]
 mod tests {

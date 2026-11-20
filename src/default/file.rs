@@ -37,6 +37,15 @@ const FALLBACK_MIME_TYPES: &[&str] = &[
     "application/zip",
     "audio/mpeg",
 ];
+// --- gem parity generators (algorithmic) ---
+/// Gem-compatible generator: directory path made of URL slugs.
+pub fn dir(segment_count: usize, root: Option<&str>, directory_separator: &str) -> String {
+    let mut parts: Vec<String> = root.into_iter().map(str::to_string).collect();
+    for _ in 0..segment_count {
+        parts.push(crate::internet::slug(None, None));
+    }
+    parts.join(directory_separator)
+}
 
 #[cfg(test)]
 mod tests {

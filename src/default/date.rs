@@ -83,6 +83,16 @@ pub fn on_day_of_week_between(_day_of_week: &str, from: &str, to: &str) -> Strin
     // Simplified implementation - just return a random date between from and to
     between(from, to)
 }
+// --- gem parity generators (algorithmic) ---
+/// Gem-compatible generator: date between two dates excluding one value.
+pub fn between_except(from: &str, to: &str, excepted: &str) -> String {
+    loop {
+        let candidate = between(from, to);
+        if candidate != excepted {
+            return candidate;
+        }
+    }
+}
 
 #[cfg(test)]
 mod tests {

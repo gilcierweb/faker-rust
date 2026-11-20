@@ -86,6 +86,54 @@ fn parity_pick(key: &str) -> String {
 pub fn multibyte() -> String {
     parity_pick("lorem.multibyte")
 }
+// --- gem parity generators (algorithmic) ---
+/// Gem-compatible generator: lorem paragraph truncated to a character count.
+pub fn paragraph_by_chars(number: usize, supplemental: bool) -> String {
+    let mut text = paragraph(None);
+    while text.len() < number {
+        text.push(' ');
+        text.push_str(&paragraph(None));
+    }
+    if supplemental {
+        text.push(' ');
+        text.push_str(&crate::hipster::paragraph());
+    }
+    let end = number.saturating_sub(1).min(text.len());
+    format!("{}.", &text[..end])
+}
+
+/// Gem-compatible generator: a lorem ipsum question.
+pub fn question(
+    word_count: usize,
+    supplemental: bool,
+    random_words_to_add: usize,
+    exclude_words: Option<&str>,
+) -> String {
+    let config = crate::config::FakerConfig::current();
+    let count = word_count + config.rand_usize(random_words_to_add.saturating_add(1));
+    let mut chosen: Vec<String> = (0..count).map(|_| word()).collect();
+    if let Some(excluded) = exclude_words {
+        chosen.retain(|w| !excluded.split(',').any(|part| w == part.trim()));
+    }
+    if supplemental {
+        chosen.extend((0..count).map(|_| crate::hipster::word()));
+    }
+    let mut text = chosen.join(" ");
+    if let Some(first) = text.get_mut(0..1) {
+        first.make_ascii_uppercase();
+    }
+    let mark = crate::locale::fetch_locale("lorem.punctuation.question_mark", "en")
+        .map(|v| crate::base::sample(&v))
+        .unwrap_or_else(|| "?".to_string());
+    format!("{text}{mark}")
+}
+
+/// Gem-compatible generator: a list of lorem ipsum questions.
+pub fn questions(number: usize, supplemental: bool) -> Vec<String> {
+    (0..number)
+        .map(|_| question(3, supplemental, 0, None))
+        .collect()
+}
 
 #[cfg(test)]
 mod tests {

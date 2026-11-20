@@ -72,6 +72,38 @@ fn calculate_ean_check_digit(s: &str) -> u32 {
 
     (10 - (sum % 10)) % 10
 }
+// --- gem parity generators (algorithmic) ---
+fn check_digit(body: &str) -> u32 {
+    let digits: Vec<u32> = body.chars().filter_map(|c| c.to_digit(10)).collect();
+    let mut odd = 0;
+    let mut even = 0;
+    for (index, digit) in digits.iter().rev().enumerate() {
+        if index % 2 == 0 {
+            odd += digit;
+        } else {
+            even += digit;
+        }
+    }
+    (10 - (odd * 3 + even) % 10) % 10
+}
+
+/// Gem-compatible generator: EAN barcode of length 8 or 13.
+pub fn ean(length: usize) -> String {
+    let key = format!("barcode.ean_{length}");
+    let template = crate::locale::fetch_locale(&key, "en")
+        .map(|v| crate::base::sample(&v))
+        .unwrap_or_else(|| "0".repeat(length.saturating_sub(1)));
+    let body = crate::base::numerify(&template);
+    format!("{body}{}", check_digit(&body))
+}
+
+/// Gem-compatible generator: EAN barcode with composite symbology.
+pub fn ean_with_composite_symbology(length: usize) -> String {
+    let composite = crate::locale::fetch_locale("barcode.composite_symbol", "en")
+        .map(|v| crate::base::bothify(&crate::base::sample(&v)))
+        .unwrap_or_default();
+    format!("{}|{composite}", ean(length))
+}
 
 #[cfg(test)]
 mod tests {

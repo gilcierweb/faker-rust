@@ -43,6 +43,37 @@ pub fn sized(width: u32, height: u32) -> String {
 
     format!("https://loremflickr.com/{}/{}/{}", width, height, keyword)
 }
+// --- gem parity generators (algorithmic) ---
+fn build_url(size: &str, format: &str, search_terms: &[String], match_all: bool) -> String {
+    let mut parts = vec!["https://loremflickr.com".to_string(), format.to_string()];
+    if let Some((width, height)) = size.split_once('x') {
+        parts.push(width.to_string());
+        parts.push(height.to_string());
+    }
+    parts.push(search_terms.join(","));
+    if match_all {
+        parts.push("all".to_string());
+    }
+    parts.join("/")
+}
+
+/// Gem-compatible generator: colorized loremflickr image URL.
+pub fn colorized_image(
+    size: &str,
+    color: &str,
+    search_terms: &[String],
+    match_all: bool,
+) -> String {
+    build_url(size, color, search_terms, match_all)
+}
+/// Gem-compatible generator: grayscale loremflickr image URL.
+pub fn grayscale_image(size: &str, search_terms: &[String], match_all: bool) -> String {
+    build_url(size, "g", search_terms, match_all)
+}
+/// Gem-compatible generator: pixelated loremflickr image URL.
+pub fn pixelated_image(size: &str, search_terms: &[String], match_all: bool) -> String {
+    build_url(size, "p", search_terms, match_all)
+}
 
 #[cfg(test)]
 mod tests {

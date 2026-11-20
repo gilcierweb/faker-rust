@@ -41,6 +41,27 @@ pub fn hospital() -> String {
 }
 
 use crate::base::sample;
+// --- gem parity generators (algorithmic) ---
+fn check_digit(base: u32) -> u32 {
+    let digits: Vec<u32> = format!("{base:09}")
+        .chars()
+        .filter_map(|c| c.to_digit(10))
+        .collect();
+    let weights = [10_u32, 9, 8, 7, 6, 5, 4, 3, 2];
+    let sum: u32 = digits.iter().zip(weights).map(|(d, w)| d * w).sum();
+    (11 - sum % 11) % 11
+}
+
+/// Gem-compatible generator: formatted British NHS number.
+pub fn british_number() -> String {
+    let config = crate::config::FakerConfig::current();
+    let mut base = 999_000_001 + config.rand_u32(999_998);
+    if check_digit(base) == 10 {
+        base -= 1;
+    }
+    let raw = format!("{base}{}", check_digit(base));
+    format!("{} {} {}", &raw[..3], &raw[3..6], &raw[6..])
+}
 
 #[cfg(test)]
 mod tests {

@@ -63,6 +63,70 @@ pub fn usa_driving_licence(state: &str) -> String {
         .map(|v| crate::base::bothify(&crate::base::sample(&v)))
         .unwrap_or_default()
 }
+// --- gem parity generators (algorithmic) ---
+fn pad_uppercase(value: &str, len: usize) -> String {
+    let letters: String = value
+        .to_uppercase()
+        .chars()
+        .filter(|c| c.is_ascii_alphabetic())
+        .collect();
+    format!("{letters:<len$}")[..len].to_string()
+}
+
+/// Gem-compatible generator: British driving licence number.
+pub fn british_driving_licence(
+    last_name: &str,
+    initials: &str,
+    gender: &str,
+    date_of_birth: &str,
+) -> String {
+    let parts: Vec<u32> = date_of_birth
+        .split('-')
+        .filter_map(|p| p.parse().ok())
+        .collect();
+    let (year, month, day) = (parts[0], parts[1], parts[2]);
+    let gender_marker = if gender.eq_ignore_ascii_case("female") {
+        50
+    } else {
+        0
+    };
+    let config = crate::config::FakerConfig::current();
+    let letters = [
+        'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R',
+        'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
+    ];
+    let checksum = format!(
+        "{}{}{}",
+        config.rand_u32(10),
+        crate::base::sample(&letters),
+        crate::base::sample(&letters)
+    );
+    format!(
+        "{}{}{:02}{:02}{}{}",
+        pad_uppercase(last_name, 5),
+        (year / 10) % 10,
+        month + gender_marker,
+        day,
+        year % 10,
+        pad_uppercase(initials, 2),
+    ) + &checksum
+}
+
+/// Gem-compatible generator: Northern Irish driving licence number.
+pub fn northern_irish_driving_licence() -> String {
+    let config = crate::config::FakerConfig::current();
+    format!("{:08}", config.rand_u32(100_000_000))
+}
+
+/// Gem-compatible generator: UK driving licence number in either format.
+pub fn uk_driving_licence() -> String {
+    let config = crate::config::FakerConfig::current();
+    if config.rand_f64() < 0.07 {
+        northern_irish_driving_licence()
+    } else {
+        british_driving_licence("SMITH", "JS", "M", "1990-01-01")
+    }
+}
 
 #[cfg(test)]
 mod tests {

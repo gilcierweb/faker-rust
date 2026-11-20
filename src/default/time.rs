@@ -30,6 +30,25 @@ pub fn forward(days: i64) -> OffsetDateTime {
     let to = now + Duration::days(days);
     between(now, to)
 }
+// --- gem parity generators (algorithmic) ---
+/// Gem-compatible generator: formatted datetime string between two instants.
+pub fn between_dates(from: &str, to: &str, _period: &str, format: Option<&str>) -> String {
+    use time::format_description::well_known::Rfc3339;
+    let from =
+        time::OffsetDateTime::parse(from, &Rfc3339).unwrap_or(time::OffsetDateTime::UNIX_EPOCH);
+    let to = time::OffsetDateTime::parse(to, &Rfc3339).unwrap_or(from);
+    let chosen = between(from, to);
+    match format {
+        Some(fmt) => chosen
+            .format(
+                &time::format_description::parse_borrowed::<2>(fmt).unwrap_or_else(|_| {
+                    time::format_description::parse_borrowed::<2>("[year]-[month]-[day]").unwrap()
+                }),
+            )
+            .unwrap_or_default(),
+        None => chosen.format(&Rfc3339).unwrap_or_default(),
+    }
+}
 
 #[cfg(test)]
 mod tests {
