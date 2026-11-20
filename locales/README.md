@@ -1,6 +1,6 @@
 # How Locales Work
 
-The default locale is English. You can see how it is implemented in the "translate" method in [Faker.rb](/lib/faker.rb).
+The default locale is English. The Ruby gem implements the equivalent "translate" method in `lib/faker.rb`; this crate resolves keys through `src/locale.rs`.
 
 Here's how to set it:
 
