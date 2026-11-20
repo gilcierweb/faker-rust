@@ -38,7 +38,7 @@ bird::plausible_common_name() //=> 'Hellinger's Wren'
 bird::implausible_common_name() //=> 'Hellinger's Cantankerous Chickadee'
 
 // Returns a random pair order / common name pair
-bird::order_with_common_name() //=> {:order=>"Coliiformes", :common_name=>"Mousebird"}
+bird::order_with_common_name(None) //=> {:order=>"Coliiformes", :common_name=>"Mousebird"}
 ```
 
 ## Verified Rust API examples

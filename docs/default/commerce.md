@@ -11,8 +11,8 @@ commerce::material() //=> "plastic"
 
 commerce::product_name() //=> "practical granite shirt"
 
-commerce::price() //=> 44.6
-commerce::price() //=> "2.18"
+commerce::price(None, None) //=> 44.6
+commerce::price(None, None) //=> "2.18"
 
 commerce::promotion_code() //=> "amazingdeal829102"
 commerce::promotion_code() //=> "amazingprice57"

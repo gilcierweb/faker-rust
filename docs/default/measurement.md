@@ -14,9 +14,9 @@ measurement::weight() //=> "3 pounds"
 
 measurement::metric_height() //=> "2 meters"
 
-measurement::metric_length() //=> "0 decimeters"
+measurement::metric_length(10) //=> "0 decimeters"
 
-measurement::metric_volume() //=> "1 liter"
+measurement::metric_volume(10) //=> "1 liter"
 
 measurement::metric_weight() //=> "8 grams"
 ```

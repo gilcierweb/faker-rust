@@ -12,6 +12,6 @@ worldcup::city() //=> "saint petersburg"
 worldcup::group() //=> "egypt"
 worldcup::group() //=> "saudi arabia"
 
-worldcup::roster() //=> "héctor cúper"
-worldcup::roster() //=> "stanislav cherchesov"
+worldcup::roster("brazil", "goalkeeper") //=> "héctor cúper"
+worldcup::roster("brazil", "goalkeeper") //=> "stanislav cherchesov"
 ```

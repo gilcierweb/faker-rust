@@ -42,9 +42,9 @@ vehicle::engine() //=> 4
 
 vehicle::year() //=> 2008
 
-vehicle::mileage() //=> 26961
-vehicle::mileage() //=> 81557
-vehicle::mileage() //=> 117503
+vehicle::mileage(10_000, 90_000) //=> 26961
+vehicle::mileage(10_000, 90_000) //=> 81557
+vehicle::mileage(10_000, 90_000) //=> 117503
 vehicle::kilometrage() //=> 22039
 
 vehicle::license_plate() //=> "dep-2483"

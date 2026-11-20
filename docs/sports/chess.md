@@ -7,9 +7,9 @@ chess::federation() //=> "CUB"
 
 chess::tournament() //=> "Khanty-Mansisyk (Grand Prix 2014–2015)"
 
-chess::rating() //=> "2514"
+chess::rating(1000, 2000) //=> "2514"
 
-chess::rating() //=> "2688"
+chess::rating(1000, 2000) //=> "2688"
 
 chess::opening() //=> "Queen’s Indian Defense"
 

@@ -21,17 +21,17 @@ html::table() //=> "<table>\n<thead>\n<th>ad</th>\n<th>similique</th>\n<th>volup
 
 html::script() //=> "<script src=\"http://gulgowski::name/jordan::weimann::js\"></script>"
 
-html::link() //=> "<link rel=\"stylesheet\" href=\"http://fay::io/darryl::barrows::css\">"
-html::link() //=> "<link rel=\"icon\" href=\"http://fay::io/darryl::barrows::css\">"
+html::link("stylesheet") //=> "<link rel=\"stylesheet\" href=\"http://fay::io/darryl::barrows::css\">"
+html::link("stylesheet") //=> "<link rel=\"icon\" href=\"http://fay::io/darryl::barrows::css\">"
 
 html::element()"}) //=> "<div class=\"xss\" onclick=\"alert('xss')\">this is a div with xss attributes.</div>"
 
-html::random() //=> returns output from a single method outlined above
-html::random() //=> returns output from any single method outlined above except for "table"
-html::random() //=> returns output from any single method outlined above except for ordered_list and unordered_list
+html::random(&[]) //=> returns output from a single method outlined above
+html::random(&[]) //=> returns output from any single method outlined above except for "table"
+html::random(&[]) //=> returns output from any single method outlined above except for ordered_list and unordered_list
 
-html::sandwich() //=> returns sandwich-style html content as a string
-html::sandwich() //=> returns sandwich-style html content with 5 sentences per paragraph and repeated 3 times
+html::sandwich(3, 2) //=> returns sandwich-style html content as a string
+html::sandwich(3, 2) //=> returns sandwich-style html content with 5 sentences per paragraph and repeated 3 times
 ```
 
 ## Verified Rust API examples
@@ -47,7 +47,7 @@ html::link("stylesheet") //=> "<link rel=\"stylesheet\" href=\"http://fahey,.net
 html::ordered_list() //=> "<ol>\n<li>Quam.</li>\n<li>Qui.</li>\n</ol>"
 html::paragraph(2, false, 0, None) //=> "<p>Molestiae eos nesciunt aut totam reiciendis et.. Eius itaque rem ut a.</p>"
 html::random(&[]) //=> "<link rel=\"stylesheet\" href=\"http://schiller.biz/calandra.torphy.css\">"
-html::sandwich(2, 2) //=> "<h6>Voluptate</h6>\n<p>Necessitatibus fugit cumque nemo nihil dolor..</p>\n<ul>\n<li>Aut.</li>\n</ul>"
+html::sandwich(3, 2) //=> "<h6>Voluptate</h6>\n<p>Necessitatibus fugit cumque nemo nihil dolor..</p>\n<ul>\n<li>Aut.</li>\n</ul>"
 html::script() //=> "<script src=\"http://kling-kling.net/german.gerhold.js\"></script>"
 html::table() //=> "<table>\n<thead>\n<tr>\n<th>nihil</th>\n</tr>\n</thead>\n</table>"
 html::unordered_list() //=> "<ul>\n<li>Et.</li>\n<li>Reiciendis.</li>\n</ul>"

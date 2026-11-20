@@ -1,9 +1,9 @@
 # faker_rust::relationship
 
 ```rust
-relationship::familial() //=> "mother" or "grandmother"
-relationship::familial() //=> "mother" or "brother"
-relationship::familial() //=> "grandmother" or "niece" or "aunt"
+relationship::familial(None) //=> "mother" or "grandmother"
+relationship::familial(None) //=> "mother" or "brother"
+relationship::familial(None) //=> "grandmother" or "niece" or "aunt"
 
 relationship::spouse() //=> "husband" or "wife"
 

@@ -38,30 +38,30 @@ company::norwegian_organisation_number() //=> "839071558"
 
 company::australian_business_number() //=> "81137773602"
 
-company::spanish_organisation_number() //=> "p2344979"
+company::spanish_organisation_number(None) //=> "p2344979"
 
 company::polish_taxpayer_identification_number() //=> "1060000062"
 
-company::polish_register_of_national_economy() //=> "123456785"
+company::polish_register_of_national_economy(14) //=> "123456785"
 
 company::south_african_pty_ltd_registration_number() //=> "5301/714689/07"
 company::south_african_close_corporation_registration_number() //=> "ck74/7585/23"
 company::south_african_listed_company_registration_number() //=> "7039/3135/06"
 company::south_african_trust_registration_number() //=> "it38/6489900"
 
-company::brazilian_company_number() //=> "18553414000618"
+company::brazilian_company_number(true) //=> "18553414000618"
 
-company::brazilian_company_number() //=> "00.000.000/0000-00"
+company::brazilian_company_number(true) //=> "00.000.000/0000-00"
 
 company::sic_code() //=> "0851"
 
-company::russian_tax_number() //=> "0965855857"
-company::russian_tax_number() //=> "7717152803"
-company::russian_tax_number() //=> "488935903348"
-company::russian_tax_number() //=> "779124694601"
+company::russian_tax_number(None, false) //=> "0965855857"
+company::russian_tax_number(None, false) //=> "7717152803"
+company::russian_tax_number(None, false) //=> "488935903348"
+company::russian_tax_number(None, false) //=> "779124694601"
 
-company::indian_gst_number() //=> "15vqpnz2126j2zu"
-company::indian_gst_number() //=> "22zvwey6632k0zn"
+company::indian_gst_number(None) //=> "15vqpnz2126j2zu"
+company::indian_gst_number(None) //=> "22zvwey6632k0zn"
 ```
 
 ## Verified Rust API examples
@@ -77,13 +77,13 @@ company::french_siret_number() //=> "54378851700273"
 company::norwegian_organisation_number() //=> "950940212"
 company::australian_business_number() //=> "97660947452"
 company::polish_taxpayer_identification_number() //=> "8981822176"
-company::polish_register_of_national_economy(9) //=> "298683960"
+company::polish_register_of_national_economy(14) //=> "298683960"
 company::south_african_pty_ltd_registration_number() //=> "6021/8646/07"
 company::south_african_close_corporation_registration_number() //=> "CK00/8292275461/23"
 company::south_african_listed_company_registration_number() //=> "8310/44473/06"
 company::south_african_trust_registration_number() //=> "IT2415/683882745"
-company::brazilian_company_number(false) //=> "32003365000679"
+company::brazilian_company_number(true) //=> "32003365000679"
 company::brazilian_company_number(true) //=> "71.041.841/0003-58"
-company::russian_tax_number(None, true) //=> "2422873800"
+company::russian_tax_number(None, false) //=> "2422873800"
 company::indian_gst_number(None) //=> "04UWOKK1314T9ZL"
 ```

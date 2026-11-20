@@ -1,7 +1,7 @@
 # faker_rust::japanese_media::kamen_rider
 
 ```rust
-kamen_rider::kamen_rider() //=> "Kamen Rider Revice"
+kamen_rider::kamen_rider(&["decade"]) //=> "Kamen Rider Revice"
 kamen_rider::user() //=> "Ikki Igarashi"
 kamen_rider::series() //=> "Kamen Rider Revice"
 ```
@@ -12,7 +12,7 @@ If you want Kamen Rider material from a specific era, you can either pass an
 argument:
 
 ```rust
-kamen_rider::series(:reiwa)
+kamen_rider::series()
 => "Kamen Rider Saber"
 ```
 

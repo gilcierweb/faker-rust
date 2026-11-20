@@ -18,8 +18,8 @@ Books::dune::quote() //=> "A dead man, surely, no longer requires that water."
 // Keyword arguments: character
 Books::dune::quote() //=> "He who controls the spice, controls the universe!"
 
-Books::dune::saying() //=> "You do not beg the sun for mercy."
+Books::dune::saying(None) //=> "You do not beg the sun for mercy."
 
 // Keyword arguments: source
-Books::dune::saying() //=> "May thy knife chip and shatter."
+Books::dune::saying(None) //=> "May thy knife chip and shatter."
 ```

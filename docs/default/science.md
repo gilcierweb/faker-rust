@@ -1,9 +1,9 @@
 # faker_rust::science
 
 ```rust
-science::science() //=> "space science"
-science::science(:natural, :applied) //=> "engineering"
-science::science(:formal, :applied) //=> "computer science"
+science::science(&["physics"]) //=> "space science"
+science::science(&["physics"]) //=> "engineering"
+science::science(&["physics"]) //=> "computer science"
 
 science::element() //=> "carbon"
 
@@ -20,6 +20,6 @@ science::scientist() //=> "isaac newton"
 science::modifier() //=> "quantum"
 
 #
-science::tool() //=> "superconductive microcentrifuge"
-science::tool() //=> "microcentrifuge"
+science::tool(true) //=> "superconductive microcentrifuge"
+science::tool(true) //=> "microcentrifuge"
 ```

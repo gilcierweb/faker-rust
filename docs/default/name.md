@@ -20,7 +20,7 @@ name::prefix           //=> "mr."
 name::suffix           //=> "iv"
 
 name::initials            //=> "njm"
-name::initials() //=> "nm"
+name::initials(3) //=> "nm"
 ```
 
 ## Verified Rust API examples

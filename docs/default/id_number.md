@@ -14,21 +14,21 @@ idnumber::valid_south_african_id_number() //=> "8105128870184"
 
 idnumber::invalid_south_african_id_number() //=> "1642972065088"
 
-idnumber::brazilian_citizen_number() //=> "53540542221"
-idnumber::brazilian_citizen_number() //=> "535.405.422-21"
+idnumber::brazilian_citizen_number(true) //=> "53540542221"
+idnumber::brazilian_citizen_number(true) //=> "535.405.422-21"
 
-idnumber::brazilian_id() //=> "493054029"
-idnumber::brazilian_id() //=> "49.305.402-9"
+idnumber::brazilian_id(true) //=> "493054029"
+idnumber::brazilian_id(true) //=> "49.305.402-9"
 
 idnumber::chilean_id() //=> "15620613-k"
 
-idnumber::croatian_id() //=> "88467617508"
-idnumber::croatian_id() //=> "hr88467617508"
+idnumber::croatian_id(false) //=> "88467617508"
+idnumber::croatian_id(false) //=> "hr88467617508"
 
-idnumber::danish_id_number() //=> "050390-9980"
-idnumber::danish_id_number() //=> "050390-9980"
-idnumber::danish_id_number()) //=> "050390-9980"
-idnumber::danish_id_number() //=> "050390-9980"
+idnumber::danish_id_number(true) //=> "050390-9980"
+idnumber::danish_id_number(true) //=> "050390-9980"
+idnumber::danish_id_number(true)) //=> "050390-9980"
+idnumber::danish_id_number(true) //=> "050390-9980"
 
 idnumber::french_insee_number() //=> "22510589696868"
 ```

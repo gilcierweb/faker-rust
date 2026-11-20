@@ -16,7 +16,7 @@
  with ``
 
 ```rust
-json::shallow_json()
+json::shallow_json(2)
 {"parliament funkadelic":"they're real, and they're spectacular.",
   "fleetwood mac":"i'm not a lesbian. i hate men, but i'm not a lesbian.",
   "the roots":"it became very clear to me sitting out there today that every decision
@@ -33,17 +33,17 @@ place of the lowest nested values.  it is important to note that the json must
 be a json and not a hash.
 
 ```rust
-json = json::shallow_json()
+json = json::shallow_json(2)
 puts json //
 {"alisha":"olson","everardo":"dubuque","bridgette":"turner"}
 
-json2 = json::add_depth_to_json()
+json2 = json::add_depth_to_json("{}", 2)
 puts json2 //
 {"alisha":{"daisy":"trantow","oda":"haag"},
  "everardo":{"javier":"marvin","eliseo":"schuppe"},
  "bridgette":{"jorge":"kertzmann","lelah":"macgyver"}}
 
- json3 = json::add_depth_to_json()
+ json3 = json::add_depth_to_json("{}", 2)
  puts json3 //
  {"alisha":
    {"daisy":
@@ -67,6 +67,6 @@ puts json2 //
 Real outputs observed from the crate:
 
 ```rust
-json::add_depth_to_json("{\"a\":1}", 2) //=> "{\"a\":{\"Season\":\"Magaret\",\"Benita\":\"Sandy\"}}"
+json::add_depth_to_json("{}", 2) //=> "{\"a\":{\"Season\":\"Magaret\",\"Benita\":\"Sandy\"}}"
 json::shallow_json(2) //=> "{\"Frankie\":\"Nickole\",\"Maribeth\":\"Chrystal\"}"
 ```
