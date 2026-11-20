@@ -16,6 +16,7 @@
 ## Quick links
 
 - 📖 **[Read the documentation][docs]**
+- 🧪 **[Browse the runnable examples](./examples/)** covering every public generator
 - 📢 **[See what's changed in recent versions](./CHANGELOG.md)**
 
 ## Table of Contents
@@ -84,6 +85,21 @@ fn main() {
     println!("Seeded: {}", name::name());             // Always returns same value
 }
 ```
+
+### Runnable examples
+
+The `examples/` directory contains runnable programs for every public generator.
+The grouped coverage files are:
+
+- `coverage_everyday.rs`: default generators, text, identifiers and structured output
+- `coverage_games.rs`: fantasy and game generators
+- `coverage_movies_music.rs`: movie, music and regional generators
+- `coverage_quotes_sports.rs`: quote, religion and sports generators
+- `coverage_tv_shows.rs`: TV show generators
+- `coverage_compatibility.rs`: base helpers and compatibility modules
+- `coverage_parity_aliases.rs`: exact gem-documented method names
+
+Run one with `cargo run --example coverage_everyday`.
 
 ## 🖥️ Command Line Interface (CLI)
 
