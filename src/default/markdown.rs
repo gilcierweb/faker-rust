@@ -44,6 +44,86 @@ pub fn block_code() -> String {
     "```rust\nfn main() {\n    println!(\"Hello, world!\");\n}\n```".to_string()
 }
 
+// --- gem parity generators (algorithmic) ---
+
+fn list(marker: &str) -> String {
+    let count = crate::config::FakerConfig::current().rand_range(1, 11) as usize;
+    let mut lines = String::new();
+    for index in 0..count {
+        let prefix = if marker == "*" {
+            marker.to_string()
+        } else {
+            format!("{index}.")
+        };
+        lines.push_str(&format!("{prefix} {} \n", crate::lorem::sentence(Some(1))));
+    }
+    lines
+}
+
+/// Gem-compatible generator: Markdown ordered list.
+pub fn ordered_list() -> String {
+    list("1.")
+}
+
+/// Gem-compatible generator: Markdown unordered list.
+pub fn unordered_list() -> String {
+    list("*")
+}
+
+/// Gem-compatible generator: Markdown table with a row of headings and separator.
+pub fn table() -> String {
+    let mut rows: Vec<String> = (0..3)
+        .map(|_| {
+            format!(
+                "{} | {} | {}",
+                crate::lorem::word(),
+                crate::lorem::word(),
+                crate::lorem::word()
+            )
+        })
+        .collect();
+    rows.insert(1, "---- | ---- | ----".to_string());
+    rows.join("\n")
+}
+
+/// Gem-compatible generator: one random Markdown generator, excluding named ones.
+pub fn random(exclude: &[&str]) -> String {
+    let names = [
+        "block_code",
+        "emphasis",
+        "headers",
+        "inline_code",
+        "ordered_list",
+        "table",
+        "unordered_list",
+    ];
+    let choices: Vec<usize> = (0..names.len())
+        .filter(|index| !exclude.contains(&names[*index]))
+        .collect();
+    if choices.is_empty() {
+        return headers();
+    }
+    match crate::base::sample(&choices) {
+        0 => block_code(),
+        1 => emphasis(),
+        2 => headers(),
+        3 => inline_code(),
+        4 => ordered_list(),
+        5 => table(),
+        _ => unordered_list(),
+    }
+}
+
+/// Gem-compatible generator: header followed by repeated paragraph and element blocks.
+pub fn sandwich(sentences: usize, repeat: usize) -> String {
+    let mut blocks = vec![headers()];
+    for _ in 0..repeat {
+        blocks.push(crate::lorem::paragraph(Some(sentences)));
+        blocks.push(random(&[]));
+    }
+    blocks.join("\n")
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

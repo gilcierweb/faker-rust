@@ -55,6 +55,42 @@ pub fn array() -> String {
     format!("[{}]", items.join(", "))
 }
 
+// --- gem parity generators (algorithmic) ---
+
+fn shallow_map(width: usize) -> serde_json::Map<String, serde_json::Value> {
+    let mut map = serde_json::Map::new();
+    for _ in 0..width {
+        map.insert(
+            crate::name::first_name(),
+            serde_json::Value::String(crate::name::first_name()),
+        );
+    }
+    map
+}
+
+fn replace_leaves(value: &mut serde_json::Value, width: usize) {
+    match value {
+        serde_json::Value::Object(map) => {
+            for child in map.values_mut() {
+                replace_leaves(child, width);
+            }
+        }
+        _ => *value = serde_json::Value::Object(shallow_map(width)),
+    }
+}
+
+/// Gem-compatible generator: JSON object with a fixed number of name pairs.
+pub fn shallow_json(width: usize) -> String {
+    serde_json::to_string(&serde_json::Value::Object(shallow_map(width))).unwrap_or_default()
+}
+
+/// Gem-compatible generator: replace every JSON leaf with a nested object.
+pub fn add_depth_to_json(json: &str, width: usize) -> String {
+    let mut value: serde_json::Value = serde_json::from_str(json).unwrap_or_default();
+    replace_leaves(&mut value, width);
+    serde_json::to_string(&value).unwrap_or_default()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

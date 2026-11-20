@@ -93,6 +93,87 @@ pub fn word() -> String {
     parity_pick("lovecraft.words")
 }
 
+// --- gem parity generators (algorithmic) ---
+fn lovecraft_words() -> Vec<String> {
+    crate::locale::fetch_locale("lovecraft.words", "en")
+        .unwrap_or_else(|| vec!["eldritch".to_string()])
+}
+
+/// Gem-compatible generator: the Cthulhu chant repeated a number of times.
+pub fn fhtagn(number: usize) -> String {
+    let chant = parity_pick("lovecraft.fhtagn");
+    vec![chant; number].join(". ")
+}
+
+/// Gem-compatible generator: a list of Lovecraft words.
+pub fn words(number: usize, spaces_allowed: bool) -> Vec<String> {
+    let pool = lovecraft_words();
+    let candidates: Vec<String> = if spaces_allowed {
+        pool
+    } else {
+        let filtered: Vec<String> = pool.into_iter().filter(|w| !w.contains(' ')).collect();
+        if filtered.is_empty() {
+            vec!["eldritch".to_string()]
+        } else {
+            filtered
+        }
+    };
+    (0..number)
+        .map(|_| crate::base::sample(&candidates))
+        .collect()
+}
+
+/// Gem-compatible generator: a Lovecraft sentence.
+pub fn sentence(
+    word_count: usize,
+    random_words_to_add: usize,
+    open_compounds_allowed: bool,
+) -> String {
+    let config = crate::config::FakerConfig::current();
+    let extra = if random_words_to_add == 0 {
+        0
+    } else {
+        config.rand_usize(random_words_to_add)
+    };
+    let mut text = words(word_count + extra, open_compounds_allowed).join(" ");
+    if let Some(first) = text.get_mut(0..1) {
+        first.make_ascii_uppercase();
+    }
+    format!("{text}.")
+}
+
+/// Gem-compatible generator: a list of Lovecraft sentences.
+pub fn sentences(number: usize) -> Vec<String> {
+    (0..number).map(|_| sentence(3, 0, true)).collect()
+}
+
+/// Gem-compatible generator: a Lovecraft paragraph.
+pub fn paragraph(sentence_count: usize, random_sentences_to_add: usize) -> String {
+    let config = crate::config::FakerConfig::current();
+    let extra = if random_sentences_to_add == 0 {
+        0
+    } else {
+        config.rand_usize(random_sentences_to_add)
+    };
+    sentences(sentence_count + extra).join(" ")
+}
+
+/// Gem-compatible generator: a list of Lovecraft paragraphs.
+pub fn paragraphs(number: usize) -> Vec<String> {
+    (0..number).map(|_| paragraph(3, 0)).collect()
+}
+
+/// Gem-compatible generator: a Lovecraft paragraph truncated to a character count.
+pub fn paragraph_by_chars(characters: usize) -> String {
+    let mut text = paragraph(3, 0);
+    while text.len() < characters {
+        text.push(' ');
+        text.push_str(&paragraph(3, 0));
+    }
+    let end = characters.saturating_sub(1).min(text.len());
+    format!("{}.", &text[..end])
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
