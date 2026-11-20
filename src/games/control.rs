@@ -38,6 +38,27 @@ pub fn altered_world_event() -> String {
         .unwrap_or_else(|| "Bright Falls AWE".to_string())
 }
 
+/// Gem-compatible generator: a line from the Hiss incantation.
+pub fn hiss() -> String {
+    fetch_locale("games.control.hiss", "en")
+        .map(|v| sample(&v))
+        .unwrap_or_default()
+}
+
+/// Gem-compatible generator: a message from The Board.
+pub fn the_board() -> String {
+    fetch_locale("games.control.the_board", "en")
+        .map(|v| sample(&v))
+        .unwrap_or_default()
+}
+
+/// Gem-compatible generator: a quote from Control.
+pub fn quote() -> String {
+    fetch_locale("games.control.quote", "en")
+        .map(|v| sample(&v))
+        .unwrap_or_default()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

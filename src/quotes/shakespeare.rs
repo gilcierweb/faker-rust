@@ -3,6 +3,15 @@
 use crate::base::sample;
 use crate::locale::fetch_locale;
 
+/// Gem-compatible alias for [`as_you_like_it_quote`].
+pub use self::as_you_like_it_quote as as_you_like_it;
+/// Gem-compatible alias for [`hamlet_quote`].
+pub use self::hamlet_quote as hamlet;
+/// Gem-compatible alias for [`king_richard_iii_quote`].
+pub use self::king_richard_iii_quote as king_richard_iii;
+/// Gem-compatible alias for [`romeo_and_juliet_quote`].
+pub use self::romeo_and_juliet_quote as romeo_and_juliet;
+
 fn pick(key: &str) -> String {
     fetch_locale(key, "en")
         .map(|v| sample(&v))

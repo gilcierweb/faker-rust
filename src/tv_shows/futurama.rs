@@ -31,6 +31,13 @@ pub fn catchphrase() -> String {
         .unwrap_or_else(|| sample(FALLBACK_CATCHPHRASES).to_string())
 }
 
+/// Gem-compatible generator: a Hermes Conrad catchphrase.
+pub fn hermes_catchphrase() -> String {
+    fetch_locale("futurama.hermes_catchphrases", "en")
+        .map(|v| sample(&v))
+        .unwrap_or_default()
+}
+
 // Fallback data
 const FALLBACK_CHARACTERS: &[&str] = &[
     "Philip J. Fry",

@@ -32,6 +32,51 @@ fn parity_pick(key: &str) -> String {
         .unwrap_or_default()
 }
 
+// --- gem parity `fetch_all` equivalents (all locale values) ---
+fn parity_all(key: &str) -> Vec<String> {
+    crate::locale::fetch_locale(key, "en").unwrap_or_default()
+}
+
+/// Gem-compatible generator: all pilot call numbers.
+pub fn call_numbers() -> Vec<String> {
+    parity_all("star_wars.call_numbers")
+}
+
+/// Gem-compatible generator: all call squadrons.
+pub fn call_squadrons() -> Vec<String> {
+    parity_all("star_wars.call_squadrons")
+}
+
+/// Gem-compatible generator: all characters.
+pub fn characters() -> Vec<String> {
+    parity_all("star_wars.characters")
+}
+
+/// Gem-compatible generator: all droids.
+pub fn droids() -> Vec<String> {
+    parity_all("star_wars.droids")
+}
+
+/// Gem-compatible generator: all planets.
+pub fn planets() -> Vec<String> {
+    parity_all("star_wars.planets")
+}
+
+/// Gem-compatible generator: all species.
+pub fn species() -> Vec<String> {
+    parity_all("star_wars.species")
+}
+
+/// Gem-compatible generator: all vehicles.
+pub fn vehicles() -> Vec<String> {
+    parity_all("star_wars.vehicles")
+}
+
+/// Gem-compatible generator: all Wookiee words.
+pub fn wookiee_words() -> Vec<String> {
+    parity_all("star_wars.wookiee_words")
+}
+
 /// Gem-compatible generator: `star_wars.call_numbers`.
 pub fn call_number() -> String {
     parity_pick("star_wars.call_numbers")

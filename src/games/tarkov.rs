@@ -36,6 +36,78 @@ pub fn faction() -> String {
         .unwrap_or_else(|| sample(FALLBACK_FACTIONS).to_string())
 }
 
+// --- gem parity generators (locale-backed) ---
+fn pick(key: &str) -> String {
+    fetch_locale(key, "en")
+        .map(|v| sample(&v))
+        .unwrap_or_default()
+}
+
+/// Gem-compatible generator: a Tarkov weapon.
+pub fn weapon() -> String {
+    pick("tarkov.weapons")
+}
+
+/// Gem-compatible generator: a Tarkov boss.
+pub fn boss() -> String {
+    pick("tarkov.bosses")
+}
+
+/// Gem-compatible generator: a quest from a random trader.
+pub fn quest() -> String {
+    let traders = [
+        "prapor",
+        "therapist",
+        "skier",
+        "peacekeeper",
+        "mechanic",
+        "ragman",
+        "jaeger",
+        "fence",
+    ];
+    pick(&format!("tarkov.quests.{}", sample(&traders)))
+}
+
+/// Gem-compatible generator: a Prapor quest.
+pub fn prapor_quest() -> String {
+    pick("tarkov.quests.prapor")
+}
+
+/// Gem-compatible generator: a Therapist quest.
+pub fn therapist_quest() -> String {
+    pick("tarkov.quests.therapist")
+}
+
+/// Gem-compatible generator: a Skier quest.
+pub fn skier_quest() -> String {
+    pick("tarkov.quests.skier")
+}
+
+/// Gem-compatible generator: a Peacekeeper quest.
+pub fn peacekeeper_quest() -> String {
+    pick("tarkov.quests.peacekeeper")
+}
+
+/// Gem-compatible generator: a Mechanic quest.
+pub fn mechanic_quest() -> String {
+    pick("tarkov.quests.mechanic")
+}
+
+/// Gem-compatible generator: a Ragman quest.
+pub fn ragman_quest() -> String {
+    pick("tarkov.quests.ragman")
+}
+
+/// Gem-compatible generator: a Jaeger quest.
+pub fn jaeger_quest() -> String {
+    pick("tarkov.quests.jaeger")
+}
+
+/// Gem-compatible generator: a Fence quest.
+pub fn fence_quest() -> String {
+    pick("tarkov.quests.fence")
+}
+
 // Fallback data
 const FALLBACK_LOCATIONS: &[&str] = &[
     "Customs",

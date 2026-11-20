@@ -65,6 +65,48 @@ fn parity_pick(key: &str) -> String {
         .unwrap_or_default()
 }
 
+// --- gem parity `fetch_all` equivalents (all locale values) ---
+fn parity_all(key: &str) -> Vec<String> {
+    fetch_locale(key, "en").unwrap_or_default()
+}
+
+/// Gem-compatible generator: all TRON characters (programs and users).
+pub fn characters() -> Vec<String> {
+    let mut values = parity_all("tron.characters.programs");
+    values.extend(parity_all("tron.characters.users"));
+    values
+}
+
+/// Gem-compatible generator: all TRON games.
+pub fn games() -> Vec<String> {
+    parity_all("tron.games")
+}
+
+/// Gem-compatible generator: all TRON locations.
+pub fn locations() -> Vec<String> {
+    parity_all("tron.locations")
+}
+
+/// Gem-compatible generator: all TRON programs.
+pub fn programs() -> Vec<String> {
+    parity_all("tron.characters.programs")
+}
+
+/// Gem-compatible generator: all TRON taglines.
+pub fn taglines() -> Vec<String> {
+    parity_all("tron.taglines")
+}
+
+/// Gem-compatible generator: all TRON users.
+pub fn users() -> Vec<String> {
+    parity_all("tron.characters.users")
+}
+
+/// Gem-compatible generator: all TRON vehicles.
+pub fn vehicles() -> Vec<String> {
+    parity_all("tron.vehicles")
+}
+
 /// Gem-compatible generator: `tron.games`.
 pub fn game() -> String {
     parity_pick("tron.games")
