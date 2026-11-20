@@ -22,3 +22,9 @@ name::suffix           //=> "iv"
 name::initials            //=> "njm"
 name::initials() //=> "nm"
 ```
+
+## Verified Rust API examples
+
+```rust
+name::middle_name() //=> "Goldner"
+```

@@ -3,6 +3,9 @@
 use crate::base::sample;
 use crate::locale::fetch_locale;
 
+/// Gem-compatible alias for [`iata_code`].
+pub use self::iata_code as iata;
+
 /// Generate a random airport name
 pub fn name() -> String {
     fetch_locale("airport.names", "en")

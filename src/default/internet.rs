@@ -4,6 +4,13 @@
 use crate::base::sample;
 // Removed unused ALPHANUMERIC
 use crate::base::DIGITS;
+
+/// Gem-compatible alias for [`ip_v4`].
+pub use self::ip_v4 as ip_v4_address;
+/// Gem-compatible alias for [`ip_v6`].
+pub use self::ip_v6 as ip_v6_address;
+/// Gem-compatible alias for [`private_ip_v4`].
+pub use self::private_ip_v4 as private_ip_v4_address;
 use crate::base::L_LETTERS;
 use crate::base::U_LETTERS;
 use crate::company;

@@ -4,6 +4,9 @@ use crate::base::sample;
 use crate::config::FakerConfig;
 use crate::locale::{fetch_locale_with_context, sample_with_resolve};
 
+/// Gem-compatible alias for [`last_name`].
+pub use self::last_name as middle_name;
+
 /// Generate a random full name
 pub fn name() -> String {
     format!("{} {}", first_name(), last_name())

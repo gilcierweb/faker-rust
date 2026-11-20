@@ -3,6 +3,9 @@
 use crate::base::sample;
 use crate::locale::fetch_locale;
 
+/// Gem-compatible alias for [`book`].
+pub use self::book as tome;
+
 /// Generate a random Lovecraft creature/deity
 pub fn creature() -> String {
     fetch_locale("lovecraft.creatures", "en")

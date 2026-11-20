@@ -50,3 +50,10 @@ address::longitude() //=> "-156.65548382095133"
 
 address::full_address() //=> "282 kevin brook, imogeneborough, ca 58517"
 ```
+
+## Verified Rust API examples
+
+```rust
+address::postcode() //=> "96042"
+address::zip()      //=> "24443"
+```

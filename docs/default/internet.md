@@ -41,3 +41,11 @@ internet::base64(16, true, false) //=> "614Y+sBu8tEItGVN"
 
 internet::uuid() //=> "361b2e6c-a2b2-43e3-9883-1d612d5c8103"
 ```
+
+## Verified Rust API examples
+
+```rust
+internet::ip_v4_address()           //=> "208.17.119.80"
+internet::ip_v6_address()           //=> "e577:b44:241f:eea6:29ca:72c1:3a9b:e86f"
+internet::private_ip_v4_address()   //=> "192.168.112.59"
+```

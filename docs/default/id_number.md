@@ -72,3 +72,9 @@ id_number::danish_id_number(false) //=> "1706753940"
 id_number::danish_id_number(true) //=> "140592-1334"
 id_number::french_insee_number() //=> "262033696544706"
 ```
+
+## Verified Rust API examples
+
+```rust
+id_number::south_african_id_number() //=> "6205103481189"
+```

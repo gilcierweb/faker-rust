@@ -45,10 +45,18 @@ vehicle::year() //=> 2008
 vehicle::mileage() //=> 26961
 vehicle::mileage() //=> 81557
 vehicle::mileage() //=> 117503
-vehicle::kilometrage() //=> 35378
+vehicle::kilometrage() //=> 22039
 
 vehicle::license_plate() //=> "dep-2483"
 vehicle::license_plate() //=> "977 unu"
 
 vehicle::singapore_license_plate() //=> "slv1854m"
+```
+
+## Verified Rust API examples
+
+```rust
+vehicle::door_count()  //=> "3"
+vehicle::engine_size() //=> "Cylinder Engine"
+vehicle::kilometrage() //=> 22039
 ```

@@ -56,3 +56,9 @@ lovecraft::paragraph(3, 1) //=> "Noisome eldritch blasphemous. Fungus tentacles 
 lovecraft::paragraphs(2) //=> ["Gibbering stench swarthy. Nameless fungus hideous. Comprehension singular ululate.", "Indescribable iridescence loathsome. Swarthy antediluvian mortal. Manuscript fainted lurk."]
 lovecraft::paragraph_by_chars(120) //=> "Immemorial unnamable unmentionable. Indescribable accursed stench. Ululate shunned fungus. Cyclopean ululate furtive. N."
 ```
+
+## Verified Rust API examples
+
+```rust
+lovecraft::tome() //=> "Pnakotic Manuscripts"
+```

@@ -3,6 +3,13 @@
 use crate::base::sample;
 use crate::locale::fetch_locale;
 
+/// Gem-compatible alias for [`hex`].
+pub use self::hex as hex_color;
+/// Gem-compatible alias for [`hsl`].
+pub use self::hsl as hsl_color;
+/// Gem-compatible alias for [`rgb`].
+pub use self::rgb as rgb_color;
+
 /// Generate a random color name
 pub fn name() -> String {
     fetch_locale("color.name", "en")

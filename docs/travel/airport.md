@@ -4,3 +4,9 @@
 airport::name() //=> "Los Angeles International Airport"
 airport::iata_code() //=> "LAX"
 ```
+
+## Verified Rust API examples
+
+```rust
+airport::iata() //=> "KXS"
+```

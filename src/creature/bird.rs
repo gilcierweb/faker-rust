@@ -3,6 +3,11 @@
 use crate::base::sample;
 use crate::locale::{fetch_locale, sample_with_resolve};
 
+/// Gem-compatible alias for [`adjectives`].
+pub use self::adjectives as adjective;
+/// Gem-compatible alias for [`colors`].
+pub use self::colors as color;
+
 /// Generate a random bird anatomy part
 pub fn anatomy() -> String {
     fetch_locale("creature.bird.anatomy", "en")

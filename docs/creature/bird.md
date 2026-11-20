@@ -20,7 +20,7 @@ bird::geo() //=> "Eurasian"
 bird::color() //=> "ferruginous"
 
 // Random bird adjective word
-bird::adjective() //=> "common"
+bird::adjective() //=> "rough"
 
 // Random emotional adjective NOT typically used in bird names
 bird::emotional_adjective() //=> "cantankerous"
@@ -39,4 +39,11 @@ bird::implausible_common_name() //=> 'Hellinger's Cantankerous Chickadee'
 
 // Returns a random pair order / common name pair
 bird::order_with_common_name() //=> {:order=>"Coliiformes", :common_name=>"Mousebird"}
+```
+
+## Verified Rust API examples
+
+```rust
+bird::color()     //=> "ash"
+bird::adjective() //=> "rough"
 ```

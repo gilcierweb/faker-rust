@@ -3,6 +3,11 @@
 use crate::base::{bothify, sample};
 use crate::locale::{fetch_locale_with_context, sample_with_resolve};
 
+/// Gem-compatible alias for [`zip_code`].
+pub use self::zip_code as postcode;
+/// Gem-compatible alias for [`zip_code`].
+pub use self::zip_code as zip;
+
 /// Generate a random city name
 pub fn city() -> String {
     fetch_locale_with_context("address.city", "en", Some("address"))

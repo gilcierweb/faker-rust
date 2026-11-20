@@ -2,6 +2,9 @@
 
 use crate::config::FakerConfig;
 
+/// Gem-compatible alias for [`valid_south_african_id_number`].
+pub use self::valid_south_african_id_number as south_african_id_number;
+
 /// Letters used by the Spanish DNI check-digit scheme, indexed by number % 23.
 const DNI_LETTERS: [char; 23] = [
     'T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H',

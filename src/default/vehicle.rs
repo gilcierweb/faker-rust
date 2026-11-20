@@ -3,6 +3,16 @@
 use crate::base::sample;
 use crate::locale::fetch_locale;
 
+/// Gem-compatible alias for [`doors`].
+pub use self::doors as door_count;
+/// Gem-compatible alias for [`engine`].
+pub use self::engine as engine_size;
+
+/// Gem-compatible generator: mileage with the gem's default range.
+pub fn kilometrage() -> u32 {
+    mileage(10_000, 90_000)
+}
+
 /// Generate a random vehicle manufacturer
 pub fn manufacturer() -> String {
     fetch_locale("vehicle.manufacturer", "en")
