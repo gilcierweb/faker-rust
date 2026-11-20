@@ -40,7 +40,7 @@
 - 🌍 **Locale-Aware**: Multi-language support with fallback mechanism
 - 🎲 **Reproducible**: Seedable RNG for deterministic data generation
 - 📦 **Complete Parity**: 100% API compatibility with Ruby Faker gem
-- 🧪 **Well Tested**: 940+ unit tests ensuring reliability
+- 🧪 **Well Tested**: 960+ unit tests ensuring reliability
 - 🏢 **100+ Modules**: Internet, Person, Location, Finance, and much more
 
 ## Getting Started
@@ -68,7 +68,7 @@ fn main() {
     println!("{}", name::name());                      //=> "Christophe Bartell"
     
     // Internet
-    println!("{}", internet::password());            //=> "Vg5mSvY1UeRg7"
+    println!("{}", internet::password(8, 16, true, true)); //=> "Vg5mSvY1UeRg7"
     println!("{}", internet::email(None, None, None)); //=> "eliza@mann.test"
     
     // Address
@@ -98,6 +98,7 @@ The grouped coverage files are:
 - `coverage_tv_shows.rs`: TV show generators
 - `coverage_compatibility.rs`: base helpers and compatibility modules
 - `coverage_parity_aliases.rs`: exact gem-documented method names
+- `coverage_function_smoke.rs`: generators that had no example previously
 
 Run one with `cargo run --example coverage_everyday`.
 
