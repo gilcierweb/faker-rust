@@ -201,7 +201,7 @@ To see the full list, check out the [GENERATORS](./GENERATORS.md) document.
 
 | Category | Generators |
 |----------|------------|
-| **Regional** | `chile_rut`, `driving_licence`, `id_number`, `south_africa`, `national_health_service` |
+| **Regional** | `chile_rut`, `driving_license`, `id_number`, `south_africa`, `national_health_service` |
 | **Tech** | `drone`, `electrical_components`, `html`, `programming_language`, `internet_http` |
 | **Security** | `vulnerability_identifier`, `omniauth` |
 | **Misc** | `slack_emoji`, `lorem_flickr`, `placeholdit`, `x` (Twitter), `source` |
