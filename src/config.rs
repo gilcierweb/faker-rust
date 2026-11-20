@@ -69,22 +69,19 @@ impl FakerConfig {
         if max <= min {
             return min;
         }
-        // Use exclusive range to avoid off-by-one error
-        let range = min..max;
         use rand::Rng;
         let mut rng = self.rng.borrow_mut();
-        rng.gen_range(range)
+        rng.gen_range(min..=max)
     }
 
-    /// Generate a random i64 between min and max
+    /// Generate a random i64 between min and max (inclusive)
     pub fn rand_range_i64(&self, min: i64, max: i64) -> i64 {
         if max <= min {
             return min;
         }
-        let range = min..max;
         use rand::Rng;
         let mut rng = self.rng.borrow_mut();
-        rng.gen_range(range)
+        rng.gen_range(min..=max)
     }
 
     /// Generate a random f64 between 0.0 and 1.0
@@ -107,7 +104,7 @@ impl FakerConfig {
         if chars.is_empty() {
             return 'a'; // fallback
         }
-        let idx = self.rand_range(0, chars.len() as u32) as usize;
+        let idx = self.rand_usize(chars.len());
         chars[idx]
     }
 
@@ -119,7 +116,7 @@ impl FakerConfig {
                 .cloned()
                 .unwrap_or_else(|| panic!("Cannot sample from empty slice"));
         }
-        let idx = self.rand_range(0, items.len() as u32) as usize;
+        let idx = self.rand_usize(items.len());
         items[idx].clone()
     }
 
@@ -128,5 +125,24 @@ impl FakerConfig {
     pub fn shuffle<T>(&self, vec: &mut Vec<T>) {
         use rand::seq::SliceRandom;
         vec.shuffle(&mut *self.rng.borrow_mut());
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_rand_range_reaches_max() {
+        FakerConfig::set_seed(42);
+        let config = FakerConfig::current();
+        let mut saw_max = false;
+        for _ in 0..10_000 {
+            if config.rand_range(1, 10) == 10 {
+                saw_max = true;
+                break;
+            }
+        }
+        assert!(saw_max, "rand_range(1, 10) must be able to return 10");
     }
 }

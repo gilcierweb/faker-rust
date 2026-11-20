@@ -28,7 +28,7 @@ fn rand_strings(length: u32) -> String {
     
     let mut result = String::new();
     for _ in 0..length {
-        let idx = config.rand_range(0, HEX_ALPHABET.len() as u32) as usize;
+        let idx = config.rand_usize(HEX_ALPHABET.len());
         result.push(HEX_ALPHABET[idx] as char);
     }
     result

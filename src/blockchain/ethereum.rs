@@ -18,7 +18,7 @@ fn generate_ethereum_address() -> String {
     let config = crate::config::FakerConfig::current();
 
     for _ in 0..40 {
-        let idx = config.rand_range(0, (HEX.len() - 1) as u32) as usize;
+        let idx = config.rand_usize(HEX.len());
         address.push(HEX[idx] as char);
     }
 

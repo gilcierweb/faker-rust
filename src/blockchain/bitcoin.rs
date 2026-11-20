@@ -27,7 +27,7 @@ fn generate_bitcoin_address() -> String {
     };
 
     for _ in 0..length {
-        let idx = config.rand_range(0, (CHARS.len() - 1) as u32) as usize;
+        let idx = config.rand_usize(CHARS.len());
         address.push(CHARS[idx] as char);
     }
 

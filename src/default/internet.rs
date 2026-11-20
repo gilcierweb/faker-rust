@@ -170,7 +170,7 @@ pub fn ip_v4() -> string::String {
 /// Generate a random private IPv4 address
 pub fn private_ip_v4() -> string::String {
     let config = FakerConfig::current();
-    let choice = config.rand_range(0, 5);
+    let choice = config.rand_u32(5);
     match choice {
         0 => format!(
             "10.{}.{}.{}",
@@ -196,7 +196,7 @@ pub fn private_ip_v4() -> string::String {
 pub fn ip_v6() -> string::String {
     let config = FakerConfig::current();
     (0..8)
-        .map(|_| format!("{:x}", config.rand_range(0, 65535)))
+        .map(|_| format!("{:x}", config.rand_u32(65536)))
         .collect::<Vec<_>>()
         .join(":")
 }
@@ -231,7 +231,7 @@ pub fn mac_address(prefix: Option<&str>) -> string::String {
 
     let mut result = prefix_bytes;
     for _ in 0..count {
-        result.push(config.rand_range(0, 256) as u8);
+        result.push(config.rand_u32(256) as u8);
     }
 
     result
@@ -275,7 +275,7 @@ pub fn device_token() -> string::String {
     let config = FakerConfig::current();
     let mut chars: Vec<char> = (0..64)
         .map(|_| {
-            let idx = config.rand_range(0, 16) as u8;
+            let idx = config.rand_u32(16) as u8;
             format!("{:x}", idx).chars().next().unwrap()
         })
         .collect();
@@ -340,7 +340,7 @@ pub fn user_agent(vendor: Option<&str>) -> string::String {
             }
         }
         None => {
-            let idx = config.rand_range(0, vendors.len() as u32) as usize;
+            let idx = config.rand_usize(vendors.len());
             vendors[idx]
         }
     };
@@ -387,7 +387,7 @@ pub fn bot_user_agent(vendor: Option<&str>) -> string::String {
             }
         }
         None => {
-            let idx = config.rand_range(0, vendors.len() as u32) as usize;
+            let idx = config.rand_usize(vendors.len());
             vendors[idx]
         }
     };

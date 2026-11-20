@@ -12,7 +12,7 @@ pub fn image() -> String {
         "nightlife", "fashion", "people", "nature", "sports", "technics",
         "transport", "technics", "abstract", "people",
     ];
-    let keyword = keywords[(config.rand_range(0, keywords.len() as u32)) as usize];
+    let keyword = keywords[config.rand_usize(keywords.len())];
     
     format!("https://loremflickr.com/{}/{}/{}", width, height, keyword)
 }
@@ -26,7 +26,7 @@ pub fn grayscale() -> String {
 pub fn sized(width: u32, height: u32) -> String {
     let config = FakerConfig::current();
     let keywords = ["abstract", "animals", "business", "cats", "city", "food"];
-    let keyword = keywords[(config.rand_range(0, keywords.len() as u32)) as usize];
+    let keyword = keywords[config.rand_usize(keywords.len())];
     
     format!("https://loremflickr.com/{}/{}/{}", width, height, keyword)
 }

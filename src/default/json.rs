@@ -27,7 +27,7 @@ fn generate_value(config: &FakerConfig) -> String {
         0 => {
             // String
             let strings = ["test", "example", "sample", "data"];
-            format!("\"{}\"", strings[config.rand_range(0, strings.len() as u32) as usize])
+            format!("\"{}\"", strings[config.rand_usize(strings.len())])
         }
         1 => {
             // Number

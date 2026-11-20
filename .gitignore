@@ -1,2 +1,5 @@
 /target
 clippy.log
+.superpowers/
+.superpowers/sdd/
+docs/superpowers/plans/

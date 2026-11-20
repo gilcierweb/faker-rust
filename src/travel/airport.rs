@@ -37,7 +37,7 @@ fn generate_iata_code() -> String {
     let mut code = String::new();
 
     for _ in 0..3 {
-        let idx = config.rand_range(0, (LETTERS.len() - 1) as u32) as usize;
+        let idx = config.rand_usize(LETTERS.len());
         code.push(LETTERS[idx] as char);
     }
 
@@ -50,7 +50,7 @@ fn generate_icao_code() -> String {
     let mut code = String::new();
 
     for _ in 0..4 {
-        let idx = config.rand_range(0, (LETTERS.len() - 1) as u32) as usize;
+        let idx = config.rand_usize(LETTERS.len());
         code.push(LETTERS[idx] as char);
     }
 

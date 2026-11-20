@@ -52,9 +52,9 @@ pub fn catch_phrase() -> String {
                 .flat_map(|s| s.split(',').map(|p| p.trim().to_string()))
                 .collect();
             if all.len() >= 3 {
-                let i1 = config.rand_range(0, all.len() as u32) as usize;
-                let i2 = config.rand_range(0, all.len() as u32) as usize;
-                let i3 = config.rand_range(0, all.len() as u32) as usize;
+                let i1 = config.rand_usize(all.len());
+                let i2 = config.rand_usize(all.len());
+                let i3 = config.rand_usize(all.len());
                 format!("{} {} {}", all[i1], all[i2], all[i3])
             } else {
                 format!(
@@ -98,9 +98,9 @@ pub fn bs() -> String {
                 .collect();
             if parts.len() >= 3 {
                 let config = FakerConfig::current();
-                let i1 = config.rand_range(0, parts.len() as u32) as usize;
-                let i2 = config.rand_range(0, parts.len() as u32) as usize;
-                let i3 = config.rand_range(0, parts.len() as u32) as usize;
+                let i1 = config.rand_usize(parts.len());
+                let i2 = config.rand_usize(parts.len());
+                let i3 = config.rand_usize(parts.len());
                 format!("{} {} {}", parts[i1], parts[i2], parts[i3])
             } else {
                 let p1 = sample(FALLBACK_BS_WORDS[0]);

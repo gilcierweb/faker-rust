@@ -44,7 +44,7 @@ fn encode_tz(prefix: &str, payload_size: usize) -> String {
     // Generate random payload
     let mut payload = String::new();
     for _ in 0..payload_size {
-        let idx = config.rand_range(0, 256) as usize % BASE58_ALPHABET.len();
+        let idx = config.rand_u32(256) as usize % BASE58_ALPHABET.len();
         payload.push(BASE58_ALPHABET[idx] as char);
     }
     
