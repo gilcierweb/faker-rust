@@ -332,6 +332,349 @@ pub fn r#type() -> String {
     parity_pick("company.type")
 }
 
+// --- gem parity generators (algorithmic identifiers) ---
+
+fn config() -> crate::config::FakerConfig {
+    crate::config::FakerConfig::current()
+}
+
+fn random_digits(len: usize) -> String {
+    (0..len)
+        .map(|_| char::from(b'0' + config().rand_u32(10) as u8))
+        .collect()
+}
+
+fn random_number_in(min: u32, max: u32) -> u32 {
+    if min >= max {
+        return min;
+    }
+    min + config().rand_u32(max - min + 1)
+}
+
+fn number_string_in(min_digits: usize, max_digits: usize) -> String {
+    let len = random_number_in(min_digits as u32, max_digits as u32) as usize;
+    let mut result = random_number_in(1, 9).to_string();
+    result.push_str(&random_digits(len - 1));
+    result
+}
+
+fn random_uppercase(len: usize) -> String {
+    (0..len)
+        .map(|_| char::from(b'A' + config().rand_u32(26) as u8))
+        .collect()
+}
+
+fn luhn_algorithm(number: &str) -> u32 {
+    let mut sum = 0u32;
+    for (index, character) in number.chars().rev().enumerate() {
+        let digit = character.to_digit(10).unwrap_or(0);
+        let multiplied = if index % 2 == 0 { digit * 2 } else { digit };
+        sum += multiplied
+            .to_string()
+            .chars()
+            .filter_map(|c| c.to_digit(10))
+            .sum::<u32>();
+    }
+    if sum.is_multiple_of(10) {
+        0
+    } else {
+        (sum / 10 + 1) * 10 - sum
+    }
+}
+
+fn mod11(number: &str) -> Option<u32> {
+    let weights = [2, 3, 4, 5, 6, 7, 2, 3, 4, 5, 6, 7, 2, 3, 4, 5, 6, 7];
+    let sum: u32 = number
+        .chars()
+        .rev()
+        .enumerate()
+        .map(|(index, character)| character.to_digit(10).unwrap_or(0) * weights[index])
+        .sum();
+    match sum % 11 {
+        0 => Some(0),
+        1 => None,
+        remainder => Some(11 - remainder),
+    }
+}
+
+fn abn_checksum(abn: &str) -> u32 {
+    let weights = [10, 1, 3, 5, 7, 9, 11, 13, 15, 17, 19];
+    abn.chars()
+        .zip(weights)
+        .map(|(character, weight)| character.to_digit(10).unwrap_or(0) * weight)
+        .sum()
+}
+
+fn weight_sum(array: &[u32], weights: &[u32]) -> u32 {
+    array
+        .iter()
+        .zip(weights)
+        .map(|(value, weight)| value * weight)
+        .sum()
+}
+
+fn collect_regon_sum(array: &[u32]) -> u32 {
+    let weights: Vec<u32> = if array.len() == 9 {
+        vec![8, 9, 2, 3, 4, 5, 6, 7]
+    } else {
+        vec![2, 4, 8, 5, 0, 9, 7, 3, 6, 1, 2, 4, 8]
+    };
+    let sum = weight_sum(array, &weights) % 11;
+    if sum == 10 { 0 } else { sum }
+}
+
+fn spanish_b_algorithm(value: u32) -> u32 {
+    let result = value * 2;
+    if result < 10 {
+        result
+    } else {
+        result / 10 + result % 10
+    }
+}
+
+fn spanish_cif_control_digit(organization_type: char, code: &str) -> String {
+    let letters = ['J', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'];
+    let mut control = 0u32;
+    for (index, character) in code.chars().enumerate() {
+        let value = character.to_digit(10).unwrap_or(0);
+        control += if (index + 1) % 2 == 0 {
+            value
+        } else {
+            spanish_b_algorithm(value)
+        };
+    }
+    let mut digit = control % 10;
+    if digit != 0 {
+        digit = 10 - digit;
+    }
+    if ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'J', 'U', 'V'].contains(&organization_type) {
+        digit.to_string()
+    } else {
+        letters[digit as usize].to_string()
+    }
+}
+
+fn inn_checksum(factor: &[u32], number: &str) -> String {
+    let sum: u32 = factor
+        .iter()
+        .enumerate()
+        .map(|(index, weight)| {
+            weight
+                * number
+                    .chars()
+                    .nth(index)
+                    .and_then(|c| c.to_digit(10))
+                    .unwrap_or(0)
+        })
+        .sum();
+    ((sum % 11) % 10).to_string()
+}
+
+fn gst_checksum(base: &str) -> char {
+    let chars: Vec<char> = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ".chars().collect();
+    let sum: usize = base
+        .chars()
+        .enumerate()
+        .map(|(index, character)| {
+            let value = chars.iter().position(|c| *c == character).unwrap_or(0);
+            let product = value * if index % 2 == 1 { 2 } else { 1 };
+            product / chars.len() + product % chars.len()
+        })
+        .sum();
+    chars[(chars.len() - (sum % chars.len())) % chars.len()]
+}
+
+/// Gem-compatible generator: Spanish organisation number.
+pub fn spanish_organisation_number(organization_type: Option<&str>) -> String {
+    let letters = [
+        'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'J', 'N', 'P', 'Q', 'R', 'S', 'U', 'V', 'W',
+    ];
+    let org = match organization_type
+        .and_then(|value| value.chars().next())
+        .filter(|c| letters.contains(c))
+    {
+        Some(letter) => letter,
+        None => crate::base::sample(&letters),
+    };
+    let code = random_digits(7);
+    let control = spanish_cif_control_digit(org, &code);
+    format!("{org}{code}{control}")
+}
+
+/// Gem-compatible generator: Swedish organisation number.
+pub fn swedish_organisation_number() -> String {
+    let first = crate::base::sample(&[1u32, 2, 3, 5, 6, 7, 8, 9]);
+    let second = config().rand_u32(10);
+    let third = random_number_in(2, 9);
+    let base = format!("{first}{second}{third}{}", random_digits(6));
+    format!("{base}{}", luhn_algorithm(&base))
+}
+
+/// Gem-compatible generator: Czech organisation number.
+pub fn czech_organisation_number() -> String {
+    let weights = [8u32, 7, 6, 5, 4, 3, 2];
+    let mut result = Vec::new();
+    let mut sum = 0u32;
+    for weight in weights {
+        let digit = config().rand_u32(10);
+        sum += weight * digit;
+        result.push(digit);
+    }
+    result.push((11 - (sum % 11)) % 10);
+    result.iter().map(u32::to_string).collect()
+}
+
+/// Gem-compatible generator: French SIREN number.
+pub fn french_siren_number() -> String {
+    let base = random_digits(8);
+    format!("{base}{}", luhn_algorithm(&base))
+}
+
+/// Gem-compatible generator: French SIRET number.
+pub fn french_siret_number() -> String {
+    let location = format!("{:04}", config().rand_u32(100));
+    let base = format!("{}{location}", french_siren_number());
+    format!("{base}{}", luhn_algorithm(&base))
+}
+
+/// Gem-compatible generator: Norwegian organisation number.
+pub fn norwegian_organisation_number() -> String {
+    loop {
+        let first = crate::base::sample(&[8u32, 9]);
+        let base = format!("{first}{}", random_digits(7));
+        if let Some(check) = mod11(&base) {
+            return format!("{base}{check}");
+        }
+    }
+}
+
+/// Gem-compatible generator: Australian business number.
+pub fn australian_business_number() -> String {
+    let base = random_digits(9);
+    let check = 99 - (abn_checksum(&format!("00{base}")) % 89);
+    format!("{check}{base}")
+}
+
+/// Gem-compatible generator: Polish taxpayer identification number.
+pub fn polish_taxpayer_identification_number() -> String {
+    let weights = [6u32, 5, 7, 2, 3, 4, 5, 6, 7];
+    loop {
+        let mut result: Vec<u32> = (0..3).map(|_| random_number_in(1, 9)).collect();
+        result.extend((0..7).map(|_| config().rand_u32(10)));
+        if weight_sum(&result, &weights) % 11 == result[9] {
+            return result.iter().map(u32::to_string).collect();
+        }
+    }
+}
+
+/// Gem-compatible generator: Polish register of national economy number.
+pub fn polish_register_of_national_economy(length: usize) -> String {
+    loop {
+        let digits: Vec<u32> = (0..length).map(|_| config().rand_u32(10)).collect();
+        if let Some(last) = digits.last()
+            && collect_regon_sum(&digits) == *last
+        {
+            return digits.iter().map(u32::to_string).collect();
+        }
+    }
+}
+
+/// Gem-compatible generator: South African private company registration number.
+pub fn south_african_pty_ltd_registration_number() -> String {
+    format!("{}/{}/07", random_digits(4), number_string_in(4, 10))
+}
+
+/// Gem-compatible generator: South African close corporation registration number.
+pub fn south_african_close_corporation_registration_number() -> String {
+    let prefix = if config().rand_bool() {
+        format!("CK{}", random_digits(2))
+    } else {
+        random_digits(4)
+    };
+    format!("{prefix}/{}/23", number_string_in(4, 10))
+}
+
+/// Gem-compatible generator: South African listed company registration number.
+pub fn south_african_listed_company_registration_number() -> String {
+    format!("{}/{}/06", random_digits(4), number_string_in(4, 10))
+}
+
+/// Gem-compatible generator: South African trust registration number.
+pub fn south_african_trust_registration_number() -> String {
+    format!(
+        "IT{}/{}",
+        random_number_in(10, 9999),
+        number_string_in(2, 10)
+    )
+}
+
+/// Gem-compatible generator: Brazilian company number (CNPJ).
+pub fn brazilian_company_number(formatted: bool) -> String {
+    let mut digits: Vec<u32> = (0..8).map(|_| config().rand_u32(10)).collect();
+    digits.extend([0, 0, 0, random_number_in(1, 9)]);
+    let factors = [5u32, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2, 6];
+    for _ in 0..2 {
+        let checksum: u32 = digits
+            .iter()
+            .zip(factors.iter().cycle())
+            .map(|(digit, factor)| digit * factor)
+            .sum::<u32>()
+            % 11;
+        digits.push(if checksum < 2 { 0 } else { 11 - checksum });
+    }
+    let number: String = digits.iter().map(u32::to_string).collect();
+    if formatted {
+        format!(
+            "{}.{}.{}/{}-{}",
+            &number[0..2],
+            &number[2..5],
+            &number[5..8],
+            &number[8..12],
+            &number[12..14]
+        )
+    } else {
+        number
+    }
+}
+
+/// Gem-compatible generator: Russian tax number (INN).
+pub fn russian_tax_number(region: Option<&str>, legal: bool) -> String {
+    let n10 = [2u32, 4, 10, 3, 5, 9, 4, 6, 8];
+    let n11 = [7u32, 2, 4, 10, 3, 5, 9, 4, 6, 8];
+    let n12 = [3u32, 7, 2, 4, 10, 3, 5, 9, 4, 6, 8];
+    let region = region
+        .map(str::to_string)
+        .unwrap_or_else(|| format!("{:02}", random_number_in(1, 92)));
+    if legal {
+        let number = format!("{}{}", region, random_number_in(1_000_000, 9_999_999));
+        format!("{}{}", number, inn_checksum(&n10, &number))
+    } else {
+        let number = format!("{}{}", region, random_number_in(10_000_000, 99_999_999));
+        let first = inn_checksum(&n11, &number);
+        let second = inn_checksum(&n12, &format!("{number}{first}"));
+        format!("{number}{first}{second}")
+    }
+}
+
+/// Gem-compatible generator: Indian Goods and Services Tax number.
+pub fn indian_gst_number(state_code: Option<&str>) -> String {
+    let state = state_code
+        .map(str::to_string)
+        .unwrap_or_else(|| format!("{:02}", random_number_in(2, 39)));
+    let taxpayers = ['A', 'B', 'C', 'F', 'G', 'H', 'L', 'J', 'P', 'T', 'K'];
+    let taxpayer = format!(
+        "{}{}{}{:04}{}",
+        random_uppercase(3),
+        crate::base::sample(&taxpayers),
+        random_uppercase(1),
+        config().rand_u32(10000),
+        random_uppercase(1)
+    );
+    let registration = config().rand_u32(10);
+    let base = format!("{state}{taxpayer}{registration}");
+    format!("{base}Z{}", gst_checksum(&base))
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

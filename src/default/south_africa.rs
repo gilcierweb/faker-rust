@@ -75,6 +75,50 @@ pub fn license_plate() -> String {
     format!("{} {}{}-{}", code, letters, config.rand_u32(10), numbers)
 }
 
+// --- gem parity generators (delegating to canonical generators) ---
+
+/// Gem-compatible generator: South African cell phone number.
+pub fn cell_phone() -> String {
+    crate::phone_number::cell_phone()
+}
+
+/// Gem-compatible generator: valid South African ID number.
+pub fn valid_id_number() -> String {
+    crate::id_number::valid_south_african_id_number()
+}
+
+/// Gem-compatible generator: invalid South African ID number.
+pub fn invalid_id_number() -> String {
+    crate::id_number::invalid_south_african_id_number()
+}
+
+/// Gem-compatible generator: South African VAT number.
+pub fn vat_number() -> String {
+    crate::locale::fetch_locale("finance.vat_number.ZA", "en")
+        .map(|templates| crate::base::numerify(&crate::base::sample(&templates)))
+        .unwrap_or_else(|| format!("ZA{:09}", FakerConfig::current().rand_u32(1_000_000_000)))
+}
+
+/// Gem-compatible generator: South African private company registration number.
+pub fn pty_ltd_registration_number() -> String {
+    crate::company::south_african_pty_ltd_registration_number()
+}
+
+/// Gem-compatible generator: South African close corporation registration number.
+pub fn close_corporation_registration_number() -> String {
+    crate::company::south_african_close_corporation_registration_number()
+}
+
+/// Gem-compatible generator: South African listed company registration number.
+pub fn listed_company_registration_number() -> String {
+    crate::company::south_african_listed_company_registration_number()
+}
+
+/// Gem-compatible generator: South African trust registration number.
+pub fn trust_registration_number() -> String {
+    crate::company::south_african_trust_registration_number()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
