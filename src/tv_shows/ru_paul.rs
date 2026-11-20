@@ -3,6 +3,13 @@
 use crate::base::sample;
 use crate::locale::fetch_locale;
 
+/// Generate a random RuPaul's Drag Race queen
+pub fn queen() -> String {
+    fetch_locale("rupaul.queens", "en")
+        .map(|v| sample(&v))
+        .unwrap_or_else(|| "RuPaul".to_string())
+}
+
 /// Generate a random RuPaul quote
 pub fn quote() -> String {
     fetch_locale("rupaul.quotes", "en")
@@ -66,6 +73,12 @@ const FALLBACK_CHALLENGES: &[&str] = &[
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn test_queen() {
+        let queens: std::collections::HashSet<_> = (0..50).map(|_| queen()).collect();
+        assert!(queens.len() > 1, "queens did not come from locale data");
+    }
 
     #[test]
     fn test_quote() {

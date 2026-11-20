@@ -1,5 +1,7 @@
 //! Locations generator - generates location-related data
 
+pub mod australia;
+
 use crate::base::sample;
 use crate::locale::fetch_locale;
 
@@ -40,32 +42,85 @@ pub fn locale() -> String {
 
 // Fallback data
 const FALLBACK_COMMUNITIES: &[&str] = &[
-    "City", "Town", "Village", "Hamlet", "Suburb", "District", "Borough",
-    "County", "Province", "State", "Territory", "Region", "Zone", "Area",
+    "City",
+    "Town",
+    "Village",
+    "Hamlet",
+    "Suburb",
+    "District",
+    "Borough",
+    "County",
+    "Province",
+    "State",
+    "Territory",
+    "Region",
+    "Zone",
+    "Area",
 ];
 
 const FALLBACK_NEIGHBORHOODS: &[&str] = &[
-    "Downtown", "Uptown", "Midtown", "Eastside", "Westside", "North End",
-    "South End", "Old Town", "Historic District", "Financial District",
-    "Arts District", "Entertainment District", "Warehouse District",
+    "Downtown",
+    "Uptown",
+    "Midtown",
+    "Eastside",
+    "Westside",
+    "North End",
+    "South End",
+    "Old Town",
+    "Historic District",
+    "Financial District",
+    "Arts District",
+    "Entertainment District",
+    "Warehouse District",
 ];
 
 const FALLBACK_BUILDING_TYPES: &[&str] = &[
-    "House", "Apartment", "Condo", "Townhouse", "Mansion", "Cottage",
-    "Bungalow", "Duplex", "Loft", "Studio", "Penthouse", "Villa",
-    "Office Building", "Warehouse", "Factory", "Store", "Restaurant",
+    "House",
+    "Apartment",
+    "Condo",
+    "Townhouse",
+    "Mansion",
+    "Cottage",
+    "Bungalow",
+    "Duplex",
+    "Loft",
+    "Studio",
+    "Penthouse",
+    "Villa",
+    "Office Building",
+    "Warehouse",
+    "Factory",
+    "Store",
+    "Restaurant",
 ];
 
 const FALLBACK_PLACES: &[&str] = &[
-    "Park", "Museum", "Library", "School", "Hospital", "Church", "Temple",
-    "Mosque", "Synagogue", "Theater", "Cinema", "Stadium", "Arena", "Zoo",
-    "Aquarium", "Beach", "Mountain", "Forest", "Lake", "River", "Ocean",
+    "Park",
+    "Museum",
+    "Library",
+    "School",
+    "Hospital",
+    "Church",
+    "Temple",
+    "Mosque",
+    "Synagogue",
+    "Theater",
+    "Cinema",
+    "Stadium",
+    "Arena",
+    "Zoo",
+    "Aquarium",
+    "Beach",
+    "Mountain",
+    "Forest",
+    "Lake",
+    "River",
+    "Ocean",
 ];
 
 const FALLBACK_LOCALES: &[&str] = &[
-    "en-US", "en-GB", "en-CA", "en-AU", "es-ES", "es-MX", "fr-FR",
-    "de-DE", "it-IT", "pt-BR", "ru-RU", "ja-JP", "zh-CN", "ko-KR",
-    "nl-NL", "pl-PL", "sv-SE", "tr-TR", "ar-SA", "hi-IN",
+    "en-US", "en-GB", "en-CA", "en-AU", "es-ES", "es-MX", "fr-FR", "de-DE", "it-IT", "pt-BR",
+    "ru-RU", "ja-JP", "zh-CN", "ko-KR", "nl-NL", "pl-PL", "sv-SE", "tr-TR", "ar-SA", "hi-IN",
 ];
 
 #[cfg(test)]

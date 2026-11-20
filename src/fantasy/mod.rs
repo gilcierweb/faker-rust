@@ -1,5 +1,7 @@
 //! Fantasy generator - generates fantasy-related data
 
+pub mod tolkien;
+
 use crate::base::sample;
 use crate::locale::fetch_locale;
 
@@ -40,32 +42,69 @@ pub fn spell() -> String {
 
 // Fallback data
 const FALLBACK_TOLKIEN_RACES: &[&str] = &[
-    "Elf", "Dwarf", "Human", "Hobbit", "Orc", "Ent", "Wizard", "Dragon",
-    "Troll", "Goblin", "Uruk-hai", "Balrog", "Nazgûl",
+    "Elf", "Dwarf", "Human", "Hobbit", "Orc", "Ent", "Wizard", "Dragon", "Troll", "Goblin",
+    "Uruk-hai", "Balrog", "Nazgûl",
 ];
 
 const FALLBACK_CREATURES: &[&str] = &[
-    "Dragon", "Phoenix", "Unicorn", "Griffin", "Kraken", "Basilisk",
-    "Chimera", "Hydra", "Minotaur", "Pegasus", "Centaur", "Werewolf",
-    "Vampire", "Fairy", "Giant", "Troll", "Ogre", "Goblin",
+    "Dragon", "Phoenix", "Unicorn", "Griffin", "Kraken", "Basilisk", "Chimera", "Hydra",
+    "Minotaur", "Pegasus", "Centaur", "Werewolf", "Vampire", "Fairy", "Giant", "Troll", "Ogre",
+    "Goblin",
 ];
 
 const FALLBACK_LOCATIONS: &[&str] = &[
-    "Mordor", "Rivendell", "The Shire", "Gondor", "Rohan", "Isengard",
-    "Helm's Deep", "Minas Tirith", "Lothlórien", "Mirkwood", "The Misty Mountains",
-    "Castle Dracula", "The Forbidden Forest", "Hogwarts", "Narnia",
+    "Mordor",
+    "Rivendell",
+    "The Shire",
+    "Gondor",
+    "Rohan",
+    "Isengard",
+    "Helm's Deep",
+    "Minas Tirith",
+    "Lothlórien",
+    "Mirkwood",
+    "The Misty Mountains",
+    "Castle Dracula",
+    "The Forbidden Forest",
+    "Hogwarts",
+    "Narnia",
 ];
 
 const FALLBACK_WEAPONS: &[&str] = &[
-    "Excalibur", "Glamdring", "Orcrist", "Sting", "Narsil", "Andúril",
-    "The Master Sword", "The Elder Wand", "Stormbringer", "Mjolnir",
-    "Longbow", "Battle Axe", "War Hammer", "Dagger", "Spear", "Staff",
+    "Excalibur",
+    "Glamdring",
+    "Orcrist",
+    "Sting",
+    "Narsil",
+    "Andúril",
+    "The Master Sword",
+    "The Elder Wand",
+    "Stormbringer",
+    "Mjolnir",
+    "Longbow",
+    "Battle Axe",
+    "War Hammer",
+    "Dagger",
+    "Spear",
+    "Staff",
 ];
 
 const FALLBACK_SPELLS: &[&str] = &[
-    "Fireball", "Lightning Bolt", "Healing Touch", "Invisibility", "Teleport",
-    "Frost Nova", "Chain Lightning", "Arcane Blast", "Shadow Bolt", "Holy Light",
-    "Polymorph", "Time Stop", "Resurrection", "Summon Demon", "Shield of Light",
+    "Fireball",
+    "Lightning Bolt",
+    "Healing Touch",
+    "Invisibility",
+    "Teleport",
+    "Frost Nova",
+    "Chain Lightning",
+    "Arcane Blast",
+    "Shadow Bolt",
+    "Holy Light",
+    "Polymorph",
+    "Time Stop",
+    "Resurrection",
+    "Summon Demon",
+    "Shield of Light",
 ];
 
 #[cfg(test)]

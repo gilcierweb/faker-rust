@@ -8,7 +8,6 @@ pub fn character() -> String {
     fetch_locale("hitchhikers_guide_to_the_galaxy.characters", "en")
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_CHARACTERS).to_string())
-
 }
 
 /// Generate a random Hitchhiker's Guide quote

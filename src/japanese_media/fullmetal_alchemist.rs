@@ -2,12 +2,32 @@
 
 use crate::base::sample;
 use crate::locale::fetch_locale;
+use crate::locale::fetch_locale_with_context;
+
+// Bundled data lives in `fullmetal_alchemist_brotherhood.yml`; the file stem
+// is passed as context so the plural locale keys resolve correctly.
+const CONTEXT: &str = "fullmetal_alchemist_brotherhood";
+const KEY: &str = "fullmetal_alchemist_brotherhood";
 
 /// Generate a random Fullmetal Alchemist character
 pub fn character() -> String {
-    fetch_locale("fullmetal_alchemist.characters", "en")
+    fetch_locale_with_context(&format!("{KEY}.characters"), "en", Some(CONTEXT))
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_CHARACTERS).to_string())
+}
+
+/// Generate a random city from the Fullmetal Alchemist world
+pub fn city() -> String {
+    fetch_locale_with_context(&format!("{KEY}.cities"), "en", Some(CONTEXT))
+        .map(|v| sample(&v))
+        .unwrap_or_else(|| "Central City".to_string())
+}
+
+/// Generate a random country from the Fullmetal Alchemist world
+pub fn country() -> String {
+    fetch_locale_with_context(&format!("{KEY}.countries"), "en", Some(CONTEXT))
+        .map(|v| sample(&v))
+        .unwrap_or_else(|| "Amestris".to_string())
 }
 
 /// Generate a random Fullmetal Alchemist quote
@@ -79,6 +99,17 @@ mod tests {
     #[test]
     fn test_character() {
         assert!(!character().is_empty());
+    }
+
+    #[test]
+    fn test_city_and_country_resolve_locale_data() {
+        let cities: std::collections::HashSet<_> = (0..30).map(|_| city()).collect();
+        let countries: std::collections::HashSet<_> = (0..30).map(|_| country()).collect();
+        assert!(cities.len() > 1, "cities did not come from locale data");
+        assert!(
+            countries.len() > 1,
+            "countries did not come from locale data"
+        );
     }
 
     #[test]
