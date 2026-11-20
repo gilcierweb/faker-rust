@@ -286,21 +286,63 @@ fn clean_key_for_extraction(key: &str) -> String {
     }
 }
 
+/// Candidate spellings for a single key segment, in priority order.
+///
+/// Locale data stores singular field names (`name`, `abbreviation`) while many
+/// callers pass plural ones (`names`, `abbreviations`). Trying both directions
+/// (plus `-ies`/`-y`) lets those keys resolve without duplicating every locale
+/// field twice. Exact and lowercase forms are handled by the caller.
+fn segment_variants(part: &str) -> Vec<String> {
+    let lower = part.to_lowercase();
+    let mut variants = Vec::new();
+
+    if let Some(stripped) = lower.strip_suffix('s')
+        && !stripped.is_empty()
+    {
+        variants.push(stripped.to_string());
+    } else {
+        variants.push(format!("{lower}s"));
+    }
+
+    if let Some(base) = lower.strip_suffix("ies")
+        && !base.is_empty()
+    {
+        variants.push(format!("{base}y"));
+    } else if let Some(base) = lower.strip_suffix('y')
+        && !base.is_empty()
+    {
+        variants.push(format!("{base}ies"));
+    }
+
+    variants
+}
+
+/// Look up one path segment in an object, tolerating case and singular/plural
+/// differences between callers and locale data.
+fn lookup_segment<'a>(map: &'a serde_json::Map<String, Value>, part: &str) -> Option<&'a Value> {
+    if let Some(value) = map.get(part) {
+        return Some(value);
+    }
+    let lower = part.to_lowercase();
+    if let Some(value) = map.get(&lower) {
+        return Some(value);
+    }
+    for candidate in segment_variants(part) {
+        if let Some(value) = map.get(&candidate) {
+            return Some(value);
+        }
+    }
+    None
+}
+
 fn extract_nested_array_raw(data: &Value, key: &str) -> Option<Vec<String>> {
     let parts: Vec<&str> = key.split('.').collect();
     let mut current: &Value = data;
 
     for (i, part) in parts.iter().enumerate() {
-        let part_str = part.to_string();
-        let part_lower = part_str.to_lowercase();
         match current {
             Value::Object(map) => {
-                if let Some(next) = map.get(part_str.as_str()) {
-                    current = next;
-                } else {
-                    let next = map.get(part_lower.as_str())?;
-                    current = next;
-                }
+                current = lookup_segment(map, part)?;
             }
             Value::Array(seq) => {
                 if i == parts.len() - 1 {
@@ -593,6 +635,25 @@ mod tests {
         assert!(result.is_some());
         let names = result.unwrap();
         assert!(!names.is_empty());
+    }
+
+    #[test]
+    fn test_fetch_locale_tolerates_plural_keys() {
+        // Callers historically passed plural keys (e.g. "hacker.abbreviations")
+        // while the YAML stores the singular form ("abbreviation"). Lookup must
+        // bridge singular/plural so those generators use locale data instead of
+        // silently falling back to hardcoded lists.
+        for key in [
+            "hacker.abbreviations",
+            "adjective.positives",
+            "restaurant.names",
+            "mountain.ranges",
+            "team.sports",
+        ] {
+            let result = fetch_locale(key, "en");
+            assert!(result.is_some(), "expected locale data for {key}");
+            assert!(!result.unwrap().is_empty(), "empty locale data for {key}");
+        }
     }
 
     // Characterization tests: pin the behavior of the YAML locale loader
