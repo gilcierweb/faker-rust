@@ -22,9 +22,31 @@ pub fn symbol() -> String {
         .unwrap_or_else(|| sample(FALLBACK_SYMBOLS).to_string())
 }
 
-// Fallback data
-const FALLBACK_COINS: &[&str] = &["Bitcoin", "Ethereum", "Litecoin", "Ripple", "Dogecoin"];
-const FALLBACK_SYMBOLS: &[&str] = &["BTC", "ETH", "LTC", "XRP", "DOGE"];
+// Fallback data (shared with the `crypto_coin` compatibility module)
+const FALLBACK_COINS: &[&str] = &[
+    "Bitcoin",
+    "Ethereum",
+    "Ripple",
+    "Litecoin",
+    "Cardano",
+    "Polkadot",
+    "Stellar",
+    "Chainlink",
+    "Dogecoin",
+    "Uniswap",
+    "Solana",
+    "Avalanche",
+    "Polygon",
+    "Binance Coin",
+    "Terra",
+    "Cosmos",
+    "Algorand",
+    "VeChain",
+];
+const FALLBACK_SYMBOLS: &[&str] = &[
+    "BTC", "ETH", "XRP", "LTC", "ADA", "DOT", "XLM", "LINK", "DOGE", "UNI", "SOL", "AVAX", "MATIC",
+    "BNB", "LUNA", "ATOM", "ALGO", "VET",
+];
 
 #[cfg(test)]
 mod tests {
