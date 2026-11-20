@@ -1,8 +1,8 @@
 //! OmniAuth generator
 
 use crate::base::sample;
-use crate::locale::fetch_locale;
 use crate::config::FakerConfig;
+use crate::locale::fetch_locale;
 
 /// Generate a random OmniAuth provider
 pub fn provider() -> String {
@@ -23,25 +23,38 @@ pub fn uid() -> String {
 /// Generate a random OmniAuth name
 pub fn name() -> String {
     let names = [
-        "google_oauth2", "facebook", "twitter", "github", "linkedin",
-        "developer", "saml", "openid_connect", "auth0", "okta",
+        "google_oauth2",
+        "facebook",
+        "twitter",
+        "github",
+        "linkedin",
+        "developer",
+        "saml",
+        "openid_connect",
+        "auth0",
+        "okta",
     ];
     sample(&names).to_string()
 }
 
-/// Generate a random directory name
-pub fn directory() -> String {
-    let dirs = [
-        "src", "lib", "bin", "test", "docs", "config", "assets",
-        "public", "private", "vendor", "node_modules", "target",
-    ];
-    sample(&dirs).to_string()
-}
+/// Generate a random directory name (shared with [`crate::source::directory`]).
+pub use crate::source::directory;
 
 // Fallback data
 const FALLBACK_PROVIDERS: &[&str] = &[
-    "google_oauth2", "facebook", "twitter", "github", "linkedin", "developer",
-    "saml", "openid_connect", "auth0", "okta", "microsoft", "slack", "discord",
+    "google_oauth2",
+    "facebook",
+    "twitter",
+    "github",
+    "linkedin",
+    "developer",
+    "saml",
+    "openid_connect",
+    "auth0",
+    "okta",
+    "microsoft",
+    "slack",
+    "discord",
 ];
 
 #[cfg(test)]

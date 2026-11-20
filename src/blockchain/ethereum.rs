@@ -1,5 +1,4 @@
 //! Ethereum blockchain generator
-#![allow(dead_code)]
 
 use crate::base::sample;
 use crate::locale::fetch_locale;
@@ -24,13 +23,6 @@ fn generate_ethereum_address() -> String {
 
     address
 }
-
-// Fallback data (sample real Ethereum addresses)
-const FALLBACK_ADDRESSES: &[&str] = &[
-    "0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb",
-    "0xdAC17F958D2ee523a2206206994597C13D831ec7",
-    "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
-];
 
 #[cfg(test)]
 mod tests {

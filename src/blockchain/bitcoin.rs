@@ -1,5 +1,4 @@
 //! Bitcoin blockchain generator
-#![allow(dead_code)]
 
 use crate::base::sample;
 use crate::locale::fetch_locale;
@@ -33,13 +32,6 @@ fn generate_bitcoin_address() -> String {
 
     address
 }
-
-// Fallback data (sample real Bitcoin addresses)
-const FALLBACK_ADDRESSES: &[&str] = &[
-    "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa",
-    "3J98t1WpEZ73CNmYviecrnyiWrnqRhWNLy",
-    "bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh",
-];
 
 #[cfg(test)]
 mod tests {

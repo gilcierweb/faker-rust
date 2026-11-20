@@ -5,19 +5,17 @@ use crate::config::FakerConfig;
 /// Generate a random JSON object as string
 pub fn object() -> String {
     let config = FakerConfig::current();
-    let keys = ["name", "email", "age", "city", "country", "company", "job"];
-    
+    let mut keys = vec!["name", "email", "age", "city", "country", "company", "job"];
+    config.shuffle(&mut keys);
+
     let num_fields = config.rand_range(2, 5) as usize;
     let mut fields = Vec::new();
-    
-    for i in 0..num_fields {
-        if i < keys.len() {
-            let key = keys[i];
-            let value = generate_value(&config);
-            fields.push(format!("\"{}\": {}", key, value));
-        }
+
+    for key in keys.iter().take(num_fields) {
+        let value = generate_value(&config);
+        fields.push(format!("\"{}\": {}", key, value));
     }
-    
+
     format!("{{{}}}", fields.join(", "))
 }
 
@@ -35,7 +33,11 @@ fn generate_value(config: &FakerConfig) -> String {
         }
         _ => {
             // Boolean
-            if config.rand_bool() { "true".to_string() } else { "false".to_string() }
+            if config.rand_bool() {
+                "true".to_string()
+            } else {
+                "false".to_string()
+            }
         }
     }
 }
@@ -45,11 +47,11 @@ pub fn array() -> String {
     let config = FakerConfig::current();
     let length = config.rand_range(1, 5) as usize;
     let mut items = Vec::new();
-    
+
     for _ in 0..length {
         items.push(generate_value(&config));
     }
-    
+
     format!("[{}]", items.join(", "))
 }
 
@@ -62,6 +64,31 @@ mod tests {
         let json = object();
         assert!(json.starts_with('{'));
         assert!(json.ends_with('}'));
+    }
+
+    #[test]
+    fn test_object_randomizes_key_selection() {
+        // The generated object must not always start with the same key.
+        let mut first_keys = std::collections::HashSet::new();
+        for _ in 0..100 {
+            let json = object();
+            let first = json
+                .trim_start_matches('{')
+                .split(',')
+                .next()
+                .unwrap()
+                .trim()
+                .trim_start_matches('"')
+                .split('"')
+                .next()
+                .unwrap()
+                .to_string();
+            first_keys.insert(first);
+        }
+        assert!(
+            first_keys.len() > 1,
+            "object key selection is not randomized: {first_keys:?}"
+        );
     }
 
     #[test]

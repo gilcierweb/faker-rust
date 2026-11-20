@@ -9,9 +9,7 @@ pub fn phone_number() -> String {
     let formats = [
         "(###) ###-####",
         "###-###-####",
-        "(###) ###-####",
         "###.###.####",
-        "(###) ###-####",
         "##########",
     ];
     let config = FakerConfig::current();

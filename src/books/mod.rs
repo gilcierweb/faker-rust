@@ -1,3 +1,5 @@
+//! Books, authors, and literary themed generators.
+
 pub mod book;
 pub mod culture_series;
 pub mod dune;

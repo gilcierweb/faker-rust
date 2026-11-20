@@ -1,3 +1,5 @@
+//! Movie titles, quotes, and themed generators.
+
 pub mod avatar;
 pub mod back_to_the_future;
 pub mod departed;

@@ -137,7 +137,7 @@ pub fn domain_suffix(safe: bool) -> String {
 }
 
 /// Fixes ä, ö, ü, ß characters in string
-pub fn fix_umlauts(string: &str) -> string::String {
+pub fn fix_umlauts(string: &str) -> String {
     string
         .replace('ä', "ae")
         .replace('ö', "oe")
@@ -146,7 +146,7 @@ pub fn fix_umlauts(string: &str) -> string::String {
 }
 
 /// Generate a random domain word
-fn domain_word() -> string::String {
+fn domain_word() -> String {
     let company_name = company::name();
     company_name
         .split_whitespace()
@@ -156,7 +156,7 @@ fn domain_word() -> string::String {
 }
 
 /// Generate a random IPv4 address
-pub fn ip_v4() -> string::String {
+pub fn ip_v4() -> String {
     let config = FakerConfig::current();
     format!(
         "{}.{}.{}.{}",
@@ -168,7 +168,7 @@ pub fn ip_v4() -> string::String {
 }
 
 /// Generate a random private IPv4 address
-pub fn private_ip_v4() -> string::String {
+pub fn private_ip_v4() -> String {
     let config = FakerConfig::current();
     let choice = config.rand_u32(5);
     match choice {
@@ -193,7 +193,7 @@ pub fn private_ip_v4() -> string::String {
 }
 
 /// Generate a random IPv6 address
-pub fn ip_v6() -> string::String {
+pub fn ip_v6() -> String {
     let config = FakerConfig::current();
     (0..8)
         .map(|_| format!("{:x}", config.rand_u32(65536)))
@@ -202,19 +202,19 @@ pub fn ip_v6() -> string::String {
 }
 
 /// Generate IPv4 with CIDR notation
-pub fn ip_v4_cidr() -> string::String {
+pub fn ip_v4_cidr() -> String {
     let config = FakerConfig::current();
     format!("{}/{}", ip_v4(), config.rand_range(1, 31))
 }
 
 /// Generate IPv6 with CIDR notation
-pub fn ip_v6_cidr() -> string::String {
+pub fn ip_v6_cidr() -> String {
     let config = FakerConfig::current();
     format!("{}/{}", ip_v6(), config.rand_range(1, 127))
 }
 
 /// Generate a random MAC address
-pub fn mac_address(prefix: Option<&str>) -> string::String {
+pub fn mac_address(prefix: Option<&str>) -> String {
     let config = FakerConfig::current();
 
     let (prefix_bytes, count) = if let Some(p) = prefix {
@@ -242,31 +242,8 @@ pub fn mac_address(prefix: Option<&str>) -> string::String {
         .join(":")
 }
 
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn test_mac_address_long_prefix_no_panic() {
-        let m = mac_address(Some("11:22:33:44:55:66:77"));
-        assert_eq!(m.len(), 17, "got {m}");
-    }
-
-    #[test]
-    fn test_mac_address_nonhex_prefix_ignored() {
-        let m = mac_address(Some("zz:bb"));
-        assert_eq!(m.len(), 17, "got {m}");
-    }
-
-    #[test]
-    fn test_mac_address_no_prefix() {
-        let m = mac_address(None);
-        assert_eq!(m.len(), 17, "got {m}");
-    }
-}
-
 /// Generate a random URL
-pub fn url(host: Option<&str>, path: Option<&str>, scheme: Option<&str>) -> string::String {
+pub fn url(host: Option<&str>, path: Option<&str>, scheme: Option<&str>) -> String {
     let generated_host = domain_name(false, None);
     let host = host.unwrap_or(&generated_host);
     let generated_path = format!("/{}", username(None));
@@ -276,7 +253,7 @@ pub fn url(host: Option<&str>, path: Option<&str>, scheme: Option<&str>) -> stri
 }
 
 /// Generate a random slug (URL-friendly string)
-pub fn slug(words: Option<&str>, glue: Option<&str>) -> string::String {
+pub fn slug(words: Option<&str>, glue: Option<&str>) -> String {
     let config = FakerConfig::current();
 
     if let Some(w) = words {
@@ -295,7 +272,7 @@ pub fn slug(words: Option<&str>, glue: Option<&str>) -> string::String {
 }
 
 /// Generate a random device token
-pub fn device_token() -> string::String {
+pub fn device_token() -> String {
     let config = FakerConfig::current();
     let mut chars: Vec<char> = (0..64)
         .map(|_| {
@@ -308,7 +285,7 @@ pub fn device_token() -> string::String {
 }
 
 /// Generate a random UUID
-pub fn uuid() -> string::String {
+pub fn uuid() -> String {
     let config = FakerConfig::current();
     let rng = config.rng.borrow_mut();
     let mut bytes = [0u8; 16];
@@ -341,7 +318,7 @@ pub fn uuid() -> string::String {
 }
 
 /// Generate a random user agent string
-pub fn user_agent(vendor: Option<&str>) -> string::String {
+pub fn user_agent(vendor: Option<&str>) -> String {
     let config = FakerConfig::current();
 
     // List of supported vendors (same as Ruby Faker)
@@ -380,7 +357,7 @@ pub fn user_agent(vendor: Option<&str>) -> string::String {
         .unwrap_or_else(|| generate_fallback_user_agent(&config))
 }
 
-fn generate_fallback_user_agent(config: &FakerConfig) -> string::String {
+fn generate_fallback_user_agent(config: &FakerConfig) -> String {
     let version = config.rand_range(80, 120);
     format!(
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/{} Safari/537.36",
@@ -389,7 +366,7 @@ fn generate_fallback_user_agent(config: &FakerConfig) -> string::String {
 }
 
 /// Generate a bot user agent
-pub fn bot_user_agent(vendor: Option<&str>) -> string::String {
+pub fn bot_user_agent(vendor: Option<&str>) -> String {
     let config = FakerConfig::current();
 
     // List of supported vendors (same as Ruby Faker)
@@ -429,7 +406,7 @@ pub fn bot_user_agent(vendor: Option<&str>) -> string::String {
 }
 
 /// Generate a random base64 string
-pub fn base64(length: usize, padding: bool, urlsafe: bool) -> string::String {
+pub fn base64(length: usize, padding: bool, urlsafe: bool) -> String {
     let config = FakerConfig::current();
     let charset: Vec<char> = if urlsafe {
         let mut c: Vec<char> = ('0'..='9').collect();
@@ -447,7 +424,7 @@ pub fn base64(length: usize, padding: bool, urlsafe: bool) -> string::String {
         c
     };
 
-    let mut result: string::String = (0..length).map(|_| config.sample(&charset)).collect();
+    let mut result: String = (0..length).map(|_| config.sample(&charset)).collect();
 
     if padding {
         let r = result.len() % 4;
@@ -462,7 +439,7 @@ pub fn base64(length: usize, padding: bool, urlsafe: bool) -> string::String {
 }
 
 /// Generate a random internet user hash
-pub fn user(fields: Vec<&str>) -> std::collections::HashMap<string::String, string::String> {
+pub fn user(fields: Vec<&str>) -> std::collections::HashMap<String, String> {
     use std::collections::HashMap;
     let mut map = HashMap::new();
 
@@ -488,22 +465,16 @@ pub fn user(fields: Vec<&str>) -> std::collections::HashMap<string::String, stri
     map
 }
 
-fn sanitize_email_local(local: string::String) -> string::String {
+fn sanitize_email_local(local: String) -> String {
     local
         .chars()
         .filter(|c| c.is_alphanumeric() || *c == '.' || *c == '_' || *c == '-' || *c == '+')
         .collect()
 }
 
-fn sanitize_username(name: &str) -> string::String {
+fn sanitize_username(name: &str) -> String {
     name.replace("'", "").replace('.', " ")
 }
-
-mod string {
-    pub type String = std::string::String;
-}
-
-const SAFE_DOMAIN_SUFFIXES: &[&str] = &["test", "example", "localhost"];
 
 const FALLBACK_DOMAIN_SUFFIXES: &[&str] = &[
     "com", "net", "org", "io", "co", "biz", "info", "me", "us", "uk", "ca", "de", "fr", "jp",
@@ -518,3 +489,26 @@ const FALLBACK_BOT_AGENTS: &[&str] = &[
     "Mozilla/5.0 (compatible; Baiduspider/2.0; +http://www.baidu.com/search/spider.html)",
     "Mozilla/5.0 (compatible; YandexBot/3.0; +http://yandex.com/bots)",
 ];
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_mac_address_long_prefix_no_panic() {
+        let m = mac_address(Some("11:22:33:44:55:66:77"));
+        assert_eq!(m.len(), 17, "got {m}");
+    }
+
+    #[test]
+    fn test_mac_address_nonhex_prefix_ignored() {
+        let m = mac_address(Some("zz:bb"));
+        assert_eq!(m.len(), 17, "got {m}");
+    }
+
+    #[test]
+    fn test_mac_address_no_prefix() {
+        let m = mac_address(None);
+        assert_eq!(m.len(), 17, "got {m}");
+    }
+}

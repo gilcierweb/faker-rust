@@ -1,4 +1,6 @@
+//! Music genre and artist generators.
 #![allow(clippy::module_inception)]
+
 pub mod bossa_nova;
 pub mod grateful_dead;
 pub mod hiphop;
