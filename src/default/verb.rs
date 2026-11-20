@@ -24,6 +24,27 @@ pub fn ing_form() -> String {
         .unwrap_or_else(|| sample(FALLBACK_ING).to_string())
 }
 
+/// Gem-compatible generator: the base form of a random verb.
+pub fn base() -> String {
+    fetch_locale("verbs.base", "en")
+        .map(|v| sample(&v))
+        .unwrap_or_else(|| sample(FALLBACK_VERBS).to_string())
+}
+
+/// Gem-compatible generator: the past participle of a random verb.
+pub fn past_participle() -> String {
+    fetch_locale("verbs.past_participle", "en")
+        .map(|v| sample(&v))
+        .unwrap_or_else(|| sample(FALLBACK_PASTS).to_string())
+}
+
+/// Gem-compatible generator: the simple present of a random verb.
+pub fn simple_present() -> String {
+    fetch_locale("verbs.simple_present", "en")
+        .map(|v| sample(&v))
+        .unwrap_or_else(|| sample(FALLBACK_ING).to_string())
+}
+
 // Fallback data
 const FALLBACK_VERBS: &[&str] = &[
     "run",

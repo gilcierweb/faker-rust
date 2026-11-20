@@ -86,6 +86,11 @@ pub fn vegetables() -> String {
     parity_pick("food.vegetables")
 }
 
+/// Gem-compatible generator: a sushi dish from the locale data.
+pub fn sushi() -> String {
+    parity_pick("food.sushi")
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

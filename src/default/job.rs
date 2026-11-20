@@ -43,6 +43,20 @@ pub fn key_skill() -> String {
         .unwrap_or_else(|| "Communication".to_string())
 }
 
+/// Gem-compatible generator: an education level from the locale data.
+pub fn education_level() -> String {
+    fetch_locale("job.education_level", "en")
+        .map(|v| sample(&v))
+        .unwrap_or_default()
+}
+
+/// Gem-compatible generator: an employment type from the locale data.
+pub fn employment_type() -> String {
+    fetch_locale("job.employment_type", "en")
+        .map(|v| sample(&v))
+        .unwrap_or_default()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

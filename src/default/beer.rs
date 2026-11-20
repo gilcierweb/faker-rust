@@ -81,6 +81,11 @@ pub fn ibu() -> String {
     )
 }
 
+/// Gem-compatible generator: a beer brand from the locale data.
+pub fn brand() -> String {
+    parity_pick("beer.brand")
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
