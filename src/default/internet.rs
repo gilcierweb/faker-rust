@@ -427,10 +427,7 @@ pub fn base64(length: usize, padding: bool, urlsafe: bool) -> String {
     let mut result: String = (0..length).map(|_| config.sample(&charset)).collect();
 
     if padding {
-        let r = result.len() % 4;
-        if r == 2 {
-            result.push_str("==");
-        } else if r == 3 {
+        while !result.len().is_multiple_of(4) {
             result.push('=');
         }
     }
@@ -493,6 +490,39 @@ const FALLBACK_BOT_AGENTS: &[&str] = &[
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn test_base64_padding_is_multiple_of_four() {
+        for n in 1..=8 {
+            let encoded = base64(n, true, false);
+            assert_eq!(
+                encoded.len() % 4,
+                0,
+                "padding broke for length {n}: {encoded}"
+            );
+            assert_eq!(
+                encoded.len(),
+                n.div_ceil(4) * 4,
+                "wrong length for {n}: {encoded}"
+            );
+        }
+    }
+
+    #[test]
+    fn test_base64_without_padding_keeps_requested_length() {
+        for n in 1..=8 {
+            let encoded = base64(n, false, false);
+            assert_eq!(
+                encoded.len(),
+                n,
+                "unexpected padding for length {n}: {encoded}"
+            );
+            assert!(
+                !encoded.contains('='),
+                "unexpected '=' for length {n}: {encoded}"
+            );
+        }
+    }
 
     #[test]
     fn test_mac_address_long_prefix_no_panic() {
