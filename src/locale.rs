@@ -272,10 +272,13 @@ fn try_extract(
                     && let Value::Object(cat_map) = cat_data
                 {
                     let field = if parts.len() > 1 { parts[1] } else { "" };
-                    if let Some(field_data) = cat_map.get(field)
-                        && let Value::Array(seq) = field_data
-                    {
-                        return extract_strings_raw(seq);
+                    if let Some(field_data) = cat_map.get(field) {
+                        if let Value::Array(seq) = field_data {
+                            return extract_strings_raw(seq);
+                        }
+                        if let Value::String(s) = field_data {
+                            return Some(vec![s.clone()]);
+                        }
                     }
                 }
             }
@@ -318,12 +321,19 @@ fn extract_nested_array_raw(data: &Value, key: &str) -> Option<Vec<String>> {
                 }
                 return None;
             }
+            Value::String(s) => {
+                if i == parts.len() - 1 {
+                    return Some(vec![s.clone()]);
+                }
+                return None;
+            }
             _ => return None,
         }
     }
 
     match current {
         Value::Array(seq) => extract_strings_raw(seq),
+        Value::String(s) => Some(vec![s.clone()]),
         _ => None,
     }
 }
@@ -633,6 +643,12 @@ mod tests {
         assert_eq!(clean_key_for_extraction("faker.elder_scrolls.race"), "elder_scrolls.race");
         assert_eq!(clean_key_for_extraction("elder_scrolls.race"), "elder_scrolls.race");
         assert_eq!(clean_key_for_extraction("faker.name.male_first_name"), "name.male_first_name");
+    }
+
+    #[test]
+    fn test_fetch_locale_scalar_value() {
+        // book.author is a scalar placeholder in the YAML, not a list.
+        assert!(fetch_locale_with_context("book.author", "en", Some("book")).is_some());
     }
 
     #[test]
