@@ -458,8 +458,8 @@ fn resolve_inner<F>(
 where
     F: Fn(&str, Option<&str>) -> Option<Vec<String>>,
 {
-    if depth > 3 {
-        return format!("[{}]", inner);
+    if depth >= max_depth {
+        return format!("[UNRESOLVED:{}]", inner);
     }
 
     // Handle "Name.first_name" or "name.first_name" notation
