@@ -8,14 +8,14 @@
  `options_hash = {key: class::method, value: class::method}` where class is
  any class in the faker gem.  for example if you want random names for keys
  and random star wars quotes for values you would write the options_hash as follows
- ```rust
+ ```ruby
  options_hash = { key: 'name::first_name', value: 'starwars::quote' }
  ```
 
  it is important to note that you do not need to append your faker gem class calls
  with ``
 
-```rust
+```text
 json::shallow_json(2)
 {"parliament funkadelic":"they're real, and they're spectacular.",
   "fleetwood mac":"i'm not a lesbian. i hate men, but i'm not a lesbian.",
@@ -32,7 +32,7 @@ additional argument and returns that json with new generated nested jsons in
 place of the lowest nested values.  it is important to note that the json must
 be a json and not a hash.
 
-```rust
+```ruby
 json = json::shallow_json(2)
 puts json //
 {"alisha":"olson","everardo":"dubuque","bridgette":"turner"}

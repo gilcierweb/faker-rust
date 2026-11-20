@@ -1,7 +1,7 @@
 # faker_rust::invoice
 
 module for creating valid invoice references.
-https://en::wikipedia::org/wiki/creditor_reference
+https://en.wikipedia.org/wiki/creditor_reference
 
 ```rust
 invoice::reference() //=> "45656646957845"

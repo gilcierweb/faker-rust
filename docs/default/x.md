@@ -8,7 +8,7 @@ the generators are not a comprehensive match of the api. however, they are enoug
 
 produces a random x user based on x's v2 api:
 
-```rust
+```text
 x::user =>
 {
   data: [
@@ -31,7 +31,7 @@ x::user =>
         pinned_tweet_id: "1702549793917523469",
         entities: {
           url: {
-            urls: [ { url: "https://t::co/0iz5wx1ysh", expanded_url: "http://example::com/stuart", display_url: "example::com/stuart" }]
+            urls: [ { url: "https://t.co/0iz5wx1ysh", expanded_url: "http://example.com/stuart", display_url: "example.com/stuart" }]
           },
           description: { hashtags: [{tag: "adipisci"}] }
         },
@@ -41,8 +41,8 @@ x::user =>
         location: "104.82.135.3",
         id: "5688134805624042468",
         protected: false,
-        url: "https://t::co/lqsqf67cx5",
-        profile_image_url: "https://robohash::org/990174365255127568.png?size=48x48&set=set1",
+        url: "https://t.co/lqsqf67cx5",
+        profile_image_url: "https://robohash.org/990174365255127568.png?size=48x48&set=set1",
         created_at: "2018-07-11t00:00:00+00:00"
       }
     ]
@@ -54,7 +54,7 @@ x::user =>
 
 produces a random x tweet with default attributes. available extensions can be returned with `include_media` and `include_user`:
 
-```rust
+```text
 x::tweet() //=> { data: [{:id=>"8821452687517076614", :text=>"ea et laboriosam vel non.",...
 x::tweet() # includes user attributes
 x::tweet() # includes media (photo) attributes
@@ -62,7 +62,7 @@ x::tweet() # includes media (photo) attributes
 
 example outputs:
 
-```rust
+```text
 x::tweet =>
 {
   data: [{
@@ -83,9 +83,9 @@ x::tweet =>
       urls: [{
         start: 0,
         end: 5,
-        url: "https://t::co/t6o3lav9z1",
-        expanded_url: "http://example::com/errol::upton",
-        display_url: "example::com/errol::upton"
+        url: "https://t.co/t6o3lav9z1",
+        expanded_url: "http://example.com/errol.upton",
+        display_url: "example.com/errol.upton"
       }],
       hashtags: [{
         start: 0,
@@ -99,7 +99,7 @@ x::tweet =>
 
 with additional fields:
 
-```rust
+```text
 x::tweet() =>
 {
   data: [{
@@ -120,9 +120,9 @@ x::tweet() =>
       urls: [{
         start: 0,
         end: 5,
-        url: "https://t::co/mqplf9rhpn",
-        expanded_url: "http://example::com/mohamed_koelpin",
-        display_url: "example::com/mohamed_koelpin"
+        url: "https://t.co/mqplf9rhpn",
+        expanded_url: "http://example.com/mohamed_koelpin",
+        display_url: "example.com/mohamed_koelpin"
       }],
       hashtags: [{
         start: 0,
@@ -139,7 +139,7 @@ x::tweet() =>
       height: 526,
       media_key: "6992225089295851582",
       type: "photo",
-      preview_image_url: "https://loremflickr::com/1064/600",
+      preview_image_url: "https://loremflickr.com/1064/600",
       width: 1571,
       alt_text: "qui ratione magnam et."
     }],
@@ -157,9 +157,9 @@ x::tweet() =>
           urls: [{
             start: 0,
             end: 5,
-            url: "https://t::co/69eytnuwwu",
-            expanded_url: "http://example::com/werner",
-            display_url: "example::com/werner"
+            url: "https://t.co/69eytnuwwu",
+            expanded_url: "http://example.com/werner",
+            display_url: "example.com/werner"
           }]
         },
         description: {
@@ -176,8 +176,8 @@ x::tweet() =>
       location: "34.230.131.77",
       id: "2365736908578621112",
       protected: false,
-      url: "https://t::co/pyuqky3gdl",
-      profile_image_url: "https://robohash::org/2204799175591912732.png?size=48x48&set=set1",
+      url: "https://t.co/pyuqky3gdl",
+      profile_image_url: "https://robohash.org/2204799175591912732.png?size=48x48&set=set1",
       created_at: "2025-01-30t07:00:00.000z"
     }]
   }

@@ -199,7 +199,7 @@ faker-rust --seed 42 name          # "Kathlyn Dietrich" (same!)
 ### Pipe to other commands
 ```bash
 // Use faker-rust output in other commands
-curl -X POST http://api::example::com/users \
+curl -X POST http://api.example.com/users \
   -d "name=$(faker-rust-rust name)" \
   -d "email=$(faker-rust-rust email)"
 ```

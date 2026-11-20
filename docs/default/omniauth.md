@@ -6,17 +6,19 @@ available since version 1.8.0.
 
 [omniauth]() is a library that standardizes multi-provider authentication for web applications.  each of the following methods will return a randomized hash that mimics the hash returned by each of these omniauth strategies.
 
-```rust
+The following is the Ruby gem's illustrative output shape (shown in Ruby syntax for reference):
+
+```text
 omniauth::google #=>
 {
   :provider => "google_oauth2",
   :uid => "123456789",
   :info => {
     :name => "john doe",
-    :email => "john::doe@example::com",
+    :email => "john.doe@example.com",
     :first_name => "john",
     :last_name => "doe",
-    :image => "https://lh3.googleusercontent::com/url/photo::jpg"
+    :image => "https://lh3.googleusercontent.com/url/photo.jpg"
   },
   :credentials => {
       :token => "token",
@@ -27,29 +29,29 @@ omniauth::google #=>
   :extra => {
     :raw_info => {
       :sub => "123456789",
-      :email => "john::doe@example::com",
+      :email => "john.doe@example.com",
       :email_verified => true,
       :name => "john doe",
       :given_name => "john",
       :family_name => "doe",
-      :profile => "https://plus::google::com/123456789",
-      :picture => "https://lh3.googleusercontent::com/url/photo::jpg",
+      :profile => "https://plus.google.com/123456789",
+      :picture => "https://lh3.googleusercontent.com/url/photo.jpg",
       :gender => "male",
       :birthday => "0000-06-25",
       :locale => "en",
-      :hd => "example::com"
+      :hd => "example.com"
     },
     :id_info => {
-      "iss" => "accounts::google::com",
+      "iss" => "accounts::google.com",
       "at_hash" => "hk6e_p6dh8y93mrntsdb1q",
       "email_verified" => "true",
       "sub" => "10769150350006150715113082367",
       "azp" => "app_id",
-      "email" => "jsmith@example::com",
+      "email" => "jsmith@example.com",
       "aud" => "app_id",
       "iat" => 1353601026,
       "exp" => 1353604926,
-      "openid_id" => "https://www::google::com/accounts/o8/id?id=abcdfdswawersdfdsfdsfdfjdsf"
+      "openid_id" => "https://www.google.com/accounts/o8/id?id=abcdfdswawersdfdsfdsfdfjdsf"
     }
   }
 }
@@ -59,11 +61,11 @@ omniauth::facebook #=>
   provider: 'facebook',
   uid: '1234567',
   info: {
-    email: 'joe_bloggs@example::com',
+    email: 'joe_bloggs@example.com',
     name: 'joe bloggs',
     first_name: 'joe',
     last_name: 'bloggs',
-    image: 'http://graph::facebook::com/1234567/picture?type=square',
+    image: 'http://graph.facebook.com/1234567/picture?type=square',
     verified: true
   },
   credentials: {
@@ -77,11 +79,11 @@ omniauth::facebook #=>
       name: 'joe bloggs',
       first_name: 'joe',
       last_name: 'bloggs',
-      link: 'http://www::facebook::com/jbloggs',
+      link: 'http://www.facebook.com/jbloggs',
       username: 'jbloggs',
       location: { id: '123456789', name: 'palo alto, california' },
       gender: 'male',
-      email: 'joe_bloggs@example::com',
+      email: 'joe_bloggs@example.com',
       timezone: -8,
       locale: 'en_us',
       verified: true,
@@ -98,11 +100,11 @@ omniauth::twitter #=>
     :nickname => "johnqpublic",
     :name => "john q public",
     :location => "anytown, usa",
-    :image => "http://si0.twimg::com/sticky/default_profile_images/default_profile_2_normal::png",
+    :image => "http://si0.twimg.com/sticky/default_profile_images/default_profile_2_normal.png",
     :description => "a very normal guy.",
     :urls => {
       :website => nil,
-      :twitter => "https://twitter::com/johnqpublic"
+      :twitter => "https://twitter.com/johnqpublic"
     }
   },
   :credentials => {
@@ -118,8 +120,8 @@ omniauth::twitter #=>
       :url => nil,
       :lang => "en",
       :statuses_count => 129,
-      :profile_image_url => "http://si0.twimg::com/sticky/default_profile_images/default_profile_2_normal::png",
-      :profile_background_image_url_https => "https://twimg0-a::akamaihd::net/profile_background_images/229171796/pattern_036.gif",
+      :profile_image_url => "http://si0.twimg.com/sticky/default_profile_images/default_profile_2_normal.png",
+      :profile_background_image_url_https => "https://twimg0-a.akamaihd.net/profile_background_images/229171796/pattern_036.gif",
       :location => "anytown, usa",
       :time_zone => "chicago",
       :follow_request_sent => false,
@@ -138,13 +140,13 @@ omniauth::twitter #=>
       :friends_count => 1,
       :notifications => false,
       :geo_enabled => true,
-      :profile_background_image_url => "http://twimg0-a::akamaihd::net/profile_background_images/229171796/pattern_036.gif",
+      :profile_background_image_url => "http://twimg0-a.akamaihd.net/profile_background_images/229171796/pattern_036.gif",
       :protected => false,
       :description => "a very normal guy.",
       :profile_link_color => "2fc2ef",
       :created_at => "thu jul 4 00:00:00 +0000 2013",
       :id_str => "123456",
-      :profile_image_url_https => "https://si0.twimg::com/sticky/default_profile_images/default_profile_2_normal::png",
+      :profile_image_url_https => "https://si0.twimg.com/sticky/default_profile_images/default_profile_2_normal.png",
       :default_profile => false,
       :profile_use_background_image => false,
       :entities => {
@@ -164,18 +166,18 @@ omniauth::linkedin #=>
   "uid"=>"abc123",
   "info"=> {
     "name"=>"john doe",
-    "email"=>"doe::john@example::com",
+    "email"=>"doe.john@example.com",
     "nickname"=>"john doe",
     "first_name"=>"john",
     "last_name"=>"doe",
     "location"=>"greater boston area, us",
     "description"=>"senior developer, hammertech",
-    "image"=> "http://m::c.lnkd::licdn::com/mpr/mprx/0_abcd...",
+    "image"=> "http://m.c.lnkd.licdn.com/mpr/mprx/0_abcd...",
     "phone"=>"null",
     "headline"=> "senior developer, hammertech",
     "industry"=>"internet",
     "urls"=>{
-      "public_profile"=>"http://www::linkedin::com/in/johndoe"
+      "public_profile"=>"http://www.linkedin.com/in/johndoe"
     }
   },
   "credentials"=> {
@@ -203,8 +205,8 @@ omniauth::linkedin #=>
      "industry"=>"internet",
      "lastname"=>"doe",
      "location"=> {"country"=>{"code"=>"us"}, "name"=>"greater boston area"},
-     "pictureurl"=> "http://m::c.lnkd::licdn::com/mpr/mprx/0_abcd...",
-     "publicprofileurl"=>"http://www::linkedin::com/in/johndoe"
+     "pictureurl"=> "http://m.c.lnkd.licdn.com/mpr/mprx/0_abcd...",
+     "publicprofileurl"=>"http://www.linkedin.com/in/johndoe"
     }
   }
 }
@@ -215,11 +217,11 @@ omniauth::github #=>
   :uid =>"95144751",
   :info => {
     :nickname => "jackson-keeling",
-    :email => "jackson::keeling@example::com",
+    :email => "jackson.keeling@example.com",
     :name => "jackson keeling",
-    :image => "https://via::placeholder::com/300x300.png",
+    :image => "https://via.placeholder.com/300x300.png",
     :urls => {
-      :github => "https://github::com/jackson-keeling"
+      :github => "https://github.com/jackson-keeling"
     }
   },
   :credentials => {
@@ -230,26 +232,26 @@ omniauth::github #=>
     :raw_info => {
       :login => "jackson-keeling",
       :id => "95144751",
-      :avatar_url => "https://via::placeholder::com/300x300.png",
+      :avatar_url => "https://via.placeholder.com/300x300.png",
       :gravatar_id => "",
-      :url => "https://api::github::com/users/jackson-keeling",
-      :html_url => "https://github::com/jackson-keeling",
-      :followers_url => "https://api::github::com/users/jackson-keeling/followers",
-      :following_url => "https://api::github::com/users/jackson-keeling/following{/other_user}",
-      :gists_url => "https://api::github::com/users/jackson-keeling/gists{/gist_id}",
-      :starred_url => "https://api::github::com/users/jackson-keeling/starred{/owner}{/repo}",
-      :subscriptions_url => "https://api::github::com/users/jackson-keeling/subscriptions",
-      :organizations_url => "https://api::github::com/users/jackson-keeling/orgs",
-      :repos_url => "https://api::github::com/users/jackson-keeling/repos",
-      :events_url => "https://api::github::com/users/jackson-keeling/events{/privacy}",
-      :received_events_url => "https://api::github::com/users/jackson-keeling/received_events",
+      :url => "https://api.github.com/users/jackson-keeling",
+      :html_url => "https://github.com/jackson-keeling",
+      :followers_url => "https://api.github.com/users/jackson-keeling/followers",
+      :following_url => "https://api.github.com/users/jackson-keeling/following{/other_user}",
+      :gists_url => "https://api.github.com/users/jackson-keeling/gists{/gist_id}",
+      :starred_url => "https://api.github.com/users/jackson-keeling/starred{/owner}{/repo}",
+      :subscriptions_url => "https://api.github.com/users/jackson-keeling/subscriptions",
+      :organizations_url => "https://api.github.com/users/jackson-keeling/orgs",
+      :repos_url => "https://api.github.com/users/jackson-keeling/repos",
+      :events_url => "https://api.github.com/users/jackson-keeling/events{/privacy}",
+      :received_events_url => "https://api.github.com/users/jackson-keeling/received_events",
       :type => "user",
       :site_admin => true,
       :name => "jackson keeling",
       :company => nil,
       :blog => nil,
       :location => "paigeton, massachusetts",
-      :email => "jackson::keeling@example::com",
+      :email => "jackson.keeling@example.com",
       :hireable => nil,
       :bio => nil,
       :public_repos => 263,
@@ -268,7 +270,7 @@ omniauth::apple #=>
   :uid => "529731.75429b71301caccc750a77b9369d2bc5.7027",
   :info => {
     :sub => "529731.75429b71301caccc750a77b9369d2bc5.7027",
-    :email => "robert::kirlin@example::net",
+    :email => "robert.kirlin@example.net",
     :first_name => "robert",
     :last_name => "kirlin"
   },
@@ -280,14 +282,14 @@ omniauth::apple #=>
   },
   :extra => {
     :raw_info => {
-      :iss => "https://appleid::apple::com",
+      :iss => "https://appleid.apple.com",
       :aud => "client_id",
       :exp => 1591575417,
       :iat => 1571433587,
       :sub => "529731.75429b71301caccc750a77b9369d2bc5.7027",
       :at_hash => "d8bc8da580222598bba9da1470ad7b94",
       :auth_time => 1583778038,
-      :email => "robert::kirlin@example::net",
+      :email => "robert.kirlin@example.net",
       :email_verified => true
     }
   }
@@ -300,8 +302,8 @@ omniauth::auth0 #=>
   :info=> {
     :name => "auth0|d0584e3ab2d3816be9518a56",
     :nickname => "thurman dubuque",
-    :email => "dubuque_thurman@example::com",
-    :image => "https://via::placeholder::com/300x300.png"
+    :email => "dubuque_thurman@example.com",
+    :image => "https://via.placeholder.com/300x300.png"
   },
   :credentials=> {
     :expires_at => 1654345109,
@@ -313,7 +315,7 @@ omniauth::auth0 #=>
   },
   :extra=> {
     :raw_info=> {
-      :email => "dubuque_thurman@example::com",
+      :email => "dubuque_thurman@example.com",
       :email_verified => true,
       :iss => "https://auth0.com/",
       :sub => "auth0|d0584e3ab2d3816be9518a56",

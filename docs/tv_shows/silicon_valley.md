@@ -13,7 +13,7 @@ silicon_valley::invention // "Tres Comas Tequila"
 
 silicon_valley::motto // "Our products are products, producing unrivaled results"
 
-silicon_valley::url // "http://www::piedpiper::com"
+silicon_valley::url // "http://www.piedpiper.com"
 
-silicon_valley::email() //=> "richard@piedpiper::test"
+silicon_valley::email() //=> "richard@piedpiper.test"
 ```
