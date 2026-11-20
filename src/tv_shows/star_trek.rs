@@ -92,6 +92,23 @@ const FALLBACK_QUOTES: &[&str] = &[
     "Space: the final frontier.",
 ];
 
+// --- gem parity generators (automated, locale-backed) ---
+fn parity_pick(key: &str) -> String {
+    crate::locale::fetch_locale(key, "en")
+        .map(|v| crate::base::sample(&v))
+        .unwrap_or_default()
+}
+
+/// Gem-compatible generator: `star_trek.specie`.
+pub fn specie() -> String {
+    parity_pick("star_trek.specie")
+}
+
+/// Gem-compatible generator: `star_trek.villain`.
+pub fn villain() -> String {
+    parity_pick("star_trek.villain")
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

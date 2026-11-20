@@ -57,6 +57,18 @@ const FALLBACK_CATCH_PHRASES: &[&str] = &[
     "Sploosh!",
 ];
 
+// --- gem parity generators (automated, locale-backed) ---
+fn parity_pick(key: &str) -> String {
+    crate::locale::fetch_locale(key, "en")
+        .map(|v| crate::base::sample(&v))
+        .unwrap_or_default()
+}
+
+/// Gem-compatible generator: `archer.locations`.
+pub fn location() -> String {
+    parity_pick("archer.locations")
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

@@ -44,6 +44,48 @@ const FALLBACK_INGREDIENTS: &[&str] = &["Tomato", "Cheese", "Onion", "Garlic", "
 const FALLBACK_FRUITS: &[&str] = &["Apple", "Banana", "Orange", "Strawberry", "Grape"];
 const FALLBACK_VEGETABLES: &[&str] = &["Carrot", "Broccoli", "Spinach", "Potato", "Cucumber"];
 
+// --- gem parity generators (automated, locale-backed) ---
+fn parity_pick(key: &str) -> String {
+    crate::locale::fetch_locale(key, "en")
+        .map(|v| crate::base::sample(&v))
+        .unwrap_or_default()
+}
+
+/// Gem-compatible generator: `food.allergens`.
+pub fn allergen() -> String {
+    parity_pick("food.allergens")
+}
+
+/// Gem-compatible generator: `food.ethnic_category`.
+pub fn ethnic_category() -> String {
+    parity_pick("food.ethnic_category")
+}
+
+/// Gem-compatible generator: `food.fruits`.
+pub fn fruits() -> String {
+    parity_pick("food.fruits")
+}
+
+/// Gem-compatible generator: `food.measurement_sizes`.
+pub fn measurement() -> String {
+    parity_pick("food.measurement_sizes")
+}
+
+/// Gem-compatible generator: `food.metric_measurements`.
+pub fn metric_measurement() -> String {
+    parity_pick("food.metric_measurements")
+}
+
+/// Gem-compatible generator: `food.spices`.
+pub fn spice() -> String {
+    parity_pick("food.spices")
+}
+
+/// Gem-compatible generator: `food.vegetables`.
+pub fn vegetables() -> String {
+    parity_pick("food.vegetables")
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

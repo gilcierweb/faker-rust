@@ -68,6 +68,23 @@ const FALLBACK_POSITIONS: &[&str] = &[
     "Libero",
 ];
 
+// --- gem parity generators (automated, locale-backed) ---
+fn parity_pick(key: &str) -> String {
+    crate::locale::fetch_locale(key, "en")
+        .map(|v| crate::base::sample(&v))
+        .unwrap_or_default()
+}
+
+/// Gem-compatible generator: `volleyball.coach`.
+pub fn coach() -> String {
+    parity_pick("volleyball.coach")
+}
+
+/// Gem-compatible generator: `volleyball.formation`.
+pub fn formation() -> String {
+    parity_pick("volleyball.formation")
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

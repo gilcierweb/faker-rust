@@ -78,6 +78,33 @@ const FALLBACK_CIVS: &[&str] = &[
     "The Gzilt",
 ];
 
+// --- gem parity generators (automated, locale-backed) ---
+fn parity_pick(key: &str) -> String {
+    crate::locale::fetch_locale(key, "en")
+        .map(|v| crate::base::sample(&v))
+        .unwrap_or_default()
+}
+
+/// Gem-compatible generator: `culture_series.culture_ships`.
+pub fn culture_ship() -> String {
+    parity_pick("culture_series.culture_ships")
+}
+
+/// Gem-compatible generator: `culture_series.culture_ship_classes`.
+pub fn culture_ship_class() -> String {
+    parity_pick("culture_series.culture_ship_classes")
+}
+
+/// Gem-compatible generator: `culture_series.culture_ship_class_abvs`.
+pub fn culture_ship_class_abv() -> String {
+    parity_pick("culture_series.culture_ship_class_abvs")
+}
+
+/// Gem-compatible generator: `culture_series.planets`.
+pub fn planet() -> String {
+    parity_pick("culture_series.planets")
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

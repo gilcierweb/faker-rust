@@ -90,6 +90,23 @@ const FALLBACK_TITLES: &[&str] = &[
     "V for Vendetta",
 ];
 
+// --- gem parity generators (automated, locale-backed) ---
+fn parity_pick(key: &str) -> String {
+    crate::locale::fetch_locale(key, "en")
+        .map(|v| crate::base::sample(&v))
+        .unwrap_or_default()
+}
+
+/// Gem-compatible generator: `dc_comics.heroine`.
+pub fn heroine() -> String {
+    parity_pick("dc_comics.heroine")
+}
+
+/// Gem-compatible generator: `dc_comics.name`.
+pub fn name() -> String {
+    parity_pick("dc_comics.name")
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

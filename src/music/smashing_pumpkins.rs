@@ -58,6 +58,23 @@ const FALLBACK_MEMBERS: &[&str] = &[
     "Melissa Auf der Maur",
 ];
 
+// --- gem parity generators (automated, locale-backed) ---
+fn parity_pick(key: &str) -> String {
+    crate::locale::fetch_locale(key, "en")
+        .map(|v| crate::base::sample(&v))
+        .unwrap_or_default()
+}
+
+/// Gem-compatible generator: `smashing_pumpkins.lyric`.
+pub fn lyric() -> String {
+    parity_pick("smashing_pumpkins.lyric")
+}
+
+/// Gem-compatible generator: `smashing_pumpkins.musicians`.
+pub fn musician() -> String {
+    parity_pick("smashing_pumpkins.musicians")
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

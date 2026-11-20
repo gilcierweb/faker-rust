@@ -93,6 +93,18 @@ const FALLBACK_STATES: &[&str] = &[
     "Virginia",
 ];
 
+// --- gem parity generators (automated, locale-backed) ---
+fn parity_pick(key: &str) -> String {
+    crate::locale::fetch_locale(key, "en")
+        .map(|v| crate::base::sample(&v))
+        .unwrap_or_default()
+}
+
+/// Gem-compatible generator: `team.creature`.
+pub fn creature() -> String {
+    parity_pick("team.creature")
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

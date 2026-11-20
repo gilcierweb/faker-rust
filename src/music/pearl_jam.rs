@@ -42,6 +42,23 @@ const FALLBACK_MEMBERS: &[&str] = &[
     "Matt Cameron",
 ];
 
+// --- gem parity generators (automated, locale-backed) ---
+fn parity_pick(key: &str) -> String {
+    crate::locale::fetch_locale(key, "en")
+        .map(|v| crate::base::sample(&v))
+        .unwrap_or_default()
+}
+
+/// Gem-compatible generator: `pearl_jam.albums`.
+pub fn album() -> String {
+    parity_pick("pearl_jam.albums")
+}
+
+/// Gem-compatible generator: `pearl_jam.musicians`.
+pub fn musician() -> String {
+    parity_pick("pearl_jam.musicians")
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

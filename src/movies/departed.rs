@@ -36,6 +36,18 @@ const FALLBACK_QUOTES: &[&str] = &[
     "What we generally do, in fact, is lie.",
 ];
 
+// --- gem parity generators (automated, locale-backed) ---
+fn parity_pick(key: &str) -> String {
+    crate::locale::fetch_locale(key, "en")
+        .map(|v| crate::base::sample(&v))
+        .unwrap_or_default()
+}
+
+/// Gem-compatible generator: `departed.actors`.
+pub fn actor() -> String {
+    parity_pick("departed.actors")
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

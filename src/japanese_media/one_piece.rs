@@ -146,6 +146,23 @@ const FALLBACK_SEAS: &[&str] = &[
     "Calm Belt",
 ];
 
+// --- gem parity generators (automated, locale-backed) ---
+fn parity_pick(key: &str) -> String {
+    crate::locale::fetch_locale(key, "en")
+        .map(|v| crate::base::sample(&v))
+        .unwrap_or_default()
+}
+
+/// Gem-compatible generator: `one_piece.akuma_no_mi`.
+pub fn akuma_no_mi() -> String {
+    parity_pick("one_piece.akuma_no_mi")
+}
+
+/// Gem-compatible generator: `one_piece.islands`.
+pub fn island() -> String {
+    parity_pick("one_piece.islands")
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

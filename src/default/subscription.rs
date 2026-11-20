@@ -63,6 +63,23 @@ const FALLBACK_PAYMENT_METHODS: &[&str] = &[
     "Check",
 ];
 
+// --- gem parity generators (automated, locale-backed) ---
+fn parity_pick(key: &str) -> String {
+    crate::locale::fetch_locale(key, "en")
+        .map(|v| crate::base::sample(&v))
+        .unwrap_or_default()
+}
+
+/// Gem-compatible generator: `subscription.payment_terms`.
+pub fn payment_term() -> String {
+    parity_pick("subscription.payment_terms")
+}
+
+/// Gem-compatible generator: `subscription.subscription_terms`.
+pub fn subscription_term() -> String {
+    parity_pick("subscription.subscription_terms")
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

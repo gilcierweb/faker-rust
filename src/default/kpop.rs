@@ -112,6 +112,38 @@ const FALLBACK_SONGS: &[&str] = &[
     "Queencard",
 ];
 
+// --- gem parity generators (automated, locale-backed) ---
+fn parity_pick(key: &str) -> String {
+    crate::locale::fetch_locale(key, "en")
+        .map(|v| crate::base::sample(&v))
+        .unwrap_or_default()
+}
+
+/// Gem-compatible generator: `kpop.boy_bands`.
+pub fn boy_bands() -> String {
+    parity_pick("kpop.boy_bands")
+}
+
+/// Gem-compatible generator: `kpop.girl_groups`.
+pub fn girl_groups() -> String {
+    parity_pick("kpop.girl_groups")
+}
+
+/// Gem-compatible generator: `kpop.i_groups`.
+pub fn i_groups() -> String {
+    parity_pick("kpop.i_groups")
+}
+
+/// Gem-compatible generator: `kpop.ii_groups`.
+pub fn ii_groups() -> String {
+    parity_pick("kpop.ii_groups")
+}
+
+/// Gem-compatible generator: `kpop.iii_groups`.
+pub fn iii_groups() -> String {
+    parity_pick("kpop.iii_groups")
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

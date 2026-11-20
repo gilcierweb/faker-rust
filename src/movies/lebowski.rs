@@ -43,6 +43,18 @@ const FALLBACK_QUOTES: &[&str] = &[
     "You want a toe? I can get you a toe.",
 ];
 
+// --- gem parity generators (automated, locale-backed) ---
+fn parity_pick(key: &str) -> String {
+    crate::locale::fetch_locale(key, "en")
+        .map(|v| crate::base::sample(&v))
+        .unwrap_or_default()
+}
+
+/// Gem-compatible generator: `lebowski.actors`.
+pub fn actor() -> String {
+    parity_pick("lebowski.actors")
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

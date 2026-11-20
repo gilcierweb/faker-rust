@@ -67,6 +67,18 @@ const FALLBACK_QUOTES: &[&str] = &[
     "There is nothing like looking, if you want to find something.",
 ];
 
+// --- gem parity generators (automated, locale-backed) ---
+fn parity_pick(key: &str) -> String {
+    crate::locale::fetch_locale(key, "en")
+        .map(|v| crate::base::sample(&v))
+        .unwrap_or_default()
+}
+
+/// Gem-compatible generator: `tolkien.hobbit.thorins_company`.
+pub fn thorins_company() -> String {
+    parity_pick("tolkien.hobbit.thorins_company")
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

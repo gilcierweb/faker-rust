@@ -69,6 +69,23 @@ const FALLBACK_GENRES: &[&str] = &[
     "Contemporary",
 ];
 
+// --- gem parity generators (automated, locale-backed) ---
+fn parity_pick(key: &str) -> String {
+    crate::locale::fetch_locale(key, "en")
+        .map(|v| crate::base::sample(&v))
+        .unwrap_or_default()
+}
+
+/// Gem-compatible generator: `theater.adult_musical`.
+pub fn adult_musical() -> String {
+    parity_pick("theater.adult_musical")
+}
+
+/// Gem-compatible generator: `theater.kids_musical`.
+pub fn kids_musical() -> String {
+    parity_pick("theater.kids_musical")
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

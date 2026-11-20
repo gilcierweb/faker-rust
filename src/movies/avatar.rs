@@ -54,6 +54,23 @@ const FALLBACK_CREATURES: &[&str] = &[
     "Prolemuris",
 ];
 
+// --- gem parity generators (automated, locale-backed) ---
+fn parity_pick(key: &str) -> String {
+    crate::locale::fetch_locale(key, "en")
+        .map(|v| crate::base::sample(&v))
+        .unwrap_or_default()
+}
+
+/// Gem-compatible generator: `avatar.dates`.
+pub fn date() -> String {
+    parity_pick("avatar.dates")
+}
+
+/// Gem-compatible generator: `avatar.quotes`.
+pub fn quote() -> String {
+    parity_pick("avatar.quotes")
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

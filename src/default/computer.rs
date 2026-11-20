@@ -31,6 +31,23 @@ pub fn os() -> String {
         .unwrap_or_else(|| "Ubuntu".to_string())
 }
 
+// --- gem parity generators (automated, locale-backed) ---
+fn parity_pick(key: &str) -> String {
+    crate::locale::fetch_locale(key, "en")
+        .map(|v| crate::base::sample(&v))
+        .unwrap_or_default()
+}
+
+/// Gem-compatible generator: `computer.platform`.
+pub fn stack() -> String {
+    parity_pick("computer.platform")
+}
+
+/// Gem-compatible generator: `computer.type`.
+pub fn r#type() -> String {
+    parity_pick("computer.type")
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

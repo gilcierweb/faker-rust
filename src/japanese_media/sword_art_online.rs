@@ -88,6 +88,28 @@ const FALLBACK_SKILLS: &[&str] = &[
     "Lambent Light",
 ];
 
+// --- gem parity generators (automated, locale-backed) ---
+fn parity_pick(key: &str) -> String {
+    crate::locale::fetch_locale(key, "en")
+        .map(|v| crate::base::sample(&v))
+        .unwrap_or_default()
+}
+
+/// Gem-compatible generator: `sword_art_online.game_name`.
+pub fn game_name() -> String {
+    parity_pick("sword_art_online.game_name")
+}
+
+/// Gem-compatible generator: `sword_art_online.item`.
+pub fn item() -> String {
+    parity_pick("sword_art_online.item")
+}
+
+/// Gem-compatible generator: `sword_art_online.real_name`.
+pub fn real_name() -> String {
+    parity_pick("sword_art_online.real_name")
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

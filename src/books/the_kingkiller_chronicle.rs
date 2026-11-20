@@ -68,6 +68,23 @@ const FALLBACK_QUOTES: &[&str] = &[
     "The best lies about me are the ones I told.",
 ];
 
+// --- gem parity generators (automated, locale-backed) ---
+fn parity_pick(key: &str) -> String {
+    crate::locale::fetch_locale(key, "en")
+        .map(|v| crate::base::sample(&v))
+        .unwrap_or_default()
+}
+
+/// Gem-compatible generator: `books.the_kingkiller_chronicle.books`.
+pub fn book() -> String {
+    parity_pick("books.the_kingkiller_chronicle.books")
+}
+
+/// Gem-compatible generator: `books.the_kingkiller_chronicle.creatures`.
+pub fn creature() -> String {
+    parity_pick("books.the_kingkiller_chronicle.creatures")
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

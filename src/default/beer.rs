@@ -51,6 +51,18 @@ const FALLBACK_HOPS: &[&str] = &["Cascade", "Centennial", "Chinook", "Citra", "C
 const FALLBACK_MALTS: &[&str] = &["Pale", "Caramel", "Chocolate", "Roasted Barley", "Munich"];
 const FALLBACK_YEASTS: &[&str] = &["Top fermenting", "Bottom fermenting", "Wild", "Lambic"];
 
+// --- gem parity generators (automated, locale-backed) ---
+fn parity_pick(key: &str) -> String {
+    crate::locale::fetch_locale(key, "en")
+        .map(|v| crate::base::sample(&v))
+        .unwrap_or_default()
+}
+
+/// Gem-compatible generator: `beer.malt`.
+pub fn malts() -> String {
+    parity_pick("beer.malt")
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

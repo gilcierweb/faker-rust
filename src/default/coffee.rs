@@ -37,6 +37,23 @@ const FALLBACK_COUNTRIES: &[&str] = &["Ethiopia", "Colombia", "Vietnam", "Brazil
 const FALLBACK_VARIETIES: &[&str] = &["Arabica", "Robusta", "Caturra", "Bourbon", "Typica"];
 const FALLBACK_NOTES: &[&str] = &["fruity", "chocolatey", "nutty", "caramel", "acidic"];
 
+// --- gem parity generators (automated, locale-backed) ---
+fn parity_pick(key: &str) -> String {
+    crate::locale::fetch_locale(key, "en")
+        .map(|v| crate::base::sample(&v))
+        .unwrap_or_default()
+}
+
+/// Gem-compatible generator: `coffee.intensifier`.
+pub fn intensifier() -> String {
+    parity_pick("coffee.intensifier")
+}
+
+/// Gem-compatible generator: `coffee.country`.
+pub fn origin() -> String {
+    parity_pick("coffee.country")
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

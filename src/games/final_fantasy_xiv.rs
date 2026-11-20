@@ -98,6 +98,23 @@ const FALLBACK_LOCATIONS: &[&str] = &[
     "Tuliyollal",
 ];
 
+// --- gem parity generators (automated, locale-backed) ---
+fn parity_pick(key: &str) -> String {
+    crate::locale::fetch_locale(key, "en")
+        .map(|v| crate::base::sample(&v))
+        .unwrap_or_default()
+}
+
+/// Gem-compatible generator: `games.final_fantasy_xiv.data_centers`.
+pub fn data_center() -> String {
+    parity_pick("games.final_fantasy_xiv.data_centers")
+}
+
+/// Gem-compatible generator: `games.final_fantasy_xiv.zones`.
+pub fn zone() -> String {
+    parity_pick("games.final_fantasy_xiv.zones")
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

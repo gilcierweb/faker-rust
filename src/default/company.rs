@@ -315,6 +315,23 @@ const FALLBACK_BUZZWORDS: &[&str] = &[
     "Executive",
 ];
 
+// --- gem parity generators (automated, locale-backed) ---
+fn parity_pick(key: &str) -> String {
+    crate::locale::fetch_locale(key, "en")
+        .map(|v| crate::base::sample(&v))
+        .unwrap_or_default()
+}
+
+/// Gem-compatible generator: `company.sic_code`.
+pub fn sic_code() -> String {
+    parity_pick("company.sic_code")
+}
+
+/// Gem-compatible generator: `company.type`.
+pub fn r#type() -> String {
+    parity_pick("company.type")
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

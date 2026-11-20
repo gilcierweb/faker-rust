@@ -58,6 +58,23 @@ const FALLBACK_TUCKER: &[&str] = &[
     "You're about as useful as a marzipan dildo.",
 ];
 
+// --- gem parity generators (automated, locale-backed) ---
+fn parity_pick(key: &str) -> String {
+    crate::locale::fetch_locale(key, "en")
+        .map(|v| crate::base::sample(&v))
+        .unwrap_or_default()
+}
+
+/// Gem-compatible generator: `the_thick_of_it.departments`.
+pub fn department() -> String {
+    parity_pick("the_thick_of_it.departments")
+}
+
+/// Gem-compatible generator: `the_thick_of_it.positions`.
+pub fn position() -> String {
+    parity_pick("the_thick_of_it.positions")
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

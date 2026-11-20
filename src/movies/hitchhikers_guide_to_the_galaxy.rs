@@ -116,6 +116,23 @@ const FALLBACK_PLANETS: &[&str] = &[
     "Milliways",
 ];
 
+// --- gem parity generators (automated, locale-backed) ---
+fn parity_pick(key: &str) -> String {
+    crate::locale::fetch_locale(key, "en")
+        .map(|v| crate::base::sample(&v))
+        .unwrap_or_default()
+}
+
+/// Gem-compatible generator: `hitchhikers_guide_to_the_galaxy.marvin_quote`.
+pub fn marvin_quote() -> String {
+    parity_pick("hitchhikers_guide_to_the_galaxy.marvin_quote")
+}
+
+/// Gem-compatible generator: `hitchhikers_guide_to_the_galaxy.species`.
+pub fn specie() -> String {
+    parity_pick("hitchhikers_guide_to_the_galaxy.species")
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

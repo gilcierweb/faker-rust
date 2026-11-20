@@ -27,6 +27,18 @@ pub fn move_name() -> String {
 const FALLBACK_POKEMON_NAMES: &[&str] =
     &["Pikachu", "Bulbasaur", "Charmander", "Squirtle", "Mewtwo"];
 
+// --- gem parity generators (automated, locale-backed) ---
+fn parity_pick(key: &str) -> String {
+    crate::locale::fetch_locale(key, "en")
+        .map(|v| crate::base::sample(&v))
+        .unwrap_or_default()
+}
+
+/// Gem-compatible generator: `games.pokemon.moves`.
+pub fn r#move() -> String {
+    parity_pick("games.pokemon.moves")
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

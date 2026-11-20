@@ -177,6 +177,58 @@ const FALLBACK_TIME_ZONES: &[&str] = &[
     "Asia/Shanghai",
 ];
 
+// --- gem parity generators (automated, locale-backed) ---
+fn parity_pick(key: &str) -> String {
+    crate::locale::fetch_locale(key, "en")
+        .map(|v| crate::base::sample(&v))
+        .unwrap_or_default()
+}
+
+/// Gem-compatible generator: `address.building_number`.
+pub fn building_number() -> String {
+    parity_pick("address.building_number")
+}
+
+/// Gem-compatible generator: `address.city_prefix`.
+pub fn city_prefix() -> String {
+    parity_pick("address.city_prefix")
+}
+
+/// Gem-compatible generator: `address.city_suffix`.
+pub fn city_suffix() -> String {
+    parity_pick("address.city_suffix")
+}
+
+/// Gem-compatible generator: `address.community`.
+pub fn community() -> String {
+    parity_pick("address.community")
+}
+
+/// Gem-compatible generator: `address.country_code_long`.
+pub fn country_code_long() -> String {
+    parity_pick("address.country_code_long")
+}
+
+/// Gem-compatible generator: `address.mail_box`.
+pub fn mail_box() -> String {
+    parity_pick("address.mail_box")
+}
+
+/// Gem-compatible generator: `address.state`.
+pub fn state() -> String {
+    parity_pick("address.state")
+}
+
+/// Gem-compatible generator: `address.state_abbr`.
+pub fn state_abbr() -> String {
+    parity_pick("address.state_abbr")
+}
+
+/// Gem-compatible generator: `address.street_suffix`.
+pub fn street_suffix() -> String {
+    parity_pick("address.street_suffix")
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

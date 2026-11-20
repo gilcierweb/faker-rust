@@ -59,6 +59,28 @@ pub fn brand() -> String {
         .unwrap_or_else(|| "Cookies".to_string())
 }
 
+// --- gem parity generators (automated, locale-backed) ---
+fn parity_pick(key: &str) -> String {
+    crate::locale::fetch_locale(key, "en")
+        .map(|v| crate::base::sample(&v))
+        .unwrap_or_default()
+}
+
+/// Gem-compatible generator: `cannabis.buzzwords`.
+pub fn buzzword() -> String {
+    parity_pick("cannabis.buzzwords")
+}
+
+/// Gem-compatible generator: `cannabis.cannabinoid_abbreviations`.
+pub fn cannabinoid_abbreviation() -> String {
+    parity_pick("cannabis.cannabinoid_abbreviations")
+}
+
+/// Gem-compatible generator: `cannabis.types`.
+pub fn r#type() -> String {
+    parity_pick("cannabis.types")
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

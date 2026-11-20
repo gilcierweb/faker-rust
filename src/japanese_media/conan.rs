@@ -74,6 +74,18 @@ const FALLBACK_LOCATIONS: &[&str] = &[
     "Haido City Hotel",
 ];
 
+// --- gem parity generators (automated, locale-backed) ---
+fn parity_pick(key: &str) -> String {
+    crate::locale::fetch_locale(key, "en")
+        .map(|v| crate::base::sample(&v))
+        .unwrap_or_default()
+}
+
+/// Gem-compatible generator: `conan.vehicles`.
+pub fn vehicle() -> String {
+    parity_pick("conan.vehicles")
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

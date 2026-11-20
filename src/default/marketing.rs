@@ -80,6 +80,18 @@ const FALLBACK_STRATEGIES: &[&str] = &[
     "Brand Strategy",
 ];
 
+// --- gem parity generators (automated, locale-backed) ---
+fn parity_pick(key: &str) -> String {
+    crate::locale::fetch_locale(key, "en")
+        .map(|v| crate::base::sample(&v))
+        .unwrap_or_default()
+}
+
+/// Gem-compatible generator: `marketing.buzzwords`.
+pub fn buzzwords() -> String {
+    parity_pick("marketing.buzzwords")
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

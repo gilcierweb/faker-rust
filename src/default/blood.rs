@@ -22,6 +22,18 @@ pub fn group() -> String {
     format!("{}{}", type_name(), rh_factor())
 }
 
+// --- gem parity generators (automated, locale-backed) ---
+fn parity_pick(key: &str) -> String {
+    crate::locale::fetch_locale(key, "en")
+        .map(|v| crate::base::sample(&v))
+        .unwrap_or_default()
+}
+
+/// Gem-compatible generator: `blood.type`.
+pub fn r#type() -> String {
+    parity_pick("blood.type")
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

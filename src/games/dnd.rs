@@ -66,6 +66,33 @@ pub fn ranged_weapon() -> String {
         .unwrap_or_else(|| "Longbow".to_string())
 }
 
+// --- gem parity generators (automated, locale-backed) ---
+fn parity_pick(key: &str) -> String {
+    crate::locale::fetch_locale(key, "en")
+        .map(|v| crate::base::sample(&v))
+        .unwrap_or_default()
+}
+
+/// Gem-compatible generator: `dnd.name.first_name`.
+pub fn first_name() -> String {
+    parity_pick("dnd.name.first_name")
+}
+
+/// Gem-compatible generator: `dnd.name.last_name`.
+pub fn last_name() -> String {
+    parity_pick("dnd.name.last_name")
+}
+
+/// Gem-compatible generator: `dnd.name.first_name`.
+pub fn name() -> String {
+    parity_pick("dnd.name.first_name")
+}
+
+/// Gem-compatible generator: `dnd.name.first_name`.
+pub fn title_name() -> String {
+    parity_pick("dnd.name.first_name")
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

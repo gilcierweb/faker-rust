@@ -40,6 +40,38 @@ pub fn yiddish() -> String {
         .unwrap_or_else(|| "A bad peace is better than a good war.".to_string())
 }
 
+// --- gem parity generators (automated, locale-backed) ---
+fn parity_pick(key: &str) -> String {
+    crate::locale::fetch_locale(key, "en")
+        .map(|v| crate::base::sample(&v))
+        .unwrap_or_default()
+}
+
+/// Gem-compatible generator: `quote.famous_last_words`.
+pub fn famous_last_words() -> String {
+    parity_pick("quote.famous_last_words")
+}
+
+/// Gem-compatible generator: `quote.mitch_hedberg`.
+pub fn mitch_hedberg() -> String {
+    parity_pick("quote.mitch_hedberg")
+}
+
+/// Gem-compatible generator: `quote.most_interesting_man_in_the_world`.
+pub fn most_interesting_man_in_the_world() -> String {
+    parity_pick("quote.most_interesting_man_in_the_world")
+}
+
+/// Gem-compatible generator: `quote.singular_siegler`.
+pub fn singular_siegler() -> String {
+    parity_pick("quote.singular_siegler")
+}
+
+/// Gem-compatible generator: `quote.yoda`.
+pub fn yoda() -> String {
+    parity_pick("quote.yoda")
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

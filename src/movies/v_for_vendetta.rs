@@ -44,6 +44,18 @@ const FALLBACK_QUOTES: &[&str] = &[
     "A revolution without dancing is a revolution not worth having!",
 ];
 
+// --- gem parity generators (automated, locale-backed) ---
+fn parity_pick(key: &str) -> String {
+    crate::locale::fetch_locale(key, "en")
+        .map(|v| crate::base::sample(&v))
+        .unwrap_or_default()
+}
+
+/// Gem-compatible generator: `v_for_vendetta.speeches`.
+pub fn speech() -> String {
+    parity_pick("v_for_vendetta.speeches")
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

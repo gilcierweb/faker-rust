@@ -46,6 +46,18 @@ const FALLBACK_MEMBERS: &[&str] = &[
     "Vince Welnick",
 ];
 
+// --- gem parity generators (automated, locale-backed) ---
+fn parity_pick(key: &str) -> String {
+    crate::locale::fetch_locale(key, "en")
+        .map(|v| crate::base::sample(&v))
+        .unwrap_or_default()
+}
+
+/// Gem-compatible generator: `grateful_dead.players`.
+pub fn player() -> String {
+    parity_pick("grateful_dead.players")
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

@@ -46,6 +46,23 @@ const FALLBACK_QUOTES: &[&str] = &[
     "The dean is a genius!",
 ];
 
+// --- gem parity generators (automated, locale-backed) ---
+fn parity_pick(key: &str) -> String {
+    crate::locale::fetch_locale(key, "en")
+        .map(|v| crate::base::sample(&v))
+        .unwrap_or_default()
+}
+
+/// Gem-compatible generator: `community.characters`.
+pub fn characters() -> String {
+    parity_pick("community.characters")
+}
+
+/// Gem-compatible generator: `community.quotes`.
+pub fn quotes() -> String {
+    parity_pick("community.quotes")
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

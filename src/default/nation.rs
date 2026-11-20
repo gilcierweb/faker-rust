@@ -31,6 +31,18 @@ pub fn flag() -> String {
         .unwrap_or_else(|| "🇧🇷".to_string())
 }
 
+// --- gem parity generators (automated, locale-backed) ---
+fn parity_pick(key: &str) -> String {
+    crate::locale::fetch_locale(key, "en")
+        .map(|v| crate::base::sample(&v))
+        .unwrap_or_default()
+}
+
+/// Gem-compatible generator: `team.sport`.
+pub fn national_sport() -> String {
+    parity_pick("team.sport")
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

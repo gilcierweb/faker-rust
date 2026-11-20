@@ -58,6 +58,28 @@ const FALLBACK_QUOTES: &[&str] = &[
     "On the other side of the screen, it all looks so easy.",
 ];
 
+// --- gem parity generators (automated, locale-backed) ---
+fn parity_pick(key: &str) -> String {
+    crate::locale::fetch_locale(key, "en")
+        .map(|v| crate::base::sample(&v))
+        .unwrap_or_default()
+}
+
+/// Gem-compatible generator: `tron.games`.
+pub fn game() -> String {
+    parity_pick("tron.games")
+}
+
+/// Gem-compatible generator: `tron.taglines`.
+pub fn tagline() -> String {
+    parity_pick("tron.taglines")
+}
+
+/// Gem-compatible generator: `tron.vehicles`.
+pub fn vehicle() -> String {
+    parity_pick("tron.vehicles")
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

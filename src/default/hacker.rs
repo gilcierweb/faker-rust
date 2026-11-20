@@ -141,6 +141,18 @@ const FALLBACK_INGVERBS: &[&str] = &[
     "parsing",
 ];
 
+// --- gem parity generators (automated, locale-backed) ---
+fn parity_pick(key: &str) -> String {
+    crate::locale::fetch_locale(key, "en")
+        .map(|v| crate::base::sample(&v))
+        .unwrap_or_default()
+}
+
+/// Gem-compatible generator: `hacker.abbreviation`.
+pub fn say_something_smart() -> String {
+    parity_pick("hacker.abbreviation")
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

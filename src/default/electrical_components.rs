@@ -73,6 +73,18 @@ const FALLBACK_PASSIVE: &[&str] = &[
     "Switch",
 ];
 
+// --- gem parity generators (automated, locale-backed) ---
+fn parity_pick(key: &str) -> String {
+    crate::locale::fetch_locale(key, "en")
+        .map(|v| crate::base::sample(&v))
+        .unwrap_or_default()
+}
+
+/// Gem-compatible generator: `electrical_components.electromechanical`.
+pub fn electromechanical() -> String {
+    parity_pick("electrical_components.electromechanical")
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

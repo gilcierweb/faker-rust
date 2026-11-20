@@ -47,6 +47,18 @@ pub fn hsla() -> (u32, u32, u32, f32) {
     )
 }
 
+// --- gem parity generators (automated, locale-backed) ---
+fn parity_pick(key: &str) -> String {
+    crate::locale::fetch_locale(key, "en")
+        .map(|v| crate::base::sample(&v))
+        .unwrap_or_default()
+}
+
+/// Gem-compatible generator: `color.name`.
+pub fn color_name() -> String {
+    parity_pick("color.name")
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

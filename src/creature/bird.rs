@@ -38,6 +38,33 @@ pub fn common_name() -> String {
         .unwrap_or_else(|| "Common Black Hawk".to_string())
 }
 
+// --- gem parity generators (automated, locale-backed) ---
+fn parity_pick(key: &str) -> String {
+    crate::locale::fetch_locale(key, "en")
+        .map(|v| crate::base::sample(&v))
+        .unwrap_or_default()
+}
+
+/// Gem-compatible generator: `creature.bird.anatomy_past_tense`.
+pub fn anatomy_past_tense() -> String {
+    parity_pick("creature.bird.anatomy_past_tense")
+}
+
+/// Gem-compatible generator: `creature.bird.emotional_adjectives`.
+pub fn emotional_adjective() -> String {
+    parity_pick("creature.bird.emotional_adjectives")
+}
+
+/// Gem-compatible generator: `creature.bird.geo`.
+pub fn geo() -> String {
+    parity_pick("creature.bird.geo")
+}
+
+/// Gem-compatible generator: `creature.bird.silly_adjectives`.
+pub fn silly_adjective() -> String {
+    parity_pick("creature.bird.silly_adjectives")
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

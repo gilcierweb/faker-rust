@@ -486,6 +486,7 @@ fn extract_exact_array(locale_data: &Value, locale: &str, key: &str) -> Option<V
     match current {
         Value::Array(seq) => extract_strings_raw(seq),
         Value::String(s) => Some(vec![s.clone()]),
+        Value::Number(n) => Some(vec![n.to_string()]),
         _ => None,
     }
 }
@@ -495,6 +496,7 @@ fn extract_strings_raw(seq: &[Value]) -> Option<Vec<String>> {
         .iter()
         .filter_map(|v| match v {
             Value::String(s) => Some(s.clone()),
+            Value::Number(n) => Some(n.to_string()),
             _ => None,
         })
         .collect();
@@ -1012,6 +1014,15 @@ mod tests {
             "English locale data missing under {}",
             path.display()
         );
+    }
+
+    #[test]
+    fn test_fetch_locale_converts_numeric_arrays() {
+        // Ruby stores vehicle.doors as [1, 2, 3, 4]. The loader must expose
+        // numeric locale values as strings instead of silently dropping them.
+        let values = fetch_locale("vehicle.doors", "en")
+            .expect("vehicle.doors must resolve from locale data");
+        assert_eq!(values, vec!["1", "2", "3", "4"]);
     }
 
     #[test]

@@ -38,6 +38,63 @@ pub fn ordinal() -> String {
         .unwrap_or_else(|| "northeast".to_string())
 }
 
+// --- gem parity generators (automated, locale-backed) ---
+fn parity_pick(key: &str) -> String {
+    crate::locale::fetch_locale(key, "en")
+        .map(|v| crate::base::sample(&v))
+        .unwrap_or_default()
+}
+
+/// Gem-compatible generator: `compass.cardinal.abbreviation`.
+pub fn cardinal_abbreviation() -> String {
+    parity_pick("compass.cardinal.abbreviation")
+}
+
+/// Gem-compatible generator: `compass.cardinal.azimuth`.
+pub fn cardinal_azimuth() -> String {
+    parity_pick("compass.cardinal.azimuth")
+}
+
+/// Gem-compatible generator: `compass.half-wind.word`.
+pub fn half_wind() -> String {
+    parity_pick("compass.half-wind.word")
+}
+
+/// Gem-compatible generator: `compass.half-wind.abbreviation`.
+pub fn half_wind_abbreviation() -> String {
+    parity_pick("compass.half-wind.abbreviation")
+}
+
+/// Gem-compatible generator: `compass.half-wind.azimuth`.
+pub fn half_wind_azimuth() -> String {
+    parity_pick("compass.half-wind.azimuth")
+}
+
+/// Gem-compatible generator: `compass.ordinal.abbreviation`.
+pub fn ordinal_abbreviation() -> String {
+    parity_pick("compass.ordinal.abbreviation")
+}
+
+/// Gem-compatible generator: `compass.ordinal.azimuth`.
+pub fn ordinal_azimuth() -> String {
+    parity_pick("compass.ordinal.azimuth")
+}
+
+/// Gem-compatible generator: `compass.quarter-wind.word`.
+pub fn quarter_wind() -> String {
+    parity_pick("compass.quarter-wind.word")
+}
+
+/// Gem-compatible generator: `compass.quarter-wind.abbreviation`.
+pub fn quarter_wind_abbreviation() -> String {
+    parity_pick("compass.quarter-wind.abbreviation")
+}
+
+/// Gem-compatible generator: `compass.quarter-wind.azimuth`.
+pub fn quarter_wind_azimuth() -> String {
+    parity_pick("compass.quarter-wind.azimuth")
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

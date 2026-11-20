@@ -75,6 +75,48 @@ pub fn people() -> String {
     sample(&emojis).to_string()
 }
 
+// --- gem parity generators (automated, locale-backed) ---
+fn parity_pick(key: &str) -> String {
+    crate::locale::fetch_locale(key, "en")
+        .map(|v| crate::base::sample(&v))
+        .unwrap_or_default()
+}
+
+/// Gem-compatible generator: `slack_emoji.activity`.
+pub fn activity() -> String {
+    parity_pick("slack_emoji.activity")
+}
+
+/// Gem-compatible generator: `slack_emoji.celebration`.
+pub fn celebration() -> String {
+    parity_pick("slack_emoji.celebration")
+}
+
+/// Gem-compatible generator: `slack_emoji.custom`.
+pub fn custom() -> String {
+    parity_pick("slack_emoji.custom")
+}
+
+/// Gem-compatible generator: `slack_emoji.food_and_drink`.
+pub fn food_and_drink() -> String {
+    parity_pick("slack_emoji.food_and_drink")
+}
+
+/// Gem-compatible generator: `slack_emoji.nature`.
+pub fn nature() -> String {
+    parity_pick("slack_emoji.nature")
+}
+
+/// Gem-compatible generator: `slack_emoji.objects_and_symbols`.
+pub fn objects_and_symbols() -> String {
+    parity_pick("slack_emoji.objects_and_symbols")
+}
+
+/// Gem-compatible generator: `slack_emoji.travel_and_places`.
+pub fn travel_and_places() -> String {
+    parity_pick("slack_emoji.travel_and_places")
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

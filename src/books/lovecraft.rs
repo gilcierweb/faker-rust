@@ -76,6 +76,23 @@ const FALLBACK_QUOTES: &[&str] = &[
     "The oldest and strongest emotion of mankind is fear, and the oldest and strongest kind of fear is fear of the unknown.",
 ];
 
+// --- gem parity generators (automated, locale-backed) ---
+fn parity_pick(key: &str) -> String {
+    crate::locale::fetch_locale(key, "en")
+        .map(|v| crate::base::sample(&v))
+        .unwrap_or_default()
+}
+
+/// Gem-compatible generator: `lovecraft.deity`.
+pub fn deity() -> String {
+    parity_pick("lovecraft.deity")
+}
+
+/// Gem-compatible generator: `lovecraft.words`.
+pub fn word() -> String {
+    parity_pick("lovecraft.words")
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

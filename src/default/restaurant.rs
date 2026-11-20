@@ -70,6 +70,18 @@ const FALLBACK_REVIEWS: &[&str] = &[
     "Will definitely be coming back!",
 ];
 
+// --- gem parity generators (automated, locale-backed) ---
+fn parity_pick(key: &str) -> String {
+    crate::locale::fetch_locale(key, "en")
+        .map(|v| crate::base::sample(&v))
+        .unwrap_or_default()
+}
+
+/// Gem-compatible generator: `restaurant.description`.
+pub fn description() -> String {
+    parity_pick("restaurant.description")
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

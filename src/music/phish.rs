@@ -41,6 +41,23 @@ const FALLBACK_MEMBERS: &[&str] = &[
     "Jon Fishman",
 ];
 
+// --- gem parity generators (automated, locale-backed) ---
+fn parity_pick(key: &str) -> String {
+    crate::locale::fetch_locale(key, "en")
+        .map(|v| crate::base::sample(&v))
+        .unwrap_or_default()
+}
+
+/// Gem-compatible generator: `phish.albums`.
+pub fn album() -> String {
+    parity_pick("phish.albums")
+}
+
+/// Gem-compatible generator: `phish.musicians`.
+pub fn musician() -> String {
+    parity_pick("phish.musicians")
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

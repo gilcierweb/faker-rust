@@ -173,6 +173,33 @@ const FALLBACK_QUOTES: &[&str] = &[
     "The world doesn't need a hero. It needs a professional.",
 ];
 
+// --- gem parity generators (automated, locale-backed) ---
+fn parity_pick(key: &str) -> String {
+    crate::locale::fetch_locale(key, "en")
+        .map(|v| crate::base::sample(&v))
+        .unwrap_or_default()
+}
+
+/// Gem-compatible generator: `games.witcher.books`.
+pub fn book() -> String {
+    parity_pick("games.witcher.books")
+}
+
+/// Gem-compatible generator: `games.witcher.potions`.
+pub fn potion() -> String {
+    parity_pick("games.witcher.potions")
+}
+
+/// Gem-compatible generator: `games.witcher.signs`.
+pub fn sign() -> String {
+    parity_pick("games.witcher.signs")
+}
+
+/// Gem-compatible generator: `games.witcher.witchers`.
+pub fn witcher() -> String {
+    parity_pick("games.witcher.witchers")
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

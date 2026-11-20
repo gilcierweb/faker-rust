@@ -70,6 +70,43 @@ const FALLBACK_WINTER_OLYMPICS: &[&str] = &[
     "Biathlon",
 ];
 
+// --- gem parity generators (automated, locale-backed) ---
+fn parity_pick(key: &str) -> String {
+    crate::locale::fetch_locale(key, "en")
+        .map(|v| crate::base::sample(&v))
+        .unwrap_or_default()
+}
+
+/// Gem-compatible generator: `sport.ancient_olympics`.
+pub fn ancient_olympics_sport() -> String {
+    parity_pick("sport.ancient_olympics")
+}
+
+/// Gem-compatible generator: `sport.summer_olympics`.
+pub fn summer_olympics_sport() -> String {
+    parity_pick("sport.summer_olympics")
+}
+
+/// Gem-compatible generator: `sport.summer_paralympics`.
+pub fn summer_paralympics_sport() -> String {
+    parity_pick("sport.summer_paralympics")
+}
+
+/// Gem-compatible generator: `sport.unusual`.
+pub fn unusual_sport() -> String {
+    parity_pick("sport.unusual")
+}
+
+/// Gem-compatible generator: `sport.winter_olympics`.
+pub fn winter_olympics_sport() -> String {
+    parity_pick("sport.winter_olympics")
+}
+
+/// Gem-compatible generator: `sport.winter_paralympics`.
+pub fn winter_paralympics_sport() -> String {
+    parity_pick("sport.winter_paralympics")
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

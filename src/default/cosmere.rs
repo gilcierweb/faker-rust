@@ -81,6 +81,58 @@ const FALLBACK_BOOKS: &[&str] = &[
     "Elantris",
 ];
 
+// --- gem parity generators (automated, locale-backed) ---
+fn parity_pick(key: &str) -> String {
+    crate::locale::fetch_locale(key, "en")
+        .map(|v| crate::base::sample(&v))
+        .unwrap_or_default()
+}
+
+/// Gem-compatible generator: `cosmere.allomancers`.
+pub fn allomancer() -> String {
+    parity_pick("cosmere.allomancers")
+}
+
+/// Gem-compatible generator: `cosmere.aons`.
+pub fn aon() -> String {
+    parity_pick("cosmere.aons")
+}
+
+/// Gem-compatible generator: `cosmere.feruchemists`.
+pub fn feruchemist() -> String {
+    parity_pick("cosmere.feruchemists")
+}
+
+/// Gem-compatible generator: `cosmere.heralds`.
+pub fn herald() -> String {
+    parity_pick("cosmere.heralds")
+}
+
+/// Gem-compatible generator: `cosmere.metals`.
+pub fn metal() -> String {
+    parity_pick("cosmere.metals")
+}
+
+/// Gem-compatible generator: `cosmere.shards`.
+pub fn shard() -> String {
+    parity_pick("cosmere.shards")
+}
+
+/// Gem-compatible generator: `cosmere.shard_worlds`.
+pub fn shard_world() -> String {
+    parity_pick("cosmere.shard_worlds")
+}
+
+/// Gem-compatible generator: `cosmere.sprens`.
+pub fn spren() -> String {
+    parity_pick("cosmere.sprens")
+}
+
+/// Gem-compatible generator: `cosmere.surges`.
+pub fn surge() -> String {
+    parity_pick("cosmere.surges")
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

@@ -55,6 +55,18 @@ const FALLBACK_ALBUMS: &[&str] = &[
 
 const FALLBACK_BANDS: &[&str] = &["The Revolution", "The New Power Generation", "3rdeyegirl"];
 
+// --- gem parity generators (automated, locale-backed) ---
+fn parity_pick(key: &str) -> String {
+    crate::locale::fetch_locale(key, "en")
+        .map(|v| crate::base::sample(&v))
+        .unwrap_or_default()
+}
+
+/// Gem-compatible generator: `prince.lyric`.
+pub fn lyric() -> String {
+    parity_pick("prince.lyric")
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

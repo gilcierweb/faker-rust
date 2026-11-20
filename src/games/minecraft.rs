@@ -32,6 +32,38 @@ const FALLBACK_MINECRAFT_ITEMS: &[&str] = &[
     "Crafting Table",
 ];
 
+// --- gem parity generators (automated, locale-backed) ---
+fn parity_pick(key: &str) -> String {
+    crate::locale::fetch_locale(key, "en")
+        .map(|v| crate::base::sample(&v))
+        .unwrap_or_default()
+}
+
+/// Gem-compatible generator: `games.minecraft.achievement`.
+pub fn achievement() -> String {
+    parity_pick("games.minecraft.achievement")
+}
+
+/// Gem-compatible generator: `games.minecraft.enchantment`.
+pub fn enchantment() -> String {
+    parity_pick("games.minecraft.enchantment")
+}
+
+/// Gem-compatible generator: `games.minecraft.game_mode`.
+pub fn game_mode() -> String {
+    parity_pick("games.minecraft.game_mode")
+}
+
+/// Gem-compatible generator: `games.minecraft.mobs`.
+pub fn mob() -> String {
+    parity_pick("games.minecraft.mobs")
+}
+
+/// Gem-compatible generator: `games.minecraft.status_effect`.
+pub fn status_effect() -> String {
+    parity_pick("games.minecraft.status_effect")
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

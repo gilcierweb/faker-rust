@@ -91,6 +91,18 @@ const FALLBACK_EYES: &[&str] = &[
     "Rinne Sharingan",
 ];
 
+// --- gem parity generators (automated, locale-backed) ---
+fn parity_pick(key: &str) -> String {
+    crate::locale::fetch_locale(key, "en")
+        .map(|v| crate::base::sample(&v))
+        .unwrap_or_default()
+}
+
+/// Gem-compatible generator: `naruto.demons`.
+pub fn demon() -> String {
+    parity_pick("naruto.demons")
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

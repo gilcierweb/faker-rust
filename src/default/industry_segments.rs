@@ -76,6 +76,23 @@ const FALLBACK_SUBSECTORS: &[&str] = &[
     "Compliance",
 ];
 
+// --- gem parity generators (automated, locale-backed) ---
+fn parity_pick(key: &str) -> String {
+    crate::locale::fetch_locale(key, "en")
+        .map(|v| crate::base::sample(&v))
+        .unwrap_or_default()
+}
+
+/// Gem-compatible generator: `industry_segments.sub_sector`.
+pub fn sub_sector() -> String {
+    parity_pick("industry_segments.sub_sector")
+}
+
+/// Gem-compatible generator: `industry_segments.super_sector`.
+pub fn super_sector() -> String {
+    parity_pick("industry_segments.super_sector")
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

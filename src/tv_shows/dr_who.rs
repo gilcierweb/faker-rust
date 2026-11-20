@@ -54,6 +54,18 @@ pub fn species() -> String {
         .unwrap_or_else(|| "Time Lord".to_string())
 }
 
+// --- gem parity generators (automated, locale-backed) ---
+fn parity_pick(key: &str) -> String {
+    crate::locale::fetch_locale(key, "en")
+        .map(|v| crate::base::sample(&v))
+        .unwrap_or_default()
+}
+
+/// Gem-compatible generator: `dr_who.species`.
+pub fn specie() -> String {
+    parity_pick("dr_who.species")
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

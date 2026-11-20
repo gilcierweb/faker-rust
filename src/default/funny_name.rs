@@ -197,6 +197,33 @@ const FALLBACK_NAMES: &[&str] = &[
     "Yule B. Sari",
 ];
 
+// --- gem parity generators (automated, locale-backed) ---
+fn parity_pick(key: &str) -> String {
+    crate::locale::fetch_locale(key, "en")
+        .map(|v| crate::base::sample(&v))
+        .unwrap_or_default()
+}
+
+/// Gem-compatible generator: `funny_name.name`.
+pub fn four_word_name() -> String {
+    parity_pick("funny_name.name")
+}
+
+/// Gem-compatible generator: `funny_name.name`.
+pub fn name_with_initial() -> String {
+    parity_pick("funny_name.name")
+}
+
+/// Gem-compatible generator: `funny_name.name`.
+pub fn three_word_name() -> String {
+    parity_pick("funny_name.name")
+}
+
+/// Gem-compatible generator: `funny_name.name`.
+pub fn two_word_name() -> String {
+    parity_pick("funny_name.name")
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

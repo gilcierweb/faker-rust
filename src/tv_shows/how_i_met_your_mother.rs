@@ -64,6 +64,18 @@ const FALLBACK_HIGH_FIVES: &[&str] = &[
     "Phone Five!",
 ];
 
+// --- gem parity generators (automated, locale-backed) ---
+fn parity_pick(key: &str) -> String {
+    crate::locale::fetch_locale(key, "en")
+        .map(|v| crate::base::sample(&v))
+        .unwrap_or_default()
+}
+
+/// Gem-compatible generator: `how_i_met_your_mother.quote`.
+pub fn quote() -> String {
+    parity_pick("how_i_met_your_mother.quote")
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

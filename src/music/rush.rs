@@ -56,6 +56,18 @@ const FALLBACK_ALBUMS: &[&str] = &[
 
 const FALLBACK_MEMBERS: &[&str] = &["Geddy Lee", "Alex Lifeson", "Neil Peart", "John Rutsey"];
 
+// --- gem parity generators (automated, locale-backed) ---
+fn parity_pick(key: &str) -> String {
+    crate::locale::fetch_locale(key, "en")
+        .map(|v| crate::base::sample(&v))
+        .unwrap_or_default()
+}
+
+/// Gem-compatible generator: `rush.players`.
+pub fn player() -> String {
+    parity_pick("rush.players")
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

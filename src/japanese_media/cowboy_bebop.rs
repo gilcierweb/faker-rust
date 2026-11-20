@@ -56,6 +56,23 @@ const FALLBACK_SHIPS: &[&str] = &[
     "Mono Boat",
 ];
 
+// --- gem parity generators (automated, locale-backed) ---
+fn parity_pick(key: &str) -> String {
+    crate::locale::fetch_locale(key, "en")
+        .map(|v| crate::base::sample(&v))
+        .unwrap_or_default()
+}
+
+/// Gem-compatible generator: `cowboy_bebop.episode`.
+pub fn episode() -> String {
+    parity_pick("cowboy_bebop.episode")
+}
+
+/// Gem-compatible generator: `cowboy_bebop.song`.
+pub fn song() -> String {
+    parity_pick("cowboy_bebop.song")
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

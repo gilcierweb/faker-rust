@@ -20,6 +20,23 @@ pub fn building() -> String {
     "Town Hall".to_string()
 }
 
+// --- gem parity generators (automated, locale-backed) ---
+fn parity_pick(key: &str) -> String {
+    crate::locale::fetch_locale(key, "en")
+        .map(|v| crate::base::sample(&v))
+        .unwrap_or_default()
+}
+
+/// Gem-compatible generator: `games.clash_of_clans.defensive_buildings`.
+pub fn defensive_building() -> String {
+    parity_pick("games.clash_of_clans.defensive_buildings")
+}
+
+/// Gem-compatible generator: `games.clash_of_clans.ranks`.
+pub fn rank() -> String {
+    parity_pick("games.clash_of_clans.ranks")
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

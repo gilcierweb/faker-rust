@@ -25,6 +25,43 @@ const FALLBACK_STAR_WARS_CHARACTERS: &[&str] = &[
     "Obi-Wan Kenobi",
 ];
 
+// --- gem parity generators (automated, locale-backed) ---
+fn parity_pick(key: &str) -> String {
+    crate::locale::fetch_locale(key, "en")
+        .map(|v| crate::base::sample(&v))
+        .unwrap_or_default()
+}
+
+/// Gem-compatible generator: `star_wars.call_numbers`.
+pub fn call_number() -> String {
+    parity_pick("star_wars.call_numbers")
+}
+
+/// Gem-compatible generator: `star_wars.call_squadrons`.
+pub fn call_squadron() -> String {
+    parity_pick("star_wars.call_squadrons")
+}
+
+/// Gem-compatible generator: `star_wars.droids`.
+pub fn droid() -> String {
+    parity_pick("star_wars.droids")
+}
+
+/// Gem-compatible generator: `star_wars.planets`.
+pub fn planet() -> String {
+    parity_pick("star_wars.planets")
+}
+
+/// Gem-compatible generator: `star_wars.species`.
+pub fn specie() -> String {
+    parity_pick("star_wars.species")
+}
+
+/// Gem-compatible generator: `star_wars.vehicles`.
+pub fn vehicle() -> String {
+    parity_pick("star_wars.vehicles")
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
