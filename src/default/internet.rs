@@ -222,9 +222,10 @@ pub fn mac_address(prefix: Option<&str>) -> string::String {
         let bytes: Vec<u8> = parts
             .iter()
             .filter_map(|s| u8::from_str_radix(s, 16).ok())
+            .take(6)
             .collect();
         let len = bytes.len();
-        (bytes, 6 - len)
+        (bytes, 6usize.saturating_sub(len))
     } else {
         (vec![], 6)
     };
@@ -239,6 +240,29 @@ pub fn mac_address(prefix: Option<&str>) -> string::String {
         .map(|b| format!("{:02x}", b))
         .collect::<Vec<_>>()
         .join(":")
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_mac_address_long_prefix_no_panic() {
+        let m = mac_address(Some("11:22:33:44:55:66:77"));
+        assert_eq!(m.len(), 17, "got {m}");
+    }
+
+    #[test]
+    fn test_mac_address_nonhex_prefix_ignored() {
+        let m = mac_address(Some("zz:bb"));
+        assert_eq!(m.len(), 17, "got {m}");
+    }
+
+    #[test]
+    fn test_mac_address_no_prefix() {
+        let m = mac_address(None);
+        assert_eq!(m.len(), 17, "got {m}");
+    }
 }
 
 /// Generate a random URL
