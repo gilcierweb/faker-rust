@@ -1,9 +1,8 @@
 //! Localization and configuration example.
 //!
 //! Demonstrates the thread-local configuration API and the raw locale-data
-//! helpers. The bundled locale files are read directly by `fetch_locale*`;
-//! generator functions currently resolve their data from the English locale,
-//! which is the Ruby gem parity target.
+//! helpers. Generators resolve their data through the configured locale and
+//! fall back to English when a translation is unavailable.
 
 use faker_rust::config::FakerConfig;
 use faker_rust::locale;
@@ -59,6 +58,15 @@ fn main() {
         locale::fetch_locale("name.first_name", "xx"),
     );
     println!();
+
+    println!("GENERATORS USE THE CONFIGURED LOCALE");
+    FakerConfig::set_locale("ja");
+    println!("  ja last name: {}", faker_rust::name::last_name());
+    FakerConfig::set_locale("xx");
+    println!(
+        "  xx last name (fallback): {}",
+        faker_rust::name::last_name()
+    );
 
     FakerConfig::set_locale("en");
     println!("restored locale: {}", FakerConfig::locale());
