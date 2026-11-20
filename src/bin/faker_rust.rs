@@ -18,7 +18,7 @@ use faker_rust::{Faker, address, company, games, internet, movies, name, phone_n
 #[derive(Parser)]
 #[command(name = "faker-rust")]
 #[command(about = "A CLI tool for generating fake data")]
-#[command(version = "0.1.0")]
+#[command(version = "0.1.1")]
 struct Cli {
     /// Set seed for deterministic output
     #[arg(long, global = true)]

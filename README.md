@@ -49,7 +49,7 @@ Add this to your `Cargo.toml`:
 
 ```toml
 [dependencies]
-faker-rust = "0.1.0"
+faker-rust = "0.1.1"
 ```
 
 Then run `cargo build`. Faker-Rust requires Rust 1.89 or newer.

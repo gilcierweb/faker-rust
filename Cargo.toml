@@ -1,6 +1,6 @@
 [package]
 name = "faker-rust"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2024"
 authors = ["GilcierWeb"]
 description = "A high-performance, locale-aware fake data generator for Rust"
