@@ -171,20 +171,10 @@ pub fn fetch_locale_with_context(
             }
         }
 
-        // 3. NEW: If we have context_category and key is simple (like "city_prefix")
-        // Try using the context_category as subdir directly
+        // 3. If we have a context_category, try using it as the subdir directly.
         if let Some(cat) = context_category {
-            let subdir_key = format!("{}_{}", loc, cat);
-            if let Some(locale_data) = LOCALE_DATA.get(&subdir_key) {
-                // Key is just the simple field name
-                if let Some(result) = try_extract(locale_data, loc, key, context_category) {
-                    return Some(result);
-                }
-                // Try with faker prefix
-                let faker_key = format!("faker.{}.{}", cat, key);
-                if let Some(result) = try_extract(locale_data, loc, &faker_key, context_category) {
-                    return Some(result);
-                }
+            if let Some(result) = try_subdir(loc, cat, key, context_category) {
+                return Some(result);
             }
         }
 
@@ -214,22 +204,6 @@ pub fn fetch_locale_with_context(
             }
         }
 
-        // 4. For simple keys without category (e.g., "city_prefix" with context "address")
-        // Try to find the subdir directly
-        if let Some(cat) = context_category {
-            let subdir_key = format!("{}_{}", loc, cat);
-            if let Some(locale_data) = LOCALE_DATA.get(&subdir_key) {
-                // Try simple field name
-                if let Some(result) = try_extract(locale_data, loc, key, context_category) {
-                    return Some(result);
-                }
-                // Try with faker prefix
-                let faker_key = format!("faker.{}.{}", cat, key);
-                if let Some(result) = try_extract(locale_data, loc, &faker_key, context_category) {
-                    return Some(result);
-                }
-            }
-        }
     }
 
     if locale != "en" {
@@ -237,6 +211,18 @@ pub fn fetch_locale_with_context(
     }
 
     None
+}
+
+/// Try resolving `key` (and its `faker.`-prefixed form) from the subdir file
+/// named `<loc>_<cat>.yml`.
+fn try_subdir(loc: &str, cat: &str, key: &str, context_category: Option<&str>) -> Option<Vec<String>> {
+    let subdir_key = format!("{}_{}", loc, cat);
+    let locale_data = LOCALE_DATA.get(&subdir_key)?;
+    if let Some(result) = try_extract(locale_data, loc, key, context_category) {
+        return Some(result);
+    }
+    let faker_key = format!("faker.{}.{}", cat, key);
+    try_extract(locale_data, loc, &faker_key, context_category)
 }
 
 fn try_extract(
