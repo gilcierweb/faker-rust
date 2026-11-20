@@ -57,38 +57,30 @@ pub const ALPHANUMERIC: [char; 62] = {
     chars
 };
 
-/// Replace `#` with random digit, `?` with random letter
-/// By default, the first `#` is replaced with 1-9 (no leading zero)
+/// Replace `#` with a random digit, `?` with a random letter.
+///
+/// The first `#` of each contiguous run of `#` is never `0` (no leading
+/// zero); every other position draws from the full 0-9 range. Non-`#`
+/// characters are copied verbatim.
 pub fn numerify(template: &str) -> String {
     let config = FakerConfig::current();
     let mut result = String::new();
     let mut chars = template.chars().peekable();
+    let mut in_hash_run = false;
 
     while let Some(c) = chars.next() {
         if c == '#' {
-            // Check if this is the first # (to avoid leading zeros)
-            let prev_is_hash = result.ends_with('#');
-            if !prev_is_hash {
-                // Check if the previous char in template was # (we're in a sequence)
-                let is_first_in_sequence = result.is_empty() || !result.ends_with('#');
-
-                if is_first_in_sequence && chars.peek().is_some() {
-                    // Use 1-9 for first digit in sequence to avoid leading zero
-                    result.push(config.rand_char(&['1', '2', '3', '4', '5', '6', '7', '8', '9']));
-                } else {
-                    result.push(config.rand_char(&DIGITS));
-                }
+            let is_first = !in_hash_run;
+            in_hash_run = true;
+            if is_first && chars.peek().is_some() {
+                result.push(config.rand_char(&['1', '2', '3', '4', '5', '6', '7', '8', '9']));
             } else {
                 result.push(config.rand_char(&DIGITS));
             }
         } else {
+            in_hash_run = false;
             result.push(c);
         }
-    }
-
-    // Clean up consecutive # markers
-    while result.contains("##") {
-        result = result.replace("##", "#");
     }
 
     result
@@ -167,6 +159,31 @@ mod tests {
         let result = numerify("###");
         assert_eq!(result.len(), 3);
         assert!(result.chars().all(|c| c.is_ascii_digit()));
+    }
+
+    #[test]
+    fn test_numerify_zero_in_middle() {
+        // 0 must be reachable in any non-leading position (previously impossible).
+        let mut saw_zero_mid = false;
+        for _ in 0..200 {
+            let s = numerify("#####");
+            if let Some(c) = s.chars().nth(1) {
+                if c == '0' {
+                    saw_zero_mid = true;
+                    break;
+                }
+            }
+        }
+        assert!(saw_zero_mid, "digit 0 must be reachable in non-leading positions");
+    }
+
+    #[test]
+    fn test_numerify_leading_nonzero() {
+        for _ in 0..200 {
+            let s = numerify("###");
+            let first = s.chars().next().unwrap();
+            assert!(first != '0', "first digit must not be 0, got {first}");
+        }
     }
 
     #[test]
