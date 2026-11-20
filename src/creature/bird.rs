@@ -1,7 +1,7 @@
 //! Bird generator - generates bird names, anatomy, and descriptors
 
 use crate::base::sample;
-use crate::locale::fetch_locale;
+use crate::locale::{fetch_locale, sample_with_resolve};
 
 /// Generate a random bird anatomy part
 pub fn anatomy() -> String {
@@ -34,7 +34,7 @@ pub fn common_family_name() -> String {
 /// Generate a plausible bird common name
 pub fn common_name() -> String {
     fetch_locale("creature.bird.plausible_common_names", "en")
-        .map(|v| sample(&v))
+        .map(|v| sample_with_resolve(&v, Some("creature.bird")))
         .unwrap_or_else(|| "Common Black Hawk".to_string())
 }
 
@@ -49,5 +49,15 @@ mod tests {
         assert!(!adjectives().is_empty());
         assert!(!common_family_name().is_empty());
         assert!(!common_name().is_empty());
+    }
+
+    #[test]
+    fn test_common_name_resolves_placeholders() {
+        // The locale templates contain #{...} placeholders; outputs must be
+        // resolved rather than leaking raw placeholder syntax.
+        for _ in 0..50 {
+            let name = common_name();
+            assert!(!name.contains("#{"), "unresolved placeholder: {name}");
+        }
     }
 }
