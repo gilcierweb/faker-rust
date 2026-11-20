@@ -142,7 +142,7 @@ pub fn year() -> i32 {
 
 /// Gem-compatible generator: vehicle mileage within a range.
 pub fn mileage(min: u32, max: u32) -> u32 {
-    crate::config::FakerConfig::current().rand_range(min, max + 1)
+    crate::config::FakerConfig::current().rand_range(min, max)
 }
 
 #[cfg(test)]

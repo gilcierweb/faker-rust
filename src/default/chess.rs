@@ -37,7 +37,7 @@ pub fn federation() -> String {
 }
 /// Gem-compatible generator: chess rating between `from` and `to` (inclusive).
 pub fn rating(from: u32, to: u32) -> u32 {
-    crate::config::FakerConfig::current().rand_range(from, to + 1)
+    crate::config::FakerConfig::current().rand_range(from, to)
 }
 
 #[cfg(test)]

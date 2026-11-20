@@ -65,7 +65,7 @@ pub fn full_rut(min: u32, max: u32, fixed: bool, formatted: bool) -> String {
     let body = if fixed {
         min
     } else {
-        config.rand_range(min, max + 1)
+        config.rand_range(min, max)
     };
     let dv = dv_for(&body.to_string());
     if formatted {
