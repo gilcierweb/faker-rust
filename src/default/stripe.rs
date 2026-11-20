@@ -1,7 +1,24 @@
 //! Stripe generator - fake data for Stripe-like financial services
 
 use crate::base::sample;
-use crate::locale::fetch_locale;
+use crate::locale::{fetch_locale, fetch_locale_named};
+
+/// A valid test card number for the requested brand (e.g. "visa", "mc", "amex").
+pub fn valid_card(brand: &str) -> String {
+    fetch_locale_named("stripe.valid_cards", brand, "en")
+        .unwrap_or_else(|| "4242424242424242".to_string())
+}
+
+/// A valid test token for the requested brand (e.g. "visa", "mc", "amex").
+pub fn valid_token(brand: &str) -> String {
+    fetch_locale_named("stripe.valid_tokens", brand, "en").unwrap_or_else(|| "tok_visa".to_string())
+}
+
+/// An invalid test card number for a given failure reason (e.g. "addressZipFail").
+pub fn invalid_card(reason: &str) -> String {
+    fetch_locale_named("stripe.invalid_cards", reason, "en")
+        .unwrap_or_else(|| "4000000000000002".to_string())
+}
 
 /// Generate a random Stripe plan
 pub fn plan() -> String {
@@ -84,5 +101,21 @@ mod tests {
     fn test_subscription_status_from_known_set() {
         let value = subscription_status();
         assert!(FALLBACK_STATUSES.contains(&value.as_str()) || !value.is_empty());
+    }
+
+    #[test]
+    fn test_valid_card_and_token_from_locale_data() {
+        assert_eq!(valid_card("visa"), "4242424242424242");
+        assert!(valid_card("visa").starts_with('4'));
+        assert!(valid_card("mc").starts_with('5'));
+        assert_eq!(valid_token("visa"), "tok_visa");
+        assert!(valid_token("amex").starts_with("tok_"));
+    }
+
+    #[test]
+    fn test_invalid_card_uses_failure_reason() {
+        let card = invalid_card("addressZipFail");
+        assert_eq!(card, "4000000000000010");
+        assert!(card.chars().all(|c| c.is_ascii_digit()));
     }
 }

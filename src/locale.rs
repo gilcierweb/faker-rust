@@ -133,6 +133,64 @@ pub fn fetch_locale(key: &str, locale: &str) -> Option<Vec<String>> {
     fetch_locale_with_context(key, locale, None)
 }
 
+/// Fetch a single named value from a map-shaped locale key.
+///
+/// Some locale fields are maps of named values rather than lists (e.g.
+/// `stripe.valid_cards.visa = "4242..."`). This helper navigates to the map
+/// and returns the requested entry, tolerating the same case/plural
+/// differences as [`fetch_locale`].
+pub fn fetch_locale_named(key: &str, name: &str, locale: &str) -> Option<String> {
+    let locales_to_try: Vec<&str> = if locale.contains('_') || locale.contains('-') {
+        vec![locale, locale.split(['-', '_']).next().unwrap()]
+    } else {
+        vec![locale]
+    };
+
+    for loc in locales_to_try {
+        let category = key.split('.').next().unwrap_or(key);
+        let mut sources = vec![format!("{loc}_{category}"), loc.to_string()];
+        sources.dedup();
+
+        for source in sources {
+            let Some(data) = LOCALE_DATA.get(&source) else {
+                continue;
+            };
+            let Some(top) = data.as_object() else {
+                continue;
+            };
+            let Some(mut current) = top.get(loc).or_else(|| top.get("faker")) else {
+                continue;
+            };
+            if let Some(faker) = current.get("faker") {
+                current = faker;
+            }
+            for part in clean_key_for_extraction(key).split('.') {
+                current = match current {
+                    Value::Object(map) => lookup_segment(map, part)?,
+                    _ => break,
+                };
+            }
+            if let Value::Object(map) = current {
+                if let Some(Value::String(s)) = map.get(name) {
+                    return Some(s.clone());
+                }
+                for (map_key, value) in map {
+                    if map_key.eq_ignore_ascii_case(name)
+                        && let Value::String(s) = value
+                    {
+                        return Some(s.clone());
+                    }
+                }
+            }
+        }
+    }
+
+    if locale != "en" {
+        return fetch_locale_named(key, name, "en");
+    }
+    None
+}
+
 pub fn fetch_locale_with_context(
     key: &str,
     locale: &str,
@@ -729,6 +787,19 @@ mod tests {
             clean_key_for_extraction("faker.name.male_first_name"),
             "name.male_first_name"
         );
+    }
+
+    #[test]
+    fn test_fetch_locale_named_map_value() {
+        assert_eq!(
+            fetch_locale_named("stripe.valid_cards", "visa", "en").as_deref(),
+            Some("4242424242424242")
+        );
+        assert_eq!(
+            fetch_locale_named("stripe.valid_tokens", "visa", "en").as_deref(),
+            Some("tok_visa")
+        );
+        assert!(fetch_locale_named("stripe.valid_cards", "nonexistent", "en").is_none());
     }
 
     #[test]
