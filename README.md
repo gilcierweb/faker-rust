@@ -16,7 +16,7 @@
 ## Quick links
 
 - 📖 **[Read the documentation][docs]**
-- 🧪 **[Browse the runnable examples](./examples/)** covering every public generator
+- 🧪 **[Browse the runnable examples](./examples/)** covering every public generator module
 - 📢 **[See what's changed in recent versions](./CHANGELOG.md)**
 
 ## Table of Contents
@@ -75,7 +75,7 @@ fn main() {
     println!("{}", address::full_address());         //=> "5479 William Way, East Sonnyhaven, LA 63637"
     
     // Lorem
-    println!("{}", lorem::paragraph());                //=> "Recusandae minima consequatur. Expedita sequi blanditiis. Ut fuga et."
+    println!("{}", lorem::paragraph(None));            //=> "Recusandae minima consequatur. Expedita sequi blanditiis. Ut fuga et."
     
     // Programming Language
     println!("{}", programming_language::name());      //=> "Rust"
@@ -88,7 +88,7 @@ fn main() {
 
 ### Runnable examples
 
-The `examples/` directory contains runnable programs for every public generator.
+The `examples/` directory contains runnable programs grouped by generator category, covering every public generator module.
 The grouped coverage files are:
 
 - `coverage_everyday.rs`: default generators, text, identifiers and structured output
@@ -100,6 +100,10 @@ The grouped coverage files are:
 - `coverage_parity_aliases.rs`: exact gem-documented method names
 - `coverage_function_smoke.rs`: generators that had no example previously
 - `source_parity.rs`: gem source methods without generated documentation
+
+Project contexts also have dedicated examples: `basic_usage.rs`, `advanced_features.rs`
+(seed and batch generation), `cli_demo.rs`, and `localization.rs` (configuration and
+raw locale-data helpers).
 
 Run one with `cargo run --example coverage_everyday`.
 
@@ -253,11 +257,16 @@ fn main() {
 Faker supports locale-aware data generation:
 
 ```rust
-// Set locale for data generation
-faker_rust::locale::set_locale("en");
+use faker_rust::config::FakerConfig;
 
-// The library will use locale-specific data where available,
-// falling back to English defaults for missing translations
+fn main() {
+    // Set locale for data generation
+    FakerConfig::set_locale("en");
+    assert_eq!(FakerConfig::locale(), "en");
+
+    // The library uses locale-specific data where available,
+    // falling back to English defaults for missing translations.
+}
 ```
 
 ## Contributing
