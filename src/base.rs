@@ -113,7 +113,7 @@ pub fn sample_many<T: Clone>(items: &[T], count: usize) -> Vec<T> {
 
 /// Generate a random number in range [min, max]
 pub fn rand_in_range(min: u32, max: u32) -> u32 {
-    if max < min {
+    if max <= min {
         return min;
     }
     FakerConfig::current().rand_range(min, max)
