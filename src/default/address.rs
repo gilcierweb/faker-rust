@@ -176,3 +176,32 @@ const FALLBACK_TIME_ZONES: &[&str] = &[
     "Asia/Tokyo",
     "Asia/Shanghai",
 ];
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn zip_codes_have_expected_shape() {
+        assert!(zip_code().chars().all(|c| c.is_ascii_digit()));
+        assert_eq!(zip_code().len(), 5);
+        let ext = zip_code_with_extension();
+        assert_eq!(ext.len(), 10);
+        assert_eq!(ext.as_bytes()[5], b'-');
+    }
+
+    #[test]
+    fn coordinates_are_in_valid_ranges() {
+        let lat: f64 = latitude().parse().unwrap();
+        let lon: f64 = longitude().parse().unwrap();
+        assert!((-90.0..=90.0).contains(&lat), "lat {lat}");
+        assert!((-180.0..=180.0).contains(&lon), "lon {lon}");
+    }
+
+    #[test]
+    fn country_code_is_two_uppercase_letters() {
+        let cc = country_code();
+        assert_eq!(cc.len(), 2);
+        assert!(cc.chars().all(|c| c.is_ascii_uppercase()));
+    }
+}

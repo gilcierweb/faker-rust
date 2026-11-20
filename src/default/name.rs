@@ -188,3 +188,27 @@ const FALLBACK_LAST_NAMES: &[&str] = &[
 const FALLBACK_PREFIXES: &[&str] = &["Mr.", "Mrs.", "Ms.", "Miss", "Dr.", "Prof."];
 
 const FALLBACK_SUFFIXES: &[&str] = &["Jr.", "Sr.", "I", "II", "III", "IV", "V"];
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn name_has_two_parts_without_placeholders() {
+        let n = name();
+        assert_eq!(n.split_whitespace().count(), 2, "name {n}");
+        assert!(!n.contains("#{"), "unresolved: {n}");
+    }
+
+    #[test]
+    fn initials_are_uppercase_letters() {
+        let i = initials(4);
+        assert_eq!(i.len(), 4);
+        assert!(i.chars().all(|c| c.is_ascii_uppercase()));
+    }
+
+    #[test]
+    fn name_with_middle_has_three_parts() {
+        assert_eq!(name_with_middle().split_whitespace().count(), 3);
+    }
+}

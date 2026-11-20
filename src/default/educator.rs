@@ -72,3 +72,25 @@ pub fn degree_type() -> String {
         .map(|v| sample(&v))
         .unwrap_or_else(|| "Bachelor of".to_string())
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn school_and_course_names_have_no_unresolved_placeholders() {
+        for value in [
+            school_name(),
+            university(),
+            secondary_school(),
+            primary_school(),
+            campus(),
+            subject(),
+            degree(),
+            course_name(),
+        ] {
+            assert!(!value.is_empty());
+            assert!(!value.contains("#{"), "unresolved placeholder: {value}");
+        }
+    }
+}

@@ -31,3 +31,38 @@ impl fmt::Display for FakerError {
 }
 
 impl std::error::Error for FakerError {}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn display_messages_are_descriptive() {
+        assert_eq!(
+            FakerError::LocaleNotFound("fr".into()).to_string(),
+            "Locale not found: fr"
+        );
+        assert_eq!(
+            FakerError::DataNotFound("name.first".into()).to_string(),
+            "Data not found: name.first"
+        );
+        assert_eq!(
+            FakerError::UniqueGeneratorExhausted(10).to_string(),
+            "Unique generator exhausted after 10 retries"
+        );
+        assert_eq!(
+            FakerError::InvalidArgument("bad".into()).to_string(),
+            "Invalid argument: bad"
+        );
+        assert_eq!(
+            FakerError::RandError("oops".into()).to_string(),
+            "Random error: oops"
+        );
+    }
+
+    #[test]
+    fn implements_std_error() {
+        fn assert_error<E: std::error::Error>() {}
+        assert_error::<FakerError>();
+    }
+}

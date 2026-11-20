@@ -42,3 +42,17 @@ pub fn key_skill() -> String {
         .map(|v| sample(&v))
         .unwrap_or_else(|| "Communication".to_string())
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn title_is_nonempty_without_placeholders() {
+        for _ in 0..20 {
+            let t = title();
+            assert!(!t.is_empty());
+            assert!(!t.contains("#{"), "unresolved: {t}");
+        }
+    }
+}

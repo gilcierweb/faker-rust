@@ -27,3 +27,16 @@ pub fn short_binary_type() -> String {
 pub fn r#type() -> String {
     gender()
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn binary_types_are_from_expected_sets() {
+        for _ in 0..20 {
+            assert!(["Male", "Female"].contains(&binary_type().as_str()));
+            assert!(["M", "F"].contains(&short_binary_type().as_str()));
+        }
+    }
+}

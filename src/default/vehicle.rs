@@ -58,3 +58,25 @@ pub fn car_type() -> String {
         .map(|v| sample(&v))
         .unwrap_or_else(|| "Coupe".to_string())
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn vehicle_fields_are_nonempty() {
+        for value in [
+            manufacturer(),
+            make(),
+            color(),
+            transmission(),
+            drive_type(),
+            fuel_type(),
+            style(),
+            car_type(),
+        ] {
+            assert!(!value.is_empty());
+            assert!(!value.contains("#{"), "unresolved: {value}");
+        }
+    }
+}

@@ -33,3 +33,17 @@ pub fn serial() -> String {
         "SN12345678".to_string(),
     ])
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn serial_is_alphanumeric_and_nonempty() {
+        for _ in 0..20 {
+            let s = serial();
+            assert!(!s.is_empty());
+            assert!(s.chars().all(|c| c.is_ascii_alphanumeric()), "serial {s}");
+        }
+    }
+}

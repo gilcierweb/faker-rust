@@ -51,3 +51,24 @@ pub fn dod_paygrade() -> String {
         .map(|v| sample(&v))
         .unwrap_or_else(|| "E-5".to_string())
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn ranks_are_nonempty() {
+        for rank in [
+            army_rank(),
+            marines_rank(),
+            navy_rank(),
+            coast_guard_rank(),
+            air_force_rank(),
+            space_force_rank(),
+            dod_paygrade(),
+        ] {
+            assert!(!rank.is_empty());
+            assert!(!rank.contains("#{"), "unresolved: {rank}");
+        }
+    }
+}

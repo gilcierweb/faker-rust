@@ -44,3 +44,23 @@ pub fn sibling() -> String {
         .map(|v| sample(&v))
         .unwrap_or_else(|| "Sister".to_string())
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn relationship_terms_are_nonempty() {
+        for term in [
+            direct(),
+            extended(),
+            in_law(),
+            spouse(),
+            parent(),
+            sibling(),
+        ] {
+            assert!(!term.is_empty());
+            assert!(!term.contains("#{"), "unresolved: {term}");
+        }
+    }
+}

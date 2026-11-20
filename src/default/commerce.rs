@@ -92,3 +92,24 @@ pub fn vendor() -> String {
         .map(|v| sample(&v))
         .unwrap_or_else(|| "Acme Corp".to_string())
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn price_stays_within_requested_range() {
+        for _ in 0..100 {
+            let p: f64 = price(Some(10.0), Some(20.0)).parse().unwrap();
+            assert!((10.0..=20.0).contains(&p), "price {p}");
+        }
+    }
+
+    #[test]
+    fn promotion_code_is_two_letters_four_digits() {
+        let code = promotion_code();
+        assert_eq!(code.len(), 6);
+        assert!(code[..2].chars().all(|c| c.is_ascii_uppercase()));
+        assert!(code[2..].chars().all(|c| c.is_ascii_digit()));
+    }
+}

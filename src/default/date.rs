@@ -69,3 +69,37 @@ pub fn on_day_of_week_between(_day_of_week: &str, from: &str, to: &str) -> Strin
     // Simplified implementation - just return a random date between from and to
     between(from, to)
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use chrono::Utc;
+
+    fn parse(s: &str) -> chrono::NaiveDate {
+        chrono::NaiveDate::parse_from_str(s, "%Y-%m-%d")
+            .unwrap_or_else(|e| panic!("bad date {s}: {e}"))
+    }
+
+    #[test]
+    fn backward_and_forward_stay_within_window() {
+        let today = Utc::now().date_naive();
+        for _ in 0..50 {
+            let back = parse(&backward(Some(7), None, None));
+            let fwd = parse(&forward(Some(7), None, None));
+            let back_days = (today - back).num_days();
+            let fwd_days = (fwd - today).num_days();
+            assert!((0..=7).contains(&back_days), "back {back_days}");
+            assert!((0..=7).contains(&fwd_days), "fwd {fwd_days}");
+        }
+    }
+
+    #[test]
+    fn between_is_inclusive_of_bounds() {
+        let start = "2020-01-01";
+        let end = "2020-01-31";
+        for _ in 0..50 {
+            let d = parse(&between(start, end));
+            assert!(d >= parse(start) && d <= parse(end), "date {d}");
+        }
+    }
+}

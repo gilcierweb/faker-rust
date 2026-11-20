@@ -48,11 +48,24 @@ pub fn cell_phone() -> String {
     bothify(format)
 }
 
-/// Generate a random cell phone number in E164 format
+/// Generate a random cell phone number in E164 format (+1 followed by ten digits).
 pub fn cell_phone_in_e164() -> String {
-    let digits: String = cell_phone().chars().filter(|c| c.is_ascii_digit()).collect();
-    let digits = digits.strip_prefix('1').unwrap_or(&digits);
-    format!("+1{}", digits)
+    // Use national formats only so the ten generated digits are the subscriber
+    // number; a leading '1' in an area code must not be mistaken for a country
+    // code and stripped. The country code is always prepended explicitly.
+    let config = FakerConfig::current();
+    let formats = [
+        "###-###-####",
+        "(###) ###-####",
+        "##########",
+        "###.###.####",
+    ];
+    let format = formats[config.rand_usize(formats.len())];
+    let digits: String = bothify(format)
+        .chars()
+        .filter(|c| c.is_ascii_digit())
+        .collect();
+    format!("+1{digits}")
 }
 
 /// Generate a random cell phone with country code
@@ -93,4 +106,26 @@ pub fn exchange_code() -> String {
 /// Generate a random subscriber number
 pub fn subscriber_number() -> String {
     bothify("####")
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn e164_has_single_country_code_and_ten_digits() {
+        for _ in 0..100 {
+            let n = cell_phone_in_e164();
+            assert!(n.starts_with("+1"), "bad prefix: {n}");
+            assert_eq!(n.len(), 12, "bad e164: {n}");
+            assert!(n[1..].chars().all(|c| c.is_ascii_digit()), "bad e164: {n}");
+        }
+    }
+
+    #[test]
+    fn area_code_is_three_digits() {
+        let a = area_code();
+        assert_eq!(a.len(), 3);
+        assert!(a.chars().all(|c| c.is_ascii_digit()));
+    }
 }

@@ -75,3 +75,27 @@ pub fn characters(num: usize) -> String {
         .map(|_| config.rand_char(&crate::base::ALPHANUMERIC))
         .collect()
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn words_respects_requested_count() {
+        assert_eq!(words(5).split_whitespace().count(), 5);
+        assert!(words(0).is_empty());
+    }
+
+    #[test]
+    fn sentence_is_capitalized_and_terminated() {
+        let s = sentence(Some(6));
+        assert!(s.ends_with('.'));
+        assert_eq!(s.split_whitespace().count(), 6);
+        assert!(s.chars().next().unwrap().is_uppercase());
+    }
+
+    #[test]
+    fn characters_respects_requested_length() {
+        assert_eq!(characters(12).chars().count(), 12);
+    }
+}

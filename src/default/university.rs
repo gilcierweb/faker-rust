@@ -48,3 +48,22 @@ pub fn greek_organization() -> String {
     ]);
     format!("{} {}", prefix, suffix)
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn university_name_has_no_unresolved_placeholders() {
+        for _ in 0..20 {
+            let n = name();
+            assert!(!n.is_empty());
+            assert!(!n.contains("#{"), "unresolved: {n}");
+        }
+    }
+
+    #[test]
+    fn greek_organization_has_two_parts() {
+        assert_eq!(greek_organization().split_whitespace().count(), 2);
+    }
+}
