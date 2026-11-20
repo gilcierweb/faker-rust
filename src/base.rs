@@ -86,10 +86,13 @@ pub fn numerify(template: &str) -> String {
     result
 }
 
-/// Replace `?` with random letter
+/// Replace each `?` with an independently sampled random letter.
 pub fn letterify(template: &str) -> String {
     let config = FakerConfig::current();
-    template.replace('?', &config.rand_char(&LETTERS).to_string())
+    template
+        .chars()
+        .map(|c| if c == '?' { config.rand_char(&LETTERS) } else { c })
+        .collect()
 }
 
 /// Replace both `#` and `?` in the template
@@ -191,6 +194,20 @@ mod tests {
         let result = letterify("???");
         assert_eq!(result.len(), 3);
         assert!(result.chars().all(|c| c.is_alphabetic()));
+    }
+
+    #[test]
+    fn test_letterify_distinct_letters() {
+        let mut distinct = false;
+        for _ in 0..50 {
+            let s = letterify("???");
+            let chars: Vec<char> = s.chars().collect();
+            if chars.windows(2).any(|w| w[0] != w[1]) {
+                distinct = true;
+                break;
+            }
+        }
+        assert!(distinct, "letterify must sample independently per ?");
     }
 
     #[test]
