@@ -27,12 +27,18 @@ fn get_locales_path() -> PathBuf {
         .and_then(|p| p.parent().map(|p| p.to_path_buf()))
         .unwrap_or_else(|| PathBuf::from("."));
 
-    let possible_paths = vec![
+    // CARGO_MANIFEST_DIR is baked in at compile time by Cargo, so tests and
+    // binaries find the crate's locale data regardless of the runtime CWD.
+    let mut possible_paths = Vec::new();
+    if let Some(manifest_dir) = option_env!("CARGO_MANIFEST_DIR") {
+        possible_paths.push(PathBuf::from(manifest_dir).join("locales"));
+    }
+    possible_paths.extend([
         exe_dir.join("locales"),
         exe_dir.join("..").join("locales"),
         PathBuf::from("locales"),
         PathBuf::from("..").join("locales"),
-    ];
+    ]);
 
     for path in possible_paths {
         if path.exists() && path.is_dir() {
@@ -173,9 +179,10 @@ pub fn fetch_locale_with_context(
 
         // 3. If we have a context_category, try using it as the subdir directly.
         if let Some(cat) = context_category
-            && let Some(result) = try_subdir(loc, cat, key, context_category) {
-                return Some(result);
-            }
+            && let Some(result) = try_subdir(loc, cat, key, context_category)
+        {
+            return Some(result);
+        }
 
         // 4. Try fallback subdir with second part of key
         let subdir_key = format!("{}_{}", loc, key.split('.').nth(1).unwrap_or("name"));
@@ -202,7 +209,6 @@ pub fn fetch_locale_with_context(
                 }
             }
         }
-
     }
 
     if locale != "en" {
@@ -214,7 +220,12 @@ pub fn fetch_locale_with_context(
 
 /// Try resolving `key` (and its `faker.`-prefixed form) from the subdir file
 /// named `<loc>_<cat>.yml`.
-fn try_subdir(loc: &str, cat: &str, key: &str, context_category: Option<&str>) -> Option<Vec<String>> {
+fn try_subdir(
+    loc: &str,
+    cat: &str,
+    key: &str,
+    context_category: Option<&str>,
+) -> Option<Vec<String>> {
     let subdir_key = format!("{}_{}", loc, cat);
     let locale_data = LOCALE_DATA.get(&subdir_key)?;
     if let Some(result) = try_extract(locale_data, loc, key, context_category) {
@@ -379,11 +390,7 @@ fn extract_nested_array_raw(data: &Value, key: &str) -> Option<Vec<String>> {
                     _ => {}
                 }
             }
-            if out.is_empty() {
-                None
-            } else {
-                Some(out)
-            }
+            if out.is_empty() { None } else { Some(out) }
         }
         _ => None,
     }
@@ -710,9 +717,18 @@ mod tests {
 
     #[test]
     fn test_clean_key_preserves_underscores() {
-        assert_eq!(clean_key_for_extraction("faker.elder_scrolls.race"), "elder_scrolls.race");
-        assert_eq!(clean_key_for_extraction("elder_scrolls.race"), "elder_scrolls.race");
-        assert_eq!(clean_key_for_extraction("faker.name.male_first_name"), "name.male_first_name");
+        assert_eq!(
+            clean_key_for_extraction("faker.elder_scrolls.race"),
+            "elder_scrolls.race"
+        );
+        assert_eq!(
+            clean_key_for_extraction("elder_scrolls.race"),
+            "elder_scrolls.race"
+        );
+        assert_eq!(
+            clean_key_for_extraction("faker.name.male_first_name"),
+            "name.male_first_name"
+        );
     }
 
     #[test]
@@ -756,6 +772,21 @@ mod tests {
     }
 
     #[test]
+    fn test_locale_path_found_via_manifest_dir() {
+        let path = get_locales_path();
+        assert!(
+            path.is_dir(),
+            "locale directory not found: {}",
+            path.display()
+        );
+        assert!(
+            path.join("en").is_dir() || path.join("en.yml").is_file(),
+            "English locale data missing under {}",
+            path.display()
+        );
+    }
+
+    #[test]
     fn test_load_locale_data_keys_and_shape() {
         // Pins the loader contract before the DRY refactor: top-level files are
         // keyed by stem, subdirectory files by "<dir>_<stem>", values are maps.
@@ -769,5 +800,5 @@ mod tests {
             matches!(data.get("en_name"), Some(Value::Object(_))),
             "en_name must parse as a mapping"
         );
-}
+    }
 }
