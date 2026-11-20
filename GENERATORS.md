@@ -5,6 +5,9 @@ This is the full list of generators available, organized by most popular [use ca
 > [!TIP]
 > If you run into any issues with a generator not being available, see [A note about the Generators versions](#a-note-about-the-generators-versions).
 
+Additional gem source methods that have no generated documentation page are
+listed in [Gem source parity](/docs/SOURCE_PARITY.md).
+
 ## By Use Case
 
 ### Internet

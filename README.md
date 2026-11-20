@@ -99,6 +99,7 @@ The grouped coverage files are:
 - `coverage_compatibility.rs`: base helpers and compatibility modules
 - `coverage_parity_aliases.rs`: exact gem-documented method names
 - `coverage_function_smoke.rs`: generators that had no example previously
+- `source_parity.rs`: gem source methods without generated documentation
 
 Run one with `cargo run --example coverage_everyday`.
 
