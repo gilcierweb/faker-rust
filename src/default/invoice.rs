@@ -41,6 +41,13 @@ pub fn line_item() -> String {
 
 use crate::base::sample;
 // --- gem parity generators (algorithmic) ---
+/// Gem-compatible generator: a rounded amount within `from..=to`.
+pub fn amount_between(from: f64, to: f64) -> f64 {
+    let (low, high) = if from <= to { (from, to) } else { (to, from) };
+    let value = low + FakerConfig::current().rand_f64() * (high - low);
+    (value * 100.0).round() / 100.0
+}
+
 /// Gem-compatible generator: creditor reference with an IBAN check digit.
 pub fn creditor_reference(ref_value: &str) -> String {
     let reference = if ref_value.is_empty() {

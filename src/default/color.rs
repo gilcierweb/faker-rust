@@ -23,6 +23,11 @@ pub fn hex() -> String {
     format!("#{:06x}", config.rand_range(0, 0xFFFFFF))
 }
 
+/// Generate a single random RGB color channel (0..=255).
+pub fn single_rgb_color() -> u8 {
+    crate::config::FakerConfig::current().rand_range(0, 255) as u8
+}
+
 /// Generate a random RGB color (e.g., [255, 255, 255])
 pub fn rgb() -> [u8; 3] {
     let config = crate::config::FakerConfig::current();

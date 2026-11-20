@@ -22,7 +22,8 @@ pub fn oracle() -> String {
     format!("ok_{}", rand_strings(51))
 }
 
-fn rand_strings(length: u32) -> String {
+/// Gem-compatible generator: a random alphanumeric string of `length` chars.
+pub fn rand_strings(length: u32) -> String {
     let config = FakerConfig::current();
     const HEX_ALPHABET: &[u8] = b"0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 

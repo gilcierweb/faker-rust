@@ -37,7 +37,8 @@ pub fn secret_key() -> String {
     encode_tz("edsk", 32)
 }
 
-fn encode_tz(prefix: &str, payload_size: usize) -> String {
+/// Gem-compatible generator: base58-shaped value for a Tezos prefix.
+pub fn encode_tz(prefix: &str, payload_size: usize) -> String {
     const BASE58_ALPHABET: &[u8] = b"123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz";
     let config = FakerConfig::current();
 

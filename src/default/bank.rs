@@ -81,6 +81,21 @@ pub fn routing_number_with_format() -> String {
     bothify("###-###-###")
 }
 
+/// Generate a six-digit Australian BSB (Bank-State-Branch) number.
+pub fn bsb_number() -> String {
+    let config = crate::config::FakerConfig::current();
+    let prefixes = ["01", "03", "06", "08", "11", "12", "73", "76", "78", "30"];
+    let digit = |max: u32| char::from(b'0' + config.rand_u32(max) as u8);
+    format!(
+        "{}{}{}{}{}",
+        sample(&prefixes),
+        char::from(b'2' + config.rand_u32(6) as u8),
+        digit(10),
+        digit(10),
+        digit(10)
+    )
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

@@ -44,6 +44,45 @@ pub fn phrase() -> String {
     parts.join(" ")
 }
 
+/// Gem-compatible generator: all eight hackerphrase templates, resolved.
+pub fn phrases() -> Vec<String> {
+    let verb = verb();
+    let noun = noun();
+    let abbreviation = abbreviation();
+    let adjective = adjective();
+    let ingverb = ingverb();
+
+    let mut templates = vec![
+        format!(
+            "If we {verb} the {noun}, we can get to the {abbreviation} {noun} through the {adjective} {abbreviation} {noun}!"
+        ),
+        format!("We need to {verb} the {adjective} {abbreviation} {noun}!"),
+        format!(
+            "Try to {verb} the {abbreviation} {noun}, maybe it will {verb} the {adjective} {noun}!"
+        ),
+        format!(
+            "You can't {verb} the {noun} without {ingverb} the {adjective} {abbreviation} {noun}!"
+        ),
+        format!(
+            "Use the {adjective} {abbreviation} {noun}, then you can {verb} the {adjective} {noun}!"
+        ),
+        format!(
+            "The {abbreviation} {noun} is down, {verb} the {adjective} {noun} so we can {verb} the {abbreviation} {noun}!"
+        ),
+        format!(
+            "{ingverb} the {noun} won't do anything, we need to {verb} the {adjective} {abbreviation} {noun}!"
+        ),
+        format!(
+            "I'll {verb} the {adjective} {abbreviation} {noun}, that should {noun} the {abbreviation} {noun}!"
+        ),
+    ];
+
+    if let Some(first) = templates[6].get_mut(0..1) {
+        first.make_ascii_uppercase();
+    }
+    templates
+}
+
 // Fallback data
 const FALLBACK_ABBREVIATIONS: &[&str] = &[
     "TCP", "HTTP", "SSD", "RAM", "GB", "CSS", "SSL", "AGP", "SQL", "XML", "EXE", "COM", "HDD",

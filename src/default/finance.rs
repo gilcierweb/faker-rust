@@ -102,6 +102,18 @@ pub fn vat_number(country: &str) -> String {
         .unwrap_or_default()
 }
 
+/// Gem-compatible generator: all country codes with a VAT number template.
+pub fn vat_number_keys() -> Vec<String> {
+    crate::locale::fetch_locale_keys("finance.vat_number", "en")
+}
+
+/// Gem-compatible generator: Italian condominium fiscal code for `country`.
+pub fn condominium_fiscal_code(country: &str) -> String {
+    crate::locale::fetch_locale_named("finance.condominium_fiscal_code", country, "en")
+        .map(|template| crate::base::numerify(&template))
+        .unwrap_or_default()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

@@ -42,6 +42,24 @@ pub fn testnet_address() -> String {
     out
 }
 
+/// Gem-compatible generator: address for `main` or `testnet`.
+///
+/// The gem selects the leading version byte by network. Rust exposes the two
+/// supported networks as string names and keeps the base58-shaped body.
+pub fn address_for(network: &str) -> String {
+    let config = crate::config::FakerConfig::current();
+    const CHARS: &[u8] = b"123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz";
+    let mut out = match network {
+        "main" => "1".to_string(),
+        "testnet" => crate::base::sample(&["m", "n", "2"]).to_string(),
+        other => other.to_string(),
+    };
+    for _ in 0..33 {
+        out.push(CHARS[config.rand_usize(CHARS.len())] as char);
+    }
+    out
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

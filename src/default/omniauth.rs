@@ -37,6 +37,28 @@ pub fn name() -> String {
     sample(&names).to_string()
 }
 
+/// Identity produced by the gem-compatible OmniAuth constructor.
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct Omniauth {
+    pub name: String,
+    pub email: String,
+    pub first_name: String,
+    pub last_name: String,
+}
+
+/// Gem-compatible constructor: build an OmniAuth identity from optional name
+/// and email, deriving the missing fields with the standard generators.
+pub fn initialize(name: Option<&str>, email: Option<&str>) -> Omniauth {
+    let full = auth_full_name(name);
+    let mail = auth_email(email, &full);
+    Omniauth {
+        first_name: auth_first_name(Some(&full)),
+        last_name: auth_last_name(Some(&full)),
+        name: full,
+        email: mail,
+    }
+}
+
 /// Generate a random directory name (shared with [`crate::source::directory`]).
 pub use crate::source::directory;
 

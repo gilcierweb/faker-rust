@@ -246,6 +246,41 @@ pub fn country_name_to_code(name: &str) -> String {
         .map(|v| crate::base::sample(&v))
         .unwrap_or_default()
 }
+/// Gem-compatible generator: address parts keyed by their attribute names.
+///
+/// Ruby accepts arbitrary method names via `*attrs`; the Rust adaptation
+/// supports the zero-argument address generators that are safe to call.
+pub fn full_address_as_hash(attrs: &[&str]) -> std::collections::HashMap<String, String> {
+    let mut result = std::collections::HashMap::new();
+    for attr in attrs {
+        let value = match *attr {
+            "city" => city(),
+            "street_name" => street_name(),
+            "street_address" => street_address(),
+            "secondary_address" => secondary_address(),
+            "zip_code" => zip_code(),
+            "zip_code_with_extension" => zip_code_with_extension(),
+            "country" => country(),
+            "country_code" => country_code(),
+            "country_code_long" => country_code_long(),
+            "full_address" => full_address(),
+            "time_zone" => time_zone(),
+            "latitude" => latitude(),
+            "longitude" => longitude(),
+            "building_number" => building_number(),
+            "city_prefix" => city_prefix(),
+            "city_suffix" => city_suffix(),
+            "community" => community(),
+            "mail_box" => mail_box(),
+            "state" => state(),
+            "state_abbr" => state_abbr(),
+            "street_suffix" => street_suffix(),
+            _ => continue,
+        };
+        result.insert((*attr).to_string(), value);
+    }
+    result
+}
 
 #[cfg(test)]
 mod tests {

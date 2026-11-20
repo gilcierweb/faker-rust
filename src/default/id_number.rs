@@ -32,6 +32,16 @@ pub fn ssn() -> String {
     format!("{:03}-{:02}-{:04}", area, group, serial)
 }
 
+/// Generate a valid US SSN using the gem's area ranges.
+pub fn ssn_valid() -> String {
+    let config = FakerConfig::current();
+    let range = crate::base::sample(&[(1, 665), (667, 899)]);
+    let area = config.rand_range(range.0, range.1);
+    let group = config.rand_range(1, 99);
+    let serial = config.rand_range(1, 9999);
+    format!("{area:03}-{group:02}-{serial:04}")
+}
+
 /// Generate a random valid ID number
 pub fn valid() -> String {
     spanish()

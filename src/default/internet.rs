@@ -515,6 +515,85 @@ pub fn public_ip_v4_address() -> String {
     }
 }
 
+// --- gem parity network helpers (Rust adaptation of Ruby Regexp arrays) ---
+/// Patterns matching the gem's private IPv4 ranges.
+pub const PRIVATE_NETS_REGEX: &[&str] = &[
+    r"^10\.",
+    r"^100\.(6[4-9]|[7-9]\d|1[0-1]\d|12[0-7])\.",
+    r"^127\.",
+    r"^169\.254\.",
+    r"^172\.(1[6-9]|2\d|3[0-1])\.",
+    r"^192\.0\.0\.",
+    r"^192\.168\.",
+    r"^198\.(1[8-9])\.",
+];
+
+/// Patterns matching the gem's reserved IPv4 ranges.
+pub const RESERVED_NETS_REGEX: &[&str] = &[
+    r"^0\.",
+    r"^192\.0\.2\.",
+    r"^192\.88\.99\.",
+    r"^198\.51\.100\.",
+    r"^203\.0\.113\.",
+    r"^(22[4-9]|23\d)\.",
+    r"^(24\d|25[0-5])\.",
+];
+
+/// Gem-compatible generator: the private IPv4 range patterns.
+pub fn private_nets_regex() -> &'static [&'static str] {
+    PRIVATE_NETS_REGEX
+}
+
+/// Gem-compatible generator: the reserved IPv4 range patterns.
+pub fn reserved_nets_regex() -> &'static [&'static str] {
+    RESERVED_NETS_REGEX
+}
+
+fn parse_ipv4(addr: &str) -> Option<[u8; 4]> {
+    let parts: Vec<&str> = addr.split('.').collect();
+    if parts.len() != 4 {
+        return None;
+    }
+    let mut octets = [0u8; 4];
+    for (slot, part) in octets.iter_mut().zip(parts) {
+        *slot = part.parse().ok()?;
+    }
+    Some(octets)
+}
+
+fn in_ranges(octets: [u8; 4], private: bool) -> bool {
+    let [a, b, c, _] = octets;
+    let private_match = a == 10
+        || (a == 100 && (64..=127).contains(&b))
+        || a == 127
+        || (a == 169 && b == 254)
+        || (a == 172 && (16..=31).contains(&b))
+        || (a == 192 && b == 0 && c == 0)
+        || (a == 192 && b == 168)
+        || (a == 198 && (18..=19).contains(&b));
+    if private {
+        return private_match;
+    }
+    private_match
+        || a == 0
+        || (a == 192 && b == 0 && c == 2)
+        || (a == 192 && b == 88 && c == 99)
+        || (a == 198 && b == 51 && c == 100)
+        || (a == 203 && b == 0 && c == 113)
+        || (224..=239).contains(&a)
+        || (240..=255).contains(&a)
+}
+
+/// Gem-compatible checker: whether an IPv4 address is in a private range.
+pub fn private_net_checker(addr: &str) -> bool {
+    parse_ipv4(addr).is_some_and(|octets| in_ranges(octets, true))
+}
+
+/// Gem-compatible checker: whether an IPv4 address is private or reserved.
+pub fn reserved_net_checker(addr: &str) -> bool {
+    parse_ipv4(addr).is_some_and(|octets| in_ranges(octets, false))
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

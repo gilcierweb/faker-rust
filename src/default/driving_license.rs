@@ -128,6 +128,37 @@ pub fn uk_driving_licence() -> String {
     }
 }
 
+/// Error raised when an unsupported state code is supplied.
+///
+/// The gem defines `InvalidStatePassed` as a `StandardError` subclass with a
+/// custom initializer; Rust adapts it to a plain error type.
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct InvalidStatePassed {
+    message: String,
+}
+
+impl InvalidStatePassed {
+    /// Gem-compatible constructor with the gem's default message.
+    pub fn initialize(message: &str) -> Self {
+        Self {
+            message: message.to_string(),
+        }
+    }
+
+    /// Message carried by the error.
+    pub fn message(&self) -> &str {
+        &self.message
+    }
+}
+
+impl std::fmt::Display for InvalidStatePassed {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        f.write_str(&self.message)
+    }
+}
+
+impl std::error::Error for InvalidStatePassed {}
+
 #[cfg(test)]
 mod tests {
     use super::*;

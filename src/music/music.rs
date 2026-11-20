@@ -60,9 +60,30 @@ pub fn mambo_no_5() -> String {
 // --- gem parity generators (algorithmic) ---
 const NOTE_LETTERS: &[&str] = &["C", "D", "E", "F", "G", "A", "B"];
 const ACCIDENTAL_SIGNS: &[&str] = &["b", "#", ""];
+const KEY_TYPES: &[&str] = &["", "m"];
 const CHORD_TYPES: &[&str] = &[
     "", "maj", "6", "maj7", "m", "m7", "-7", "7", "dom7", "dim", "dim7", "m7b5",
 ];
+
+/// Gem-compatible generator: note letters without accidentals.
+pub fn keys() -> &'static [&'static str] {
+    NOTE_LETTERS
+}
+
+/// Gem-compatible generator: accidental signs for musical keys.
+pub fn key_variants() -> &'static [&'static str] {
+    ACCIDENTAL_SIGNS
+}
+
+/// Gem-compatible generator: major and minor key types.
+pub fn key_types() -> &'static [&'static str] {
+    KEY_TYPES
+}
+
+/// Gem-compatible generator: chord type suffixes.
+pub fn chord_types() -> &'static [&'static str] {
+    CHORD_TYPES
+}
 
 /// Gem-compatible generator: musical key using letter notation.
 pub fn key() -> String {

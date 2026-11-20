@@ -168,16 +168,36 @@ const FALLBACK_FORMS: &[&str] = &[
 ];
 // --- gem parity generators (dynamic locale keys) ---
 fn from_eras(eras: &[&str], field: &str) -> String {
+    from_eras_filtered(eras, field, false)
+}
+
+fn from_eras_filtered(eras: &[&str], field: &str, exclude_showa: bool) -> String {
     let all = ["showa", "heisei", "reiwa"];
-    let selected: Vec<&str> = if eras.is_empty() {
-        all.to_vec()
-    } else {
-        all.iter().copied().filter(|e| eras.contains(e)).collect()
-    };
+    let selected: Vec<&str> = all
+        .iter()
+        .copied()
+        .filter(|era| !exclude_showa || *era != "showa")
+        .filter(|era| eras.is_empty() || eras.contains(era))
+        .collect();
+    if selected.is_empty() {
+        return String::new();
+    }
     let era = crate::base::sample(&selected);
     crate::locale::fetch_locale(&format!("kamen_rider.{era}.{field}"), "en")
         .map(|v| crate::base::sample(&v))
         .unwrap_or_default()
+}
+
+/// Gem-compatible generator: a collectible device from the given eras.
+///
+/// The gem drops the Showa era because it has no collectible devices.
+pub fn collectible_device(eras: &[&str]) -> String {
+    from_eras_filtered(eras, "collectible_devices", true)
+}
+
+/// Gem-compatible generator: a transformation device from the given eras.
+pub fn transformation_device(eras: &[&str]) -> String {
+    from_eras(eras, "transformation_devices")
 }
 
 /// Gem-compatible generator: Kamen Rider name from the given eras.

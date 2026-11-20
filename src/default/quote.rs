@@ -72,6 +72,11 @@ pub fn yoda() -> String {
     parity_pick("quote.yoda")
 }
 
+/// Gem-compatible generator: a fortune cookie quote.
+pub fn fortune_cookie() -> String {
+    parity_pick("quote.fortune_cookie")
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
