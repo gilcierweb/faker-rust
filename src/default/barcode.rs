@@ -105,6 +105,41 @@ pub fn ean_with_composite_symbology(length: usize) -> String {
     format!("{}|{composite}", ean(length))
 }
 
+/// Render a locale barcode template and append its EAN check digit.
+fn generated_barcode(key: &str) -> String {
+    let pattern = fetch_locale(key, "en")
+        .map(|v| sample(&v))
+        .unwrap_or_default();
+    let body = crate::base::numerify(&pattern);
+    format!("{body}{}", check_digit(&body))
+}
+
+/// Gem-compatible generator: an ISMN barcode.
+pub fn ismn() -> String {
+    generated_barcode("barcode.ismn")
+}
+
+/// Gem-compatible generator: an ISSN barcode.
+pub fn issn() -> String {
+    generated_barcode("barcode.issn")
+}
+
+fn composite_symbology() -> String {
+    fetch_locale("barcode.composite_symbol", "en")
+        .map(|v| crate::base::bothify(&sample(&v)))
+        .unwrap_or_default()
+}
+
+/// Gem-compatible generator: a UPC-A barcode with composite symbology.
+pub fn upc_a_with_composite_symbology() -> String {
+    format!("{}|{}", upc_a(), composite_symbology())
+}
+
+/// Gem-compatible generator: a UPC-E barcode with composite symbology.
+pub fn upc_e_with_composite_symbology() -> String {
+    format!("{}|{}", upc_e(), composite_symbology())
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
