@@ -388,6 +388,5 @@ en:
           # Kosovo, Republic of
           length: 20
           bban_pattern: '\d{16}'
-    
       iban_country_code:
         - GB
