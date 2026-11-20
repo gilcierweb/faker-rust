@@ -286,14 +286,13 @@ fn try_extract(
 }
 
 fn clean_key_for_extraction(key: &str) -> String {
-    if key.starts_with("faker.") {
-        key[6..].to_string()
-    } else if key.starts_with("faker_") {
-        key[6..].replace('_', ".")
-    } else if key.contains("faker.") {
-        key.replace("faker.", "").replace('_', ".")
+    // Strip a leading "faker." prefix only. Underscores inside segment names
+    // (e.g. male_first_name, elder_scrolls) are significant and must not be
+    // rewritten into path separators.
+    if let Some(rest) = key.strip_prefix("faker.") {
+        rest.to_string()
     } else {
-        key.replace('_', ".")
+        key.replace("faker.", "")
     }
 }
 
@@ -627,6 +626,13 @@ mod tests {
         assert!(sample_with_resolve(&[], None).is_empty());
         let picked = sample_with_resolve(&["alpha".to_string(), "beta".to_string()], None);
         assert!(picked == "alpha" || picked == "beta");
+    }
+
+    #[test]
+    fn test_clean_key_preserves_underscores() {
+        assert_eq!(clean_key_for_extraction("faker.elder_scrolls.race"), "elder_scrolls.race");
+        assert_eq!(clean_key_for_extraction("elder_scrolls.race"), "elder_scrolls.race");
+        assert_eq!(clean_key_for_extraction("faker.name.male_first_name"), "name.male_first_name");
     }
 
     #[test]
