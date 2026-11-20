@@ -57,10 +57,11 @@ fn calculate_ean_check_digit(s: &str) -> u32 {
 
     for (i, c) in s.chars().enumerate() {
         if let Some(digit) = c.to_digit(10) {
-            // Weights depend on position from RIGHT (starting at 1)
-            // For EAN-13 (12 digits input): index 0 weight 1, 1 weight 3, 2 weight 1...
-            // Basically: if (len - i) is even, weight is 3, else 1.
-            let weight = if (len - i).is_multiple_of(2) { 3 } else { 1 };
+            // Weights depend on position from the RIGHT (starting at 1):
+            // positions odd from the right carry weight 3, even carry 1.
+            // For a payload of length `len`, left index `i` has right-position
+            // `len - i`, so weight 3 when `(len - 1 - i)` is even.
+            let weight = if (len - 1 - i).is_multiple_of(2) { 3 } else { 1 };
             sum += digit * weight;
         }
     }
@@ -88,5 +89,12 @@ mod tests {
     fn test_upc_a() {
         let b = upc_a();
         assert_eq!(b.len(), 12);
+    }
+
+    #[test]
+    fn test_calculate_ean_check_digit_known_vectors() {
+        assert_eq!(calculate_ean_check_digit("590123412345"), 7); // EAN-13
+        assert_eq!(calculate_ean_check_digit("400638133393"), 1); // EAN-13
+        assert_eq!(calculate_ean_check_digit("4017072"), 5); // EAN-8
     }
 }
