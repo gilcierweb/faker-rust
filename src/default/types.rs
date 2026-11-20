@@ -5,8 +5,8 @@ use crate::base::sample;
 /// Generate a random Ruby type
 pub fn ruby() -> String {
     let types = [
-        "String", "Integer", "Float", "Boolean", "Array", "Hash",
-        "Symbol", "NilClass", "Range", "Regexp", "Time", "Date",
+        "String", "Integer", "Float", "Boolean", "Array", "Hash", "Symbol", "NilClass", "Range",
+        "Regexp", "Time", "Date",
     ];
     sample(&types).to_string()
 }
@@ -14,8 +14,18 @@ pub fn ruby() -> String {
 /// Generate a random JavaScript type
 pub fn javascript() -> String {
     let types = [
-        "string", "number", "boolean", "object", "array", "function",
-        "undefined", "null", "symbol", "bigint", "Date", "RegExp",
+        "string",
+        "number",
+        "boolean",
+        "object",
+        "array",
+        "function",
+        "undefined",
+        "null",
+        "symbol",
+        "bigint",
+        "Date",
+        "RegExp",
     ];
     sample(&types).to_string()
 }
@@ -23,8 +33,18 @@ pub fn javascript() -> String {
 /// Generate a random SQL type
 pub fn sql() -> String {
     let types = [
-        "VARCHAR", "INTEGER", "FLOAT", "DOUBLE", "BOOLEAN", "DATE",
-        "TIMESTAMP", "TEXT", "BLOB", "DECIMAL", "CHAR", "BIGINT",
+        "VARCHAR",
+        "INTEGER",
+        "FLOAT",
+        "DOUBLE",
+        "BOOLEAN",
+        "DATE",
+        "TIMESTAMP",
+        "TEXT",
+        "BLOB",
+        "DECIMAL",
+        "CHAR",
+        "BIGINT",
     ];
     sample(&types).to_string()
 }
@@ -32,8 +52,18 @@ pub fn sql() -> String {
 /// Generate a random Rust type
 pub fn rust() -> String {
     let types = [
-        "String", "i32", "i64", "f32", "f64", "bool", "Vec<T>",
-        "Option<T>", "Result<T, E>", "HashMap<K, V>", "Arc<T>", "Rc<T>",
+        "String",
+        "i32",
+        "i64",
+        "f32",
+        "f64",
+        "bool",
+        "Vec<T>",
+        "Option<T>",
+        "Result<T, E>",
+        "HashMap<K, V>",
+        "Arc<T>",
+        "Rc<T>",
     ];
     sample(&types).to_string()
 }

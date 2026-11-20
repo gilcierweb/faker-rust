@@ -7,7 +7,15 @@ use crate::config::FakerConfig;
 pub fn length() -> String {
     let config = FakerConfig::current();
     let value = config.rand_range(1, 100);
-    let units = ["meters", "feet", "inches", "centimeters", "millimeters", "kilometers", "miles"];
+    let units = [
+        "meters",
+        "feet",
+        "inches",
+        "centimeters",
+        "millimeters",
+        "kilometers",
+        "miles",
+    ];
     let unit = sample(&units);
     format!("{} {}", value, unit)
 }

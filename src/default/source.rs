@@ -11,7 +11,7 @@ pub fn git_branch() -> String {
     let number = config.rand_range(1, 1000);
     let words = ["login", "auth", "api", "ui", "fix", "update", "refactor"];
     let word = sample(&words);
-    
+
     format!("{}/{}-{}", prefix, word, number)
 }
 
@@ -47,12 +47,12 @@ pub fn semver() -> String {
 /// Generate a random filename with extension
 pub fn filename() -> String {
     let names = [
-        "main", "index", "app", "config", "utils", "helpers",
-        "test", "spec", "README", "LICENSE", "package", "Cargo",
+        "main", "index", "app", "config", "utils", "helpers", "test", "spec", "README", "LICENSE",
+        "package", "Cargo",
     ];
     let extensions = [
-        "rs", "js", "ts", "py", "rb", "java", "go", "html", "css",
-        "json", "yaml", "toml", "md", "txt",
+        "rs", "js", "ts", "py", "rb", "java", "go", "html", "css", "json", "yaml", "toml", "md",
+        "txt",
     ];
     format!("{}.{}", sample(&names), sample(&extensions))
 }
@@ -60,8 +60,18 @@ pub fn filename() -> String {
 /// Generate a random directory name
 pub fn directory() -> String {
     let dirs = [
-        "src", "lib", "bin", "test", "docs", "config", "assets",
-        "public", "private", "vendor", "node_modules", "target",
+        "src",
+        "lib",
+        "bin",
+        "test",
+        "docs",
+        "config",
+        "assets",
+        "public",
+        "private",
+        "vendor",
+        "node_modules",
+        "target",
     ];
     sample(&dirs).to_string()
 }

@@ -2,9 +2,8 @@
 //! Demonstrates Travel and other utility generators
 
 use faker_rust::{
-    bank, barcode, beer, blood, boolean, coffee, color, currency, date, file,
-    food, gender, hacker, job, lorem, military, number, science, space,
-    time, travel, university, vehicle,
+    bank, barcode, beer, blood, boolean, coffee, color, currency, date, file, food, gender, hacker,
+    job, lorem, military, number, science, space, time, travel, university, vehicle,
 };
 
 fn main() {
@@ -105,7 +104,10 @@ fn main() {
     println!("📁 FILES & DATES:");
     println!("  File Extension:      {}", file::extension());
     println!("  MIME Type:           {}", file::mime_type());
-    println!("  Date Backward:       {}", date::backward(None, None, None));
+    println!(
+        "  Date Backward:       {}",
+        date::backward(None, None, None)
+    );
     println!("  Date Forward:        {}", date::forward(None, None, None));
     println!();
 

@@ -2,8 +2,7 @@
 //! Demonstrates educational and scientific data generators
 
 use faker_rust::{
-    color, greek_philosophers, measurement, mountain, science,
-    space, university, verb, adjective,
+    adjective, color, greek_philosophers, measurement, mountain, science, space, university, verb,
 };
 
 fn main() {

@@ -30,7 +30,11 @@ pub fn table_row() -> String {
 /// Generate a random inline code
 pub fn inline_code() -> String {
     let code_snippets = vec![
-        "`foo()`", "`bar = 1`", "`println!`", "`cargo build`", "`git commit`",
+        "`foo()`",
+        "`bar = 1`",
+        "`println!`",
+        "`cargo build`",
+        "`git commit`",
     ];
     crate::base::sample(&code_snippets).to_string()
 }

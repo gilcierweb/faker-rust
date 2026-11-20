@@ -1,9 +1,7 @@
 //! Books & Creatures Example
 //! Demonstrates Book and Animal generators
 
-use faker_rust::{
-    books, creature,
-};
+use faker_rust::{books, creature};
 
 fn main() {
     println!("=== Faker-Rust Books & Creatures Examples ===\n");
@@ -34,13 +32,22 @@ fn main() {
     println!("🚀 CULTURE SERIES:");
     println!("  Book:                {}", books::culture_series::book());
     println!("  Ship:                {}", books::culture_series::ship());
-    println!("  Character:           {}", books::culture_series::character());
+    println!(
+        "  Character:           {}",
+        books::culture_series::character()
+    );
     println!();
 
     // The Kingkiller Chronicle
     println!("🎵 KINGKILLER CHRONICLE:");
-    println!("  Character:           {}", books::the_kingkiller_chronicle::character());
-    println!("  Location:            {}", books::the_kingkiller_chronicle::location());
+    println!(
+        "  Character:           {}",
+        books::the_kingkiller_chronicle::character()
+    );
+    println!(
+        "  Location:            {}",
+        books::the_kingkiller_chronicle::location()
+    );
     println!();
 
     // Creatures

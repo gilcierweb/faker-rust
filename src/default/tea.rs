@@ -26,19 +26,52 @@ pub fn origin() -> String {
 
 // Fallback data
 const FALLBACK_TYPES: &[&str] = &[
-    "Black", "Green", "White", "Oolong", "Pu-erh", "Herbal", "Rooibos",
-    "Mate", "Chai", "Matcha", "Sencha", "Earl Grey", "Darjeeling",
+    "Black",
+    "Green",
+    "White",
+    "Oolong",
+    "Pu-erh",
+    "Herbal",
+    "Rooibos",
+    "Mate",
+    "Chai",
+    "Matcha",
+    "Sencha",
+    "Earl Grey",
+    "Darjeeling",
 ];
 
 const FALLBACK_VARIETIES: &[&str] = &[
-    "English Breakfast", "Earl Grey", "Jasmine", "Chamomile", "Peppermint",
-    "Green Tea", "Oolong", "White Tea", "Masala Chai", "Matcha",
-    "Sencha", "Gyokuro", "Dragon Well", "Tie Guan Yin", "Da Hong Pao",
+    "English Breakfast",
+    "Earl Grey",
+    "Jasmine",
+    "Chamomile",
+    "Peppermint",
+    "Green Tea",
+    "Oolong",
+    "White Tea",
+    "Masala Chai",
+    "Matcha",
+    "Sencha",
+    "Gyokuro",
+    "Dragon Well",
+    "Tie Guan Yin",
+    "Da Hong Pao",
 ];
 
 const FALLBACK_ORIGINS: &[&str] = &[
-    "China", "India", "Japan", "Sri Lanka", "Taiwan", "Kenya", "Indonesia",
-    "Vietnam", "Turkey", "Iran", "Argentina", "South Africa",
+    "China",
+    "India",
+    "Japan",
+    "Sri Lanka",
+    "Taiwan",
+    "Kenya",
+    "Indonesia",
+    "Vietnam",
+    "Turkey",
+    "Iran",
+    "Argentina",
+    "South Africa",
 ];
 
 #[cfg(test)]

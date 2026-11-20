@@ -1,9 +1,7 @@
 //! Eccentric Data & Pop Culture Example
 //! Demonstrates diverse and niche data generators available in faker-rust
 
-use faker_rust::{
-    cannabis, chuck_norris, esport, greek_philosophers, hipster, kpop, supernatural,
-};
+use faker_rust::{cannabis, chuck_norris, esport, greek_philosophers, hipster, kpop, supernatural};
 
 fn main() {
     println!("=== Faker-Rust Eccentric & Pop Culture Data ===\n");

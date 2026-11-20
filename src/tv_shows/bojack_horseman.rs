@@ -64,7 +64,7 @@ const FALLBACK_LOCATIONS: &[&str] = &[
     "Mr. Peanutbutter's House",
     "Pacific Ocean City",
     "Griffith Observatory",
-    "Underground",  
+    "Underground",
 ];
 
 #[cfg(test)]

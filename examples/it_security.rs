@@ -1,7 +1,7 @@
 //! IT Security & Auth Example
 //! Demonstrates vulnerability identifiers, auth tokens, crypto, and hacking data
 
-use faker_rust::{crypto, hacker, internet, omniauth, vulnerability_identifier, slack_emoji};
+use faker_rust::{crypto, hacker, internet, omniauth, slack_emoji, vulnerability_identifier};
 
 fn main() {
     println!("=== Faker-Rust IT Security & Auth Examples ===\n");
@@ -10,7 +10,10 @@ fn main() {
     println!("🔒 VULNERABILITIES (CVE/CWE):");
     println!("  CVE:                 {}", vulnerability_identifier::cve());
     println!("  CWE:                 {}", vulnerability_identifier::cwe());
-    println!("  GHSA:                {}", vulnerability_identifier::ghsa());
+    println!(
+        "  GHSA:                {}",
+        vulnerability_identifier::ghsa()
+    );
     println!();
 
     // OmniAuth / Auth profiles
@@ -39,12 +42,15 @@ fn main() {
 
     // Internet (User Agent, Password)
     println!("🌐 INTERNET SECURITY:");
-    println!("  Password (strong):   {}", internet::password(16, 24, true, true));
+    println!(
+        "  Password (strong):   {}",
+        internet::password(16, 24, true, true)
+    );
     println!("  MAC Address:         {}", internet::mac_address(None));
     println!("  IPv4:                {}", internet::ip_v4());
     println!("  IPv6:                {}", internet::ip_v6());
     println!();
-    
+
     // Slack Emoji
     println!("💬 INTERNET CHAT:");
     println!("  Slack Emoji:         {}", slack_emoji::emoji());

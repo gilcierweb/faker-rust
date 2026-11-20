@@ -13,10 +13,7 @@
 //!   faker-rust list                    # List all available generators
 
 use clap::{Parser, Subcommand};
-use faker_rust::{
-    address, company, internet, name, phone_number, Faker,
-    games, movies, tv_shows,
-};
+use faker_rust::{Faker, address, company, games, internet, movies, name, phone_number, tv_shows};
 
 #[derive(Parser)]
 #[command(name = "faker-rust")]
@@ -138,7 +135,11 @@ fn main() {
 
     for _ in 0..cli.count {
         match &cli.command {
-            Commands::Name { first, last, with_middle } => {
+            Commands::Name {
+                first,
+                last,
+                with_middle,
+            } => {
                 let result = if *first {
                     name::first_name()
                 } else if *last {
@@ -154,7 +155,13 @@ fn main() {
                 let domain = domain.as_deref();
                 println!("{}", internet::email(None, domain, None));
             }
-            Commands::Address { full, street, city: city_only, country: country_only, zip } => {
+            Commands::Address {
+                full,
+                street,
+                city: city_only,
+                country: country_only,
+                zip,
+            } => {
                 let result = if *full {
                     address::full_address()
                 } else if *street {
@@ -170,7 +177,11 @@ fn main() {
                 };
                 println!("{}", result);
             }
-            Commands::Company { industry: industry_only, catch_phrase: cp, bs } => {
+            Commands::Company {
+                industry: industry_only,
+                catch_phrase: cp,
+                bs,
+            } => {
                 let result = if *industry_only {
                     company::industry()
                 } else if *cp {
@@ -190,7 +201,13 @@ fn main() {
                 };
                 println!("{}", result);
             }
-            Commands::Internet { domain, url, username, password, ip } => {
+            Commands::Internet {
+                domain,
+                url,
+                username,
+                password,
+                ip,
+            } => {
                 let result = if *domain {
                     internet::domain_name(false, None)
                 } else if *url {
@@ -206,7 +223,13 @@ fn main() {
                 };
                 println!("{}", result);
             }
-            Commands::Games { pokemon, zelda, mario, dnd, wow } => {
+            Commands::Games {
+                pokemon,
+                zelda,
+                mario,
+                dnd,
+                wow,
+            } => {
                 let result = if *pokemon {
                     games::pokemon::name()
                 } else if *zelda {
@@ -222,7 +245,11 @@ fn main() {
                 };
                 println!("{}", result);
             }
-            Commands::Movies { star_wars, harry_potter, lotr } => {
+            Commands::Movies {
+                star_wars,
+                harry_potter,
+                lotr,
+            } => {
                 let result = if *star_wars {
                     movies::star_wars::character()
                 } else if *harry_potter {
@@ -234,7 +261,12 @@ fn main() {
                 };
                 println!("{}", result);
             }
-            Commands::Tv { game_of_thrones, breaking_bad, simpsons, friends } => {
+            Commands::Tv {
+                game_of_thrones,
+                breaking_bad,
+                simpsons,
+                friends,
+            } => {
                 let result = if *game_of_thrones {
                     tv_shows::game_of_thrones::character()
                 } else if *breaking_bad {

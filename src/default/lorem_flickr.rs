@@ -8,12 +8,25 @@ pub fn image() -> String {
     let width = config.rand_range(300, 800);
     let height = config.rand_range(300, 800);
     let keywords = vec![
-        "abstract", "animals", "business", "cats", "city", "food",
-        "nightlife", "fashion", "people", "nature", "sports", "technics",
-        "transport", "technics", "abstract", "people",
+        "abstract",
+        "animals",
+        "business",
+        "cats",
+        "city",
+        "food",
+        "nightlife",
+        "fashion",
+        "people",
+        "nature",
+        "sports",
+        "technics",
+        "transport",
+        "technics",
+        "abstract",
+        "people",
     ];
     let keyword = keywords[config.rand_usize(keywords.len())];
-    
+
     format!("https://loremflickr.com/{}/{}/{}", width, height, keyword)
 }
 
@@ -27,7 +40,7 @@ pub fn sized(width: u32, height: u32) -> String {
     let config = FakerConfig::current();
     let keywords = ["abstract", "animals", "business", "cats", "city", "food"];
     let keyword = keywords[config.rand_usize(keywords.len())];
-    
+
     format!("https://loremflickr.com/{}/{}/{}", width, height, keyword)
 }
 

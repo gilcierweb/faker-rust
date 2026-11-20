@@ -1,9 +1,7 @@
 //! Advanced Features Example
 //! Demonstrates seeded generation and other advanced features
 
-use faker_rust::{
-    address, company, internet, name, Faker,
-};
+use faker_rust::{Faker, address, company, internet, name};
 
 fn main() {
     println!("=== Faker-Rust Advanced Features Examples ===\n");
@@ -11,12 +9,12 @@ fn main() {
     // Demonstrate deterministic generation with seed
     println!("🎲 DETERMINISTIC GENERATION (Seeded):");
     println!("Setting seed to 12345...\n");
-    
+
     Faker::set_seed(12345);
     let name1 = name::name();
     let email1 = internet::email(None, None, None);
     let city1 = address::city();
-    
+
     println!("First run:");
     println!("  Name:   {}", name1);
     println!("  Email:  {}", email1);
@@ -28,7 +26,7 @@ fn main() {
     let name2 = name::name();
     let email2 = internet::email(None, None, None);
     let city2 = address::city();
-    
+
     println!("Second run (same seed):");
     println!("  Name:   {}", name2);
     println!("  Email:  {}", email2);

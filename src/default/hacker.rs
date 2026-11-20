@@ -40,45 +40,105 @@ pub fn ingverb() -> String {
 
 /// Generate a random hacker phrase
 pub fn phrase() -> String {
-    let parts = [adjective(),
-        abbreviation(),
-        noun(),
-        verb(),
-        ingverb()];
+    let parts = [adjective(), abbreviation(), noun(), verb(), ingverb()];
     parts.join(" ")
 }
 
 // Fallback data
 const FALLBACK_ABBREVIATIONS: &[&str] = &[
-    "TCP", "HTTP", "SSD", "RAM", "GB", "CSS", "SSL", "AGP", "SQL", "XML",
-    "EXE", "COM", "HDD", "THX", "SMTP", "SMS", "USB", "PNG", "SAS", "IB",
-    "PCI", "DNS", "FTP", "GSM", "CSS", "HDMI", "HTTP", "TLS", "CSS", "JSON",
+    "TCP", "HTTP", "SSD", "RAM", "GB", "CSS", "SSL", "AGP", "SQL", "XML", "EXE", "COM", "HDD",
+    "THX", "SMTP", "SMS", "USB", "PNG", "SAS", "IB", "PCI", "DNS", "FTP", "GSM", "CSS", "HDMI",
+    "HTTP", "TLS", "CSS", "JSON",
 ];
 
 const FALLBACK_ADJECTIVES: &[&str] = &[
-    "auxiliary", "primary", "back-end", "digital", "open-source", "virtual",
-    "cross-platform", "redundant", "online", "haptic", "multi-byte", "bluetooth",
-    "wireless", "1080p", "neural", "optical", "solid state", "mobile",
+    "auxiliary",
+    "primary",
+    "back-end",
+    "digital",
+    "open-source",
+    "virtual",
+    "cross-platform",
+    "redundant",
+    "online",
+    "haptic",
+    "multi-byte",
+    "bluetooth",
+    "wireless",
+    "1080p",
+    "neural",
+    "optical",
+    "solid state",
+    "mobile",
 ];
 
 const FALLBACK_NOUNS: &[&str] = &[
-    "driver", "protocol", "bandwidth", "panel", "microchip", "program",
-    "port", "card", "array", "interface", "system", "sensor", "firewall",
-    "hard drive", "pixel", "alarm", "feed", "monitor", "application",
-    "transmitter", "bus", "circuit", "capacitor", "matrix",
+    "driver",
+    "protocol",
+    "bandwidth",
+    "panel",
+    "microchip",
+    "program",
+    "port",
+    "card",
+    "array",
+    "interface",
+    "system",
+    "sensor",
+    "firewall",
+    "hard drive",
+    "pixel",
+    "alarm",
+    "feed",
+    "monitor",
+    "application",
+    "transmitter",
+    "bus",
+    "circuit",
+    "capacitor",
+    "matrix",
 ];
 
 const FALLBACK_VERBS: &[&str] = &[
-    "back up", "bypass", "hack", "override", "compress", "copy", "navigate",
-    "index", "connect", "generate", "quantify", "calculate", "synthesize",
-    "input", "transmit", "program", "reboot", "parse",
+    "back up",
+    "bypass",
+    "hack",
+    "override",
+    "compress",
+    "copy",
+    "navigate",
+    "index",
+    "connect",
+    "generate",
+    "quantify",
+    "calculate",
+    "synthesize",
+    "input",
+    "transmit",
+    "program",
+    "reboot",
+    "parse",
 ];
 
 const FALLBACK_INGVERBS: &[&str] = &[
-    "backing up", "bypassing", "hacking", "overriding", "compressing",
-    "copying", "navigating", "indexing", "connecting", "generating",
-    "quantifying", "calculating", "synthesizing", "inputting", "transmitting",
-    "programming", "rebooting", "parsing",
+    "backing up",
+    "bypassing",
+    "hacking",
+    "overriding",
+    "compressing",
+    "copying",
+    "navigating",
+    "indexing",
+    "connecting",
+    "generating",
+    "quantifying",
+    "calculating",
+    "synthesizing",
+    "inputting",
+    "transmitting",
+    "programming",
+    "rebooting",
+    "parsing",
 ];
 
 #[cfg(test)]

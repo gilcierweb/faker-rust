@@ -26,15 +26,39 @@ pub fn review() -> String {
 
 // Fallback data
 const FALLBACK_NAMES: &[&str] = &[
-    "The Golden Spoon", "Bella Vista", "Ocean's Catch", "Mountain View Grill",
-    "Urban Kitchen", "The Corner Bistro", "Sunset Cafe", "Riverside Tavern",
-    "Harvest Table", "The Copper Pot", "Blue Plate Special", "Garden Terrace",
+    "The Golden Spoon",
+    "Bella Vista",
+    "Ocean's Catch",
+    "Mountain View Grill",
+    "Urban Kitchen",
+    "The Corner Bistro",
+    "Sunset Cafe",
+    "Riverside Tavern",
+    "Harvest Table",
+    "The Copper Pot",
+    "Blue Plate Special",
+    "Garden Terrace",
 ];
 
 const FALLBACK_TYPES: &[&str] = &[
-    "Italian", "Chinese", "Japanese", "Mexican", "Indian", "Thai",
-    "French", "Mediterranean", "American", "BBQ", "Seafood", "Steakhouse",
-    "Vegetarian", "Vegan", "Fusion", "Fast Food", "Fine Dining", "Cafe",
+    "Italian",
+    "Chinese",
+    "Japanese",
+    "Mexican",
+    "Indian",
+    "Thai",
+    "French",
+    "Mediterranean",
+    "American",
+    "BBQ",
+    "Seafood",
+    "Steakhouse",
+    "Vegetarian",
+    "Vegan",
+    "Fusion",
+    "Fast Food",
+    "Fine Dining",
+    "Cafe",
 ];
 
 const FALLBACK_REVIEWS: &[&str] = &[

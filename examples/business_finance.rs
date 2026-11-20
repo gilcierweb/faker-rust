@@ -2,8 +2,8 @@
 //! Demonstrates business, finance, banking, and crypto generators
 
 use faker_rust::{
-    bank, blockchain, business, commerce, company, currency, finance,
-    invoice, industry_segments, stripe, subscription,
+    bank, blockchain, business, commerce, company, currency, finance, industry_segments, invoice,
+    stripe, subscription,
 };
 
 fn main() {
@@ -21,7 +21,10 @@ fn main() {
     println!("💳 CREDIT CARDS:");
     println!("  Card Number:        {}", business::credit_card_number());
     println!("  Card Type:          {}", business::credit_card_type());
-    println!("  Expiry Date:        {}", business::credit_card_expiry_date());
+    println!(
+        "  Expiry Date:        {}",
+        business::credit_card_expiry_date()
+    );
     println!();
 
     // Company

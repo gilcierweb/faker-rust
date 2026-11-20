@@ -2,8 +2,8 @@
 //! Demonstrates regional data generators (Chile, South Africa, UK, US, NHS, etc.)
 
 use faker_rust::{
-    chile_rut, driving_licence, id_number, national_health_service,
-    phone_number, south_africa, address,
+    address, chile_rut, driving_licence, id_number, national_health_service, phone_number,
+    south_africa,
 };
 
 fn main() {
@@ -38,9 +38,18 @@ fn main() {
 
     // UK NHS
     println!("🏥 UK NATIONAL HEALTH SERVICE:");
-    println!("  NHS Number:         {}", national_health_service::nhs_number());
-    println!("  Practitioner:       {}", national_health_service::practitioner());
-    println!("  Hospital:           {}", national_health_service::hospital());
+    println!(
+        "  NHS Number:         {}",
+        national_health_service::nhs_number()
+    );
+    println!(
+        "  Practitioner:       {}",
+        national_health_service::practitioner()
+    );
+    println!(
+        "  Hospital:           {}",
+        national_health_service::hospital()
+    );
     println!();
 
     // Phone Numbers (International)

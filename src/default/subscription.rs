@@ -26,18 +26,41 @@ pub fn payment_method() -> String {
 
 // Fallback data
 const FALLBACK_PLANS: &[&str] = &[
-    "Free", "Basic", "Standard", "Premium", "Pro", "Enterprise", "Starter",
-    "Gold", "Silver", "Bronze", "Platinum", "Ultimate",
+    "Free",
+    "Basic",
+    "Standard",
+    "Premium",
+    "Pro",
+    "Enterprise",
+    "Starter",
+    "Gold",
+    "Silver",
+    "Bronze",
+    "Platinum",
+    "Ultimate",
 ];
 
 const FALLBACK_STATUSES: &[&str] = &[
-    "active", "inactive", "pending", "canceled", "expired", "suspended",
-    "trial", "past_due",
+    "active",
+    "inactive",
+    "pending",
+    "canceled",
+    "expired",
+    "suspended",
+    "trial",
+    "past_due",
 ];
 
 const FALLBACK_PAYMENT_METHODS: &[&str] = &[
-    "Credit Card", "Debit Card", "PayPal", "Bank Transfer", "Apple Pay",
-    "Google Pay", "Cryptocurrency", "Direct Debit", "Check",
+    "Credit Card",
+    "Debit Card",
+    "PayPal",
+    "Bank Transfer",
+    "Apple Pay",
+    "Google Pay",
+    "Cryptocurrency",
+    "Direct Debit",
+    "Check",
 ];
 
 #[cfg(test)]

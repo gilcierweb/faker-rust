@@ -1,10 +1,7 @@
 //! Fantasy & RPG Example
 //! Demonstrates fantasy, games, DnD, and superhero generators
 
-use faker_rust::{
-    fantasy, games, superhero, cosmere,
-    dc_comics, religion, quotes,
-};
+use faker_rust::{cosmere, dc_comics, fantasy, games, quotes, religion, superhero};
 
 fn main() {
     println!("=== Faker-Rust Fantasy & RPG Examples ===\n");

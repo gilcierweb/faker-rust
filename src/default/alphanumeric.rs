@@ -10,8 +10,14 @@ pub fn alphanumeric(length: usize) -> String {
             let choice = config.rand_range(0, 3);
             match choice {
                 0 => config.rand_char(&['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']),
-                1 => config.rand_char(&['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']),
-                _ => config.rand_char(&['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']),
+                1 => config.rand_char(&[
+                    'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P',
+                    'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
+                ]),
+                _ => config.rand_char(&[
+                    'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p',
+                    'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
+                ]),
             }
         })
         .collect();
@@ -25,9 +31,15 @@ pub fn alpha(length: usize) -> String {
         .map(|_| {
             let choice = config.rand_bool();
             if choice {
-                config.rand_char(&['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'])
+                config.rand_char(&[
+                    'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P',
+                    'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
+                ])
             } else {
-                config.rand_char(&['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'])
+                config.rand_char(&[
+                    'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p',
+                    'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
+                ])
             }
         })
         .collect();
@@ -47,7 +59,11 @@ pub fn numeric(length: usize) -> String {
 pub fn hex(length: usize) -> String {
     let config = FakerConfig::current();
     let chars: Vec<char> = (0..length)
-        .map(|_| config.rand_char(&['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f']))
+        .map(|_| {
+            config.rand_char(&[
+                '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f',
+            ])
+        })
         .collect();
     chars.into_iter().collect()
 }

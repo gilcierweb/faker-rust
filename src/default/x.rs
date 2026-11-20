@@ -26,15 +26,38 @@ pub fn tweet() -> String {
 
 // Fallback data
 const FALLBACK_SCREEN_NAMES: &[&str] = &[
-    "@elonmusk", "@nasa", "@rustlang", "@github", "@stackoverflow",
-    "@techcrunch", "@wired", "@verge", "@engadget", "@arstechnica",
-    "@mozilla", "@google", "@apple", "@microsoft", "@amazon",
+    "@elonmusk",
+    "@nasa",
+    "@rustlang",
+    "@github",
+    "@stackoverflow",
+    "@techcrunch",
+    "@wired",
+    "@verge",
+    "@engadget",
+    "@arstechnica",
+    "@mozilla",
+    "@google",
+    "@apple",
+    "@microsoft",
+    "@amazon",
 ];
 
 const FALLBACK_HASHTAGS: &[&str] = &[
-    "#Rust", "#Programming", "#Tech", "#AI", "#MachineLearning",
-    "#WebDev", "#OpenSource", "#Coding", "#DevOps", "#Cloud",
-    "#CyberSecurity", "#DataScience", "#100DaysOfCode", "#TechNews",
+    "#Rust",
+    "#Programming",
+    "#Tech",
+    "#AI",
+    "#MachineLearning",
+    "#WebDev",
+    "#OpenSource",
+    "#Coding",
+    "#DevOps",
+    "#Cloud",
+    "#CyberSecurity",
+    "#DataScience",
+    "#100DaysOfCode",
+    "#TechNews",
 ];
 
 const FALLBACK_TWEETS: &[&str] = &[

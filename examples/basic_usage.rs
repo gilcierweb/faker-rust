@@ -1,10 +1,7 @@
 //! Basic Usage Example
 //! Demonstrates core generators: Name, Address, Internet, Phone, Company
 
-use faker_rust::{
-    address, company, internet, name, phone_number,
-    Faker,
-};
+use faker_rust::{Faker, address, company, internet, name, phone_number};
 
 fn main() {
     println!("=== Faker-Rust Basic Usage Examples ===\n");
@@ -36,7 +33,10 @@ fn main() {
     println!("  Domain:         {}", internet::domain_name(false, None));
     println!("  URL:            {}", internet::url(None, None, None));
     println!("  Username:       {}", internet::username(None));
-    println!("  Password:       {}", internet::password(12, 20, true, true));
+    println!(
+        "  Password:       {}",
+        internet::password(12, 20, true, true)
+    );
     println!();
 
     // Phone numbers

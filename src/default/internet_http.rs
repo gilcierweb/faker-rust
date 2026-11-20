@@ -37,21 +37,43 @@ const FALLBACK_METHODS: &[&str] = &[
 ];
 
 const FALLBACK_STATUS_CODES: &[&str] = &[
-    "200", "201", "204", "301", "302", "304", "400", "401", "403", "404",
-    "405", "500", "502", "503", "504",
+    "200", "201", "204", "301", "302", "304", "400", "401", "403", "404", "405", "500", "502",
+    "503", "504",
 ];
 
 const FALLBACK_HEADERS: &[&str] = &[
-    "Accept", "Accept-Charset", "Accept-Encoding", "Accept-Language",
-    "Authorization", "Cache-Control", "Connection", "Content-Length",
-    "Content-Type", "Cookie", "Date", "Host", "If-Match", "If-Modified-Since",
-    "If-None-Match", "Origin", "Referer", "User-Agent",
+    "Accept",
+    "Accept-Charset",
+    "Accept-Encoding",
+    "Accept-Language",
+    "Authorization",
+    "Cache-Control",
+    "Connection",
+    "Content-Length",
+    "Content-Type",
+    "Cookie",
+    "Date",
+    "Host",
+    "If-Match",
+    "If-Modified-Since",
+    "If-None-Match",
+    "Origin",
+    "Referer",
+    "User-Agent",
 ];
 
 const FALLBACK_CONTENT_TYPES: &[&str] = &[
-    "application/json", "application/xml", "text/html", "text/plain",
-    "text/css", "text/javascript", "application/pdf", "image/jpeg",
-    "image/png", "image/gif", "application/octet-stream",
+    "application/json",
+    "application/xml",
+    "text/html",
+    "text/plain",
+    "text/css",
+    "text/javascript",
+    "application/pdf",
+    "image/jpeg",
+    "image/png",
+    "image/gif",
+    "application/octet-stream",
 ];
 
 #[cfg(test)]

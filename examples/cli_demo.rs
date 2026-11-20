@@ -34,7 +34,9 @@ fn main() {
     println!("Running: faker-rust --seed 12345 name");
     for i in 0..3 {
         let output = Command::new("cargo")
-            .args(["run", "--quiet", "--bin", "faker", "--", "--seed", "12345", "name"])
+            .args([
+                "run", "--quiet", "--bin", "faker", "--", "--seed", "12345", "name",
+            ])
             .output()
             .expect("Failed to execute command");
         let result = String::from_utf8_lossy(&output.stdout);

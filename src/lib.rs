@@ -170,10 +170,10 @@ pub mod cosmere;
 pub mod crypto_coin;
 #[path = "default/dc_comics.rs"]
 pub mod dc_comics;
-#[path = "default/drone.rs"]
-pub mod drone;
 #[path = "default/driving_licence.rs"]
 pub mod driving_licence;
+#[path = "default/drone.rs"]
+pub mod drone;
 #[path = "default/electrical_components.rs"]
 pub mod electrical_components;
 #[path = "default/esport.rs"]
@@ -222,10 +222,10 @@ pub mod stripe;
 pub mod subscription;
 #[path = "default/superhero.rs"]
 pub mod superhero;
-#[path = "default/team.rs"]
-pub mod team;
 #[path = "default/tea.rs"]
 pub mod tea;
+#[path = "default/team.rs"]
+pub mod team;
 #[path = "default/theater.rs"]
 pub mod theater;
 #[path = "default/types.rs"]

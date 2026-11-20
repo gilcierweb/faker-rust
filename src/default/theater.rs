@@ -26,21 +26,47 @@ pub fn genre() -> String {
 
 // Fallback data
 const FALLBACK_NAMES: &[&str] = &[
-    "The Globe Theatre", "Broadway Theatre", "West End Theatre",
-    "Royal Shakespeare Theatre", "Lyceum Theatre", "Apollo Theatre",
-    "Victoria Palace Theatre", "The Old Vic", "National Theatre",
-    "Royal Opera House", "Carnegie Hall", "Sydney Opera House",
+    "The Globe Theatre",
+    "Broadway Theatre",
+    "West End Theatre",
+    "Royal Shakespeare Theatre",
+    "Lyceum Theatre",
+    "Apollo Theatre",
+    "Victoria Palace Theatre",
+    "The Old Vic",
+    "National Theatre",
+    "Royal Opera House",
+    "Carnegie Hall",
+    "Sydney Opera House",
 ];
 
 const FALLBACK_PLAYS: &[&str] = &[
-    "Hamlet", "Romeo and Juliet", "Macbeth", "The Phantom of the Opera",
-    "Les Misérables", "The Lion King", "Wicked", "Hamilton", "Cats",
-    "The Crucible", "A Streetcar Named Desire", "Death of a Salesman",
+    "Hamlet",
+    "Romeo and Juliet",
+    "Macbeth",
+    "The Phantom of the Opera",
+    "Les Misérables",
+    "The Lion King",
+    "Wicked",
+    "Hamilton",
+    "Cats",
+    "The Crucible",
+    "A Streetcar Named Desire",
+    "Death of a Salesman",
 ];
 
 const FALLBACK_GENRES: &[&str] = &[
-    "Tragedy", "Comedy", "Drama", "Musical", "Opera", "Ballet",
-    "Farce", "Satire", "Melodrama", "Historical", "Contemporary",
+    "Tragedy",
+    "Comedy",
+    "Drama",
+    "Musical",
+    "Opera",
+    "Ballet",
+    "Farce",
+    "Satire",
+    "Melodrama",
+    "Historical",
+    "Contemporary",
 ];
 
 #[cfg(test)]

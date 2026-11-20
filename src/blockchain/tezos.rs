@@ -40,14 +40,14 @@ pub fn secret_key() -> String {
 fn encode_tz(prefix: &str, payload_size: usize) -> String {
     const BASE58_ALPHABET: &[u8] = b"123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz";
     let config = FakerConfig::current();
-    
+
     // Generate random payload
     let mut payload = String::new();
     for _ in 0..payload_size {
         let idx = config.rand_u32(256) as usize % BASE58_ALPHABET.len();
         payload.push(BASE58_ALPHABET[idx] as char);
     }
-    
+
     format!("{}{}", prefix, payload)
 }
 

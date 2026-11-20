@@ -5,11 +5,9 @@ use crate::base::sample;
 /// Generate a random NATO phonetic alphabet word
 pub fn code_word() -> String {
     let words = [
-        "Alpha", "Bravo", "Charlie", "Delta", "Echo", "Foxtrot",
-        "Golf", "Hotel", "India", "Juliett", "Kilo", "Lima",
-        "Mike", "November", "Oscar", "Papa", "Quebec", "Romeo",
-        "Sierra", "Tango", "Uniform", "Victor", "Whiskey", "X-ray",
-        "Yankee", "Zulu",
+        "Alpha", "Bravo", "Charlie", "Delta", "Echo", "Foxtrot", "Golf", "Hotel", "India",
+        "Juliett", "Kilo", "Lima", "Mike", "November", "Oscar", "Papa", "Quebec", "Romeo",
+        "Sierra", "Tango", "Uniform", "Victor", "Whiskey", "X-ray", "Yankee", "Zulu",
     ];
     sample(&words).to_string()
 }
@@ -17,15 +15,34 @@ pub fn code_word() -> String {
 /// Generate a NATO phonetic spelling for a given word
 pub fn spelling(word: &str) -> String {
     let nato = std::collections::HashMap::from([
-        ('A', "Alpha"), ('B', "Bravo"), ('C', "Charlie"), ('D', "Delta"),
-        ('E', "Echo"), ('F', "Foxtrot"), ('G', "Golf"), ('H', "Hotel"),
-        ('I', "India"), ('J', "Juliett"), ('K', "Kilo"), ('L', "Lima"),
-        ('M', "Mike"), ('N', "November"), ('O', "Oscar"), ('P', "Papa"),
-        ('Q', "Quebec"), ('R', "Romeo"), ('S', "Sierra"), ('T', "Tango"),
-        ('U', "Uniform"), ('V', "Victor"), ('W', "Whiskey"), ('X', "X-ray"),
-        ('Y', "Yankee"), ('Z', "Zulu"),
+        ('A', "Alpha"),
+        ('B', "Bravo"),
+        ('C', "Charlie"),
+        ('D', "Delta"),
+        ('E', "Echo"),
+        ('F', "Foxtrot"),
+        ('G', "Golf"),
+        ('H', "Hotel"),
+        ('I', "India"),
+        ('J', "Juliett"),
+        ('K', "Kilo"),
+        ('L', "Lima"),
+        ('M', "Mike"),
+        ('N', "November"),
+        ('O', "Oscar"),
+        ('P', "Papa"),
+        ('Q', "Quebec"),
+        ('R', "Romeo"),
+        ('S', "Sierra"),
+        ('T', "Tango"),
+        ('U', "Uniform"),
+        ('V', "Victor"),
+        ('W', "Whiskey"),
+        ('X', "X-ray"),
+        ('Y', "Yankee"),
+        ('Z', "Zulu"),
     ]);
-    
+
     word.to_uppercase()
         .chars()
         .filter_map(|c| nato.get(&c).copied())

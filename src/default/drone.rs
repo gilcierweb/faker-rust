@@ -26,18 +26,46 @@ pub fn category() -> String {
 
 // Fallback data
 const FALLBACK_MANUFACTURERS: &[&str] = &[
-    "DJI", "Parrot", "Autel Robotics", "Skydio", "Yuneec", "Holy Stone",
-    "Ryze", "Hubsan", "Syma", "Potensic", "Snaptain", "DEERC",
+    "DJI",
+    "Parrot",
+    "Autel Robotics",
+    "Skydio",
+    "Yuneec",
+    "Holy Stone",
+    "Ryze",
+    "Hubsan",
+    "Syma",
+    "Potensic",
+    "Snaptain",
+    "DEERC",
 ];
 
 const FALLBACK_NAMES: &[&str] = &[
-    "Mavic Air", "Mavic Pro", "Phantom", "Inspire", "Mini", "Spark",
-    "Anafi", "Bebop", "EVO", "X-Star", "Typhoon", "Tello",
+    "Mavic Air",
+    "Mavic Pro",
+    "Phantom",
+    "Inspire",
+    "Mini",
+    "Spark",
+    "Anafi",
+    "Bebop",
+    "EVO",
+    "X-Star",
+    "Typhoon",
+    "Tello",
 ];
 
 const FALLBACK_CATEGORIES: &[&str] = &[
-    "Consumer", "Professional", "Racing", "Toy", "Industrial", "Military",
-    "Agricultural", "Delivery", "Surveillance", "Photography",
+    "Consumer",
+    "Professional",
+    "Racing",
+    "Toy",
+    "Industrial",
+    "Military",
+    "Agricultural",
+    "Delivery",
+    "Surveillance",
+    "Photography",
 ];
 
 #[cfg(test)]

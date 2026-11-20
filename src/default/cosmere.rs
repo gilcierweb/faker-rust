@@ -26,21 +26,59 @@ pub fn book() -> String {
 
 // Fallback data
 const FALLBACK_CHARACTERS: &[&str] = &[
-    "Kaladin", "Shallan", "Dalinar", "Vin", "Kelsier", "Elend", "Sazed",
-    "Raoden", "Hrathen", "Siri", "Vivenna", "Lightsong", "Waxillium", "Wayne",
-    "Marasi", "Shai", "Hoid", "Adolin", "Navani", "Jasnah", "Renarin",
+    "Kaladin",
+    "Shallan",
+    "Dalinar",
+    "Vin",
+    "Kelsier",
+    "Elend",
+    "Sazed",
+    "Raoden",
+    "Hrathen",
+    "Siri",
+    "Vivenna",
+    "Lightsong",
+    "Waxillium",
+    "Wayne",
+    "Marasi",
+    "Shai",
+    "Hoid",
+    "Adolin",
+    "Navani",
+    "Jasnah",
+    "Renarin",
 ];
 
 const FALLBACK_LOCATIONS: &[&str] = &[
-    "Roshar", "Scadrial", "Sel", "Nalthis", "Taldain", "Threnody", "First of the Sun",
-    "Yolen", "Braize", "Ashyn", "Rosharan System", "Scadrian System",
+    "Roshar",
+    "Scadrial",
+    "Sel",
+    "Nalthis",
+    "Taldain",
+    "Threnody",
+    "First of the Sun",
+    "Yolen",
+    "Braize",
+    "Ashyn",
+    "Rosharan System",
+    "Scadrian System",
 ];
 
 const FALLBACK_BOOKS: &[&str] = &[
-    "The Way of Kings", "Words of Radiance", "Oathbringer", "Rhythm of War",
-    "Mistborn: The Final Empire", "The Well of Ascension", "The Hero of Ages",
-    "The Alloy of Law", "Shadows of Self", "The Bands of Mourning",
-    "Elantris", "Warbreaker", "Arcanum Unbounded", "Elantris",
+    "The Way of Kings",
+    "Words of Radiance",
+    "Oathbringer",
+    "Rhythm of War",
+    "Mistborn: The Final Empire",
+    "The Well of Ascension",
+    "The Hero of Ages",
+    "The Alloy of Law",
+    "Shadows of Self",
+    "The Bands of Mourning",
+    "Elantris",
+    "Warbreaker",
+    "Arcanum Unbounded",
+    "Elantris",
 ];
 
 #[cfg(test)]

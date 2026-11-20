@@ -1,9 +1,7 @@
 //! Sports & Blockchain Example
 //! Demonstrates Sports and Cryptocurrency generators
 
-use faker_rust::{
-    blockchain, sports,
-};
+use faker_rust::{blockchain, sports};
 
 fn main() {
     println!("=== Faker-Rust Sports & Blockchain Examples ===\n");
@@ -11,8 +9,14 @@ fn main() {
     // Sports
     println!("⚽ SPORTS:");
     println!("  Sport Name:          {}", sports::sport::name());
-    println!("  Summer Olympics:     {}", sports::sport::summer_olympics());
-    println!("  Winter Olympics:     {}", sports::sport::winter_olympics());
+    println!(
+        "  Summer Olympics:     {}",
+        sports::sport::summer_olympics()
+    );
+    println!(
+        "  Winter Olympics:     {}",
+        sports::sport::winter_olympics()
+    );
     println!();
 
     // Football
@@ -71,9 +75,18 @@ fn main() {
 
     // Aeternity
     println!("🔮 AETERNITY:");
-    println!("  Address:             {}", blockchain::aeternity::address());
-    println!("  Transaction:         {}", blockchain::aeternity::transaction());
-    println!("  Contract:            {}", blockchain::aeternity::contract());
+    println!(
+        "  Address:             {}",
+        blockchain::aeternity::address()
+    );
+    println!(
+        "  Transaction:         {}",
+        blockchain::aeternity::transaction()
+    );
+    println!(
+        "  Contract:            {}",
+        blockchain::aeternity::contract()
+    );
     println!("  Oracle:              {}", blockchain::aeternity::oracle());
     println!();
 }

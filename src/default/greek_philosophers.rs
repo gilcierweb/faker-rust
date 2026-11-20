@@ -26,10 +26,26 @@ pub fn school() -> String {
 
 // Fallback data
 const FALLBACK_NAMES: &[&str] = &[
-    "Socrates", "Plato", "Aristotle", "Pythagoras", "Heraclitus",
-    "Democritus", "Epicurus", "Zeno of Citium", "Diogenes", "Thales",
-    "Anaximander", "Parmenides", "Empedocles", "Anaxagoras", "Protagoras",
-    "Gorgias", "Antisthenes", "Pyrrho", "Plotinus", "Hypatia",
+    "Socrates",
+    "Plato",
+    "Aristotle",
+    "Pythagoras",
+    "Heraclitus",
+    "Democritus",
+    "Epicurus",
+    "Zeno of Citium",
+    "Diogenes",
+    "Thales",
+    "Anaximander",
+    "Parmenides",
+    "Empedocles",
+    "Anaxagoras",
+    "Protagoras",
+    "Gorgias",
+    "Antisthenes",
+    "Pyrrho",
+    "Plotinus",
+    "Hypatia",
 ];
 
 const FALLBACK_QUOTES: &[&str] = &[
@@ -46,9 +62,17 @@ const FALLBACK_QUOTES: &[&str] = &[
 ];
 
 const FALLBACK_SCHOOLS: &[&str] = &[
-    "Stoicism", "Epicureanism", "Platonism", "Aristotelianism",
-    "Cynicism", "Skepticism", "Pythagoreanism", "Pre-Socratic",
-    "Neoplatonism", "Atomism", "Sophism",
+    "Stoicism",
+    "Epicureanism",
+    "Platonism",
+    "Aristotelianism",
+    "Cynicism",
+    "Skepticism",
+    "Pythagoreanism",
+    "Pre-Socratic",
+    "Neoplatonism",
+    "Atomism",
+    "Sophism",
 ];
 
 #[cfg(test)]

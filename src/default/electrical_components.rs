@@ -26,19 +26,51 @@ pub fn passive() -> String {
 
 // Fallback data
 const FALLBACK_COMPONENTS: &[&str] = &[
-    "Resistor", "Capacitor", "Inductor", "Transistor", "Diode", "LED",
-    "Microcontroller", "Integrated Circuit", "Transformer", "Relay", "Switch",
-    "Fuse", "Circuit Breaker", "Potentiometer", "Oscillator", "Sensor",
+    "Resistor",
+    "Capacitor",
+    "Inductor",
+    "Transistor",
+    "Diode",
+    "LED",
+    "Microcontroller",
+    "Integrated Circuit",
+    "Transformer",
+    "Relay",
+    "Switch",
+    "Fuse",
+    "Circuit Breaker",
+    "Potentiometer",
+    "Oscillator",
+    "Sensor",
 ];
 
 const FALLBACK_ACTIVE: &[&str] = &[
-    "Transistor", "Diode", "LED", "Microcontroller", "Op-Amp", "Voltage Regulator",
-    "Logic Gate", "Amplifier", "Rectifier", "Thyristor", "MOSFET", "BJT",
+    "Transistor",
+    "Diode",
+    "LED",
+    "Microcontroller",
+    "Op-Amp",
+    "Voltage Regulator",
+    "Logic Gate",
+    "Amplifier",
+    "Rectifier",
+    "Thyristor",
+    "MOSFET",
+    "BJT",
 ];
 
 const FALLBACK_PASSIVE: &[&str] = &[
-    "Resistor", "Capacitor", "Inductor", "Transformer", "Potentiometer",
-    "Varistor", "Thermistor", "Photoresistor", "Crystal", "Fuse", "Switch",
+    "Resistor",
+    "Capacitor",
+    "Inductor",
+    "Transformer",
+    "Potentiometer",
+    "Varistor",
+    "Thermistor",
+    "Photoresistor",
+    "Crystal",
+    "Fuse",
+    "Switch",
 ];
 
 #[cfg(test)]

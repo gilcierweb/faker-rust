@@ -19,17 +19,44 @@ pub fn range() -> String {
 
 // Fallback data
 const FALLBACK_NAMES: &[&str] = &[
-    "Mount Everest", "K2", "Kangchenjunga", "Lhotse", "Makalu", "Cho Oyu",
-    "Dhaulagiri", "Manaslu", "Nanga Parbat", "Annapurna", "Gasherbrum I",
-    "Broad Peak", "Gasherbrum II", "Shishapangma", "Mount Kilimanjaro",
-    "Mount McKinley", "Mount Elbrus", "Mount Kilimanjaro", "Mount Fuji",
-    "Mount Rainier", "Matterhorn", "Mont Blanc",
+    "Mount Everest",
+    "K2",
+    "Kangchenjunga",
+    "Lhotse",
+    "Makalu",
+    "Cho Oyu",
+    "Dhaulagiri",
+    "Manaslu",
+    "Nanga Parbat",
+    "Annapurna",
+    "Gasherbrum I",
+    "Broad Peak",
+    "Gasherbrum II",
+    "Shishapangma",
+    "Mount Kilimanjaro",
+    "Mount McKinley",
+    "Mount Elbrus",
+    "Mount Kilimanjaro",
+    "Mount Fuji",
+    "Mount Rainier",
+    "Matterhorn",
+    "Mont Blanc",
 ];
 
 const FALLBACK_RANGES: &[&str] = &[
-    "Himalayas", "Karakoram", "Hindu Kush", "Andes", "Alps", "Rockies",
-    "Appalachians", "Cascades", "Sierra Nevada", "Atlas Mountains",
-    "Drakensberg", "Caucasus Mountains", "Ural Mountains",
+    "Himalayas",
+    "Karakoram",
+    "Hindu Kush",
+    "Andes",
+    "Alps",
+    "Rockies",
+    "Appalachians",
+    "Cascades",
+    "Sierra Nevada",
+    "Atlas Mountains",
+    "Drakensberg",
+    "Caucasus Mountains",
+    "Ural Mountains",
 ];
 
 #[cfg(test)]

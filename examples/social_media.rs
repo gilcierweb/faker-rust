@@ -2,8 +2,7 @@
 //! Demonstrates X (Twitter), Slack Emoji, Lorem, and other web-related generators
 
 use faker_rust::{
-    x, slack_emoji, lorem, lorem_flickr, placeholdit, omniauth,
-    internet_http, marketing,
+    internet_http, lorem, lorem_flickr, marketing, omniauth, placeholdit, slack_emoji, x,
 };
 
 fn main() {

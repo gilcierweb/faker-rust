@@ -26,21 +26,54 @@ pub fn subsector() -> String {
 
 // Fallback data
 const FALLBACK_INDUSTRIES: &[&str] = &[
-    "Technology", "Healthcare", "Finance", "Manufacturing", "Retail",
-    "Energy", "Transportation", "Agriculture", "Construction", "Education",
-    "Entertainment", "Hospitality", "Telecommunications", "Automotive",
-    "Aerospace", "Pharmaceuticals", "Biotechnology", "Real Estate",
+    "Technology",
+    "Healthcare",
+    "Finance",
+    "Manufacturing",
+    "Retail",
+    "Energy",
+    "Transportation",
+    "Agriculture",
+    "Construction",
+    "Education",
+    "Entertainment",
+    "Hospitality",
+    "Telecommunications",
+    "Automotive",
+    "Aerospace",
+    "Pharmaceuticals",
+    "Biotechnology",
+    "Real Estate",
 ];
 
 const FALLBACK_SECTORS: &[&str] = &[
-    "Primary", "Secondary", "Tertiary", "Quaternary", "Public Sector",
-    "Private Sector", "Non-profit", "Government", "Defense", "Space",
+    "Primary",
+    "Secondary",
+    "Tertiary",
+    "Quaternary",
+    "Public Sector",
+    "Private Sector",
+    "Non-profit",
+    "Government",
+    "Defense",
+    "Space",
 ];
 
 const FALLBACK_SUBSECTORS: &[&str] = &[
-    "Software", "Hardware", "Services", "Consulting", "Research",
-    "Development", "Sales", "Marketing", "Operations", "Logistics",
-    "Support", "Maintenance", "Quality Assurance", "Compliance",
+    "Software",
+    "Hardware",
+    "Services",
+    "Consulting",
+    "Research",
+    "Development",
+    "Sales",
+    "Marketing",
+    "Operations",
+    "Logistics",
+    "Support",
+    "Maintenance",
+    "Quality Assurance",
+    "Compliance",
 ];
 
 #[cfg(test)]

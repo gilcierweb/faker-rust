@@ -34,33 +34,70 @@ pub fn stadium() -> String {
 /// Generate a random World Cup team
 pub fn team() -> String {
     let teams = [
-        "Brazil", "Germany", "Italy", "Argentina", "France", "Spain",
-        "England", "Netherlands", "Uruguay", "Portugal", "Belgium",
-        "Croatia", "Mexico", "USA", "Japan", "South Korea",
+        "Brazil",
+        "Germany",
+        "Italy",
+        "Argentina",
+        "France",
+        "Spain",
+        "England",
+        "Netherlands",
+        "Uruguay",
+        "Portugal",
+        "Belgium",
+        "Croatia",
+        "Mexico",
+        "USA",
+        "Japan",
+        "South Korea",
     ];
     sample(&teams).to_string()
 }
 
 // Fallback data
 const FALLBACK_YEARS: &[&str] = &[
-    "2022", "2018", "2014", "2010", "2006", "2002", "1998", "1994",
-    "1990", "1986", "1982", "1978", "1974", "1970", "1966", "1962",
+    "2022", "2018", "2014", "2010", "2006", "2002", "1998", "1994", "1990", "1986", "1982", "1978",
+    "1974", "1970", "1966", "1962",
 ];
 
 const FALLBACK_HOSTS: &[&str] = &[
-    "Qatar", "Russia", "Brazil", "South Africa", "Germany", "Japan/Korea",
-    "France", "USA", "Italy", "Mexico", "Argentina", "Spain",
+    "Qatar",
+    "Russia",
+    "Brazil",
+    "South Africa",
+    "Germany",
+    "Japan/Korea",
+    "France",
+    "USA",
+    "Italy",
+    "Mexico",
+    "Argentina",
+    "Spain",
 ];
 
 const FALLBACK_WINNERS: &[&str] = &[
-    "Argentina", "France", "Germany", "Brazil", "Spain", "Italy",
-    "England", "Uruguay", "France", "Argentina", "Germany",
+    "Argentina",
+    "France",
+    "Germany",
+    "Brazil",
+    "Spain",
+    "Italy",
+    "England",
+    "Uruguay",
+    "France",
+    "Argentina",
+    "Germany",
 ];
 
 const FALLBACK_STADIUMS: &[&str] = &[
-    "Lusail Stadium", "Al Bayt Stadium", "Khalifa International Stadium",
-    "Al Janoub Stadium", "Education City Stadium", "Stadium 974",
-    "Al Thumama Stadium", "Ahmad Bin Ali Stadium",
+    "Lusail Stadium",
+    "Al Bayt Stadium",
+    "Khalifa International Stadium",
+    "Al Janoub Stadium",
+    "Education City Stadium",
+    "Stadium 974",
+    "Al Thumama Stadium",
+    "Ahmad Bin Ali Stadium",
 ];
 
 #[cfg(test)]

@@ -25,7 +25,7 @@ pub fn oracle() -> String {
 fn rand_strings(length: u32) -> String {
     let config = FakerConfig::current();
     const HEX_ALPHABET: &[u8] = b"0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    
+
     let mut result = String::new();
     for _ in 0..length {
         let idx = config.rand_usize(HEX_ALPHABET.len());

@@ -61,7 +61,11 @@ fn calculate_ean_check_digit(s: &str) -> u32 {
             // positions odd from the right carry weight 3, even carry 1.
             // For a payload of length `len`, left index `i` has right-position
             // `len - i`, so weight 3 when `(len - 1 - i)` is even.
-            let weight = if (len - 1 - i).is_multiple_of(2) { 3 } else { 1 };
+            let weight = if (len - 1 - i).is_multiple_of(2) {
+                3
+            } else {
+                1
+            };
             sum += digit * weight;
         }
     }

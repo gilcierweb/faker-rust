@@ -5,12 +5,36 @@ use crate::base::sample;
 /// Generate a random Slack emoji
 pub fn emoji() -> String {
     let emojis = [
-        ":smile:", ":laughing:", ":wink:", ":heart_eyes:", ":thumbsup:",
-        ":fire:", ":rocket:", ":tada:", ":sparkles:", ":star:",
-        ":coffee:", ":pizza:", ":beer:", ":wine:", ":sushi:",
-        ":computer:", ":phone:", ":bulb:", ":memo:", ":calendar:",
-        ":white_check_mark:", ":warning:", ":x:", ":question:", ":exclamation:",
-        ":wave:", ":+1:", ":-1:", ":clap:", ":pray:",
+        ":smile:",
+        ":laughing:",
+        ":wink:",
+        ":heart_eyes:",
+        ":thumbsup:",
+        ":fire:",
+        ":rocket:",
+        ":tada:",
+        ":sparkles:",
+        ":star:",
+        ":coffee:",
+        ":pizza:",
+        ":beer:",
+        ":wine:",
+        ":sushi:",
+        ":computer:",
+        ":phone:",
+        ":bulb:",
+        ":memo:",
+        ":calendar:",
+        ":white_check_mark:",
+        ":warning:",
+        ":x:",
+        ":question:",
+        ":exclamation:",
+        ":wave:",
+        ":+1:",
+        ":-1:",
+        ":clap:",
+        ":pray:",
     ];
     sample(&emojis).to_string()
 }
@@ -18,9 +42,18 @@ pub fn emoji() -> String {
 /// Generate a random custom Slack emoji name
 pub fn custom_emoji() -> String {
     let names = [
-        ":party-parrot:", ":deal-with-it:", ":ship-it:", ":aw-yeah:",
-        ":table-flip:", ":success-kid:", ":dancing-banana:", ":nyancat:",
-        ":doom:", ":facepalm:", ":mind-blown:", ":mic-drop:",
+        ":party-parrot:",
+        ":deal-with-it:",
+        ":ship-it:",
+        ":aw-yeah:",
+        ":table-flip:",
+        ":success-kid:",
+        ":dancing-banana:",
+        ":nyancat:",
+        ":doom:",
+        ":facepalm:",
+        ":mind-blown:",
+        ":mic-drop:",
     ];
     sample(&names).to_string()
 }
@@ -28,8 +61,16 @@ pub fn custom_emoji() -> String {
 /// Generate a random people emoji
 pub fn people() -> String {
     let emojis = [
-        ":grinning:", ":smiley:", ":big_smile:", ":laughing:", ":sweat_smile:",
-        ":joy:", ":rofl:", ":relaxed:", ":blush:", ":innocent:",
+        ":grinning:",
+        ":smiley:",
+        ":big_smile:",
+        ":laughing:",
+        ":sweat_smile:",
+        ":joy:",
+        ":rofl:",
+        ":relaxed:",
+        ":blush:",
+        ":innocent:",
     ];
     sample(&emojis).to_string()
 }

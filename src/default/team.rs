@@ -33,25 +33,64 @@ pub fn state() -> String {
 
 // Fallback data
 const FALLBACK_NAMES: &[&str] = &[
-    "Thunder", "Lightning", "Storm", "Wolves", "Bears", "Eagles", "Hawks",
-    "Lions", "Tigers", "Panthers", "Sharks", "Dragons", "Knights", "Warriors",
-    "Titans", "Giants", "Raiders", "Chargers", "Jets", "Rockets", "Stars",
+    "Thunder",
+    "Lightning",
+    "Storm",
+    "Wolves",
+    "Bears",
+    "Eagles",
+    "Hawks",
+    "Lions",
+    "Tigers",
+    "Panthers",
+    "Sharks",
+    "Dragons",
+    "Knights",
+    "Warriors",
+    "Titans",
+    "Giants",
+    "Raiders",
+    "Chargers",
+    "Jets",
+    "Rockets",
+    "Stars",
 ];
 
 const FALLBACK_MASCOTS: &[&str] = &[
-    "Wildcats", "Bulldogs", "Tigers", "Eagles", "Lions", "Bears", "Sharks",
-    "Dragons", "Knights", "Vikings", "Pirates", "Cowboys", "Spartans",
-    "Trojans", "Rangers", "Rebels", "Patriots", "Braves", "Chiefs",
+    "Wildcats", "Bulldogs", "Tigers", "Eagles", "Lions", "Bears", "Sharks", "Dragons", "Knights",
+    "Vikings", "Pirates", "Cowboys", "Spartans", "Trojans", "Rangers", "Rebels", "Patriots",
+    "Braves", "Chiefs",
 ];
 
 const FALLBACK_SPORTS: &[&str] = &[
-    "Football", "Basketball", "Baseball", "Hockey", "Soccer", "Volleyball",
-    "Tennis", "Golf", "Swimming", "Track", "Wrestling", "Lacrosse", "Rugby",
+    "Football",
+    "Basketball",
+    "Baseball",
+    "Hockey",
+    "Soccer",
+    "Volleyball",
+    "Tennis",
+    "Golf",
+    "Swimming",
+    "Track",
+    "Wrestling",
+    "Lacrosse",
+    "Rugby",
 ];
 
 const FALLBACK_STATES: &[&str] = &[
-    "New York", "California", "Texas", "Florida", "Illinois", "Pennsylvania",
-    "Ohio", "Georgia", "North Carolina", "Michigan", "New Jersey", "Virginia",
+    "New York",
+    "California",
+    "Texas",
+    "Florida",
+    "Illinois",
+    "Pennsylvania",
+    "Ohio",
+    "Georgia",
+    "North Carolina",
+    "Michigan",
+    "New Jersey",
+    "Virginia",
 ];
 
 #[cfg(test)]

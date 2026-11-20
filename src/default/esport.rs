@@ -40,31 +40,75 @@ pub fn game() -> String {
 
 // Fallback data
 const FALLBACK_PLAYERS: &[&str] = &[
-    "Faker", "s1mple", "Zywoo", "Niko", "Dev1ce", "Coldzera", "KennyS",
-    "GuardiaN", "olofmeister", "Get_RiGhT", "Flusha", "PashaBiceps",
-    "Dendi", "Arteezy", "SumaiL", "S1mple", "Shroud", "Ninja",
+    "Faker",
+    "s1mple",
+    "Zywoo",
+    "Niko",
+    "Dev1ce",
+    "Coldzera",
+    "KennyS",
+    "GuardiaN",
+    "olofmeister",
+    "Get_RiGhT",
+    "Flusha",
+    "PashaBiceps",
+    "Dendi",
+    "Arteezy",
+    "SumaiL",
+    "S1mple",
+    "Shroud",
+    "Ninja",
 ];
 
 const FALLBACK_TEAMS: &[&str] = &[
-    "Fnatic", "SK Gaming", "Astralis", "Natus Vincere", "FaZe Clan",
-    "Cloud9", "TSM", "Team Liquid", "Evil Geniuses", "OG",
-    "Team Secret", "Virtus.pro", "G2 Esports", "100 Thieves",
+    "Fnatic",
+    "SK Gaming",
+    "Astralis",
+    "Natus Vincere",
+    "FaZe Clan",
+    "Cloud9",
+    "TSM",
+    "Team Liquid",
+    "Evil Geniuses",
+    "OG",
+    "Team Secret",
+    "Virtus.pro",
+    "G2 Esports",
+    "100 Thieves",
 ];
 
 const FALLBACK_EVENTS: &[&str] = &[
-    "The International", "Worlds", "ESL One", "BLAST Premier", "PGL Major",
-    "DreamHack", "IEM", "LCS Finals", "LEC Finals", "Capcom Cup",
+    "The International",
+    "Worlds",
+    "ESL One",
+    "BLAST Premier",
+    "PGL Major",
+    "DreamHack",
+    "IEM",
+    "LCS Finals",
+    "LEC Finals",
+    "Capcom Cup",
 ];
 
 const FALLBACK_LEAGUES: &[&str] = &[
-    "LCK", "LCS", "LEC", "LPL", "PCS", "VCS", "LJL", "LCL",
-    "LMS", "TCL", "CBLOL", "LLA",
+    "LCK", "LCS", "LEC", "LPL", "PCS", "VCS", "LJL", "LCL", "LMS", "TCL", "CBLOL", "LLA",
 ];
 
 const FALLBACK_GAMES: &[&str] = &[
-    "League of Legends", "Dota 2", "CS:GO", "Valorant", "Overwatch",
-    "Fortnite", "PUBG", "Rainbow Six Siege", "Rocket League", "Street Fighter",
-    "Tekken", "Super Smash Bros", "StarCraft II", "Hearthstone",
+    "League of Legends",
+    "Dota 2",
+    "CS:GO",
+    "Valorant",
+    "Overwatch",
+    "Fortnite",
+    "PUBG",
+    "Rainbow Six Siege",
+    "Rocket League",
+    "Street Fighter",
+    "Tekken",
+    "Super Smash Bros",
+    "StarCraft II",
+    "Hearthstone",
 ];
 
 #[cfg(test)]

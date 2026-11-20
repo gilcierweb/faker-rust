@@ -2,9 +2,8 @@
 //! Demonstrates technology, internet, programming, and device generators
 
 use faker_rust::{
-    app, code, computer, device, electrical_components, hacker, html,
-    internet, internet_http, programming_language, source, string, types,
-    drone, lorem_flickr, placeholdit,
+    app, code, computer, device, drone, electrical_components, hacker, html, internet,
+    internet_http, lorem_flickr, placeholdit, programming_language, source, string, types,
 };
 
 fn main() {
@@ -19,11 +18,20 @@ fn main() {
 
     // Internet
     println!("🌐 INTERNET:");
-    println!("  Email:              {}", internet::email(None, None, None));
-    println!("  Domain:             {}", internet::domain_name(false, None));
+    println!(
+        "  Email:              {}",
+        internet::email(None, None, None)
+    );
+    println!(
+        "  Domain:             {}",
+        internet::domain_name(false, None)
+    );
     println!("  URL:                {}", internet::url(None, None, None));
     println!("  Username:           {}", internet::username(None));
-    println!("  Password:           {}", internet::password(12, 20, true, true));
+    println!(
+        "  Password:           {}",
+        internet::password(12, 20, true, true)
+    );
     println!("  IPv4:               {}", internet::ip_v4());
     println!("  IPv6:               {}", internet::ip_v6());
     println!("  MAC Address:        {}", internet::mac_address(None));
@@ -108,7 +116,10 @@ fn main() {
 
     // Electrical Components
     println!("⚡ ELECTRICAL COMPONENTS:");
-    println!("  Component:          {}", electrical_components::component());
+    println!(
+        "  Component:          {}",
+        electrical_components::component()
+    );
     println!("  Active:             {}", electrical_components::active());
     println!("  Passive:            {}", electrical_components::passive());
     println!();

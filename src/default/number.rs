@@ -64,7 +64,10 @@ mod tests {
                 break;
             }
         }
-        assert!(saw_negative, "between must be able to return negative values");
+        assert!(
+            saw_negative,
+            "between must be able to return negative values"
+        );
     }
 
     #[test]

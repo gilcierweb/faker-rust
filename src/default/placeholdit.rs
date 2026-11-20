@@ -7,7 +7,7 @@ pub fn image() -> String {
     let config = FakerConfig::current();
     let width = config.rand_range(100, 800);
     let height = config.rand_range(100, 800);
-    
+
     format!("https://placehold.it/{}x{}", width, height)
 }
 
@@ -16,8 +16,13 @@ pub fn image_with_text(text: &str) -> String {
     let config = FakerConfig::current();
     let width = config.rand_range(100, 800);
     let height = config.rand_range(100, 800);
-    
-    format!("https://placehold.it/{}x{}?text={}", width, height, text.replace(' ', "+"))
+
+    format!(
+        "https://placehold.it/{}x{}?text={}",
+        width,
+        height,
+        text.replace(' ', "+")
+    )
 }
 
 /// Generate a Placehold.it URL with specific dimensions
@@ -30,8 +35,11 @@ pub fn colored(background: &str, text: &str) -> String {
     let config = FakerConfig::current();
     let width = config.rand_range(100, 800);
     let height = config.rand_range(100, 800);
-    
-    format!("https://placehold.it/{}x{}/{}/{}", width, height, background, text)
+
+    format!(
+        "https://placehold.it/{}x{}/{}/{}",
+        width, height, background, text
+    )
 }
 
 #[cfg(test)]

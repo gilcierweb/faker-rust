@@ -14,7 +14,8 @@ pub fn character() -> String {
 pub fn catch_phrase() -> String {
     fetch_locale("how_i_met_your_mother.catch_phrases", "en")
         .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_CATCH_PHRASES).to_string())}
+        .unwrap_or_else(|| sample(FALLBACK_CATCH_PHRASES).to_string())
+}
 
 /// Generate a random HIMYM quote
 pub fn high_five() -> String {

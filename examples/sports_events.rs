@@ -1,9 +1,7 @@
 //! Sports & Events Example
 //! Demonstrates sports, world cup, and event-related generators
 
-use faker_rust::{
-    sports, world_cup, esport,
-};
+use faker_rust::{esport, sports, world_cup};
 
 fn main() {
     println!("=== Faker-Rust Sports & Events Examples ===\n");
