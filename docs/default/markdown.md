@@ -28,3 +28,15 @@ markdown::sandwich() //=> returns newline separated content of 1 header, 1 defau
 markdown::sandwich() //=> returns newline separated content of 1 header, 1 5-sentence lorem paragraph, and 1 random markdown element
 markdown::sandwich() //=> returns newline separated content of 1 header, and then 3 sections consisting of, here, 1 6-sentence lorem paragraph and 1 random markdown element. the random markdown element is chosen at random in each iteration of the paragraph-markdown pairing.
 ```
+
+## Verified Rust API examples
+
+Real outputs observed from the crate:
+
+```rust
+markdown::ordered_list() //=> "0. Quae. \n1. Architecto. \n2. Accusamus. \n"
+markdown::random(&[]) //=> "```rust\nfn main() {\n    println!(\"Hello, world!\");\n}\n```"
+markdown::sandwich(2, 2) //=> "### Header\nEum qui et molestiae facere quidem..\n* Officiis. \n"
+markdown::table() //=> "ad | et | magnam\n---- | ---- | ----\nquo | non | enim"
+markdown::unordered_list() //=> "* Commodi. \n* Esse. \n* Delectus. \n"
+```

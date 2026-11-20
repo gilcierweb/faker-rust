@@ -324,3 +324,17 @@ omniauth::auth0 #=>
   }
 }
 ```
+
+## Verified Rust API examples
+
+Auth hashes are returned as `serde_json::Value`. Real outputs observed from the crate (truncated for readability):
+
+```rust
+omniauth::google(None, None, None) //=> {"provider":"google_oauth2","uid":"436742345","info":{...},"credentials":{...},"extra":{...}}
+omniauth::facebook(None, None, None, None) //=> {"provider":"facebook","uid":"3714188","info":{...},"credentials":{...},"extra":{...}}
+omniauth::twitter(None, None, None) //=> {"provider":"twitter","uid":"799906","info":{...},"credentials":{...},"extra":{...}}
+omniauth::linkedin(None, None, None) //=> {"provider":"linkedin","uid":"227437","info":{...},"credentials":{...},"extra":{...}}
+omniauth::github(None, None, None) //=> {"provider":"github","uid":"72366887","info":{...},"credentials":{...},"extra":{...}}
+omniauth::apple(None, None, None) //=> {"provider":"apple","uid":"471562.92f5bc...","info":{...},"credentials":{...},"extra":{...}}
+omniauth::auth0(None, None, None) //=> {"provider":"auth0","uid":"auth0|bc845e7a...","info":{...},"credentials":{...},"extra":{...}}
+```

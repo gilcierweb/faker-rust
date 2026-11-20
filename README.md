@@ -39,7 +39,7 @@
 - 🌍 **Locale-Aware**: Multi-language support with fallback mechanism
 - 🎲 **Reproducible**: Seedable RNG for deterministic data generation
 - 📦 **Complete Parity**: 100% API compatibility with Ruby Faker gem
-- 🧪 **Well Tested**: 620+ unit tests ensuring reliability
+- 🧪 **Well Tested**: 920+ unit tests ensuring reliability
 - 🏢 **100+ Modules**: Internet, Person, Location, Finance, and much more
 
 ## Getting Started
@@ -211,6 +211,7 @@ To see the full list, check out the [GENERATORS](./GENERATORS.md) document.
 * While Faker generates data at random, returned values are not guaranteed to be unique by default.
 * Values can be deterministic if you use the seeded RNG feature.
 * This is the `main` branch and may contain unreleased changes. See [CHANGELOG](./CHANGELOG.md) for all versions.
+* **API parity exception:** `Faker::Version` has no Rust equivalent. The gem reads its version from the `Faker::VERSION` constant at runtime and has no locale data, so there is nothing for this crate to mirror. Every other public method documented by the Ruby Faker gem is implemented; see [GENERATORS.md](./GENERATORS.md) for the generator index and `docs/` for per-module examples.
 
 ## Deterministic Random
 

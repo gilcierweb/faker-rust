@@ -61,3 +61,12 @@ puts json2 //
     "lelah":
       {"rick":"wiza","bonita":"bayer","gardner":"auer","felicity":"abbott"}}}
 ```
+
+## Verified Rust API examples
+
+Real outputs observed from the crate:
+
+```rust
+json::add_depth_to_json("{\"a\":1}", 2) //=> "{\"a\":{\"Season\":\"Magaret\",\"Benita\":\"Sandy\"}}"
+json::shallow_json(2) //=> "{\"Frankie\":\"Nickole\",\"Maribeth\":\"Chrystal\"}"
+```

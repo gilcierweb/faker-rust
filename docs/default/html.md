@@ -33,3 +33,22 @@ html::random() //=> returns output from any single method outlined above except 
 html::sandwich() //=> returns sandwich-style html content as a string
 html::sandwich() //=> returns sandwich-style html content with 5 sentences per paragraph and repeated 3 times
 ```
+
+## Verified Rust API examples
+
+Real outputs observed from the crate:
+
+```rust
+html::code() //=> "<code>Voluptate.</code>"
+html::element("div", "hi") //=> "<div class=\"quidem\" onclick=\"vero()\">hi</div>"
+html::emphasis() //=> "<em>Tenetur laborum dolor.</em>"
+html::heading() //=> "<h6>Sunt</h6>"
+html::link("stylesheet") //=> "<link rel=\"stylesheet\" href=\"http://fahey,.net/marvis.rippin.css\">"
+html::ordered_list() //=> "<ol>\n<li>Quam.</li>\n<li>Qui.</li>\n</ol>"
+html::paragraph(2, false, 0, None) //=> "<p>Molestiae eos nesciunt aut totam reiciendis et.. Eius itaque rem ut a.</p>"
+html::random(&[]) //=> "<link rel=\"stylesheet\" href=\"http://schiller.biz/calandra.torphy.css\">"
+html::sandwich(2, 2) //=> "<h6>Voluptate</h6>\n<p>Necessitatibus fugit cumque nemo nihil dolor..</p>\n<ul>\n<li>Aut.</li>\n</ul>"
+html::script() //=> "<script src=\"http://kling-kling.net/german.gerhold.js\"></script>"
+html::table() //=> "<table>\n<thead>\n<tr>\n<th>nihil</th>\n</tr>\n</thead>\n</table>"
+html::unordered_list() //=> "<ul>\n<li>Et.</li>\n<li>Reiciendis.</li>\n</ul>"
+```

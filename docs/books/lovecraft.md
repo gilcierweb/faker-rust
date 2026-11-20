@@ -42,3 +42,17 @@ Books::lovecraft::paragraphs() //=> ["Hideous amorphous manuscript antediluvian 
 Books::lovecraft::paragraph_by_chars() //=> "Truffaut stumptown trust fund 8-bit messenger bag portland. Meh kombucha selvage swag biodiesel. Lomo kinfolk jean shorts asymmetrical diy. Wayfarers portland twee stumptown. Wes anderson biodiesel retro 90's pabst. Diy echo 90's mixtape semiotics. Cornho."
 Books::lovecraft::paragraph_by_chars() //=> "Hella kogi blog narwhal sartorial selfies mustache schlitz. Bespoke normcore kitsch cred hella fixie. Park aesthetic fixie migas twee. Cliche mustache brunch tumblr fixie godard. Drinking pop-up synth hoodie dreamcatcher typewriter. Kitsch biodiesel green."
 ```
+
+## Verified Rust API examples
+
+Real outputs observed from the crate:
+
+```rust
+lovecraft::fhtagn(1) //=> "Ph'nglui mglw'nafh Cthulhu R'lyeh wgah'nagl fhtagn"
+lovecraft::words(3, false) //=> ["cyclopean", "daemoniac", "foetid"]
+lovecraft::sentence(4, 0, false) //=> "Stygian tentacles gibbous cat."
+lovecraft::sentences(2) //=> ["Dank manuscript gambrel.", "Abnormal ululate daemoniac."]
+lovecraft::paragraph(3, 1) //=> "Noisome eldritch blasphemous. Fungus tentacles unnamable. Gambrel iridescence unnamable."
+lovecraft::paragraphs(2) //=> ["Gibbering stench swarthy. Nameless fungus hideous. Comprehension singular ululate.", "Indescribable iridescence loathsome. Swarthy antediluvian mortal. Manuscript fainted lurk."]
+lovecraft::paragraph_by_chars(120) //=> "Immemorial unnamable unmentionable. Indescribable accursed stench. Ululate shunned fungus. Cyclopean ululate furtive. N."
+```

@@ -51,3 +51,24 @@ config::locale = 'en-gb'
 idnumber::valid() //=> "aj405924a"
 idnumber::invalid() //=> "bg316764w"
 
+
+## Verified Rust API examples
+
+Real outputs observed from the crate:
+
+```rust
+id_number::spanish_citizen_number() //=> "44422328-J"
+id_number::spanish_foreign_citizen_number() //=> "Y-2453517-Y"
+id_number::valid_south_african_id_number() //=> "6812097778189"
+id_number::invalid_south_african_id_number() //=> "3115761768087"
+id_number::brazilian_citizen_number(false) //=> "27843388001"
+id_number::brazilian_citizen_number(true) //=> "132.852.626-72"
+id_number::brazilian_id(false) //=> "180270941"
+id_number::brazilian_id(true) //=> "20.242.252-5"
+id_number::chilean_id() //=> "03107606-4"
+id_number::croatian_id(false) //=> "17181325100"
+id_number::croatian_id(true) //=> "HR92171948475"
+id_number::danish_id_number(false) //=> "1706753940"
+id_number::danish_id_number(true) //=> "140592-1334"
+id_number::french_insee_number() //=> "262033696544706"
+```
