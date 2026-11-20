@@ -1,5 +1,9 @@
 //! Quotes generator - generates famous quotes
 
+pub mod chiquito;
+pub mod rajnikanth;
+pub mod shakespeare;
+
 use crate::base::sample;
 use crate::locale::fetch_locale;
 
@@ -113,5 +117,26 @@ mod tests {
     #[test]
     fn test_movie() {
         assert!(!movie().is_empty());
+    }
+
+    #[test]
+    fn test_chiquito_generators_resolve_from_locale() {
+        assert!(!crate::quotes::chiquito::expression().is_empty());
+        assert!(!crate::quotes::chiquito::term().is_empty());
+        assert!(!crate::quotes::chiquito::joke().is_empty());
+        assert!(!crate::quotes::chiquito::sentence().is_empty());
+    }
+
+    #[test]
+    fn test_rajnikanth_joke_resolves_from_locale() {
+        assert!(!crate::quotes::rajnikanth::joke().is_empty());
+    }
+
+    #[test]
+    fn test_shakespeare_generators_resolve_from_locale() {
+        assert!(!crate::quotes::shakespeare::hamlet_quote().is_empty());
+        assert!(!crate::quotes::shakespeare::as_you_like_it_quote().is_empty());
+        assert!(!crate::quotes::shakespeare::king_richard_iii_quote().is_empty());
+        assert!(!crate::quotes::shakespeare::romeo_and_juliet_quote().is_empty());
     }
 }

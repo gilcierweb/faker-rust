@@ -1,5 +1,7 @@
 //! Religion generator - generates religion-related data
 
+pub mod bible;
+
 use crate::base::sample;
 use crate::locale::fetch_locale;
 
@@ -155,5 +157,12 @@ mod tests {
     #[test]
     fn test_holiday() {
         assert!(!holiday().is_empty());
+    }
+
+    #[test]
+    fn test_bible_generators_resolve_from_locale() {
+        assert!(!crate::religion::bible::character().is_empty());
+        assert!(!crate::religion::bible::location().is_empty());
+        assert!(!crate::religion::bible::quote().is_empty());
     }
 }
