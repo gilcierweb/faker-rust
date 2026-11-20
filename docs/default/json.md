@@ -15,14 +15,8 @@
  it is important to note that you do not need to append your faker gem class calls
  with ``
 
-```text
-json::shallow_json(2)
-{"parliament funkadelic":"they're real, and they're spectacular.",
-  "fleetwood mac":"i'm not a lesbian. i hate men, but i'm not a lesbian.",
-  "the roots":"it became very clear to me sitting out there today that every decision
-  i've made in my entire life has been wrong. my life is the complete opposite of everything
-  i want it to be. every instinct i have, in every aspect of life, be it something to wear,
-  something to eat - it's all been wrong."}
+```rust
+json::shallow_json(2) //=> "{\"parliament funkadelic\":\"they're real, and they're spectacular.\",\"fleetwood mac\":\"i'm not a lesbian. i hate men, but i'm not a lesbian.\",\"the roots\":\"it became very clear to me sitting out there today that every decision i've made in my entire life has been wrong...\"}"
 ```
 
 **add_depth_to_json()** -> json

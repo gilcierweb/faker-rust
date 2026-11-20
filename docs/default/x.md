@@ -54,10 +54,10 @@ x::user =>
 
 produces a random x tweet with default attributes. available extensions can be returned with `include_media` and `include_user`:
 
-```text
+```rust
 x::tweet() //=> { data: [{:id=>"8821452687517076614", :text=>"ea et laboriosam vel non.",...
-x::tweet() # includes user attributes
-x::tweet() # includes media (photo) attributes
+x::tweet() //=> includes user attributes
+x::tweet() //=> includes media (photo) attributes
 ```
 
 example outputs:
