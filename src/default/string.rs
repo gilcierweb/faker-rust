@@ -47,6 +47,15 @@ mod tests {
     }
 
     #[test]
+    fn test_random_deterministic_with_seed() {
+        FakerConfig::set_seed(7);
+        let first = random(24);
+        FakerConfig::set_seed(7);
+        let second = random(24);
+        assert_eq!(first, second);
+    }
+
+    #[test]
     fn test_uppercase() {
         let s = uppercase(10);
         assert_eq!(s.len(), 10);

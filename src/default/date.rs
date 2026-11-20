@@ -102,4 +102,13 @@ mod tests {
             assert!(d >= parse(start) && d <= parse(end), "date {d}");
         }
     }
+
+    #[test]
+    fn backward_is_deterministic_with_seed() {
+        crate::config::FakerConfig::set_seed(11);
+        let first = backward(Some(30), None, None);
+        crate::config::FakerConfig::set_seed(11);
+        let second = backward(Some(30), None, None);
+        assert_eq!(first, second);
+    }
 }

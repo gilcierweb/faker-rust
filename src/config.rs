@@ -145,4 +145,13 @@ mod tests {
         }
         assert!(saw_max, "rand_range(1, 10) must be able to return 10");
     }
+
+    #[test]
+    fn test_set_seed_deterministic() {
+        FakerConfig::set_seed(42);
+        let first = FakerConfig::current().rand_u32(1_000_000);
+        FakerConfig::set_seed(42);
+        let second = FakerConfig::current().rand_u32(1_000_000);
+        assert_eq!(first, second, "same seed must produce the same sequence");
+    }
 }
