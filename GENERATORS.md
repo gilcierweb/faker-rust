@@ -21,7 +21,7 @@ Generate email addresses, passwords, domains, etc.
 - [faker_rust::Json](/docs/default/json.md)
 - [faker_rust::Hacker](/docs/default/hacker.md)
 - [faker_rust::Internet](/docs/default/internet.md)
-- [faker_rust::InternetHttp](/docs/default/internet_http.md)
+- [faker_rust::InternetHttp](/docs/internet/http.md)
 - [faker_rust::Markdown](/docs/default/markdown.md)
 - [faker_rust::ProgrammingLanguage](/docs/default/programming_language.md)
 - [faker_rust::Omniauth](/docs/default/omniauth.md)
