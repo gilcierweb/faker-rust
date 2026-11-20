@@ -12,7 +12,7 @@ pub fn character() -> String {
 
 /// Generate a random One Piece devil fruit
 pub fn devil_fruit() -> String {
-    fetch_locale("one_piece.devil_fruits", "en")
+    fetch_locale("one_piece.akuma_no_mi", "en")
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_DEVIL_FRUITS).to_string())
 }

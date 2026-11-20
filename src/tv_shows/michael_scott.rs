@@ -12,9 +12,7 @@ pub fn quote() -> String {
 
 /// Generate a random Michael Scott business idea
 pub fn business_idea() -> String {
-    fetch_locale("michael_scott.business_ideas", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_BUSINESS_IDEAS).to_string())
+    sample(FALLBACK_BUSINESS_IDEAS).to_string()
 }
 
 // Fallback data

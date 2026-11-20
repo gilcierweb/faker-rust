@@ -172,11 +172,10 @@ pub fn fetch_locale_with_context(
         }
 
         // 3. If we have a context_category, try using it as the subdir directly.
-        if let Some(cat) = context_category {
-            if let Some(result) = try_subdir(loc, cat, key, context_category) {
+        if let Some(cat) = context_category
+            && let Some(result) = try_subdir(loc, cat, key, context_category) {
                 return Some(result);
             }
-        }
 
         // 4. Try fallback subdir with second part of key
         let subdir_key = format!("{}_{}", loc, key.split('.').nth(1).unwrap_or("name"));
@@ -322,6 +321,28 @@ fn extract_nested_array_raw(data: &Value, key: &str) -> Option<Vec<String>> {
     match current {
         Value::Array(seq) => extract_strings_raw(seq),
         Value::String(s) => Some(vec![s.clone()]),
+        Value::Object(map) => {
+            // Flatten one level: collect strings from every array- or
+            // string-valued child (e.g. airport.cities, dune.quotes).
+            let mut out = Vec::new();
+            for v in map.values() {
+                match v {
+                    Value::Array(seq) => {
+                        out.extend(seq.iter().filter_map(|x| match x {
+                            Value::String(s) => Some(s.clone()),
+                            _ => None,
+                        }));
+                    }
+                    Value::String(s) => out.push(s.clone()),
+                    _ => {}
+                }
+            }
+            if out.is_empty() {
+                None
+            } else {
+                Some(out)
+            }
+        }
         _ => None,
     }
 }
@@ -687,5 +708,5 @@ mod tests {
             matches!(data.get("en_name"), Some(Value::Object(_))),
             "en_name must parse as a mapping"
         );
-    }
+}
 }

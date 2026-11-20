@@ -5,7 +5,7 @@ use crate::locale::fetch_locale;
 
 /// Generate a random USA driving license number for a specific state
 pub fn usa(state: &str) -> String {
-    let key = format!("driving_license.{}", state);
+    let key = format!("driving_licence.usa.{}", state);
     fetch_locale(&key, "en")
         .map(|v| sample(&v))
         .unwrap_or_else(|| "123456789".to_string())

@@ -5,23 +5,21 @@ use crate::locale::fetch_locale;
 
 /// Generate a random Super Smash Bros fighter
 pub fn fighter() -> String {
-    fetch_locale("super_smash_bros.fighters", "en")
+    fetch_locale("games.super_smash_bros.fighter", "en")
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_FIGHTERS).to_string())
 }
 
 /// Generate a random Super Smash Bros stage
 pub fn stage() -> String {
-    fetch_locale("super_smash_bros.stages", "en")
+    fetch_locale("games.super_smash_bros.stage", "en")
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_STAGES).to_string())
 }
 
 /// Generate a random Super Smash Bros item
 pub fn item() -> String {
-    fetch_locale("super_smash_bros.items", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_ITEMS).to_string())
+    sample(FALLBACK_ITEMS).to_string()
 }
 
 // Fallback data

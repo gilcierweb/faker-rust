@@ -12,7 +12,7 @@ pub fn book() -> String {
 
 /// Generate a random Culture Series ship name
 pub fn ship() -> String {
-    fetch_locale("culture_series.ships", "en")
+    fetch_locale("culture_series.culture_ships", "en")
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_SHIPS).to_string())
 }

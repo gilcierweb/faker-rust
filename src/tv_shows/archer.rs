@@ -19,9 +19,7 @@ pub fn quote() -> String {
 
 /// Generate a random Sterling Archer catchphrase
 pub fn catch_phrase() -> String {
-    fetch_locale("archer.catch_phrases", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_CATCH_PHRASES).to_string())
+    sample(FALLBACK_CATCH_PHRASES).to_string()
 }
 
 // Fallback data

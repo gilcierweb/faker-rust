@@ -5,7 +5,7 @@ use crate::locale::fetch_locale;
 
 /// Generate a random rock band name
 pub fn name() -> String {
-    fetch_locale("rock_band.names", "en")
+    fetch_locale("rock_band.name", "en")
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_NAMES).to_string())
 }

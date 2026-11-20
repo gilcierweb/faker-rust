@@ -5,28 +5,28 @@ use crate::locale::fetch_locale;
 
 /// Generate a random FFXIV character
 pub fn character() -> String {
-    fetch_locale("final_fantasy_xiv.characters", "en")
+    fetch_locale("games.final_fantasy_xiv.characters", "en")
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_CHARACTERS).to_string())
 }
 
 /// Generate a random FFXIV job/class
 pub fn job() -> String {
-    fetch_locale("final_fantasy_xiv.jobs", "en")
+    fetch_locale("games.final_fantasy_xiv.jobs", "en")
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_JOBS).to_string())
 }
 
 /// Generate a random FFXIV race
 pub fn race() -> String {
-    fetch_locale("final_fantasy_xiv.races", "en")
+    fetch_locale("games.final_fantasy_xiv.races", "en")
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_RACES).to_string())
 }
 
 /// Generate a random FFXIV location
 pub fn location() -> String {
-    fetch_locale("final_fantasy_xiv.locations", "en")
+    fetch_locale("games.final_fantasy_xiv.zones", "en")
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_LOCATIONS).to_string())
 }
@@ -81,14 +81,7 @@ const FALLBACK_JOBS: &[&str] = &[
 ];
 
 const FALLBACK_RACES: &[&str] = &[
-    "Hyur",
-    "Elezen",
-    "Lalafell",
-    "Miqo'te",
-    "Roegadyn",
-    "Au Ra",
-    "Hrothgar",
-    "Viera",
+    "Hyur", "Elezen", "Lalafell", "Miqo'te", "Roegadyn", "Au Ra", "Hrothgar", "Viera",
 ];
 
 const FALLBACK_LOCATIONS: &[&str] = &[

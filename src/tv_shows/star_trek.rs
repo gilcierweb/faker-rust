@@ -19,7 +19,7 @@ pub fn location() -> String {
 
 /// Generate a random Star Trek species
 pub fn species() -> String {
-    fetch_locale("star_trek.species", "en")
+    fetch_locale("star_trek.specie", "en")
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_SPECIES).to_string())
 }

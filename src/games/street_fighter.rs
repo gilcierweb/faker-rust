@@ -5,28 +5,28 @@ use crate::locale::fetch_locale;
 
 /// Generate a random Street Fighter character
 pub fn character() -> String {
-    fetch_locale("street_fighter.characters", "en")
+    fetch_locale("games.street_fighter.characters", "en")
         .map(|v| sample(&v))
         .unwrap_or_else(|| "Ryu".to_string())
 }
 
 /// Generate a random Street Fighter stage
 pub fn stage() -> String {
-    fetch_locale("street_fighter.stages", "en")
+    fetch_locale("games.street_fighter.stages", "en")
         .map(|v| sample(&v))
         .unwrap_or_else(|| "Suzaku Castle".to_string())
 }
 
 /// Generate a random Street Fighter quote
 pub fn quote() -> String {
-    fetch_locale("street_fighter.quotes", "en")
+    fetch_locale("games.street_fighter.quotes", "en")
         .map(|v| sample(&v))
         .unwrap_or_else(|| "You must defeat Sheng Long to stand a chance.".to_string())
 }
 
 /// Generate a random Street Fighter move
 pub fn move_name() -> String {
-    fetch_locale("street_fighter.moves", "en")
+    fetch_locale("games.street_fighter.moves", "en")
         .map(|v| sample(&v))
         .unwrap_or_else(|| "Hadoken".to_string())
 }

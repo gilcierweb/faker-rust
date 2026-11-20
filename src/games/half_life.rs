@@ -5,21 +5,21 @@ use crate::locale::fetch_locale;
 
 /// Generate a random Half-Life character
 pub fn character() -> String {
-    fetch_locale("half_life.character", "en")
+    fetch_locale("games.half_life.character", "en")
         .map(|v| sample(&v))
         .unwrap_or_else(|| "Gordon Freeman".to_string())
 }
 
 /// Generate a random Half-Life enemy
 pub fn enemy() -> String {
-    fetch_locale("half_life.enemy", "en")
+    fetch_locale("games.half_life.enemy", "en")
         .map(|v| sample(&v))
         .unwrap_or_else(|| "Headcrab".to_string())
 }
 
 /// Generate a random Half-Life location
 pub fn location() -> String {
-    fetch_locale("half_life.location", "en")
+    fetch_locale("games.half_life.location", "en")
         .map(|v| sample(&v))
         .unwrap_or_else(|| "Black Mesa".to_string())
 }

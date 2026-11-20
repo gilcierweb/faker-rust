@@ -5,35 +5,35 @@ use crate::locale::fetch_locale;
 
 /// Generate a random Witcher character
 pub fn character() -> String {
-    fetch_locale("witcher.characters", "en")
+    fetch_locale("games.witcher.characters", "en")
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_CHARACTERS).to_string())
 }
 
 /// Generate a random Witcher location
 pub fn location() -> String {
-    fetch_locale("witcher.locations", "en")
+    fetch_locale("games.witcher.locations", "en")
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_LOCATIONS).to_string())
 }
 
 /// Generate a random Witcher monster
 pub fn monster() -> String {
-    fetch_locale("witcher.monsters", "en")
+    fetch_locale("games.witcher.monsters", "en")
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_MONSTERS).to_string())
 }
 
 /// Generate a random Witcher school
 pub fn school() -> String {
-    fetch_locale("witcher.schools", "en")
+    fetch_locale("games.witcher.schools", "en")
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_SCHOOLS).to_string())
 }
 
 /// Generate a random Witcher quote
 pub fn quote() -> String {
-    fetch_locale("witcher.quotes", "en")
+    fetch_locale("games.witcher.quotes", "en")
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_QUOTES).to_string())
 }

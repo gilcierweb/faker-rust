@@ -5,14 +5,14 @@ use crate::locale::fetch_locale;
 
 /// Generate a random volleyball team
 pub fn team() -> String {
-    fetch_locale("volleyball.teams", "en")
+    fetch_locale("volleyball.team", "en")
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_TEAMS).to_string())
 }
 
 /// Generate a random volleyball player
 pub fn player() -> String {
-    fetch_locale("volleyball.players", "en")
+    fetch_locale("volleyball.player", "en")
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_PLAYERS).to_string())
 }

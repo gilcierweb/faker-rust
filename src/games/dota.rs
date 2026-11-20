@@ -5,35 +5,35 @@ use crate::locale::fetch_locale;
 
 /// Generate a random Dota 2 hero
 pub fn hero() -> String {
-    fetch_locale("dota.hero", "en")
+    fetch_locale("games.dota.hero", "en")
         .map(|v| sample(&v))
         .unwrap_or_else(|| "Anti-Mage".to_string())
 }
 
 /// Generate a random Dota 2 item
 pub fn item() -> String {
-    fetch_locale("dota.item", "en")
+    fetch_locale("games.dota.item", "en")
         .map(|v| sample(&v))
         .unwrap_or_else(|| "Blink Dagger".to_string())
 }
 
 /// Generate a random Dota 2 team
 pub fn team() -> String {
-    fetch_locale("dota.team", "en")
+    fetch_locale("games.dota.team", "en")
         .map(|v| sample(&v))
         .unwrap_or_else(|| "OG".to_string())
 }
 
 /// Generate a random Dota 2 player
 pub fn player() -> String {
-    fetch_locale("dota.player", "en")
+    fetch_locale("games.dota.player", "en")
         .map(|v| sample(&v))
         .unwrap_or_else(|| "N0tail".to_string())
 }
 
 /// Generate a random Dota 2 building name
 pub fn building() -> String {
-    fetch_locale("dota.building", "en")
+    fetch_locale("games.dota.building", "en")
         .map(|v| sample(&v))
         .unwrap_or_else(|| "Ancient".to_string())
 }

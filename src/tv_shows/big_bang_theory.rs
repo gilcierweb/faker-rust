@@ -19,9 +19,7 @@ pub fn quote() -> String {
 
 /// Generate a random Big Bang Theory item/gadget
 pub fn gadget() -> String {
-    fetch_locale("big_bang_theory.gadgets", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_GADGETS).to_string())
+    sample(FALLBACK_GADGETS).to_string()
 }
 
 // Fallback data

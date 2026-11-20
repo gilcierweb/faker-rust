@@ -5,21 +5,21 @@ use crate::locale::fetch_locale;
 
 /// Generate a random Prince song
 pub fn song() -> String {
-    fetch_locale("prince.songs", "en")
+    fetch_locale("prince.song", "en")
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_SONGS).to_string())
 }
 
 /// Generate a random Prince album
 pub fn album() -> String {
-    fetch_locale("prince.albums", "en")
+    fetch_locale("prince.album", "en")
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_ALBUMS).to_string())
 }
 
 /// Generate a random Prince side project/band
 pub fn band() -> String {
-    fetch_locale("prince.bands", "en")
+    fetch_locale("prince.band", "en")
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_BANDS).to_string())
 }

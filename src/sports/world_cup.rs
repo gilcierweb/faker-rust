@@ -5,23 +5,17 @@ use crate::locale::fetch_locale;
 
 /// Generate a random FIFA World Cup year
 pub fn year() -> String {
-    fetch_locale("world_cup.years", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_YEARS).to_string())
+    sample(FALLBACK_YEARS).to_string()
 }
 
 /// Generate a random FIFA World Cup host
 pub fn host() -> String {
-    fetch_locale("world_cup.hosts", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_HOSTS).to_string())
+    sample(FALLBACK_HOSTS).to_string()
 }
 
 /// Generate a random FIFA World Cup winner
 pub fn winner() -> String {
-    fetch_locale("world_cup.winners", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_WINNERS).to_string())
+    sample(FALLBACK_WINNERS).to_string()
 }
 
 /// Generate a random FIFA World Cup stadium

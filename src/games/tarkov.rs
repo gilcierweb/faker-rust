@@ -26,9 +26,7 @@ pub fn item() -> String {
 
 /// Generate a random Tarkov ammunition type
 pub fn ammo() -> String {
-    fetch_locale("tarkov.ammo", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| sample(FALLBACK_AMMO).to_string())
+    sample(FALLBACK_AMMO).to_string()
 }
 
 /// Generate a random Tarkov faction
@@ -126,14 +124,7 @@ const FALLBACK_AMMO: &[&str] = &[
     ".338 Lapua",
 ];
 
-const FALLBACK_FACTIONS: &[&str] = &[
-    "BEAR",
-    "USEC",
-    "Scavs",
-    "Raider",
-    "Boss",
-    "Rogue",
-];
+const FALLBACK_FACTIONS: &[&str] = &["BEAR", "USEC", "Scavs", "Raider", "Boss", "Rogue"];
 
 #[cfg(test)]
 mod tests {

@@ -5,23 +5,19 @@ use crate::locale::fetch_locale;
 
 /// Generate a random troop name
 pub fn troop() -> String {
-    fetch_locale("clash_of_clan.troop", "en")
+    fetch_locale("games.clash_of_clans.troops", "en")
         .map(|v| sample(&v))
         .unwrap_or_else(|| "Barbarian".to_string())
 }
 
 /// Generate a random spell name
 pub fn spell() -> String {
-    fetch_locale("clash_of_clan.spell", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| "Lightning Spell".to_string())
+    "Lightning Spell".to_string()
 }
 
 /// Generate a random building name
 pub fn building() -> String {
-    fetch_locale("clash_of_clan.building", "en")
-        .map(|v| sample(&v))
-        .unwrap_or_else(|| "Town Hall".to_string())
+    "Town Hall".to_string()
 }
 
 #[cfg(test)]
