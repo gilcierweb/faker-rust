@@ -32,7 +32,10 @@ fn main() {
     println!("  middle:   {:?}", faker_rust::name::middle_name());
 
     println!("\nTRAVEL AND VEHICLE");
-    println!("  iata:     {:?}", faker_rust::travel::airport::iata());
+    println!(
+        "  iata:     {:?}",
+        faker_rust::travel::airport::iata("large", "united_states")
+    );
     println!("  doors:    {:?}", faker_rust::vehicle::door_count());
     println!("  engine:   {:?}", faker_rust::vehicle::engine_size());
     println!("  km:       {:?}", faker_rust::vehicle::kilometrage());

@@ -3,17 +3,40 @@
 use crate::base::sample;
 use crate::locale::fetch_locale;
 
-/// Gem-compatible alias for [`iata_code`].
-pub use self::iata_code as iata;
+/// Gem-compatible generator: airport name for `region` and `size`.
+///
+/// Both arguments are required in `Faker::Travel::Airport.name(size:, region:)`.
+/// Supported regions are `united_states` and `european_union`; sizes are
+/// `large`, `medium` and `small` (the EU locale has no `small` bucket).
+pub fn name(size: &str, region: &str) -> String {
+    fetch_locale(&format!("airport.{region}.{size}"), "en")
+        .map(|v| sample(&v))
+        .unwrap_or_else(|| sample(FALLBACK_NAMES).to_string())
+}
 
-/// Generate a random airport name
-pub fn name() -> String {
+/// Gem-compatible generator: IATA code for `region` and `size`.
+///
+/// Both arguments are required in `Faker::Travel::Airport.iata(size:, region:)`.
+pub fn iata(size: &str, region: &str) -> String {
+    fetch_locale(&format!("airport.{region}.iata_code.{size}"), "en")
+        .map(|v| sample(&v))
+        .unwrap_or_else(generate_iata_code)
+}
+
+/// Generate a random airport name from the aggregate list.
+///
+/// This is a Rust convenience helper; the gem only exposes [`name`] with
+/// explicit `size` and `region` arguments.
+pub fn name_any() -> String {
     fetch_locale("airport.names", "en")
         .map(|v| sample(&v))
         .unwrap_or_else(|| sample(FALLBACK_NAMES).to_string())
 }
 
-/// Generate a random IATA airport code (3 letters)
+/// Generate a random IATA airport code (3 letters).
+///
+/// This is a Rust convenience helper; the gem only exposes [`iata`] with
+/// explicit `size` and `region` arguments.
 pub fn iata_code() -> String {
     generate_iata_code()
 }
@@ -93,7 +116,16 @@ mod tests {
 
     #[test]
     fn test_name() {
-        assert!(!name().is_empty());
+        assert!(!name("large", "united_states").is_empty());
+        assert!(!name("medium", "european_union").is_empty());
+        assert!(!name_any().is_empty());
+    }
+
+    #[test]
+    fn test_iata() {
+        let code = iata("large", "united_states");
+        assert_eq!(code.len(), 3);
+        assert!(code.chars().all(|c| c.is_ascii_uppercase()));
     }
 
     #[test]

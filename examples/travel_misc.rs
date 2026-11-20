@@ -11,7 +11,10 @@ fn main() {
 
     // Travel
     println!("✈️ TRAVEL:");
-    println!("  Airport Name:        {}", travel::airport::name());
+    println!(
+        "  Airport Name:        {}",
+        travel::airport::name("large", "united_states")
+    );
     println!("  IATA Code:           {}", travel::airport::iata_code());
     println!("  ICAO Code:           {}", travel::airport::icao_code());
     println!("  Airport City:        {}", travel::airport::city());

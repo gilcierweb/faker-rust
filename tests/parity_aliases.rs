@@ -44,7 +44,7 @@ fn parity_aliases_name() {
 
 #[test]
 fn parity_aliases_airport() {
-    assert!(!faker_rust::travel::airport::iata().is_empty());
+    assert!(!faker_rust::travel::airport::iata("large", "united_states").is_empty());
 }
 
 #[test]
