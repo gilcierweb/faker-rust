@@ -6,7 +6,7 @@
 use once_cell::sync::Lazy;
 use serde_json::Value;
 use serde_saphyr::{DuplicateKeyPolicy, from_str_with_options, options};
-use std::collections::HashMap;
+use std::collections::{HashMap, HashSet};
 use std::env;
 use std::fs;
 use std::path::{Path, PathBuf};
@@ -127,40 +127,6 @@ pub fn sample_with_resolve(v: &[String], context_category: Option<&str>) -> Stri
 
 pub fn fetch_locale(key: &str, locale: &str) -> Option<Vec<String>> {
     fetch_locale_with_context(key, locale, None)
-}
-
-fn fetch_locale_no_resolve(
-    key: &str,
-    locale: &str,
-    context_category: Option<&str>,
-) -> Option<Vec<String>> {
-    let locales_to_try: Vec<String> = if locale.contains('_') || locale.contains('-') {
-        let short = locale.split(['-', '_']).next().unwrap();
-        vec![locale.to_string(), short.to_string()]
-    } else {
-        vec![locale.to_string()]
-    };
-
-    for loc in locales_to_try.iter() {
-        // If we have context_category, try the subdir file directly with simple key
-        if let Some(cat) = context_category {
-            let subdir_key = format!("{}_{}", loc, cat);
-            if let Some(locale_data) = LOCALE_DATA.get(&subdir_key) {
-                // Try with just the key directly
-                if let Some(result) = try_extract(locale_data, loc, key, None) {
-                    return Some(result);
-                }
-                // Try with faker prefix
-                let faker_key = format!("faker.{}.{}", cat, key);
-                if let Some(result) = try_extract(locale_data, loc, &faker_key, None) {
-                    return Some(result);
-                }
-            }
-        }
-    }
-
-    // Fallback to original fetch_locale_with_context for other cases
-    fetch_locale_with_context(key, locale, context_category)
 }
 
 pub fn fetch_locale_with_context(
@@ -426,15 +392,53 @@ fn extract_strings_raw(seq: &[Value]) -> Option<Vec<String>> {
 }
 
 fn resolve_placeholder(s: &str, context_category: Option<&str>) -> String {
-    resolve_multiple(s, context_category, 0, 10)
+    let lookup = |key: &str, ctx: Option<&str>| {
+        if let Some(v) = fetch_locale_with_context(key, "en", ctx) {
+            return Some(v);
+        }
+        if let Some(cat) = ctx {
+            let en_cat_key = format!("en_{}", cat);
+            if let Some(subdata) = LOCALE_DATA.get(&en_cat_key) {
+                if let Some(v) = extract_direct_value(subdata, key) {
+                    return Some(vec![v]);
+                }
+            }
+            let faker_lookup = format!("faker.{}.{}", cat, key);
+            if let Some(v) = fetch_locale(&faker_lookup, "en") {
+                return Some(v);
+            }
+        }
+        None
+    };
+    let mut seen = HashSet::new();
+    resolve_multiple(&lookup, s, context_category, 0, 10, &mut seen)
 }
 
-fn resolve_multiple(
+/// Pure, testable entry point for placeholder resolution.
+///
+/// `lookup` resolves a key (and optional category context) to a list of
+/// candidate strings. Cycle detection is built in: a placeholder whose inner
+/// key is already on the resolution stack resolves to `[UNRESOLVED:<inner>]`
+/// instead of recursing forever.
+pub fn resolve_placeholder_with<F>(lookup: F, s: &str, context_category: Option<&str>) -> String
+where
+    F: Fn(&str, Option<&str>) -> Option<Vec<String>>,
+{
+    let mut seen = HashSet::new();
+    resolve_multiple(&lookup, s, context_category, 0, 10, &mut seen)
+}
+
+fn resolve_multiple<F>(
+    lookup: &F,
     s: &str,
     context_category: Option<&str>,
     depth: usize,
     max_depth: usize,
-) -> String {
+    seen: &mut HashSet<String>,
+) -> String
+where
+    F: Fn(&str, Option<&str>) -> Option<Vec<String>>,
+{
     if depth >= max_depth {
         return s.to_string();
     }
@@ -443,54 +447,70 @@ fn resolve_multiple(
         return s.to_string();
     }
 
-    // Track resolution to detect loops
-    let original = s.to_string();
-    let mut result = original.clone();
+    let mut result = s.to_string();
     let mut changed = true;
+    let mut iterations = 0;
 
-    while changed && depth < max_depth {
+    while changed && iterations < max_depth {
         changed = false;
+        iterations += 1;
 
-        while let Some(start_byte) = result.find("#{") {
-            let rest = &result[start_byte + 2..];
-            let mut brace_depth = 1;
-            let mut end_byte = start_byte + 2;
+        let Some(start_byte) = result.find("#{") else {
+            break;
+        };
+        let rest = &result[start_byte + 2..];
+        let mut brace_depth = 1;
+        let mut end_byte = start_byte + 2;
 
-            for (char_idx, c) in rest.char_indices() {
-                if c == '{' {
-                    brace_depth += 1;
-                } else if c == '}' {
-                    brace_depth -= 1;
-                    if brace_depth == 0 {
-                        end_byte = start_byte + 2 + char_idx + 1;
-                        break;
-                    }
+        for (char_idx, c) in rest.char_indices() {
+            if c == '{' {
+                brace_depth += 1;
+            } else if c == '}' {
+                brace_depth -= 1;
+                if brace_depth == 0 {
+                    end_byte = start_byte + 2 + char_idx + 1;
+                    break;
                 }
             }
+        }
 
-            if brace_depth == 0 {
-                let placeholder = &result[start_byte..end_byte];
-                if let Some(inner) = placeholder.get(2..placeholder.len() - 1) {
-                    let replacement = resolve_inner(inner, context_category, depth + 1);
-                    // Check if we got back the same placeholder (infinite loop)
+        if brace_depth == 0 {
+            let placeholder = &result[start_byte..end_byte];
+            if let Some(inner) = placeholder.get(2..placeholder.len() - 1) {
+                if seen.contains(inner) {
+                    result = result.replace(placeholder, &format!("[UNRESOLVED:{}]", inner));
+                    changed = true;
+                } else {
+                    seen.insert(inner.to_string());
+                    let replacement = resolve_inner(lookup, inner, context_category, depth + 1, max_depth, seen);
+                    seen.remove(inner);
                     if replacement == placeholder {
                         result = result.replace(placeholder, &format!("[UNRESOLVED:{}]", inner));
                     } else {
                         result = result.replace(placeholder, &replacement);
                     }
                     changed = true;
-                    break;
                 }
-            } else {
-                break;
             }
+        } else {
+            break;
         }
     }
 
     result
 }
 
-fn resolve_inner(inner: &str, context_category: Option<&str>, depth: usize) -> String {
+fn resolve_inner<F>(
+    lookup: &F,
+    inner: &str,
+    context_category: Option<&str>,
+    depth: usize,
+    max_depth: usize,
+    seen: &mut HashSet<String>,
+) -> String
+where
+    F: Fn(&str, Option<&str>) -> Option<Vec<String>>,
+{
     if depth > 3 {
         return format!("[{}]", inner);
     }
@@ -502,20 +522,21 @@ fn resolve_inner(inner: &str, context_category: Option<&str>, depth: usize) -> S
             let cat = parts[0].to_lowercase();
             let field = parts[1].to_lowercase();
 
-            // Use fetch_locale_with_context to get proper context lookup
-            if let Some(result) = fetch_locale_with_context(&field, "en", Some(&cat))
-                && !result.is_empty()
-            {
-                use crate::config::FakerConfig;
-                let config = FakerConfig::current();
-                let idx = config.rand_usize(result.len());
-                let v = result[idx].clone();
-                return resolve_multiple(&v, context_category, depth + 1, 10);
+            if let Some(result) = lookup(&field, Some(&cat)) {
+                if !result.is_empty() {
+                    use crate::config::FakerConfig;
+                    let config = FakerConfig::current();
+                    let idx = config.rand_usize(result.len());
+                    let v = result[idx].clone();
+                    if v.contains("#{") {
+                        return resolve_multiple(lookup, &v, context_category, depth + 1, max_depth, seen);
+                    }
+                    return v;
+                }
             }
         }
     } else {
         // Simple key (no dot notation) - try multiple common contexts
-        // to find where this key belongs
         let contexts_to_try: Vec<&str> = if let Some(cat) = context_category {
             vec![cat, "name", "address", "company", "internet"]
         } else {
@@ -523,14 +544,17 @@ fn resolve_inner(inner: &str, context_category: Option<&str>, depth: usize) -> S
         };
 
         for cat in contexts_to_try {
-            if let Some(result) = fetch_locale_with_context(inner, "en", Some(cat))
-                && !result.is_empty()
-            {
-                use crate::config::FakerConfig;
-                let config = FakerConfig::current();
-                let idx = config.rand_usize(result.len());
-                let v = result[idx].clone();
-                return resolve_multiple(&v, context_category, depth + 1, 10);
+            if let Some(result) = lookup(inner, Some(cat)) {
+                if !result.is_empty() {
+                    use crate::config::FakerConfig;
+                    let config = FakerConfig::current();
+                    let idx = config.rand_usize(result.len());
+                    let v = result[idx].clone();
+                    if v.contains("#{") {
+                        return resolve_multiple(lookup, &v, context_category, depth + 1, max_depth, seen);
+                    }
+                    return v;
+                }
             }
         }
     }
@@ -538,52 +562,6 @@ fn resolve_inner(inner: &str, context_category: Option<&str>, depth: usize) -> S
     inner.to_string()
 }
 
-fn resolve_simple(s: &str, context_category: Option<&str>) -> String {
-    // If no placeholder, return as-is
-    if !(s.starts_with("#{") && s.ends_with('}')) {
-        return s.to_string();
-    }
-
-    // Extract inner part
-    let inner = &s[2..s.len() - 1];
-
-    // Handle dot notation like "name.first_name" or "Name.first_name"
-    if inner.contains('.') {
-        let parts: Vec<&str> = inner.split('.').collect();
-        if parts.len() >= 2 {
-            let cat = parts[0].to_lowercase();
-            let field = parts[1].to_lowercase();
-            let lookup_key = format!("{}_{}", cat, field);
-
-            if let Some(values) = fetch_locale_with_context(&lookup_key, "en", None) {
-                return values.first().cloned().unwrap_or_else(|| inner.to_string());
-            }
-
-            // Try en_name.yml, en_address.yml directly
-            let en_cat_key = format!("en_{}", cat);
-            if let Some(subdata) = LOCALE_DATA.get(&en_cat_key)
-                && let Some(v) = extract_direct_value(subdata, &field)
-            {
-                return v;
-            }
-        }
-    }
-
-    // Simple case - try with context
-    if let Some(cat) = context_category {
-        // First, try just the inner key directly (not prefixed) - but without recursive resolution
-        if let Some(values) = fetch_locale_no_resolve(inner, "en", Some(cat)) {
-            return values.first().cloned().unwrap_or_else(|| inner.to_string());
-        }
-    }
-
-    // Try without context
-    if let Some(values) = fetch_locale_with_context(inner, "en", None) {
-        return values.first().cloned().unwrap_or_else(|| inner.to_string());
-    }
-
-    inner.to_string()
-}
 
 fn extract_direct_value(data: &Value, field: &str) -> Option<String> {
     if let Value::Object(top) = data {
@@ -622,138 +600,6 @@ fn extract_direct_value(data: &Value, field: &str) -> Option<String> {
         }
     }
     None
-}
-
-fn resolve_placeholder_recursive(
-    s: &str,
-    context_category: Option<&str>,
-    depth: usize,
-    max_depth: usize,
-) -> String {
-    if depth >= max_depth {
-        return s.to_string();
-    }
-
-    // Handle multiple placeholders like "#{foo}#{bar}"
-    if s.contains("#{") {
-        if depth >= max_depth {
-            return s.to_string();
-        }
-
-        let mut result = s.to_string();
-        // Keep replacing until no more placeholders or max depth
-        loop {
-            let placeholder_start = result.find("#{");
-            if placeholder_start.is_none() {
-                break;
-            }
-            let after_start = &result[placeholder_start.unwrap()..];
-            let placeholder_end = after_start.find('}');
-            if placeholder_end.is_none() {
-                break;
-            }
-
-            let full_placeholder = &after_start[..placeholder_end.unwrap() + 1];
-            let inner = &full_placeholder[2..full_placeholder.len() - 1];
-
-            let replacement = resolve_single_placeholder(inner, context_category, depth, max_depth);
-
-            // Check if replacement still contains placeholders and we can recurse
-            if replacement.contains("#{") && depth < max_depth - 1 {
-                let resolved = resolve_placeholder_recursive(
-                    &replacement,
-                    context_category,
-                    depth + 1,
-                    max_depth,
-                );
-                result = result.replace(full_placeholder, &resolved);
-            } else {
-                result = result.replace(full_placeholder, &replacement);
-            }
-
-            // Safety check to prevent infinite loops
-            if depth > 5 {
-                break;
-            }
-        }
-        return result;
-    }
-
-    // Handle single placeholder
-    if s.starts_with("#{") && s.ends_with('}') {
-        let inner = &s[2..s.len() - 1];
-        resolve_single_placeholder(inner, context_category, depth, max_depth)
-    } else {
-        s.to_string()
-    }
-}
-
-fn resolve_single_placeholder(
-    inner: &str,
-    context_category: Option<&str>,
-    depth: usize,
-    max_depth: usize,
-) -> String {
-    // Handle cases like "Name.first_name" or "name.first_name"
-    let parts: Vec<&str> = inner.split('.').collect();
-    if parts.len() >= 2 {
-        let cat = parts[0].to_lowercase();
-        let field = parts[1].to_lowercase();
-        let lookup_key = format!("{}_{}", cat, field);
-
-        if let Some(values) = fetch_locale_with_context(&lookup_key, "en", None)
-            && let Some(v) = values.first()
-        {
-            if depth < max_depth - 1 && v.contains("#{") {
-                return resolve_placeholder_recursive(v, context_category, depth + 1, max_depth);
-            }
-            return v.to_string();
-        }
-
-        let en_cat_key = format!("en_{}", cat);
-        if let Some(subdata) = LOCALE_DATA.get(&en_cat_key)
-            && let Some(v) = extract_nested_value_simple(subdata, &field)
-        {
-            if depth < max_depth - 1 && v.contains("#{") {
-                return resolve_placeholder_recursive(&v, context_category, depth + 1, max_depth);
-            }
-            return v;
-        }
-
-        let faker_lookup = format!("faker.{}.{}", cat, field);
-        if let Some(values) = fetch_locale(&faker_lookup, "en")
-            && let Some(v) = values.first()
-        {
-            if depth < max_depth - 1 && v.contains("#{") {
-                return resolve_placeholder_recursive(v, context_category, depth + 1, max_depth);
-            }
-            return v.to_string();
-        }
-    }
-
-    // Simple case like "first_name", "city_prefix"
-    if let Some(cat) = context_category {
-        let key = format!("{}_{}", cat, inner);
-        if let Some(values) = fetch_locale_with_context(&key, "en", Some(cat))
-            && let Some(v) = values.first()
-        {
-            if depth < max_depth - 1 && v.contains("#{") {
-                return resolve_placeholder_recursive(v, context_category, depth + 1, max_depth);
-            }
-            return v.to_string();
-        }
-    }
-
-    if let Some(values) = fetch_locale_with_context(inner, "en", None)
-        && let Some(v) = values.first()
-    {
-        if depth < max_depth - 1 && v.contains("#{") {
-            return resolve_placeholder_recursive(v, context_category, depth + 1, max_depth);
-        }
-        return v.to_string();
-    }
-
-    inner.to_string()
 }
 
 fn extract_nested_value_simple(data: &Value, field: &str) -> Option<String> {
@@ -1066,6 +912,40 @@ mod tests {
         assert!(sample_with_resolve(&[], None).is_empty());
         let picked = sample_with_resolve(&["alpha".to_string(), "beta".to_string()], None);
         assert!(picked == "alpha" || picked == "beta");
+    }
+
+    #[test]
+    fn test_resolve_placeholder_terminates_on_cycle() {
+        use std::collections::HashMap;
+        crate::config::FakerConfig::set_seed(0);
+        let data = [
+            ("a".to_string(), vec!["#{b}".to_string()]),
+            ("b".to_string(), vec!["#{a}".to_string()]),
+        ]
+        .into_iter()
+        .collect::<HashMap<_, _>>();
+        let lookup = |k: &str, _: Option<&str>| data.get(k).cloned();
+        let out = resolve_placeholder_with(lookup, "#{a}", Some("name"));
+        assert!(
+            !out.contains("#{"),
+            "cycle must be marked unresolved, got {out}"
+        );
+        assert!(out.contains("[UNRESOLVED:"), "got {out}");
+    }
+
+    #[test]
+    fn test_resolve_placeholder_terminates_on_self_reference() {
+        use std::collections::HashMap;
+        crate::config::FakerConfig::set_seed(0);
+        let data = [("a".to_string(), vec!["prefix#{a}suffix".to_string()])]
+            .into_iter()
+            .collect::<HashMap<_, _>>();
+        let lookup = |k: &str, _: Option<&str>| data.get(k).cloned();
+        let out = resolve_placeholder_with(lookup, "#{a}", Some("name"));
+        assert!(
+            !out.contains("#{"),
+            "self-reference must be marked, got {out}"
+        );
     }
 
     #[test]
