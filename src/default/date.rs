@@ -1,15 +1,27 @@
 //! Date and time generator - generates random dates and times
 
-use chrono::{Duration, NaiveDate, Utc};
+use time::format_description::well_known::Iso8601;
+use time::{Date, Duration, Month, OffsetDateTime};
+
+/// Format a date as `YYYY-MM-DD`.
+fn format_date(date: Date) -> String {
+    date.format(&Iso8601::DATE)
+        .unwrap_or_else(|_| "1970-01-01".to_string())
+}
+
+/// Parse a `YYYY-MM-DD` date, falling back to today on invalid input.
+fn parse_or_today(value: &str) -> Date {
+    Date::parse(value, &Iso8601::DATE).unwrap_or_else(|_| OffsetDateTime::now_utc().date())
+}
 
 /// Generate a random date in the past
 pub fn backward(days: Option<i64>, _from: Option<&str>, _to: Option<&str>) -> String {
     let days_back = days.unwrap_or(365);
     let config = crate::config::FakerConfig::current();
     let offset = config.rand_range(0, days_back.max(0) as u32) as i64;
-    let today = Utc::now().date_naive();
-    let target = today - Duration::try_days(offset).unwrap_or_default();
-    target.format("%Y-%m-%d").to_string()
+    let today = OffsetDateTime::now_utc().date();
+    let target = today.checked_sub(Duration::days(offset)).unwrap_or(today);
+    format_date(target)
 }
 
 /// Generate a random date in the future
@@ -17,26 +29,27 @@ pub fn forward(days: Option<i64>, _from: Option<&str>, _to: Option<&str>) -> Str
     let days_forward = days.unwrap_or(365);
     let config = crate::config::FakerConfig::current();
     let offset = config.rand_range(0, days_forward.max(0) as u32) as i64;
-    let today = Utc::now().date_naive();
-    let target = today + Duration::try_days(offset).unwrap_or_default();
-    target.format("%Y-%m-%d").to_string()
+    let today = OffsetDateTime::now_utc().date();
+    let target = today.checked_add(Duration::days(offset)).unwrap_or(today);
+    format_date(target)
 }
 
 /// Generate a random date between two dates
 pub fn between(from: &str, to: &str) -> String {
-    let start =
-        NaiveDate::parse_from_str(from, "%Y-%m-%d").unwrap_or_else(|_| Utc::now().date_naive());
-    let end = NaiveDate::parse_from_str(to, "%Y-%m-%d").unwrap_or_else(|_| Utc::now().date_naive());
+    let start = parse_or_today(from);
+    let end = parse_or_today(to);
 
     let config = crate::config::FakerConfig::current();
-    let range = (end - start).num_days();
+    let range = (end - start).whole_days();
     if range <= 0 {
         return from.to_string();
     }
 
     let days_offset = config.rand_range(0, range as u32) as i64;
-    let target = start + Duration::try_days(days_offset).unwrap();
-    target.format("%Y-%m-%d").to_string()
+    let target = start
+        .checked_add(Duration::days(days_offset))
+        .unwrap_or(start);
+    format_date(target)
 }
 
 /// Generate a random birthday
@@ -46,17 +59,18 @@ pub fn birthday(min_age: Option<i32>, max_age: Option<i32>) -> String {
     let max = max_age.unwrap_or(65) as u32;
     let age = config.rand_range(min, max);
 
-    let today = Utc::now().date_naive();
-    let days_in_year = 365;
+    let today = OffsetDateTime::now_utc().date();
 
     // Approximate birthday calculation
-    let year = today.format("%Y").to_string().parse::<i32>().unwrap() - age as i32;
-    let day_of_year = config.rand_range(1, days_in_year as u32) as i64;
+    let year = today.year() - age as i32;
+    let day_of_year = config.rand_range(1, 365) as i64;
 
-    let base_date = NaiveDate::from_ymd_opt(year, 1, 1).unwrap_or(today);
-    let target = base_date + Duration::try_days(day_of_year - 1).unwrap_or_default();
+    let base_date = Date::from_calendar_date(year, Month::January, 1).unwrap_or(today);
+    let target = base_date
+        .checked_add(Duration::days(day_of_year - 1))
+        .unwrap_or(base_date);
 
-    target.format("%Y-%m-%d").to_string()
+    format_date(target)
 }
 
 /// Generate a random date in a specific period
@@ -73,21 +87,19 @@ pub fn on_day_of_week_between(_day_of_week: &str, from: &str, to: &str) -> Strin
 #[cfg(test)]
 mod tests {
     use super::*;
-    use chrono::Utc;
 
-    fn parse(s: &str) -> chrono::NaiveDate {
-        chrono::NaiveDate::parse_from_str(s, "%Y-%m-%d")
-            .unwrap_or_else(|e| panic!("bad date {s}: {e}"))
+    fn parse(s: &str) -> Date {
+        Date::parse(s, &Iso8601::DATE).unwrap_or_else(|e| panic!("bad date {s}: {e}"))
     }
 
     #[test]
     fn backward_and_forward_stay_within_window() {
-        let today = Utc::now().date_naive();
+        let today = OffsetDateTime::now_utc().date();
         for _ in 0..50 {
             let back = parse(&backward(Some(7), None, None));
             let fwd = parse(&forward(Some(7), None, None));
-            let back_days = (today - back).num_days();
-            let fwd_days = (fwd - today).num_days();
+            let back_days = (today - back).whole_days();
+            let fwd_days = (fwd - today).whole_days();
             assert!((0..=7).contains(&back_days), "back {back_days}");
             assert!((0..=7).contains(&fwd_days), "fwd {fwd_days}");
         }
